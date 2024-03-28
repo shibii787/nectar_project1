@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:nectar_project1/colors.dart';
 import 'package:nectar_project1/images.dart';
 
 
@@ -13,6 +13,9 @@ class homeScreen extends StatefulWidget {
 }
 
 class _homeScreenState extends State<homeScreen> {
+
+  TextEditingController searchController= TextEditingController(); //controller for search container
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,16 +28,29 @@ class _homeScreenState extends State<homeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 SizedBox(height: h*0.05),
-                Center(
-                  child: Image.asset(theImages.orangeCarrot,
-                    height: w*0.15,
-                  width: w*0.15),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(theImages.orangeCarrot,
+                        height: w*0.15,
+                        width: w*0.15),
+                    Row(
+                      children: [
+                        Icon(Icons.location_on),
+                        Text("Kerala, Mannarkkad")
+                      ],
+                    )
+                  ],
                 ),
                 SizedBox(height: h*0.05),
                 TextFormField(
+                  controller: searchController,
+                  keyboardType: TextInputType.multiline,
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.search),
-                    label: Text("Search Store"),
+                    filled: true,
+                    fillColor: theColors.sixth,
+                    prefixIcon: const Icon(Icons.search),
+                    label: const Text("Search Store"),
                     border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(w*0.03)
                     )
