@@ -66,7 +66,7 @@ class _CartPageState extends State<CartPage> {
                       Container(
                         height: w * 0.4,
                         width: w * 0.3,
-                        child: Image.asset(theImages.RedBell),
+                        child: Image.asset(theImages.Redbell),
                       ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
