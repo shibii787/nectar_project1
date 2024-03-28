@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       },
       child: MaterialApp(
         theme: ThemeData(
-            textTheme: GoogleFonts.poppinsTextTheme()
+            textTheme: GoogleFonts.pontanoSansTextTheme()
         ),
         debugShowCheckedModeBanner: false,
         home: bottomNav(),
