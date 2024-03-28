@@ -1,10 +1,8 @@
 
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nectar_project1/app_body/cart_page.dart';
 
 import 'app_body/bottom_nav.dart';
 
@@ -36,10 +34,10 @@ class MyApp extends StatelessWidget {
       },
       child: MaterialApp(
         theme: ThemeData(
-            textTheme: GoogleFonts.pontanoSansTextTheme()
+            textTheme: GoogleFonts.poppinsTextTheme()
         ),
         debugShowCheckedModeBanner: false,
-        home: CartPage(),
+        home: bottomNav(),
       ),
     );
   }
