@@ -6,6 +6,8 @@ import 'package:nectar_project1/icons.dart';
 
 
 import '../app_payment/payment1.dart';
+import 'cart_page.dart';
+import 'favourite_page.dart';
 import 'home_page.dart';
 
 class bottomNav extends StatefulWidget {
@@ -23,7 +25,11 @@ class _bottomNavState extends State<bottomNav> {
   //to add all UI pages into the bottom navigation bar
   List pages =[
     homeScreen(),
-    payment1()
+    payment1(),
+    CartPage(),
+    FavouritePage()
+
+
   ];
 
   @override

@@ -3,14 +3,14 @@ import 'package:nectar_project1/colors.dart';
 
 import '../main.dart';
 
-class Favourite_page extends StatefulWidget {
-  const Favourite_page({super.key});
+class FavouritePage extends StatefulWidget {
+  const FavouritePage({super.key});
 
   @override
-  State<Favourite_page> createState() => _Favourite_pageState();
+  State<FavouritePage> createState() => _FavouritePageState();
 }
 
-class _Favourite_pageState extends State<Favourite_page> {
+class _FavouritePageState extends State<FavouritePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
