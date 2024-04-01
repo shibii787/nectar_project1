@@ -113,7 +113,7 @@ class _signPageState extends State<signPage> {
               Center(
                 child: Text("Or connect with social media",
                 style: TextStyle(
-                  color: theColors.seventh,
+                  color: theColors.leventhe,
                 ),),
               ),
               SizedBox(height: w*0.05,),
@@ -128,7 +128,7 @@ class _signPageState extends State<signPage> {
                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
-                        child: Image.asset(theImages.gooleimage,
+                        child: Image.asset(theImages.googleimage,
                         height: w*0.075,)),
                     Text("Continue with Google",
                     style: TextStyle(
