@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
             textTheme: GoogleFonts.pontanoSansTextTheme()
         ),
         debugShowCheckedModeBanner: false,
-        home: splashscreen(),
+        home: bottomNav(),
       ),
     );
   }
