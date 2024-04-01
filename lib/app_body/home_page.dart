@@ -73,29 +73,32 @@ class _homeScreenState extends State<homeScreen> {
                     )
                   ),
                 SizedBox(height: h*0.05),
-                Container(
-                  height: h*0.2,
-                  width: w*1,
-                  child: CarouselSlider.builder(
-                      itemCount: carousel.length,
-                    options: CarouselOptions(
-                      onPageChanged: (index, reason) {
-                        setState(() {
-                          currentIndex=index;
-                        });
-                      },
-                      autoPlay: true,
-                      aspectRatio: 1,
-                      viewportFraction: 1,
-                      autoPlayAnimationDuration: Duration(
-                        seconds: 1
-                      )
+                CarouselSlider.builder(
+                    itemCount: carousel.length,
+                  options: CarouselOptions(
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        currentIndex=index;
+                      });
+                    },
+                    autoPlay: true,
+                    aspectRatio: 1,
+                    viewportFraction: 1,
+                    autoPlayAnimationDuration: Duration(
+                      seconds: 1
+                    )
+                  ),
+                    itemBuilder: (context, index, realIndex) {
+                      return Container(
+                        height: h*0.2,
+                        width: w*1,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(w*0.03),
+                          image: DecorationImage(image: AssetImage(carousel[index]),fit: BoxFit.fill)
+                        ),
+                      );
+                    },
                     ),
-                      itemBuilder: (context, index, realIndex) {
-                        return Image.asset(carousel[index]);
-                      },
-                      ),
-                ),
                 SizedBox(height: h*0.02),
                 AnimatedSmoothIndicator(
                     activeIndex: currentIndex,
