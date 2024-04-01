@@ -23,6 +23,9 @@ class _homeScreenState extends State<homeScreen> {
 
   //for carousel slider
   List carousel=[
+    theImages.slider1,
+    theImages.slider2,
+    theImages.slider3,
   ];
 
   @override
@@ -34,7 +37,6 @@ class _homeScreenState extends State<homeScreen> {
           child: Padding(
             padding: EdgeInsets.all(w*0.03),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 SizedBox(height: h*0.02),
                 Container(
@@ -72,11 +74,8 @@ class _homeScreenState extends State<homeScreen> {
                   ),
                 SizedBox(height: h*0.05),
                 Container(
-                  height: h*0.3,
+                  height: h*0.2,
                   width: w*1,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(w*0.03)
-                  ),
                   child: CarouselSlider.builder(
                       itemCount: carousel.length,
                     options: CarouselOptions(
@@ -93,14 +92,7 @@ class _homeScreenState extends State<homeScreen> {
                       )
                     ),
                       itemBuilder: (context, index, realIndex) {
-                        return Container(
-                          height: h*0.1,
-                          width: w*1,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(w*0.03),
-                            image: DecorationImage(image: AssetImage(carousel[index]))
-                          ),
-                        );
+                        return Image.asset(carousel[index]);
                       },
                       ),
                 ),
@@ -114,7 +106,7 @@ class _homeScreenState extends State<homeScreen> {
                     dotHeight: h*0.012,
                     dotWidth: w*0.07,
                   ),
-                )
+                ),
               ],
             ),
           ),

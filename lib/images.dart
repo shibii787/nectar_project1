@@ -10,4 +10,9 @@ class theImages{
   static const backgroundpayment="assets/images/order acc back.png";
   static const beckham="assets/images/beckham.jpg";//sign image
   static const location="assets/images/illustration.png";
+
+  //carousel slider images
+  static const slider1="assets/images/off 1.jpeg";
+  static const slider2="assets/images/fruits off.jpg";
+  static const slider3="assets/images/off 3.jpg";
 }
