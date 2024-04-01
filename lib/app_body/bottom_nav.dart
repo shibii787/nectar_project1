@@ -7,7 +7,6 @@ import 'package:nectar_project1/colors.dart';
 
 
 import '../app_payment/payment1.dart';
-import 'cart_page.dart';
 import 'favourite_page.dart';
 import 'home_page.dart';
 

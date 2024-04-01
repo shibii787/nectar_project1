@@ -15,4 +15,8 @@ class theImages{
   static const slider1="assets/images/off 1.jpeg";
   static const slider2="assets/images/fruits off.jpg";
   static const slider3="assets/images/off 3.jpg";
+
+  //list view fruits
+  static const banana="assets/images/92f1ea7dcce3b5d06cd1b1418f9b9413 3.png";
+  static const apple="assets/images/pngfuel 1.png";
 }

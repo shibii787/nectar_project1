@@ -104,6 +104,18 @@ class _homeScreenState extends State<homeScreen> {
                   dotWidth: w * 0.07,
                 ),
               ),
+              SizedBox(height: h * 0.03),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Exclusive Offer",style: TextStyle(
+                    fontWeight: FontWeight.w600,color: theColors.secondary
+                  ),),
+                  Text("See All",style: TextStyle(
+                    fontWeight: FontWeight.w500,color: theColors.third
+                  ),)
+                ],
+              ),
             ],
           ),
         ),
