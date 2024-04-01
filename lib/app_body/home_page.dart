@@ -28,19 +28,24 @@ class _homeScreenState extends State<homeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 SizedBox(height: h*0.05),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(theImages.orangeCarrot,
-                        height: w*0.15,
-                        width: w*0.15),
-                    Row(
-                      children: [
-                        Icon(Icons.location_on),
-                        Text("Kerala, Mannarkkad")
-                      ],
-                    )
-                  ],
+                Container(
+                  height: h*0.14,
+                  width: w*0.45,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(theImages.orangeCarrot,
+                          height: w*0.15,
+                          width: w*0.15),
+                      SizedBox(height: h*0.02),
+                      Row(
+                        children: [
+                          Icon(Icons.location_on),
+                          Text("Kerala, Mannarkkad")
+                        ],
+                      )
+                    ],
+                  ),
                 ),
                 SizedBox(height: h*0.05),
                 TextFormField(

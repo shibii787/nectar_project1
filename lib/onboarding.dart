@@ -24,7 +24,7 @@ class _onboardingState extends State<onboarding> {
                 height: h*1,
                 width: w*1,
                 decoration: BoxDecoration(
-                  image: DecorationImage(image: AssetImage(theImages.onboarding1),fit: BoxFit.fill),
+                  image: DecorationImage(image: AssetImage(""),fit: BoxFit.fill),
                 ),
               ),
               Container(

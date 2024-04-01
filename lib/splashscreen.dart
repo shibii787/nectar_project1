@@ -16,46 +16,48 @@ class _splashscreenState extends State<splashscreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Future.delayed(Duration(
-      seconds: 2
-    ));
+    Future.delayed(Duration(seconds: 2));
   }
-  @override
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:theColors.third,
+      backgroundColor: theColors.third,
       body: Padding(
-        padding:  EdgeInsets.all(w*0.03),
+        padding: EdgeInsets.all(w * 0.03),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
               children: [
-                Center(   child: Container(
-                  height: w*0.2,
-                    width: w*0.2,
-                    child: Image(image: AssetImage(theImages.whiteCarrot)))),
+                Center(
+                    child: Container(
+                        height: w * 0.2,
+                        width: w * 0.2,
+                        child:
+                            Image(image: AssetImage(theImages.whiteCarrot)))),
                 Container(
                   child: Column(
                     children: [
-                      Text("necrat",style: TextStyle(
-                        color: theColors.primaryColor,
+                      Text(
+                        "nectar",
+                        style: TextStyle(
+                            color: theColors.primaryColor,
                             fontWeight: FontWeight.w700,
-                        fontSize: w*0.2
-                      ),),
-                      Text("online groceriet",style: TextStyle(
-                          color: theColors.primaryColor,
-                          fontSize:w*0.05,
-                          letterSpacing: w*0.01
-                      ),),
+                            fontSize: w * 0.2),
+                      ),
+                      Text(
+                        "online groceries",
+                        style: TextStyle(
+                            color: theColors.primaryColor,
+                            fontSize: w * 0.05,
+                            letterSpacing: w * 0.01),
+                      ),
                     ],
                   ),
                 ),
               ],
             ),
-
-
           ],
         ),
       ),
