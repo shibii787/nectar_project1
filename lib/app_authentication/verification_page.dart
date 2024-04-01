@@ -20,6 +20,11 @@ class _verificationPageState extends State<verificationPage> {
       appBar: AppBar(
         backgroundColor: theColors.primaryColor,
         elevation: 0,
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+            child: Icon(CupertinoIcons.back)),
       ),
       body: Padding(
         padding: EdgeInsets.all(w*0.03),
