@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:nectar_project1/colors.dart';
 import 'package:nectar_project1/images.dart';
 
-import 'main.dart';
+import '../main.dart';
 
 class onboarding extends StatefulWidget {
   const onboarding({super.key});
@@ -53,7 +53,7 @@ class _onboardingState extends State<onboarding> {
                       color: theColors.primaryColor
                     ),),
                     SizedBox(height: w*0.05),
-                    Text("Ger your groceries in as fast as one hour",style: TextStyle(
+                    Text("Get your groceries in as fast as one hour",style: TextStyle(
                       color: theColors.primaryColor
                     ),),
                     SizedBox(height: w*0.01),

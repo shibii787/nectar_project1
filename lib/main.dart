@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nectar_project1/app_body/cart_page.dart';
-import 'package:nectar_project1/splashscreen.dart';
+import 'package:nectar_project1/app_into/splashscreen.dart';
 
 import 'app_body/bottom_nav.dart';
 

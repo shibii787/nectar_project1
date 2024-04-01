@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nectar_project1/colors.dart';
 import 'package:nectar_project1/images.dart';
 
-import 'main.dart';
+import '../main.dart';
 
 class splashscreen extends StatefulWidget {
   const splashscreen({super.key});
