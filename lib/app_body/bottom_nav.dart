@@ -29,7 +29,7 @@ class _bottomNavState extends State<bottomNav> {
     homeScreen(),
     payment1(),
     CartPage(),
-    Favourite_page(),
+    FavouritePage(),
     profilePage()
   ];
 

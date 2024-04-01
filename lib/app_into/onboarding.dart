@@ -40,7 +40,7 @@ class _onboardingState extends State<onboarding> {
                       child: Positioned(
                         bottom: w*0.32,
                           top: w*0.2,
-                          child: SvgPicture.asset(theImages.whitecarrotsvg)),
+                          child: SvgPicture.asset(theImages.whiteCarrot)),
                     ),
                     Text("Welcome",style: TextStyle(
                       fontWeight: FontWeight.w600,

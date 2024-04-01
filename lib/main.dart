@@ -8,7 +8,6 @@ import 'package:nectar_project1/app_authentication/sign_page.dart';
 import 'package:nectar_project1/app_authentication/verification_page.dart';
 import 'package:nectar_project1/app_body/cart_page.dart';
 import 'package:nectar_project1/app_body/order_accepted.dart';
-import 'package:nectar_project1/splashscreen.dart';
 
 import 'app_body/bottom_nav.dart';
 
