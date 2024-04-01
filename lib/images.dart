@@ -9,4 +9,5 @@ class theImages{
   static const sucess="assets/icons/Animation - 1711958595830.json";
   static const backgroundpayment="assets/images/order acc back.png";
   static const beckham="assets/images/beckham.jpg";//sign image
+  static const location="assets/images/illustration.png";
 }

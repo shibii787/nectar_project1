@@ -1,7 +1,6 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:nectar_project1/app_authentication/verification_page.dart';
 import 'package:nectar_project1/colors.dart';
 import 'package:nectar_project1/images.dart';
@@ -16,12 +15,11 @@ class signPage extends StatefulWidget {
 }
 
 class _signPageState extends State<signPage> {
-
-  TextEditingController numberController=TextEditingController();
+  TextEditingController numberController = TextEditingController();
 
   final phoneValidation = RegExp(r"[0-9]{10}$");
 
-  final formKey=GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -29,67 +27,63 @@ class _signPageState extends State<signPage> {
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.only(left: w*0.03,
-          right: w*0.03,
-          bottom: w*0.03),
+          padding: EdgeInsets.only(
+              left: w * 0.03, right: w * 0.03, bottom: w * 0.03),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset(theImages.signimage),
-              SizedBox(height: w*0.05,),
-              Text("Get your groceries \n with nectar",
-              style: TextStyle(
-                fontSize: w*0.06,
-                fontWeight: FontWeight.bold
-              ),),
-              SizedBox(height: w*0.05,),
+              SizedBox(
+                height: w * 0.05,
+              ),
+              Text(
+                "Get your groceries \n with nectar",
+                style:
+                    TextStyle(fontSize: w * 0.06, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: w * 0.05),
               Container(
                 decoration: BoxDecoration(
-                    color:theColors.primaryColor,
-                    borderRadius: BorderRadius.circular(w*0.03)
-                ),
+                    color: theColors.primaryColor,
+                    borderRadius: BorderRadius.circular(w * 0.03)),
                 child: TextFormField(
                   onFieldSubmitted: (value) {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => verificationPage (),));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => verificationPage(),
+                        ));
                   },
-                  style: TextStyle(
-                      color: theColors.secondary
-                  ),
+                  style: TextStyle(color: theColors.secondary),
                   maxLength: 10,
                   controller: numberController,
                   keyboardType: TextInputType.number,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (value) {
-                    if(!phoneValidation.hasMatch(value!))
-                    {
+                    if (!phoneValidation.hasMatch(value!)) {
                       return "Enter valid number";
-                    }
-                    else {
+                    } else {
                       return null;
                     }
                   },
                   decoration: InputDecoration(
                     counterText: "",
                     hintText: "Enter the number",
-                    hintStyle: TextStyle(
-                        color: theColors.secondary
-                    ),
-                    suffixIconConstraints: BoxConstraints(
-                        minWidth: w*0.2
-                    ),
-                    suffixIcon:Container(
-                      width: w*0.07,
-                      height: w*0.07,
+                    hintStyle: TextStyle(color: theColors.secondary),
+                    suffixIconConstraints: BoxConstraints(minWidth: w * 0.2),
+                    suffixIcon: Container(
+                      width: w * 0.07,
+                      height: w * 0.07,
                       child: Center(
-                        child: Icon(CupertinoIcons.phone,
+                          child: Icon(
+                        CupertinoIcons.phone,
                         color: theColors.secondary,
-                        size: w*0.06,)
-                      ),
+                        size: w * 0.06,
+                      )),
                     ),
                     prefixIcon: CountryCodePicker(
                       flagDecoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(w*0.02)
-                      ),
+                          borderRadius: BorderRadius.circular(w * 0.02)),
                       initialSelection: "IN",
                       showDropDownButton: true,
                       showFlagMain: true,
@@ -98,13 +92,10 @@ class _signPageState extends State<signPage> {
                       hideMainText: true,
                     ),
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(w*0.03),
-                        borderSide: BorderSide.none
-                    ),
+                        borderRadius: BorderRadius.circular(w * 0.03),
+                        borderSide: BorderSide.none),
                     label: Text("Number",
-                        style: TextStyle(
-                            color: theColors.secondary
-                        )),
+                        style: TextStyle(color: theColors.secondary)),
                     // focusedBorder: OutlineInputBorder(
                     //   borderRadius: BorderRadius.circular(width*0.03),
                     //     borderSide: BorderSide(
@@ -114,60 +105,71 @@ class _signPageState extends State<signPage> {
                   ),
                 ),
               ),
-              SizedBox(height: w*0.05,),
+              SizedBox(
+                height: w * 0.05,
+              ),
               Center(
-                child: Text("Or connect with social media",
-                style: TextStyle(
-                  color: theColors.leventhe,
-                ),),
-              ),
-              SizedBox(height: w*0.05,),
-              Container(
-                height: w*0.18,
-                width: w*1,
-                decoration: BoxDecoration(
-                  color: theColors.fourth,
-                  borderRadius: BorderRadius.circular(w*0.04)
-                ),
-                child: Row(
-                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                        child: Image.asset(theImages.googleimage,
-                        height: w*0.075,)),
-                    Text("Continue with Google",
-                    style: TextStyle(
-                      color: theColors.primaryColor,
-                      fontSize: w*0.045
-                    ),)
-                  ],
+                child: Text(
+                  "Or connect with social media",
+                  style: TextStyle(
+                    color: theColors.leventhe,
+                  ),
                 ),
               ),
-              SizedBox(height: w*0.05,),
+              SizedBox(
+                height: w * 0.05,
+              ),
               Container(
-                height: w*0.18,
-                width: w*1,
+                height: w * 0.18,
+                width: w * 1,
                 decoration: BoxDecoration(
-                    color: theColors.fifth,
-                    borderRadius: BorderRadius.circular(w*0.04)
-                ),
+                    color: theColors.fourth,
+                    borderRadius: BorderRadius.circular(w * 0.04)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
-                        child: Image.asset(theImages.fbimage,
-                          height: w*0.075,)),
-                    Text("Continue with Facebook",
+                        child: Image.asset(
+                      theImages.googleimage,
+                      height: w * 0.075,
+                    )),
+                    Text(
+                      "Continue with Google",
                       style: TextStyle(
-                          color: theColors.primaryColor,
-                          fontSize: w*0.045
-                      ),)
+                          color: theColors.primaryColor, fontSize: w * 0.045),
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: w * 0.05,
+              ),
+              Container(
+                height: w * 0.18,
+                width: w * 1,
+                decoration: BoxDecoration(
+                    color: theColors.fifth,
+                    borderRadius: BorderRadius.circular(w * 0.04)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                        child: Image.asset(
+                      theImages.fbimage,
+                      height: w * 0.075,
+                    )),
+                    Text(
+                      "Continue with Facebook",
+                      style: TextStyle(
+                          color: theColors.primaryColor, fontSize: w * 0.045),
+                    )
                   ],
                 ),
               ),
             ],
           ),
-        ),),
+        ),
+      ),
     );
   }
 }
