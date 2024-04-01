@@ -8,6 +8,5 @@ class theImages{
   static const signimage="assets/images/Mask Group.png";
   static const sucess="assets/icons/Animation - 1711958595830.json";
   static const backgroundpayment="assets/images/order acc back.png";
-  static const whitecarrotsvg="";//sign image
   static const beckham="assets/images/beckham.jpg";//sign image
 }
