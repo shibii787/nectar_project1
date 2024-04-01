@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nectar_project1/app_authentication/sign_page.dart';
+import 'package:nectar_project1/app_authentication/verification_page.dart';
 import 'package:nectar_project1/app_body/cart_page.dart';
 import 'package:nectar_project1/app_into/splashscreen.dart';
 
@@ -40,7 +42,7 @@ class MyApp extends StatelessWidget {
             textTheme: GoogleFonts.pontanoSansTextTheme()
         ),
         debugShowCheckedModeBanner: false,
-        home: splashscreen(),
+        home: signPage(),
       ),
     );
   }

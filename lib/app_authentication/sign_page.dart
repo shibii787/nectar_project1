@@ -2,6 +2,7 @@ import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:nectar_project1/app_authentication/verification_page.dart';
 import 'package:nectar_project1/colors.dart';
 import 'package:nectar_project1/images.dart';
 
@@ -25,6 +26,7 @@ class _signPageState extends State<signPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.only(left: w*0.03,
@@ -47,6 +49,9 @@ class _signPageState extends State<signPage> {
                     borderRadius: BorderRadius.circular(w*0.03)
                 ),
                 child: TextFormField(
+                  onFieldSubmitted: (value) {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => verificationPage (),));
+                  },
                   style: TextStyle(
                       color: theColors.secondary
                   ),
