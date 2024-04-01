@@ -1,6 +1,8 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:nectar_project1/app_body/cart_page.dart';
+import 'package:nectar_project1/app_profile/profile_page.dart';
 import 'package:nectar_project1/colors.dart';
 import 'package:nectar_project1/icons.dart';
 
@@ -27,9 +29,8 @@ class _bottomNavState extends State<bottomNav> {
     homeScreen(),
     payment1(),
     CartPage(),
-    FavouritePage()
-
-
+    Favourite_page(),
+    profilePage()
   ];
 
   @override
@@ -57,22 +58,25 @@ class _bottomNavState extends State<bottomNav> {
 
     return Scaffold(
       body: pages[bottom],
-      bottomNavigationBar: ConvexAppBar(
-        backgroundColor: theColors.third,
-          items: [
-            TabItem(icon: SvgPicture.asset(theIcons.homeIcon)),
-            TabItem(icon: SvgPicture.asset(theIcons.exploreIcon)),
-            TabItem(icon: SvgPicture.asset(theIcons.cartIcon)),
-            TabItem(icon: SvgPicture.asset(theIcons.favIcon)),
-            TabItem(icon: SvgPicture.asset(theIcons.userIcon)),
-          ],
-        initialActiveIndex: bottom,
-        onTap: (int index) {
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (value) {
           setState(() {
-            bottom=index;
+            bottom=value;
           });
         },
-      ),
+        type: BottomNavigationBarType.fixed,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        selectedItemColor: theColors.third,
+        unselectedItemColor: theColors.secondary,
+        items: [
+          BottomNavigationBarItem(icon: SvgPicture.asset(theIcons.homeIcon),label: "Shop"),
+          BottomNavigationBarItem(icon: SvgPicture.asset(theIcons.exploreIcon),label: "Explore"),
+          BottomNavigationBarItem(icon: SvgPicture.asset(theIcons.cartIcon),label: "Cart"),
+          BottomNavigationBarItem(icon: SvgPicture.asset(theIcons.favIcon),label: "Favourite"),
+          BottomNavigationBarItem(icon: SvgPicture.asset(theIcons.userIcon),label: "Account"),
+        ],
+      )
     );
 
   }

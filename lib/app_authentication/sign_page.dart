@@ -2,6 +2,7 @@ import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:nectar_project1/app_authentication/verification_page.dart';
 import 'package:nectar_project1/colors.dart';
 import 'package:nectar_project1/images.dart';
 
@@ -25,6 +26,7 @@ class _signPageState extends State<signPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.only(left: w*0.03,
@@ -47,6 +49,9 @@ class _signPageState extends State<signPage> {
                     borderRadius: BorderRadius.circular(w*0.03)
                 ),
                 child: TextFormField(
+                  onFieldSubmitted: (value) {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => verificationPage (),));
+                  },
                   style: TextStyle(
                       color: theColors.secondary
                   ),
@@ -113,7 +118,7 @@ class _signPageState extends State<signPage> {
               Center(
                 child: Text("Or connect with social media",
                 style: TextStyle(
-                  color: theColors.seventh,
+                  color: theColors.leventhe,
                 ),),
               ),
               SizedBox(height: w*0.05,),
@@ -128,7 +133,7 @@ class _signPageState extends State<signPage> {
                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
-                        child: Image.asset(theImages.gooleimage,
+                        child: Image.asset(theImages.googleimage,
                         height: w*0.075,)),
                     Text("Continue with Google",
                     style: TextStyle(
