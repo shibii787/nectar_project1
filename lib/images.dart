@@ -5,5 +5,6 @@ static const onboarding="assets/images/8140 1.png"; //onboarding background imag
 static const Redbell="assets/images/Red Bell.png"; //
 static const gooleimage="assets/images/Group 6795.png"; //
 static const fbimage="assets/images/Vector.png"; //
-static const signimage="assets/images/Mask Group.png"; //sign image
+static const signimage="assets/images/Mask Group.png";
+static const whitecarrotsvg="";//sign image
 }
