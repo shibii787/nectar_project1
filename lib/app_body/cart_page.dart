@@ -105,7 +105,7 @@ class _CartPageState extends State<CartPage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                SvgPicture.asset(theImages.payment),
+                                SvgPicture.asset(""),
                                 InkWell(
                                     onTap: () {
                                       Navigator.push(context, MaterialPageRoute(builder: (context) =>payment1() ,));

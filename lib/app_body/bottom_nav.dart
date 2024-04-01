@@ -1,10 +1,9 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:nectar_project1/app_body/cart_page.dart';
 import 'package:nectar_project1/app_profile/profile_page.dart';
 import 'package:nectar_project1/colors.dart';
-import 'package:nectar_project1/icons.dart';
+
 
 
 import '../app_payment/payment1.dart';
@@ -35,27 +34,6 @@ class _bottomNavState extends State<bottomNav> {
 
   @override
   Widget build(BuildContext context) {
-    // return Scaffold(
-    //   body: pages[bottom],
-    //   bottomNavigationBar: BottomNavigationBar(
-    //     type: BottomNavigationBarType.fixed,
-    //     showSelectedLabels: true,
-    //     showUnselectedLabels: true,
-    //     selectedItemColor: theColors.third,
-    //     selectedIconTheme: IconThemeData(
-    //       color: theColors.third
-    //     ),
-    //     unselectedItemColor: theColors.secondary,
-    //     items: [
-    //       BottomNavigationBarItem(icon: SvgPicture.asset(theIcons.homeIcon),label: "Shop"),
-    //       BottomNavigationBarItem(icon: SvgPicture.asset(theIcons.exploreIcon),label: "Explore"),
-    //       BottomNavigationBarItem(icon: SvgPicture.asset(theIcons.cartIcon),label: "Cart"),
-    //       BottomNavigationBarItem(icon: SvgPicture.asset(theIcons.favIcon),label: "Favourite"),
-    //       BottomNavigationBarItem(icon: SvgPicture.asset(theIcons.userIcon),label: "Account"),
-    //     ],
-    //   )
-    // );
-
     return Scaffold(
       body: pages[bottom],
       bottomNavigationBar: BottomNavigationBar(
@@ -69,12 +47,13 @@ class _bottomNavState extends State<bottomNav> {
         showUnselectedLabels: true,
         selectedItemColor: theColors.third,
         unselectedItemColor: theColors.secondary,
+        currentIndex: bottom,
         items: [
-          BottomNavigationBarItem(icon: SvgPicture.asset(theIcons.homeIcon),label: "Shop"),
-          BottomNavigationBarItem(icon: SvgPicture.asset(theIcons.exploreIcon),label: "Explore"),
-          BottomNavigationBarItem(icon: SvgPicture.asset(theIcons.cartIcon),label: "Cart"),
-          BottomNavigationBarItem(icon: SvgPicture.asset(theIcons.favIcon),label: "Favourite"),
-          BottomNavigationBarItem(icon: SvgPicture.asset(theIcons.userIcon),label: "Account"),
+          BottomNavigationBarItem(icon: Icon(Icons.home_outlined),label: "Shop"),
+          BottomNavigationBarItem(icon: Icon(Icons.manage_search),label: "Explore"),
+          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart_outlined),label: "Cart"),
+          BottomNavigationBarItem(icon: Icon(Icons.favorite_border_outlined),label: "Favourite"),
+          BottomNavigationBarItem(icon: Icon(Icons.person_2),label: "Account"),
         ],
       )
     );

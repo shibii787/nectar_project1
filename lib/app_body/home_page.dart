@@ -1,6 +1,8 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:nectar_project1/colors.dart';
 import 'package:nectar_project1/images.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 
 import '../main.dart';
@@ -14,7 +16,14 @@ class homeScreen extends StatefulWidget {
 
 class _homeScreenState extends State<homeScreen> {
 
+  //for animated smooth indicator
+  int currentIndex=0;
+
   TextEditingController searchController= TextEditingController(); //controller for search container
+
+  //for carousel slider
+  List carousel=[
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +36,7 @@ class _homeScreenState extends State<homeScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                SizedBox(height: h*0.05),
+                SizedBox(height: h*0.02),
                 Container(
                   height: h*0.14,
                   width: w*0.45,
@@ -62,6 +71,50 @@ class _homeScreenState extends State<homeScreen> {
                     )
                   ),
                 SizedBox(height: h*0.05),
+                Container(
+                  height: h*0.3,
+                  width: w*1,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(w*0.03)
+                  ),
+                  child: CarouselSlider.builder(
+                      itemCount: carousel.length,
+                    options: CarouselOptions(
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          currentIndex=index;
+                        });
+                      },
+                      autoPlay: true,
+                      aspectRatio: 1,
+                      viewportFraction: 1,
+                      autoPlayAnimationDuration: Duration(
+                        seconds: 1
+                      )
+                    ),
+                      itemBuilder: (context, index, realIndex) {
+                        return Container(
+                          height: h*0.1,
+                          width: w*1,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(w*0.03),
+                            image: DecorationImage(image: AssetImage(carousel[index]))
+                          ),
+                        );
+                      },
+                      ),
+                ),
+                SizedBox(height: h*0.02),
+                AnimatedSmoothIndicator(
+                    activeIndex: currentIndex,
+                    count: carousel.length,
+                  effect: JumpingDotEffect(
+                    activeDotColor: theColors.third,
+                    dotColor: theColors.sixth,
+                    dotHeight: h*0.012,
+                    dotWidth: w*0.07,
+                  ),
+                )
               ],
             ),
           ),
