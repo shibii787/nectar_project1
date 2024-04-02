@@ -1,16 +1,13 @@
-
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nectar_project1/account.dart';
-import 'package:nectar_project1/app_authentication/log_in.dart';
 import 'package:nectar_project1/app_authentication/sign_page.dart';
+import 'package:nectar_project1/app_authentication/signup_page.dart';
 import 'package:nectar_project1/app_authentication/verification_page.dart';
 import 'package:nectar_project1/app_body/cart_page.dart';
+import 'package:nectar_project1/app_body/order_accepted.dart';
 import 'package:nectar_project1/app_into/splashscreen.dart';
-
 import 'app_body/bottom_nav.dart';
 
 var h; //variable for height
@@ -41,10 +38,10 @@ class MyApp extends StatelessWidget {
       },
       child: MaterialApp(
         theme: ThemeData(
-            textTheme: GoogleFonts.pontanoSansTextTheme()
+            textTheme: GoogleFonts.poppinsTextTheme()
         ),
         debugShowCheckedModeBanner: false,
-        home: account(),
+        home: bottomNav(),
       ),
     );
   }
