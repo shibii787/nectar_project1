@@ -8,15 +8,18 @@ class theImages{
   static const signimage="assets/images/Mask Group.png";
   static const sucess="assets/icons/Animation - 1711958595830.json";
   static const backgroundpayment="assets/images/order acc back.png";
+  static const whitecarrotsvg="";//sign image
   static const beckham="assets/images/beckham.jpg";//sign image
-  static const location="assets/images/illustration.png";
+  static const bag="assets/images/Orders icon.svg";
+  static const tv="assets/images/My Details icon.svg";
+  static const location="assets/images/Delicery address.svg";
+  static const payment="assets/images/Vector icon.svg";
+  static const card="assets/images/Promo Cord icon.svg";
+  static const bell="assets/images/Red Bell.png";
+  static const notifecation="assets/images/Bell icon.svg";
+  static const help="assets/images/help icon.svg";
+  static const about="assets/images/about icon.svg";
+  static const account="assets/images/Rectangle 82.png";
+  static const pen="assets/images/Vector (1).svg";
 
-  //carousel slider images
-  static const slider1="assets/images/off 1.jpeg";
-  static const slider2="assets/images/fruits off.jpg";
-  static const slider3="assets/images/off 3.jpg";
-
-  //list view fruits
-  static const banana="assets/images/92f1ea7dcce3b5d06cd1b1418f9b9413 3.png";
-  static const apple="assets/images/pngfuel 1.png";
 }

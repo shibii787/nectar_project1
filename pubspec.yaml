@@ -36,6 +36,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
   google_fonts: 6.1.0
+  lottie: ^2.7.0
   image_picker: ^1.0.4
   pinput: ^3.0.1
   timer_count_down: ^2.2.2
@@ -44,9 +45,8 @@ dependencies:
   flutter_svg: ^2.0.10+1
   country_code_picker: ^3.0.0
   convex_bottom_bar: ^3.2.0
-  lottie: ^3.1.0
-  location: ^6.0.0
-  geolocator: ^11.0.0
+  location:
+  geolocator:
 
 dev_dependencies:
   flutter_test:

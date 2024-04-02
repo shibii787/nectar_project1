@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:location/location.dart';
 import 'package:nectar_project1/colors.dart';
 import 'package:nectar_project1/images.dart';
+
 
 import '../main.dart';
 
@@ -15,7 +15,7 @@ class selectLocationPage extends StatefulWidget {
 
 class _selectLocationPageState extends State<selectLocationPage> {
 
-  Location newlocation =Location();
+  // Location newlocation =Location();
 
   @override
   Widget build(BuildContext context) {
