@@ -60,8 +60,14 @@ class _homeScreenState extends State<homeScreen> {
 
   //groceries
   List groceries=[
-    theImages.rice,
-    theImages.pulse
+    {
+      "image":theImages.rice,
+      "name":"Rice"
+    },
+    {
+      "image":theImages.pulse,
+      "name":"Pulses"
+    }
   ];
   
   //meat 
@@ -227,7 +233,7 @@ class _homeScreenState extends State<homeScreen> {
                           );
                         },),
                   ),
-                  SizedBox(height: h * 0.03),
+                  SizedBox(height: h * 0.02),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -297,7 +303,7 @@ class _homeScreenState extends State<homeScreen> {
                         );
                       },),
                   ),
-                  SizedBox(height: h * 0.03),
+                  SizedBox(height: h * 0.02),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -309,7 +315,7 @@ class _homeScreenState extends State<homeScreen> {
                       ),)
                     ],
                   ),
-                  SizedBox(height: h * 0.03),
+                  SizedBox(height: h * 0.02),
                   Container(
                     height: h*0.2,
                     width: w*1,
@@ -325,11 +331,24 @@ class _homeScreenState extends State<homeScreen> {
                           return Container(
                             height: h*0.15,
                             width: w*0.6,
-                            child: Image.asset(groceries[index]),
+                            margin: EdgeInsets.all(w*0.03),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(w*0.03),
+                              color: theColors.nine
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Image.asset(groceries[index]["image"]),
+                                Text(groceries[index]["name"],style: TextStyle(
+                                  fontWeight: FontWeight.w600
+                                ),)
+                              ],
+                            ),
                           );
                         },),
                   ),
-                  SizedBox(height: h*0.03),
+                  SizedBox(height: h*0.02),
                   Container(
                     height: h*0.35,
                     width: w*1,
