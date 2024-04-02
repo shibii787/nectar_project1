@@ -22,4 +22,8 @@ class theImages{
   static const account="assets/images/Rectangle 82.png";
   static const pen="assets/images/Vector (1).svg";
 
+  //carousel pictures
+  static const slider1="assets/images/off 1.jpeg";
+  static const slider2="assets/images/fruits off.jpg";
+  static const slider3="assets/images/off 3.jpg";
 }

@@ -22,9 +22,9 @@ class _homeScreenState extends State<homeScreen> {
 
   //for carousel slider
   List carousel = [
-    // theImages.slider1,
-    // theImages.slider2,
-    // theImages.slider3,
+    theImages.slider1,
+    theImages.slider2,
+    theImages.slider3,
   ];
 
   @override
