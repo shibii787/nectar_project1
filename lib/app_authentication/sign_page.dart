@@ -112,7 +112,7 @@ class _signPageState extends State<signPage> {
                 child: Text(
                   "Or connect with social media",
                   style: TextStyle(
-                    color: theColors.leventhe,
+                    color: theColors.eleventh,
                   ),
                 ),
               ),

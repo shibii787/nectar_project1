@@ -136,7 +136,7 @@ class _logInState extends State<logIn> {
             SizedBox(height: w*0.03,),
             Text("Enter your emails and password",
               style:TextStyle(
-                  color: theColors.leventhe
+                  color: theColors.eleventh
               ) ,),
             SizedBox(height: w*0.05,),
             TextFormField(

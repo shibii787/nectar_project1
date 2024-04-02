@@ -2,7 +2,6 @@ class theImages{
   static const orangeCarrot="assets/images/Group (1).png";
   static const whiteCarrot="assets/images/Group.png";
   static const onboarding="assets/images/8140 1.png"; //onboarding background image
-  static const Redbell="assets/images/Red Bell.png"; //
   static const googleimage="assets/images/Group 6795.png"; //
   static const fbimage="assets/images/Vector.png"; //
   static const signimage="assets/images/Mask Group.png";
@@ -30,4 +29,15 @@ class theImages{
   static const banana="assets/images/92f1ea7dcce3b5d06cd1b1418f9b9413 3.png";
   static const apple="assets/images/pngfuel 1.png";
 
+  //vegetables
+  static const Redbell="assets/images/Red Bell.png";
+  static const ginger="assets/images/pngfuel 3.png";
+
+  //groceries
+  static const rice="assets/images/8-82858_download-sack-of-rice-png 1.png";
+  static const pulse="assets/images/4215936-pulses-png-8-png-image-pulses-png-409_409 1.png";
+
+  //meat
+  static const meat="assets/images/pngfuel 4.png";
+  static const chicken="assets/images/pngfuel 5.png";
 }

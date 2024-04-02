@@ -52,7 +52,7 @@ class _bottomNavState extends State<bottomNav> {
           BottomNavigationBarItem(icon: Icon(Icons.manage_search),label: "Explore"),
           BottomNavigationBarItem(icon: Icon(Icons.shopping_cart_outlined),label: "Cart"),
           BottomNavigationBarItem(icon: Icon(Icons.favorite_border_outlined),label: "Favourite"),
-          BottomNavigationBarItem(icon: Icon(Icons.person_2),label: "Account"),
+          BottomNavigationBarItem(icon: Icon(Icons.account_box_outlined),label: "Account"),
         ],
       )
     );
