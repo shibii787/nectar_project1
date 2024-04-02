@@ -206,7 +206,7 @@ class _logInState extends State<logIn> {
                   hintStyle: TextStyle(
                       color: theColors.secondary
                   ),
-                  prefixIcon: InkWell(
+                  suffixIcon: InkWell(
                       onTap: () {
                         tap=!tap;
                         setState(() {
@@ -219,8 +219,8 @@ class _logInState extends State<logIn> {
                     borderRadius: BorderRadius.circular(w*0.03),
                     borderSide: BorderSide.none,
                   ),
-                  suffixIcon: Icon(CupertinoIcons.lock,
-                    color: theColors.secondary,)
+                  // suffixIcon: Icon(CupertinoIcons.lock,
+                  //   color: theColors.secondary,)
                 // label: Padding(
                 //   padding: EdgeInsets.all(w*0.025),
                 //   child: Text("Password",
