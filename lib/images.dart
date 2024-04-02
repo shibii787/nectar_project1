@@ -8,7 +8,6 @@ class theImages{
   static const signimage="assets/images/Mask Group.png";
   static const sucess="assets/icons/Animation - 1711958595830.json";
   static const backgroundpayment="assets/images/order acc back.png";
-  static const whitecarrotsvg="";//sign image
   static const beckham="assets/images/beckham.jpg";//sign image
   static const bag="assets/images/Orders icon.svg";
   static const tv="assets/images/My Details icon.svg";
@@ -26,4 +25,9 @@ class theImages{
   static const slider1="assets/images/off 1.jpeg";
   static const slider2="assets/images/fruits off.jpg";
   static const slider3="assets/images/off 3.jpg";
+
+  //fruits
+  static const banana="assets/images/92f1ea7dcce3b5d06cd1b1418f9b9413 3.png";
+  static const apple="assets/images/pngfuel 1.png";
+
 }

@@ -27,6 +27,12 @@ class _homeScreenState extends State<homeScreen> {
     theImages.slider3,
   ];
 
+  List exclusive=[
+    {
+
+    }
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
