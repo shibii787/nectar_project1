@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:nectar_project1/app_authentication/log_in.dart';
 import 'package:nectar_project1/colors.dart';
 import 'package:nectar_project1/images.dart';
@@ -14,6 +17,16 @@ class account extends StatefulWidget {
 }
 
 class _accountState extends State<account> {
+  var file;
+  Pickfile(ImageSource) async {
+    final imgFile=await ImagePicker.platform.pickImage(source: ImageSource);
+    file=File(imgFile!.path);
+    if(mounted){
+      setState(() {
+        file=File(imgFile!.path);
+      });
+    }
+  }
   final emailvalidation = RegExp(
       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
 
@@ -37,11 +50,92 @@ class _accountState extends State<account> {
                 children: [
                   Stack(
                     children: [
-                      Container(
+                     file!=null? Container(
+                        height: h*0.4,
+                        width: w*0.4,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(image: FileImage(file,),fit: BoxFit.fill)
+                        ),
+                      )
+                      :Container(
                           child: Image(image: AssetImage(theImages.account))),
                       Positioned(
-                          left: w * 0.03,
-                          child: SvgPicture.asset(theImages.pen)),
+                           left: w * 0.14,
+                          bottom: w*0.09,
+                          right: w*0.12,
+                          top: w*0.1,
+                          child:InkWell(
+                            onTap: () {
+                              showModalBottomSheet(
+                                showDragHandle: true,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadiusDirectional.circular(w*0.03)
+                                  ),
+                                  context: context,
+                                  builder: (context) {
+                                    return Container(
+                                      height: w*0.6,
+                                      child: Column(
+                                        children: [
+                                          Text("choose a file from"),
+                                          Container(
+                                            width: w*1,
+                                            height: w*0.4,
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(w*0.03),
+                                            ),
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                SizedBox(height: w*0.1),
+                                                Column(
+                                                  children: [
+                                                    SizedBox(height: w*0.03,),
+                                                    InkWell(
+                                                        onTap: () {
+                                                          Pickfile(ImageSource.camera);
+                                                        },
+                                                        child: Center(child: Container(
+                                                            height: w*0.25,
+                                                            width: w*0.26,
+                                                            color: Colors.red,
+                                                            child: Icon(Icons.photo_camera,size:w*0.25,color: theColors.primaryColor,)))),
+                                                    // Text("camera")
+                                                  ],
+                                                ),
+                                                SizedBox(width: w*0.3),
+                                                SizedBox(height: w*0.7),
+                                                Column(
+                                                  children: [
+
+                                                    SizedBox(height: w*0.03,),
+                                                    InkWell(
+                                                      onTap: () {
+                                                        Pickfile(ImageSource.gallery);
+                                                      },
+                                                      child: Container(
+                                                          height: w*0.25,
+                                                          width: w*0.25,
+                                                          color: Colors.red,
+                                                          child: Icon(Icons.photo,size:w*0.25,color: theColors.primaryColor,)),
+                                                    ),
+                                                    // Text("gallery")
+                                                  ],
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                              );
+                            },
+                            child: Container(
+                              height: h*0.05,
+                                width: w*0.05,
+                                child: Icon(Icons.camera_alt_rounded,color: theColors.secondary,)),
+                          )),
                     ],
                   ),
                   Column(
