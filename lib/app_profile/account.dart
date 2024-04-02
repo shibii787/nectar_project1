@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
@@ -18,15 +19,18 @@ class account extends StatefulWidget {
 
 class _accountState extends State<account> {
   var file;
-  Pickfile(ImageSource) async {
-    final imgFile=await ImagePicker.platform.pickImage(source: ImageSource);
-    file=File(imgFile!.path);
-    if(mounted){
+
+  pickFile(ImageSource) async {
+    final pickedFile =
+        await ImagePicker.platform.pickImage(source: ImageSource);
+    file = File(pickedFile!.path);
+    if (mounted) {
       setState(() {
-        file=File(imgFile!.path);
+        file = File(pickedFile.path);
       });
     }
   }
+
   final emailvalidation = RegExp(
       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
 
@@ -43,321 +47,296 @@ class _accountState extends State<account> {
         body: Padding(
           padding: EdgeInsets.all(w * 0.03),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Stack(
                     children: [
-                     file!=null? Container(
-                        height: h*0.4,
-                        width: w*0.4,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(image: FileImage(file,),fit: BoxFit.fill)
-                        ),
-                      )
-                      :Container(
-                          child: Image(image: AssetImage(theImages.account))),
+                      // Container(
+                      //   height: w*0.4,
+                      //   width: w*0.5,
+                      //   color: colorTheme.fourthColor,
+                      // ),
+                      Center(
+                          child: file != null
+                              ? CircleAvatar(
+                                  backgroundColor: theColors.primaryColor,
+                                  radius: w * 0.15,
+                                  backgroundImage: FileImage(file))
+                              : CircleAvatar(
+                                  radius: w * 0.15,
+                                  backgroundColor: theColors.secondary,
+                                  backgroundImage:
+                                      AssetImage(theImages.beckham),
+                                )),
                       Positioned(
-                           left: w * 0.14,
-                          bottom: w*0.09,
-                          right: w*0.12,
-                          top: w*0.1,
-                          child:InkWell(
+                        left: w * 0.18,
+                        bottom: w * 0.001,
+                        child: InkWell(
                             onTap: () {
-                              showModalBottomSheet(
-                                showDragHandle: true,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadiusDirectional.circular(w*0.03)
-                                  ),
-                                  context: context,
-                                  builder: (context) {
-                                    return Container(
-                                      height: w*0.6,
-                                      child: Column(
-                                        children: [
-                                          Text("choose a file from"),
-                                          Container(
-                                            width: w*1,
-                                            height: w*0.4,
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(w*0.03),
-                                            ),
-                                            child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                SizedBox(height: w*0.1),
-                                                Column(
-                                                  children: [
-                                                    SizedBox(height: w*0.03,),
-                                                    InkWell(
-                                                        onTap: () {
-                                                          Pickfile(ImageSource.camera);
-                                                        },
-                                                        child: Center(child: Container(
-                                                            height: w*0.25,
-                                                            width: w*0.26,
-                                                            color: Colors.red,
-                                                            child: Icon(Icons.photo_camera,size:w*0.25,color: theColors.primaryColor,)))),
-                                                    // Text("camera")
-                                                  ],
-                                                ),
-                                                SizedBox(width: w*0.3),
-                                                SizedBox(height: w*0.7),
-                                                Column(
-                                                  children: [
-
-                                                    SizedBox(height: w*0.03,),
-                                                    InkWell(
-                                                      onTap: () {
-                                                        Pickfile(ImageSource.gallery);
-                                                      },
-                                                      child: Container(
-                                                          height: w*0.25,
-                                                          width: w*0.25,
-                                                          color: Colors.red,
-                                                          child: Icon(Icons.photo,size:w*0.25,color: theColors.primaryColor,)),
-                                                    ),
-                                                    // Text("gallery")
-                                                  ],
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  },
+                              showCupertinoModalPopup(
+                                context: context,
+                                builder: (BuildContext context) => Material(
+                                  type: MaterialType.circle,
+                                  color: Colors.transparent,
+                                  child: CupertinoActionSheet(
+                                      actions: <Widget>[
+                                        CupertinoActionSheetAction(
+                                          child: const Text('Photo Gallery'),
+                                          onPressed: () {
+                                            pickFile(ImageSource.gallery);
+                                            Navigator.pop(context, 'One');
+                                          },
+                                        ),
+                                        CupertinoActionSheetAction(
+                                          child: const Text('Camera'),
+                                          onPressed: () {
+                                            pickFile(ImageSource.camera);
+                                            Navigator.pop(context, 'Two');
+                                          },
+                                        )
+                                      ],
+                                      cancelButton: CupertinoActionSheetAction(
+                                        child: Text('Cancel'),
+                                        isDefaultAction: true,
+                                        onPressed: () {
+                                          Navigator.pop(context, 'Cancel');
+                                        },
+                                      )),
+                                ),
                               );
                             },
-                            child: Container(
-                              height: h*0.05,
-                                width: w*0.05,
-                                child: Icon(Icons.camera_alt_rounded,color: theColors.secondary,)),
-                          )),
+                            child: CircleAvatar(
+                              radius: w * 0.04,
+                              backgroundColor: theColors.third,
+                              child: Center(
+                                  child: Icon(
+                                CupertinoIcons.pen,
+                                color: theColors.primaryColor,
+                              )),
+                            )),
+                      ),
                     ],
                   ),
                   Column(
                     children: [
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Text(
                             "Afsar Hossen",
                             style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                            ),
+                                fontWeight: FontWeight.w700,
+                                fontSize: w * 0.05),
                           ),
+                          SizedBox(width: w * 0.02),
                           SvgPicture.asset(theImages.pen),
                         ],
                       ),
-                      Text("Imshuvo97@gmail.com")
+                      Text("Imshuvo97@gmail.com"),
                     ],
                   ),
-                  SizedBox(
-                    width: w * 0.05,
-                  )
                 ],
               ),
-              // SizedBox(height: w*0.05),
-              Divider(
-                endIndent: w * 0.06,
-                thickness: w * 0.001,
-                color: Colors.black26,
-                height: h * 0.04,
-                indent: h * 0.05,
-              ),
               Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                height: h * 0.52,
+                width: w * 1,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    SvgPicture.asset(theImages.bag),
-                    Text(
-                      'Orders',
-                      style: TextStyle(fontWeight: FontWeight.w600),
+                    Container(
+                      height: h * 0.05,
+                      width: w * 1,
+                      decoration: BoxDecoration(
+                          border: Border(
+                        bottom: BorderSide(
+                            color: theColors.secondary.withOpacity(0.5)),
+                      )),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SvgPicture.asset(theImages.bag),
+                          Text(
+                            'Orders',
+                            style: TextStyle(fontWeight: FontWeight.w600),
+                          ),
+                          SizedBox(
+                            width: w * 0.2,
+                          ),
+                          Icon(Icons.arrow_forward_ios),
+                        ],
+                      ),
                     ),
-                    SizedBox(
-                      width: w * 0.2,
+                    Container(
+                      height: h * 0.05,
+                      width: w * 1,
+                      decoration: BoxDecoration(
+                          border: Border(
+                        bottom: BorderSide(
+                            color: theColors.secondary.withOpacity(0.5)),
+                      )),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SvgPicture.asset(theImages.tv),
+                          Text(
+                            'My Details',
+                            style: TextStyle(fontWeight: FontWeight.w600),
+                          ),
+                          SizedBox(
+                            width: w * 0.2,
+                          ),
+                          Icon(Icons.arrow_forward_ios),
+                        ],
+                      ),
+                      // margin: EdgeInsets.all(w*0.03),
                     ),
-                    Icon(Icons.arrow_forward_ios),
+                    Container(
+                      height: h * 0.05,
+                      width: w * 1,
+                      decoration: BoxDecoration(
+                          border: Border(
+                        bottom: BorderSide(
+                            color: theColors.secondary.withOpacity(0.5)),
+                      )),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SvgPicture.asset(theImages.location),
+                          Text(
+                            'Delivery Address',
+                            style: TextStyle(fontWeight: FontWeight.w600),
+                          ),
+                          SizedBox(
+                            width: w * 0.2,
+                          ),
+                          Icon(Icons.arrow_forward_ios),
+                        ],
+                      ),
+                      // margin: EdgeInsets.all(w*0.03),
+                    ),
+                    Container(
+                      height: h * 0.05,
+                      width: w * 1,
+                      decoration: BoxDecoration(
+                          border: Border(
+                        bottom: BorderSide(
+                            color: theColors.secondary.withOpacity(0.5)),
+                      )),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SvgPicture.asset(theImages.payment),
+                          Text(
+                            'Payment Methods',
+                            style: TextStyle(fontWeight: FontWeight.w600),
+                          ),
+                          SizedBox(
+                            width: w * 0.2,
+                          ),
+                          Icon(Icons.arrow_forward_ios),
+                        ],
+                      ),
+                      // margin: EdgeInsets.all(w*0.03),
+                    ),
+                    Container(
+                      height: h * 0.05,
+                      width: w * 1,
+                      decoration: BoxDecoration(
+                          border: Border(
+                        bottom: BorderSide(
+                            color: theColors.secondary.withOpacity(0.5)),
+                      )),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SvgPicture.asset(theImages.card),
+                          Text(
+                            'Promo Cord',
+                            style: TextStyle(fontWeight: FontWeight.w600),
+                          ),
+                          SizedBox(
+                            width: w * 0.2,
+                          ),
+                          Icon(Icons.arrow_forward_ios),
+                        ],
+                      ),
+                      // margin: EdgeInsets.all(w*0.03),
+                    ),
+                    Container(
+                      height: h * 0.05,
+                      width: w * 1,
+                      decoration: BoxDecoration(
+                          border: Border(
+                        bottom: BorderSide(
+                            color: theColors.secondary.withOpacity(0.5)),
+                      )),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Icon(CupertinoIcons.bell),
+                          Text(
+                            'Notifications ',
+                            style: TextStyle(fontWeight: FontWeight.w600),
+                          ),
+                          SizedBox(
+                            width: w * 0.2,
+                          ),
+                          Icon(Icons.arrow_forward_ios),
+                        ],
+                      ),
+                      // margin: EdgeInsets.all(w*0.03),
+                    ),
+                    Container(
+                      height: h * 0.05,
+                      width: w * 1,
+                      decoration: BoxDecoration(
+                          border: Border(
+                        bottom: BorderSide(
+                            color: theColors.secondary.withOpacity(0.5)),
+                      )),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SvgPicture.asset(theImages.help),
+                          Text(
+                            'Help ',
+                            style: TextStyle(fontWeight: FontWeight.w600),
+                          ),
+                          SizedBox(
+                            width: w * 0.2,
+                          ),
+                          Icon(Icons.arrow_forward_ios),
+                        ],
+                      ),
+                      // margin: EdgeInsets.all(w*0.03),
+                    ),
+                    Container(
+                      height: h * 0.05,
+                      width: w * 1,
+                      decoration: BoxDecoration(
+                          border: Border(
+                        bottom: BorderSide(
+                            color: theColors.secondary.withOpacity(0.5)),
+                      )),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SvgPicture.asset(theImages.about),
+                          Text(
+                            'About  ',
+                            style: TextStyle(fontWeight: FontWeight.w600),
+                          ),
+                          SizedBox(
+                            width: w * 0.2,
+                          ),
+                          Icon(Icons.arrow_forward_ios),
+                        ],
+                      ),
+                      // margin: EdgeInsets.all(w*0.03),
+                    ),
                   ],
-                ),
-                // margin: EdgeInsets.all(w*0.03),
-              ),
-              Divider(
-                endIndent: w * 0.06,
-                thickness: w * 0.001,
-                color: Colors.black26,
-                height: h * 0.04,
-                indent: h * 0.05,
-              ),
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SvgPicture.asset(theImages.tv),
-                    Text(
-                      'My Details',
-                      style: TextStyle(fontWeight: FontWeight.w600),
-                    ),
-                    SizedBox(
-                      width: w * 0.2,
-                    ),
-                    Icon(Icons.arrow_forward_ios),
-                  ],
-                ),
-                // margin: EdgeInsets.all(w*0.03),
-              ),
-              Divider(
-                endIndent: w * 0.06,
-                thickness: w * 0.001,
-                color: Colors.black26,
-                height: h * 0.04,
-                indent: h * 0.05,
-              ),
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SvgPicture.asset(theImages.location),
-                    Text(
-                      'Delivery Address',
-                      style: TextStyle(fontWeight: FontWeight.w600),
-                    ),
-                    SizedBox(
-                      width: w * 0.2,
-                    ),
-                    Icon(Icons.arrow_forward_ios),
-                  ],
-                ),
-                // margin: EdgeInsets.all(w*0.03),
-              ),
-              Divider(
-                endIndent: w * 0.06,
-                thickness: w * 0.001,
-                color: Colors.black26,
-                height: h * 0.04,
-                indent: h * 0.05,
-              ),
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SvgPicture.asset(theImages.payment),
-                    Text(
-                      'Payment Methods',
-                      style: TextStyle(fontWeight: FontWeight.w600),
-                    ),
-                    SizedBox(
-                      width: w * 0.2,
-                    ),
-                    Icon(Icons.arrow_forward_ios),
-                  ],
-                ),
-                // margin: EdgeInsets.all(w*0.03),
-              ),
-              Divider(
-                endIndent: w * 0.06,
-                thickness: w * 0.001,
-                color: Colors.black26,
-                height: h * 0.04,
-                indent: h * 0.05,
-              ),
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SvgPicture.asset(theImages.card),
-                    Text(
-                      'Promo Cord',
-                      style: TextStyle(fontWeight: FontWeight.w600),
-                    ),
-                    SizedBox(
-                      width: w * 0.2,
-                    ),
-                    Icon(Icons.arrow_forward_ios),
-                  ],
-                ),
-                // margin: EdgeInsets.all(w*0.03),
-              ),
-              Divider(
-                endIndent: w * 0.06,
-                thickness: w * 0.001,
-                color: Colors.black26,
-                height: h * 0.04,
-                indent: h * 0.05,
-              ),
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SvgPicture.asset(theImages.bell),
-                    Text(
-                      'Notifications ',
-                      style: TextStyle(fontWeight: FontWeight.w600),
-                    ),
-                    SizedBox(
-                      width: w * 0.2,
-                    ),
-                    Icon(Icons.arrow_forward_ios),
-                  ],
-                ),
-                // margin: EdgeInsets.all(w*0.03),
-              ),
-              Divider(
-                endIndent: w * 0.06,
-                thickness: w * 0.001,
-                color: Colors.black26,
-                height: h * 0.04,
-                indent: h * 0.05,
-              ),
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SvgPicture.asset(theImages.help),
-                    Text(
-                      'Help ',
-                      style: TextStyle(fontWeight: FontWeight.w600),
-                    ),
-                    SizedBox(
-                      width: w * 0.2,
-                    ),
-                    Icon(Icons.arrow_forward_ios),
-                  ],
-                ),
-                // margin: EdgeInsets.all(w*0.03),
-              ),
-              Divider(
-                endIndent: w * 0.06,
-                thickness: w * 0.001,
-                color: Colors.black26,
-                height: h * 0.04,
-                indent: h * 0.05,
-              ),
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SvgPicture.asset(theImages.about),
-                    Text(
-                      'About  ',
-                      style: TextStyle(fontWeight: FontWeight.w600),
-                    ),
-                    SizedBox(
-                      width: w * 0.2,
-                    ),
-                    Icon(Icons.arrow_forward_ios),
-                  ],
-                ),
-                // margin: EdgeInsets.all(w*0.03),
-              ),
-              Container(
-                height: h * 0.06,
-                width: w * 0.03,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(w * 0.03),
                 ),
               ),
               InkWell(
@@ -420,23 +399,15 @@ class _accountState extends State<account> {
                   width: w * 0.9,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(w * 0.03),
-                      color: theColors.sixth),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.login,
-                        size: w * 0.07,
-                        color: theColors.third,
-                      ),
-                      SizedBox(width: w * 0.28),
-                      Text(
-                        "Log Out",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: w * 0.05,
-                            color: theColors.third),
-                      )
-                    ],
+                      color: theColors.third),
+                  child: Center(
+                    child: Text(
+                      "Log Out",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: w * 0.05,
+                          color: theColors.primaryColor),
+                    ),
                   ),
                 ),
               )

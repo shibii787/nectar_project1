@@ -25,8 +25,8 @@ class _FavouritePageState extends State<FavouritePage> {
           child: Text("Add All To Cart",
               style: TextStyle(
                   color: theColors.primaryColor,
-                  fontSize: w*0.05,
-                  fontWeight: FontWeight.w600)),
+                  fontSize: w*0.045,
+                  fontWeight: FontWeight.w500)),
         ),
       ),
       appBar: AppBar(

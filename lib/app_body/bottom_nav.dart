@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:nectar_project1/app_body/cart_page.dart';
+import 'package:nectar_project1/app_profile/account.dart';
 import 'package:nectar_project1/app_profile/profile_page.dart';
 import 'package:nectar_project1/colors.dart';
 
@@ -28,7 +29,7 @@ class _bottomNavState extends State<bottomNav> {
     payment1(),
     CartPage(),
     FavouritePage(),
-    profilePage()
+    account()
   ];
 
   @override

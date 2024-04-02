@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:nectar_project1/colors.dart';
 import 'package:nectar_project1/images.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -110,7 +109,7 @@ class _homeScreenState extends State<homeScreen> {
                       ],
                     ),
                   ),
-                  SizedBox(height: h * 0.05),
+                  SizedBox(height: h * 0.03),
                   TextFormField(
                       controller: searchController,
                       keyboardType: TextInputType.multiline,
@@ -121,7 +120,7 @@ class _homeScreenState extends State<homeScreen> {
                           label: const Text("Search Store"),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(w * 0.03)))),
-                  SizedBox(height: h * 0.05),
+                  SizedBox(height: h * 0.03),
                   CarouselSlider.builder(
                     itemCount: carousel.length,
                     options: CarouselOptions(
@@ -154,11 +153,11 @@ class _homeScreenState extends State<homeScreen> {
                     effect: JumpingDotEffect(
                       activeDotColor: theColors.third,
                       dotColor: theColors.sixth,
-                      dotHeight: h * 0.012,
-                      dotWidth: w * 0.07,
+                      dotHeight: h * 0.01,
+                      dotWidth: w * 0.06,
                     ),
                   ),
-                  SizedBox(height: h * 0.03),
+                  SizedBox(height: h * 0.02),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

@@ -249,8 +249,8 @@ class _CartPageState extends State<CartPage> {
             child: Text("Go to Checkout",
                 style: TextStyle(
                     color: theColors.primaryColor,
-                    fontSize: w * 0.05,
-                    fontWeight: FontWeight.w600)),
+                    fontSize: w * 0.045,
+                    fontWeight: FontWeight.w500)),
           ),
         ),
       ),
