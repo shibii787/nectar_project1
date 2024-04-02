@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nectar_project1/app_authentication/log_in.dart';
 import 'package:nectar_project1/colors.dart';
 import 'package:nectar_project1/images.dart';
 
@@ -42,7 +43,7 @@ class _selectLocationPageState extends State<selectLocationPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Image.asset(theImages.location,
+                  Image.asset(theImages.locationPage,
                       height: h*0.3,
                       width: w*1),
                   Center(
@@ -62,18 +63,23 @@ class _selectLocationPageState extends State<selectLocationPage> {
             ),
             SizedBox(height: h*0.05),
             Text("Select Your Zone"),
-            Container(
-              height: w * 0.15,
-              width: w * 0.9,
-              decoration: BoxDecoration(
-                  color: theColors.third,
-                  borderRadius: BorderRadius.circular(w * 0.03)),
-              child: Center(
-                child: Text("Submit",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: w * 0.045,
-                        color: theColors.primaryColor)),
+            InkWell(
+              onTap: () {
+                Navigator.push(context, CupertinoPageRoute(builder: (context) => logIn(),));
+              },
+              child: Container(
+                height: w * 0.15,
+                width: w * 0.9,
+                decoration: BoxDecoration(
+                    color: theColors.third,
+                    borderRadius: BorderRadius.circular(w * 0.03)),
+                child: Center(
+                  child: Text("Submit",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: w * 0.045,
+                          color: theColors.primaryColor)),
+                ),
               ),
             ),
           ],
