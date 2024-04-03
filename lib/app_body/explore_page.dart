@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nectar_project1/app_body/fruitsAndveg.dart';
 import 'package:nectar_project1/colors.dart';
 import 'package:nectar_project1/images.dart';
 
@@ -88,43 +89,48 @@ class _ExplorePageState extends State<ExplorePage> {
                   childAspectRatio:0.8 ,
                 ),
                 itemBuilder: (BuildContext context, int index) {
-                  return  Column(
-                    children: [
-                      Container(
-                        width: w*0.5,
-                        height: w*0.55,
-                        decoration: BoxDecoration(
-                            color: theColors.third.withOpacity(0.2),
-                            borderRadius: BorderRadius.circular(w*0.05),
-                          border: Border.all(width: w*0.002,color: theColors.third)
+                  return  InkWell(
+                    onTap: () {
+                      index==0?Navigator.push(context, MaterialPageRoute(builder: (context) => Fruits(),)):index;
+                    },
+                    child: Column(
+                      children: [
+                        Container(
+                          width: w*0.5,
+                          height: w*0.55,
+                          decoration: BoxDecoration(
+                              color: theColors.third.withOpacity(0.2),
+                              borderRadius: BorderRadius.circular(w*0.05),
+                            border: Border.all(width: w*0.002,color: theColors.third)
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: w*0.3,
+                                  height: w*0.2,
+
+                                  child: Image(image:  AssetImage(datas[index]["image"]),fit: BoxFit.fill)
+                              ),
+                              Column(
+                                children: [
+                                  Text(datas[index]["title"],textAlign: TextAlign.center,
+                                    style:TextStyle(fontSize: w*0.04,
+                                    fontWeight: FontWeight.w900) ,),
+
+                              Text(datas[index]["subtitle"],textAlign: TextAlign.center,
+                                style:TextStyle(fontSize: w*0.04,
+                                    fontWeight: FontWeight.w900) ,)
+                                ],
+                              ),
+                            ],
+
+                          ),
+
                         ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              width: w*0.3,
-                                height: w*0.2,
-
-                                child: Image(image:  AssetImage(datas[index]["image"]),fit: BoxFit.fill)
-                            ),
-                            Column(
-                              children: [
-                                Text(datas[index]["title"],textAlign: TextAlign.center,
-                                  style:TextStyle(fontSize: w*0.04,
-                                  fontWeight: FontWeight.w900) ,),
-
-                            Text(datas[index]["subtitle"],textAlign: TextAlign.center,
-                              style:TextStyle(fontSize: w*0.04,
-                                  fontWeight: FontWeight.w900) ,)
-                              ],
-                            ),
-                          ],
-
-                        ),
-
-                      ),
-                    ],
+                      ],
+                    ),
                   );
                 },
               ),
