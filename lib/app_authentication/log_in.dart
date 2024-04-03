@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:nectar_project1/app_authentication/select_location_page.dart';
 import 'package:nectar_project1/app_authentication/signup_page.dart';
 import 'package:nectar_project1/colors.dart';
 import 'package:nectar_project1/images.dart';
@@ -17,6 +18,13 @@ class logIn extends StatefulWidget {
 }
 
 class _logInState extends State<logIn> {
+
+  var file;
+
+  String imageurl = "";
+
+  bool tap = true;
+
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -35,12 +43,6 @@ class _logInState extends State<logIn> {
       });
     }
   }
-
-  var file;
-
-  String imageurl = "";
-
-  bool tap = true;
 
   @override
   Widget build(BuildContext context) {
@@ -143,14 +145,14 @@ class _logInState extends State<logIn> {
               height: w * 0.05,
             ),
             Text(
-              "Logging",
+              "Log In",
               style: TextStyle(fontSize: w * 0.06, fontWeight: FontWeight.bold),
             ),
             SizedBox(
               height: w * 0.03,
             ),
             Text(
-              "Enter your emails and password",
+              "Enter your email and password",
               style: TextStyle(color: theColors.eleventh),
             ),
             SizedBox(
@@ -199,7 +201,7 @@ class _logInState extends State<logIn> {
               autovalidateMode: AutovalidateMode.onUserInteraction,
               validator: (value) {
                 if (!passwordValidation.hasMatch(value!)) {
-                  return "Enetr the password";
+                  return "Enter the password";
                 } else {
                   return null;
                 }
@@ -263,18 +265,23 @@ class _logInState extends State<logIn> {
             SizedBox(
               height: w * 0.05,
             ),
-            Container(
-              height: w * 0.18,
-              width: w * 1,
-              decoration: BoxDecoration(
-                  color: theColors.third,
-                  borderRadius: BorderRadius.circular(w * 0.04)),
-              child: Center(
-                child: Text("Log In",
-                    style: TextStyle(
-                        color: theColors.primaryColor,
-                        fontSize: w * 0.05,
-                        fontWeight: FontWeight.w600)),
+            InkWell(
+              onTap: () {
+                Navigator.push(context, CupertinoPageRoute(builder: (context) => selectLocationPage(),));
+              },
+              child: Container(
+                height: w * 0.18,
+                width: w * 1,
+                decoration: BoxDecoration(
+                    color: theColors.third,
+                    borderRadius: BorderRadius.circular(w * 0.04)),
+                child: Center(
+                  child: Text("Log In",
+                      style: TextStyle(
+                          color: theColors.primaryColor,
+                          fontSize: w * 0.05,
+                          fontWeight: FontWeight.w600)),
+                ),
               ),
             ),
             SizedBox(

@@ -1,6 +1,7 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nectar_project1/app_authentication/log_in.dart';
 import 'package:nectar_project1/app_authentication/verification_page.dart';
 import 'package:nectar_project1/colors.dart';
 import 'package:nectar_project1/images.dart';
@@ -119,23 +120,28 @@ class _signPageState extends State<signPage> {
               SizedBox(
                 height: w * 0.03,
               ),
-              Container(
-                height: w * 0.15,
-                width: w * 1,
-                decoration: BoxDecoration(
-                    color: theColors.third.withOpacity(0.8),
-                    borderRadius: BorderRadius.circular(w * 0.04)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Icon(Icons.login_outlined,color: theColors.primaryColor,),
-                    Text(
-                      "Log In",
-                      style: TextStyle(
-                          color: theColors.primaryColor, fontSize: w * 0.045),
-                    ),
-                    Row()
-                  ],
+              InkWell(
+                onTap: () {
+                  Navigator.push(context, CupertinoPageRoute(builder: (context) => logIn(),));
+                },
+                child: Container(
+                  height: w * 0.15,
+                  width: w * 1,
+                  decoration: BoxDecoration(
+                      color: theColors.third.withOpacity(0.8),
+                      borderRadius: BorderRadius.circular(w * 0.04)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Icon(Icons.login_outlined,color: theColors.primaryColor,),
+                      Text(
+                        "Log In",
+                        style: TextStyle(
+                            color: theColors.primaryColor, fontSize: w * 0.045),
+                      ),
+                      Row()
+                    ],
+                  ),
                 ),
               ),
               SizedBox(

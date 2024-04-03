@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:nectar_project1/app_authentication/log_in.dart';
+import 'package:nectar_project1/app_authentication/select_location_page.dart';
 import 'package:nectar_project1/colors.dart';
 import 'package:nectar_project1/images.dart';
 
@@ -45,6 +46,7 @@ class _signupPageState extends State<signupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: theColors.primaryColor,
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: theColors.primaryColor,
@@ -309,18 +311,23 @@ class _signupPageState extends State<signupPage> {
             SizedBox(
               height: w * 0.05,
             ),
-            Container(
-              height: w * 0.18,
-              width: w * 1,
-              decoration: BoxDecoration(
-                  color: theColors.third,
-                  borderRadius: BorderRadius.circular(w * 0.04)),
-              child: Center(
-                child: Text("Sign Up",
-                    style: TextStyle(
-                        color: theColors.primaryColor,
-                        fontSize: w * 0.05,
-                        fontWeight: FontWeight.w600)),
+            InkWell(
+              onTap: () {
+                Navigator.push(context, CupertinoPageRoute(builder: (context) => selectLocationPage(),));
+              },
+              child: Container(
+                height: w * 0.18,
+                width: w * 1,
+                decoration: BoxDecoration(
+                    color: theColors.third,
+                    borderRadius: BorderRadius.circular(w * 0.04)),
+                child: Center(
+                  child: Text("Sign Up",
+                      style: TextStyle(
+                          color: theColors.primaryColor,
+                          fontSize: w * 0.05,
+                          fontWeight: FontWeight.w600)),
+                ),
               ),
             ),
             SizedBox(

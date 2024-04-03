@@ -33,7 +33,7 @@ class _OrderAcceptedState extends State<OrderAccepted> {
             child: Lottie.asset(theImages.sucess)),
         Positioned(
             top: w * 1.1,
-            left: w * 0.25,
+            left: w * 0.13,
             child: Text(
               "Your Order has been \n accepted",
               textAlign: TextAlign.center,
@@ -41,7 +41,7 @@ class _OrderAcceptedState extends State<OrderAccepted> {
             )),
         Positioned(
             top: w * 1.3,
-            left: w * 0.25,
+            left: w * 0.13,
             child: Text(
               "Your items has been placed and is on \n it’s way to being processed",
               textAlign: TextAlign.center,
@@ -61,7 +61,7 @@ class _OrderAcceptedState extends State<OrderAccepted> {
                   style: TextStyle(
                       color: theColors.primaryColor,
                       fontSize: w * 0.05,
-                      fontWeight: FontWeight.w600)),
+                      fontWeight: FontWeight.w500)),
             ),
           ),
         ),
@@ -80,7 +80,7 @@ class _OrderAcceptedState extends State<OrderAccepted> {
                   style: TextStyle(
                       color: theColors.secondary,
                       fontSize: w * 0.05,
-                      fontWeight: FontWeight.w600)),
+                      fontWeight: FontWeight.w500)),
             ),
           ),
         ),

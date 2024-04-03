@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nectar_project1/app_authentication/log_in.dart';
+import 'package:nectar_project1/app_body/bottom_nav.dart';
 import 'package:nectar_project1/colors.dart';
 import 'package:nectar_project1/images.dart';
 
@@ -65,7 +66,7 @@ class _selectLocationPageState extends State<selectLocationPage> {
             Text("Select Your Zone"),
             InkWell(
               onTap: () {
-                Navigator.push(context, CupertinoPageRoute(builder: (context) => logIn(),));
+                Navigator.push(context, CupertinoPageRoute(builder: (context) => bottomNav(),));
               },
               child: Container(
                 height: w * 0.15,
