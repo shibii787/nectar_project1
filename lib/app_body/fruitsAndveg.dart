@@ -23,7 +23,7 @@ class _FruitsState extends State<Fruits> {
             Navigator.pop(context);
           },
             child: Icon(CupertinoIcons.back,)),
-        title: Text("Beverages",style: TextStyle(
+        title: Text("Fresh Fruits & Vegetable",style: TextStyle(
           fontWeight: FontWeight.w900,),),
         centerTitle: true,
         actions: [
