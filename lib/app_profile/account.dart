@@ -72,8 +72,8 @@ class _accountState extends State<account> {
                                       AssetImage(theImages.beckham),
                                 )),
                       Positioned(
-                        left: w * 0.2,
-                        bottom: w * 0.004,
+                        left: w * 0.18,
+                        bottom: w * 0.001,
                         child: InkWell(
                             onTap: () {
                               showCupertinoModalPopup(
@@ -131,7 +131,7 @@ class _accountState extends State<account> {
                                 fontSize: w * 0.05),
                           ),
                           SizedBox(width: w * 0.02),
-                          SvgPicture.asset(theImages.pen),
+                          Icon(CupertinoIcons.pencil),
                         ],
                       ),
                       Text("Imshuvo97@gmail.com"),
@@ -156,7 +156,8 @@ class _accountState extends State<account> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          SvgPicture.asset(theImages.bag),
+                          // SvgPicture.asset(theImages.bag),
+                          Icon(CupertinoIcons.bag),
                           Text(
                             'Orders',
                             style: TextStyle(fontWeight: FontWeight.w600),
@@ -179,7 +180,8 @@ class _accountState extends State<account> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          SvgPicture.asset(theImages.tv),
+                          // SvgPicture.asset(theImages.tv),
+                          Icon(Icons.card_giftcard_outlined),
                           Text(
                             'My Details',
                             style: TextStyle(fontWeight: FontWeight.w600),
@@ -227,7 +229,7 @@ class _accountState extends State<account> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          SvgPicture.asset(theImages.payment),
+                          Icon(Icons.add_card_outlined),
                           Text(
                             'Payment Methods',
                             style: TextStyle(fontWeight: FontWeight.w600),
@@ -251,7 +253,7 @@ class _accountState extends State<account> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          SvgPicture.asset(theImages.card),
+                          Icon(Icons.airplane_ticket_outlined),
                           Text(
                             'Promo Cord',
                             style: TextStyle(fontWeight: FontWeight.w600),
@@ -299,7 +301,7 @@ class _accountState extends State<account> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          SvgPicture.asset(theImages.help),
+                          Icon(Icons.help_center_outlined),
                           Text(
                             'Help ',
                             style: TextStyle(fontWeight: FontWeight.w600),
@@ -323,7 +325,7 @@ class _accountState extends State<account> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          SvgPicture.asset(theImages.about),
+                          Icon(Icons.error_outline),
                           Text(
                             'About  ',
                             style: TextStyle(fontWeight: FontWeight.w600),
