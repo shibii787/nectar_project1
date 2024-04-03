@@ -10,7 +10,6 @@ import 'package:nectar_project1/app_body/cart_page.dart';
 import 'package:nectar_project1/app_body/order_accepted.dart';
 import 'package:nectar_project1/app_into/splashscreen.dart';
 import 'package:nectar_project1/app_profile/account.dart';
-import 'package:nectar_project1/productdetails.dart';
 import 'app_body/bottom_nav.dart';
 
 var h; //variable for height
@@ -44,7 +43,7 @@ class MyApp extends StatelessWidget {
             textTheme: GoogleFonts.poppinsTextTheme()
         ),
         debugShowCheckedModeBanner: false,
-        home: productdetails(),
+        home: bottomNav(),
       ),
     );
   }
