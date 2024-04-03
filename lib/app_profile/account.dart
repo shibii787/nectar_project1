@@ -205,7 +205,7 @@ class _accountState extends State<account> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          SvgPicture.asset(theImages.location),
+                          Icon(CupertinoIcons.location_solid),
                           Text(
                             'Delivery Address',
                             style: TextStyle(fontWeight: FontWeight.w600),
