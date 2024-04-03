@@ -45,7 +45,7 @@ class _homeScreenState extends State<homeScreen> {
   //best selling list
   List bestSelling=[
     {
-      "image": theImages.bell,
+      "image": theImages.Redbell,
       "name": "Bell Pepper",
       "qty": 1,
       "price" : 4.99

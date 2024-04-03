@@ -34,14 +34,14 @@ class _signPageState extends State<signPage> {
             children: [
               Image.asset(theImages.signimage),
               SizedBox(
-                height: w * 0.05,
+                height: w * 0.04,
               ),
               Text(
                 "Get your groceries \n with nectar",
                 style:
                     TextStyle(fontSize: w * 0.06, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: w * 0.05),
+              SizedBox(height: w * 0.03),
               Container(
                 decoration: BoxDecoration(
                     color: theColors.primaryColor,
@@ -106,7 +106,7 @@ class _signPageState extends State<signPage> {
                 ),
               ),
               SizedBox(
-                height: w * 0.05,
+                height: w * 0.03,
               ),
               Center(
                 child: Text(
@@ -117,10 +117,32 @@ class _signPageState extends State<signPage> {
                 ),
               ),
               SizedBox(
-                height: w * 0.05,
+                height: w * 0.03,
               ),
               Container(
-                height: w * 0.18,
+                height: w * 0.15,
+                width: w * 1,
+                decoration: BoxDecoration(
+                    color: theColors.third.withOpacity(0.8),
+                    borderRadius: BorderRadius.circular(w * 0.04)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Icon(Icons.login_outlined,color: theColors.primaryColor,),
+                    Text(
+                      "Log In",
+                      style: TextStyle(
+                          color: theColors.primaryColor, fontSize: w * 0.045),
+                    ),
+                    Row()
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: w * 0.02,
+              ),
+              Container(
+                height: w * 0.15,
                 width: w * 1,
                 decoration: BoxDecoration(
                     color: theColors.fourth,
@@ -142,10 +164,10 @@ class _signPageState extends State<signPage> {
                 ),
               ),
               SizedBox(
-                height: w * 0.05,
+                height: w * 0.02,
               ),
               Container(
-                height: w * 0.18,
+                height: w * 0.15,
                 width: w * 1,
                 decoration: BoxDecoration(
                     color: theColors.fifth,
