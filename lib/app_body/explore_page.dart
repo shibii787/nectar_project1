@@ -1,6 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nectar_project1/app_body/bakery.dart';
+import 'package:nectar_project1/app_body/beverages.dart';
+import 'package:nectar_project1/app_body/cookingOil.dart';
+import 'package:nectar_project1/app_body/dairyandeggs.dart';
 import 'package:nectar_project1/app_body/fruitsAndveg.dart';
+import 'package:nectar_project1/app_body/meatandfish.dart';
 import 'package:nectar_project1/colors.dart';
 import 'package:nectar_project1/images.dart';
 
@@ -92,6 +97,11 @@ class _ExplorePageState extends State<ExplorePage> {
                   return  InkWell(
                     onTap: () {
                       index==0?Navigator.push(context, MaterialPageRoute(builder: (context) => Fruits(),)):index;
+                      index==1?Navigator.push(context, MaterialPageRoute(builder: (context) => CookingOil(),)):index;
+                      index==2?Navigator.push(context, MaterialPageRoute(builder: (context) => MeatFish(),)):index;
+                      index==3?Navigator.push(context, MaterialPageRoute(builder: (context) => Bakery(),)):index;
+                      index==4?Navigator.push(context, MaterialPageRoute(builder: (context) => Dairy(),)):index;
+                      index==5?Navigator.push(context, MaterialPageRoute(builder: (context) => Beverages(),)):index;
                     },
                     child: Column(
                       children: [

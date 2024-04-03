@@ -1,36 +1,36 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:nectar_project1/colors.dart';
 import 'package:nectar_project1/icons.dart';
 
 import '../main.dart';
 
-class Fruits extends StatefulWidget {
-  const Fruits({super.key});
+class Beverages extends StatefulWidget {
+  const Beverages({super.key});
 
   @override
-  State<Fruits> createState() => _FruitsState();
+  State<Beverages> createState() => _BeveragesState();
 }
 
-class _FruitsState extends State<Fruits> {
+class _BeveragesState extends State<Beverages> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
         leading: InkWell(
-          onTap: () {
-            Navigator.pop(context);
-          },
+            onTap: () {
+              Navigator.pop(context);
+            },
             child: Icon(CupertinoIcons.back,)),
         title: Text("Beverages",style: TextStyle(
           fontWeight: FontWeight.w900,),),
         centerTitle: true,
         actions: [
           InkWell(
-            onTap: () {
+              onTap: () {
 
-            },
+              },
               child: SvgPicture.asset(theIcons.filterIcon)),
           SizedBox(width: w*0.03,)
         ],
@@ -63,30 +63,31 @@ class _FruitsState extends State<Fruits> {
                       padding:  EdgeInsets.only(left: w*0.03,right: w*0.03),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Center(
                             child: Container(
-                              width: w*0.3,
-                                height: w*0.3,
-                                child: Image(image: NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwHOLSsljNVyrQ4u46Zmhk9sIKkQ30WEnAND84y0S_MA&s"),fit: BoxFit.fill,)
+                                width: w*0.3,
+                                height: w*0.25,
+                                child: Image(image: NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgF_b4x2bpfKw_QdXsEHnjD9GiVw-2W5T6lg&s"),fit: BoxFit.fill,)
                             ),
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Orange", style:TextStyle(fontSize: w*0.04,
+                              Text("Coca Cola", style:TextStyle(fontSize: w*0.04,
                                   fontWeight: FontWeight.w900)),
-                              Text("1kg, price",style:
+                              Text("1 ltr, price",style:
                               TextStyle(
                                   fontSize: w*0.03,
-                                color: theColors.eleventh
+                                  color: theColors.eleventh
                               ),)
                             ],
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text("₹ 70", style:TextStyle(fontSize: w*0.04,
+                              Text("₹ 45", style:TextStyle(fontSize: w*0.04,
                                   fontWeight: FontWeight.w900)),
                               Container(
                                 width: w*0.12,
