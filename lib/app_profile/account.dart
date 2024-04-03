@@ -72,8 +72,8 @@ class _accountState extends State<account> {
                                       AssetImage(theImages.beckham),
                                 )),
                       Positioned(
-                        left: w * 0.18,
-                        bottom: w * 0.001,
+                        left: w * 0.2,
+                        bottom: w * 0.004,
                         child: InkWell(
                             onTap: () {
                               showCupertinoModalPopup(
