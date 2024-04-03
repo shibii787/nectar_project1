@@ -7,6 +7,7 @@ import 'package:nectar_project1/app_authentication/sign_page.dart';
 import 'package:nectar_project1/app_authentication/signup_page.dart';
 import 'package:nectar_project1/app_authentication/verification_page.dart';
 import 'package:nectar_project1/app_body/cart_page.dart';
+import 'package:nectar_project1/app_body/explore_page.dart';
 import 'package:nectar_project1/app_body/order_accepted.dart';
 import 'package:nectar_project1/app_into/splashscreen.dart';
 import 'package:nectar_project1/app_profile/account.dart';
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
             textTheme: GoogleFonts.poppinsTextTheme()
         ),
         debugShowCheckedModeBanner: false,
-        home: bottomNav(),
+        home: ExplorePage(),
       ),
     );
   }
