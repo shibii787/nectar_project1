@@ -19,7 +19,7 @@ class theImages{
   static const about="assets/images/about icon.svg";
   static const account="assets/images/Rectangle 82.png";
   static const pen="assets/images/Vector (1).svg";
-  static const locationPage="assets/images/illustration.png";
+  static const selectLocation="assets/images/illustration.png";
 
   //carousel pictures
   static const slider1="assets/images/off 1.jpeg";

@@ -43,7 +43,7 @@ class _selectLocationPageState extends State<selectLocationPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Image.asset(theImages.locationPage,
+                  Image.asset(theImages.selectLocation,
                       height: h*0.3,
                       width: w*1),
                   Center(
