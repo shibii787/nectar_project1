@@ -63,6 +63,7 @@ class _ExplorePageState extends State<ExplorePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: theColors.primaryColor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         leading: InkWell(
