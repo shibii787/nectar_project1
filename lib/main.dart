@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
             textTheme: GoogleFonts.poppinsTextTheme()
         ),
         debugShowCheckedModeBanner: false,
-        home: appleDetails(),
+        home: bottomNav(),
       ),
     );
   }
