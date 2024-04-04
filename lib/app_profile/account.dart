@@ -367,7 +367,7 @@ class _accountState extends State<account> {
                               },
                               child: Container(
                                 height: h * 0.05,
-                                width: w * 0.13,
+                                width: w * 0.2,
                                 child: Center(child: Text("Yes")),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(w * 0.03),
@@ -382,7 +382,7 @@ class _accountState extends State<account> {
                               },
                               child: Container(
                                 height: h * 0.05,
-                                width: w * 0.13,
+                                width: w * 0.2,
                                 child: Center(child: Text("No")),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(w * 0.03),
