@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nectar_project1/app_body/appleDetails.dart';
 import 'package:nectar_project1/colors.dart';
 import 'package:nectar_project1/images.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -184,51 +186,56 @@ class _homeScreenState extends State<homeScreen> {
                         scrollDirection: Axis.horizontal,
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
-                          return Container(
-                            height: h*0.15,
-                            width: w*0.4,
-                            padding: EdgeInsets.all(w*0.03),
-                            margin: EdgeInsets.all(w*0.03),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(w*0.03),
-                              border: Border.all(
-                                color: theColors.eleventh
-                              )
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Image.asset(exclusive[index]["image"]),
-                                Text(exclusive[index]["name"],style: TextStyle(
-                                  fontWeight: FontWeight.w600
-                                ),),
-                                Text(exclusive[index]["qty"].toString(),style: TextStyle(
-                                  fontWeight: FontWeight.w600
-                                ),),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(exclusive[index]["price"].toString(),style: TextStyle(
-                                      fontWeight: FontWeight.w600
-                                    ),),
-                                    Container(
-                                      height: w*0.1,
-                                      width: w*0.1,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                          BorderRadius.circular(w * 0.04),
-                                          color: theColors.third,
-                                          border: Border.all(
-                                              color: theColors.seventh,
-                                              width: w * 0.003)),
-                                      child:  Icon(
-                                        Icons.add,
-                                        color: theColors.primaryColor,
-                                      ),
-                                    )
-                                  ],
+                          return InkWell(
+                            onTap: () {
+                              index==1?Navigator.push(context, CupertinoPageRoute(builder: (context) => appleDetails(),)):null;
+                            },
+                            child: Container(
+                              height: h*0.15,
+                              width: w*0.4,
+                              padding: EdgeInsets.all(w*0.03),
+                              margin: EdgeInsets.all(w*0.03),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(w*0.03),
+                                border: Border.all(
+                                  color: theColors.eleventh
                                 )
-                              ],
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Image.asset(exclusive[index]["image"]),
+                                  Text(exclusive[index]["name"],style: TextStyle(
+                                    fontWeight: FontWeight.w600
+                                  ),),
+                                  Text(exclusive[index]["qty"].toString(),style: TextStyle(
+                                    fontWeight: FontWeight.w600
+                                  ),),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(exclusive[index]["price"].toString(),style: TextStyle(
+                                        fontWeight: FontWeight.w600
+                                      ),),
+                                      Container(
+                                        height: w*0.1,
+                                        width: w*0.1,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                            BorderRadius.circular(w * 0.04),
+                                            color: theColors.third,
+                                            border: Border.all(
+                                                color: theColors.seventh,
+                                                width: w * 0.003)),
+                                        child:  Icon(
+                                          Icons.add,
+                                          color: theColors.primaryColor,
+                                        ),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
                             ),
                           );
                         },),
