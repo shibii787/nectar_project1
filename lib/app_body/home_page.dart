@@ -76,13 +76,13 @@ class _homeScreenState extends State<homeScreen> {
   List meat=[
     {
       "image": theImages.meat,
-      "name": "Bell Pepper",
+      "name": "Beef",
       "qty": 1,
       "price" : 4.99
     },
     {
       "image": theImages.chicken,
-      "name": "Ginger",
+      "name": "Chicken",
       "qty": 1,
       "price" : 4.99
     },
