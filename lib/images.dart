@@ -41,4 +41,5 @@ class theImages{
   static const bakeryAndSnacks="assets/images/bakes.png";
   static const dairyAndEggs="assets/images/dairyandeggs.png";
   static const beverages="assets/images/beverages.png";
+
 }

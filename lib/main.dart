@@ -10,7 +10,15 @@ import 'package:nectar_project1/app_body/cart_page.dart';
 import 'package:nectar_project1/app_body/order_accepted.dart';
 import 'package:nectar_project1/app_body/appleDetails.dart';
 import 'package:nectar_project1/app_into/splashscreen.dart';
+import 'package:nectar_project1/app_profile/about.dart';
 import 'package:nectar_project1/app_profile/account.dart';
+import 'package:nectar_project1/app_profile/delivery%20address.dart';
+import 'package:nectar_project1/app_profile/help.dart';
+import 'package:nectar_project1/app_profile/my%20order.dart';
+import 'package:nectar_project1/app_profile/mydetails.dart';
+import 'package:nectar_project1/app_profile/notification.dart';
+import 'package:nectar_project1/app_profile/payment%20methods.dart';
+import 'package:nectar_project1/app_profile/premocard.dart';
 import 'app_body/bottom_nav.dart';
 import 'app_payment/Payment_card.dart';
 import 'app_payment/payment1.dart';
@@ -46,7 +54,7 @@ class MyApp extends StatelessWidget {
             textTheme: GoogleFonts.poppinsTextTheme()
         ),
         debugShowCheckedModeBanner: false,
-        home: bottomNav(),
+        home: promocard(),
       ),
     );
   }

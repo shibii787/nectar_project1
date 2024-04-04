@@ -5,6 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:nectar_project1/app_authentication/log_in.dart';
+import 'package:nectar_project1/app_authentication/sign_page.dart';
+import 'package:nectar_project1/app_profile/about.dart';
+import 'package:nectar_project1/app_profile/delivery%20address.dart';
+import 'package:nectar_project1/app_profile/help.dart';
+import 'package:nectar_project1/app_profile/my%20order.dart';
+import 'package:nectar_project1/app_profile/mydetails.dart';
+import 'package:nectar_project1/app_profile/notification.dart';
+import 'package:nectar_project1/app_profile/payment%20methods.dart';
+import 'package:nectar_project1/app_profile/premocard.dart';
 import 'package:nectar_project1/colors.dart';
 import 'package:nectar_project1/images.dart';
 
@@ -145,198 +154,238 @@ class _accountState extends State<account> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Container(
-                      height: h * 0.05,
-                      width: w * 1,
-                      decoration: BoxDecoration(
-                          border: Border(
-                        bottom: BorderSide(
-                            color: theColors.secondary.withOpacity(0.5)),
-                      )),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          // SvgPicture.asset(theImages.bag),
-                          Icon(CupertinoIcons.bag),
-                          Text(
-                            'Orders',
-                            style: TextStyle(fontWeight: FontWeight.w600),
-                          ),
-                          SizedBox(
-                            width: w * 0.2,
-                          ),
-                          Icon(Icons.arrow_forward_ios),
-                        ],
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(context, CupertinoPageRoute(builder: (context) =>myorder() ,));
+                      },
+                      child: Container(
+                        height: h * 0.05,
+                        width: w * 1,
+                        decoration: BoxDecoration(
+                            border: Border(
+                          bottom: BorderSide(
+                              color: theColors.secondary.withOpacity(0.5)),
+                        )),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            // SvgPicture.asset(theImages.bag),
+                            Icon(CupertinoIcons.bag),
+                            Text(
+                              'Orders',
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                            SizedBox(
+                              width: w * 0.2,
+                            ),
+                            Icon(Icons.arrow_forward_ios),
+                          ],
+                        ),
                       ),
                     ),
-                    Container(
-                      height: h * 0.05,
-                      width: w * 1,
-                      decoration: BoxDecoration(
-                          border: Border(
-                        bottom: BorderSide(
-                            color: theColors.secondary.withOpacity(0.5)),
-                      )),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          // SvgPicture.asset(theImages.tv),
-                          Icon(Icons.card_giftcard_outlined),
-                          Text(
-                            'My Details',
-                            style: TextStyle(fontWeight: FontWeight.w600),
-                          ),
-                          SizedBox(
-                            width: w * 0.2,
-                          ),
-                          Icon(Icons.arrow_forward_ios),
-                        ],
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(context, CupertinoPageRoute(builder: (context) =>mydetails() ,));
+                      },
+                      child: Container(
+                        height: h * 0.05,
+                        width: w * 1,
+                        decoration: BoxDecoration(
+                            border: Border(
+                          bottom: BorderSide(
+                              color: theColors.secondary.withOpacity(0.5)),
+                        )),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            // SvgPicture.asset(theImages.tv),
+                            Icon(Icons.card_giftcard_outlined),
+                            Text(
+                              'My Details',
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                            SizedBox(
+                              width: w * 0.2,
+                            ),
+                            Icon(Icons.arrow_forward_ios),
+                          ],
+                        ),
+                        // margin: EdgeInsets.all(w*0.03),
                       ),
-                      // margin: EdgeInsets.all(w*0.03),
                     ),
-                    Container(
-                      height: h * 0.05,
-                      width: w * 1,
-                      decoration: BoxDecoration(
-                          border: Border(
-                        bottom: BorderSide(
-                            color: theColors.secondary.withOpacity(0.5)),
-                      )),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Icon(CupertinoIcons.location_solid),
-                          Text(
-                            'Delivery Address',
-                            style: TextStyle(fontWeight: FontWeight.w600),
-                          ),
-                          SizedBox(
-                            width: w * 0.2,
-                          ),
-                          Icon(Icons.arrow_forward_ios),
-                        ],
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(context, CupertinoPageRoute(builder: (context) =>deliveryaddress() ,));
+                      },
+                      child: Container(
+                        height: h * 0.05,
+                        width: w * 1,
+                        decoration: BoxDecoration(
+                            border: Border(
+                          bottom: BorderSide(
+                              color: theColors.secondary.withOpacity(0.5)),
+                        )),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Icon(CupertinoIcons.location_solid),
+                            Text(
+                              'Delivery Address',
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                            SizedBox(
+                              width: w * 0.2,
+                            ),
+                            Icon(Icons.arrow_forward_ios),
+                          ],
+                        ),
+                        // margin: EdgeInsets.all(w*0.03),
                       ),
-                      // margin: EdgeInsets.all(w*0.03),
                     ),
-                    Container(
-                      height: h * 0.05,
-                      width: w * 1,
-                      decoration: BoxDecoration(
-                          border: Border(
-                        bottom: BorderSide(
-                            color: theColors.secondary.withOpacity(0.5)),
-                      )),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Icon(Icons.add_card_outlined),
-                          Text(
-                            'Payment Methods',
-                            style: TextStyle(fontWeight: FontWeight.w600),
-                          ),
-                          SizedBox(
-                            width: w * 0.2,
-                          ),
-                          Icon(Icons.arrow_forward_ios),
-                        ],
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(context, CupertinoPageRoute(builder: (context) =>paymentmethods() ,));
+                      },
+                      child: Container(
+                        height: h * 0.05,
+                        width: w * 1,
+                        decoration: BoxDecoration(
+                            border: Border(
+                          bottom: BorderSide(
+                              color: theColors.secondary.withOpacity(0.5)),
+                        )),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Icon(Icons.add_card_outlined),
+                            Text(
+                              'Payment Methods',
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                            SizedBox(
+                              width: w * 0.2,
+                            ),
+                            Icon(Icons.arrow_forward_ios),
+                          ],
+                        ),
+                        // margin: EdgeInsets.all(w*0.03),
                       ),
-                      // margin: EdgeInsets.all(w*0.03),
                     ),
-                    Container(
-                      height: h * 0.05,
-                      width: w * 1,
-                      decoration: BoxDecoration(
-                          border: Border(
-                        bottom: BorderSide(
-                            color: theColors.secondary.withOpacity(0.5)),
-                      )),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Icon(Icons.airplane_ticket_outlined),
-                          Text(
-                            'Promo Cord',
-                            style: TextStyle(fontWeight: FontWeight.w600),
-                          ),
-                          SizedBox(
-                            width: w * 0.2,
-                          ),
-                          Icon(Icons.arrow_forward_ios),
-                        ],
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(context, CupertinoPageRoute(builder: (context) =>promocard() ,));
+                      },
+                      child: Container(
+                        height: h * 0.05,
+                        width: w * 1,
+                        decoration: BoxDecoration(
+                            border: Border(
+                          bottom: BorderSide(
+                              color: theColors.secondary.withOpacity(0.5)),
+                        )),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Icon(Icons.airplane_ticket_outlined),
+                            Text(
+                              'Promo Cord',
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                            SizedBox(
+                              width: w * 0.2,
+                            ),
+                            Icon(Icons.arrow_forward_ios),
+                          ],
+                        ),
+                        // margin: EdgeInsets.all(w*0.03),
                       ),
-                      // margin: EdgeInsets.all(w*0.03),
                     ),
-                    Container(
-                      height: h * 0.05,
-                      width: w * 1,
-                      decoration: BoxDecoration(
-                          border: Border(
-                        bottom: BorderSide(
-                            color: theColors.secondary.withOpacity(0.5)),
-                      )),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Icon(CupertinoIcons.bell),
-                          Text(
-                            'Notifications ',
-                            style: TextStyle(fontWeight: FontWeight.w600),
-                          ),
-                          SizedBox(
-                            width: w * 0.2,
-                          ),
-                          Icon(Icons.arrow_forward_ios),
-                        ],
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(context, CupertinoPageRoute(builder: (context) =>notification() ,));
+                      },
+                      child: Container(
+                        height: h * 0.05,
+                        width: w * 1,
+                        decoration: BoxDecoration(
+                            border: Border(
+                          bottom: BorderSide(
+                              color: theColors.secondary.withOpacity(0.5)),
+                        )),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Icon(CupertinoIcons.bell),
+                            Text(
+                              'Notifications ',
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                            SizedBox(
+                              width: w * 0.2,
+                            ),
+                            Icon(Icons.arrow_forward_ios),
+                          ],
+                        ),
+                        // margin: EdgeInsets.all(w*0.03),
                       ),
-                      // margin: EdgeInsets.all(w*0.03),
                     ),
-                    Container(
-                      height: h * 0.05,
-                      width: w * 1,
-                      decoration: BoxDecoration(
-                          border: Border(
-                        bottom: BorderSide(
-                            color: theColors.secondary.withOpacity(0.5)),
-                      )),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Icon(Icons.help_center_outlined),
-                          Text(
-                            'Help ',
-                            style: TextStyle(fontWeight: FontWeight.w600),
-                          ),
-                          SizedBox(
-                            width: w * 0.2,
-                          ),
-                          Icon(Icons.arrow_forward_ios),
-                        ],
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(context, CupertinoPageRoute(builder: (context) =>help() ,));
+                      },
+                      child: Container(
+                        height: h * 0.05,
+                        width: w * 1,
+                        decoration: BoxDecoration(
+                            border: Border(
+                          bottom: BorderSide(
+                              color: theColors.secondary.withOpacity(0.5)),
+                        )),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Icon(Icons.help_center_outlined),
+                            Text(
+                              'Help ',
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                            SizedBox(
+                              width: w * 0.2,
+                            ),
+                            Icon(Icons.arrow_forward_ios),
+                          ],
+                        ),
+                        // margin: EdgeInsets.all(w*0.03),
                       ),
-                      // margin: EdgeInsets.all(w*0.03),
                     ),
-                    Container(
-                      height: h * 0.05,
-                      width: w * 1,
-                      decoration: BoxDecoration(
-                          border: Border(
-                        bottom: BorderSide(
-                            color: theColors.secondary.withOpacity(0.5)),
-                      )),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Icon(Icons.error_outline),
-                          Text(
-                            'About  ',
-                            style: TextStyle(fontWeight: FontWeight.w600),
-                          ),
-                          SizedBox(
-                            width: w * 0.2,
-                          ),
-                          Icon(Icons.arrow_forward_ios),
-                        ],
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(context, CupertinoPageRoute(builder: (context) =>about() ,));
+                      },
+                      child: Container(
+                        height: h * 0.05,
+                        width: w * 1,
+                        decoration: BoxDecoration(
+                            border: Border(
+                          bottom: BorderSide(
+                              color: theColors.secondary.withOpacity(0.5)),
+                        )),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Icon(Icons.error_outline),
+                            Text(
+                              'About  ',
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                            SizedBox(
+                              width: w * 0.2,
+                            ),
+                            Icon(Icons.arrow_forward_ios),
+                          ],
+                        ),
+                        // margin: EdgeInsets.all(w*0.03),
                       ),
-                      // margin: EdgeInsets.all(w*0.03),
                     ),
                   ],
                 ),
@@ -360,7 +409,7 @@ class _accountState extends State<account> {
                                 Navigator.pushAndRemoveUntil(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => logIn(),
+                                      builder: (context) => signPage(),
                                     ),
                                     (route) => false);
                                 setState(() {});
