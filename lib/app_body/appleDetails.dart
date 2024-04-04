@@ -65,7 +65,7 @@ class _appleDetailsState extends State<appleDetails> {
                       bottomLeft: Radius.circular(w*0.03),
                       bottomRight: Radius.circular(w*0.03),
                     ),
-                    color: theColors.sixth.withOpacity(0.5)
+                    color: theColors.sixth
                 ),
                 child: Image.asset(theImages.apple),
               ),
