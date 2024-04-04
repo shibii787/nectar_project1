@@ -82,7 +82,11 @@ class _appleDetailsState extends State<appleDetails> {
                       Text("1kg,Price")
                     ],
                   ),
-                  Icon(Icons.favorite_border_outlined)
+                  InkWell(
+                    onTap: () {
+
+                    },
+                      child: Icon(Icons.favorite_border_outlined))
                 ],
               ),
               SizedBox(height: h*0.03),

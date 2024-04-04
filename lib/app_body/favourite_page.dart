@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nectar_project1/colors.dart';
 
@@ -30,6 +31,12 @@ class _FavouritePageState extends State<FavouritePage> {
         ),
       ),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+            child: Icon(CupertinoIcons.back)),
         centerTitle: true,
         elevation: 0,
         title: Text("Favourites"),
