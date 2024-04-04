@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:nectar_project1/app_body/bottom_nav.dart';
+import 'package:nectar_project1/app_body/home_page.dart';
 import 'package:nectar_project1/colors.dart';
 import 'package:nectar_project1/images.dart';
 
@@ -69,18 +71,28 @@ class _OrderAcceptedState extends State<OrderAccepted> {
         Positioned(
           top: w * 1.88,
           left: w * 0.05,
-          child: Container(
-            height: w * 0.15,
-            width: w * 0.9,
-            decoration: BoxDecoration(
-                // color: theColors.third,
-                borderRadius: BorderRadius.circular(w * 0.04)),
-            child: Center(
-              child: Text("Back to home",
-                  style: TextStyle(
-                      color: theColors.secondary,
-                      fontSize: w * 0.05,
-                      fontWeight: FontWeight.w500)),
+          child: InkWell(
+            onTap: () {
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => bottomNav(),
+                  ),
+                  (route) => false);
+            },
+            child: Container(
+              height: w * 0.15,
+              width: w * 0.9,
+              decoration: BoxDecoration(
+                  // color: theColors.third,
+                  borderRadius: BorderRadius.circular(w * 0.04)),
+              child: Center(
+                child: Text("Back to home",
+                    style: TextStyle(
+                        color: theColors.secondary,
+                        fontSize: w * 0.05,
+                        fontWeight: FontWeight.w500)),
+              ),
             ),
           ),
         ),

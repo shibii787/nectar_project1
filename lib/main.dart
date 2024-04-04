@@ -12,6 +12,8 @@ import 'package:nectar_project1/app_body/appleDetails.dart';
 import 'package:nectar_project1/app_into/splashscreen.dart';
 import 'package:nectar_project1/app_profile/account.dart';
 import 'app_body/bottom_nav.dart';
+import 'app_payment/Payment_card.dart';
+import 'app_payment/payment1.dart';
 
 var h; //variable for height
 var w; //variable for width
@@ -44,7 +46,7 @@ class MyApp extends StatelessWidget {
             textTheme: GoogleFonts.poppinsTextTheme()
         ),
         debugShowCheckedModeBanner: false,
-        home: splashscreen(),
+        home: bottomNav(),
       ),
     );
   }

@@ -105,11 +105,11 @@ class _CartPageState extends State<CartPage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                SvgPicture.asset(""),
+                                SvgPicture.asset(theImages.payment),
                                 InkWell(
-                                    onTap: () {
-                                      Navigator.push(context, MaterialPageRoute(builder: (context) =>payment1() ,));
-                                    },
+                                    // onTap: () {
+                                    //   Navigator.push(context, MaterialPageRoute(builder: (context) =>SelectPayment() ,));
+                                    // },
                                     child: Icon(Icons.navigate_next))
                               ],
                             ),
@@ -211,11 +211,7 @@ class _CartPageState extends State<CartPage> {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => OrderAccepted(),
-                              ));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) =>SelectPayment() ,));
                         },
                         child: Container(
                           height: w * 0.15,
@@ -224,7 +220,7 @@ class _CartPageState extends State<CartPage> {
                               color: theColors.third,
                               borderRadius: BorderRadius.circular(w * 0.04)),
                           child: Center(
-                            child: Text("Place Order",
+                            child: Text("Continue",
                                 style: TextStyle(
                                     color: theColors.primaryColor,
                                     fontSize: w * 0.05,
