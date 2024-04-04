@@ -64,6 +64,12 @@ class _ExplorePageState extends State<ExplorePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+            child: Icon(CupertinoIcons.back)),
         backgroundColor: theColors.primaryColor,
         title: Text("Find Products",style: TextStyle(
           fontWeight: FontWeight.w900,),),
