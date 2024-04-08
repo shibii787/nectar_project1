@@ -50,7 +50,7 @@ class _OrderAcceptedState extends State<OrderAccepted> {
               style: TextStyle(color: theColors.tenth),
             )),
         Positioned(
-          top: w * 1.7,
+          top: w * 1.6,
           left: w * 0.05,
           child: Container(
             height: w * 0.15,
@@ -69,7 +69,7 @@ class _OrderAcceptedState extends State<OrderAccepted> {
         ),
 
         Positioned(
-          top: w * 1.88,
+          top: w * 1.76,
           left: w * 0.05,
           child: InkWell(
             onTap: () {
@@ -84,7 +84,7 @@ class _OrderAcceptedState extends State<OrderAccepted> {
               height: w * 0.15,
               width: w * 0.9,
               decoration: BoxDecoration(
-                  // color: theColors.third,
+                 // color: theColors.third,
                   borderRadius: BorderRadius.circular(w * 0.04)),
               child: Center(
                 child: Text("Back to home",
