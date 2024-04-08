@@ -170,11 +170,18 @@ class _accountState extends State<account> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             // SvgPicture.asset(theImages.bag),
-                            Icon(CupertinoIcons.bag),
-                            Text(
-                              'Orders',
-                              style: TextStyle(fontWeight: FontWeight.w600),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Icon(CupertinoIcons.bag),
+                                SizedBox(width: w*0.05),
+                                Text(
+                                  'Orders',
+                                  style: TextStyle(fontWeight: FontWeight.w600),
+                                ),
+                              ],
                             ),
+
                             SizedBox(
                               width: w * 0.2,
                             ),
@@ -199,13 +206,16 @@ class _accountState extends State<account> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             // SvgPicture.asset(theImages.tv),
-                            Icon(Icons.card_giftcard_outlined),
-                            Text(
-                              'My Details',
-                              style: TextStyle(fontWeight: FontWeight.w600),
-                            ),
-                            SizedBox(
-                              width: w * 0.2,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Icon(Icons.card_giftcard_outlined),
+                                SizedBox(width: w*0.05,),
+                                Text(
+                                  'My Details',
+                                  style: TextStyle(fontWeight: FontWeight.w600),
+                                ),
+                              ],
                             ),
                             Icon(Icons.arrow_forward_ios),
                           ],
@@ -228,13 +238,16 @@ class _accountState extends State<account> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Icon(CupertinoIcons.location_solid),
-                            Text(
-                              'Delivery Address',
-                              style: TextStyle(fontWeight: FontWeight.w600),
-                            ),
-                            SizedBox(
-                              width: w * 0.2,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Icon(CupertinoIcons.location_solid),
+                                SizedBox(width: w*0.05),
+                                Text(
+                                  'Delivery Address',
+                                  style: TextStyle(fontWeight: FontWeight.w600),
+                                ),
+                              ],
                             ),
                             Icon(Icons.arrow_forward_ios),
                           ],
@@ -257,13 +270,16 @@ class _accountState extends State<account> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Icon(Icons.add_card_outlined),
-                            Text(
-                              'Payment Methods',
-                              style: TextStyle(fontWeight: FontWeight.w600),
-                            ),
-                            SizedBox(
-                              width: w * 0.2,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Icon(Icons.add_card_outlined),
+                                SizedBox(width: w*0.05,),
+                                Text(
+                                  'Payment Methods',
+                                  style: TextStyle(fontWeight: FontWeight.w600),
+                                ),
+                              ],
                             ),
                             Icon(Icons.arrow_forward_ios),
                           ],
@@ -286,13 +302,16 @@ class _accountState extends State<account> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Icon(Icons.airplane_ticket_outlined),
-                            Text(
-                              'Promo Cord',
-                              style: TextStyle(fontWeight: FontWeight.w600),
-                            ),
-                            SizedBox(
-                              width: w * 0.2,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Icon(Icons.airplane_ticket_outlined),
+                                SizedBox(width: w*0.05,),
+                                Text(
+                                  'Promo Cord',
+                                  style: TextStyle(fontWeight: FontWeight.w600),
+                                ),
+                              ],
                             ),
                             Icon(Icons.arrow_forward_ios),
                           ],
@@ -315,13 +334,16 @@ class _accountState extends State<account> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Icon(CupertinoIcons.bell),
-                            Text(
-                              'Notifications ',
-                              style: TextStyle(fontWeight: FontWeight.w600),
-                            ),
-                            SizedBox(
-                              width: w * 0.2,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Icon(CupertinoIcons.bell),
+                                SizedBox(width: w*0.05,),
+                                Text(
+                                  'Notifications ',
+                                  style: TextStyle(fontWeight: FontWeight.w600),
+                                ),
+                              ],
                             ),
                             Icon(Icons.arrow_forward_ios),
                           ],
@@ -344,13 +366,16 @@ class _accountState extends State<account> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Icon(Icons.help_center_outlined),
-                            Text(
-                              'Help ',
-                              style: TextStyle(fontWeight: FontWeight.w600),
-                            ),
-                            SizedBox(
-                              width: w * 0.2,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Icon(Icons.help_center_outlined),
+                                SizedBox(width: w*0.05,),
+                                Text(
+                                  'Help ',
+                                  style: TextStyle(fontWeight: FontWeight.w600),
+                                ),
+                              ],
                             ),
                             Icon(Icons.arrow_forward_ios),
                           ],
@@ -373,11 +398,18 @@ class _accountState extends State<account> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Icon(Icons.error_outline),
-                            Text(
-                              'About  ',
-                              style: TextStyle(fontWeight: FontWeight.w600),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Icon(Icons.error_outline),
+                                SizedBox(width: w*0.05,),
+                                Text(
+                                  'About  ',
+                                  style: TextStyle(fontWeight: FontWeight.w600),
+                                ),
+                              ],
                             ),
+
                             SizedBox(
                               width: w * 0.2,
                             ),

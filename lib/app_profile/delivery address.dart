@@ -21,7 +21,11 @@ class _deliveryaddressState extends State<deliveryaddress> {
         title: Text("Delivery Address",style: TextStyle(
           color: theColors.secondary
         )),
-        leading: Icon(CupertinoIcons.back,color: theColors.secondary,size: w*0.09),
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+            child: Icon(CupertinoIcons.back,color: theColors.secondary,size: w*0.09)),
       ),
     );
   }
