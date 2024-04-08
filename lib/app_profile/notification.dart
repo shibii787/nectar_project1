@@ -23,7 +23,7 @@ class _notificationState extends State<notification> {
           onTap: () {
             Navigator.pop(context);
           },
-            child: Icon(CupertinoIcons.back,color: theColors.secondary,size: w*0.09)),
+            child: Icon(CupertinoIcons.back,color: theColors.secondary,)),
         title: Text("Notifications",style: TextStyle(
           color: theColors.secondary
         )),

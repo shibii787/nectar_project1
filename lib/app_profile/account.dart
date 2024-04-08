@@ -2,9 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:nectar_project1/app_authentication/log_in.dart';
 import 'package:nectar_project1/app_authentication/sign_page.dart';
 import 'package:nectar_project1/app_profile/about.dart';
 import 'package:nectar_project1/app_profile/delivery%20address.dart';
@@ -13,7 +11,7 @@ import 'package:nectar_project1/app_profile/my%20order.dart';
 import 'package:nectar_project1/app_profile/mydetails.dart';
 import 'package:nectar_project1/app_profile/notification.dart';
 import 'package:nectar_project1/app_profile/payment%20methods.dart';
-import 'package:nectar_project1/app_profile/premocard.dart';
+import 'package:nectar_project1/app_profile/promocard.dart';
 import 'package:nectar_project1/colors.dart';
 import 'package:nectar_project1/images.dart';
 
@@ -52,6 +50,7 @@ class _accountState extends State<account> {
         appBar: AppBar(
           backgroundColor: theColors.primaryColor,
           elevation: 0,
+          automaticallyImplyLeading: false,
         ),
         body: Padding(
           padding: EdgeInsets.all(w * 0.03),
@@ -225,7 +224,7 @@ class _accountState extends State<account> {
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.push(context, CupertinoPageRoute(builder: (context) =>deliveryaddress() ,));
+                        Navigator.push(context, CupertinoPageRoute(builder: (context) => deliveryaddress() ,));
                       },
                       child: Container(
                         height: h * 0.05,

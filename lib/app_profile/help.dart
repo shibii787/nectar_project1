@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nectar_project1/colors.dart';
 
-import '../main.dart';
+
 
 class help extends StatefulWidget {
   const help({super.key});
@@ -22,7 +22,7 @@ class _helpState extends State<help> {
           onTap: () {
             Navigator.pop(context);
           },
-            child: Icon(CupertinoIcons.back,color: theColors.secondary,size: w*0.09)),
+            child: Icon(CupertinoIcons.back,color: theColors.secondary,)),
         title: Text("Help",style: TextStyle(
             color: theColors.secondary
         )),

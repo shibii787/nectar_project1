@@ -18,7 +18,7 @@ import 'package:nectar_project1/app_profile/my%20order.dart';
 import 'package:nectar_project1/app_profile/mydetails.dart';
 import 'package:nectar_project1/app_profile/notification.dart';
 import 'package:nectar_project1/app_profile/payment%20methods.dart';
-import 'package:nectar_project1/app_profile/premocard.dart';
+import 'package:nectar_project1/app_profile/promocard.dart';
 import 'app_body/bottom_nav.dart';
 import 'app_payment/Payment_card.dart';
 import 'app_payment/payment1.dart';
@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
             textTheme: GoogleFonts.poppinsTextTheme()
         ),
         debugShowCheckedModeBanner: false,
-        home: promocard(),
+        home: splashscreen(),
       ),
     );
   }

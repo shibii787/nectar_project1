@@ -1,11 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nectar_project1/app_body/order_accepted.dart';
 import 'package:nectar_project1/app_payment/payment1.dart';
+import 'package:nectar_project1/app_profile/promocard.dart';
 import 'package:nectar_project1/colors.dart';
 import 'package:nectar_project1/images.dart';
 
@@ -34,7 +30,7 @@ class _CartPageState extends State<CartPage> {
             context: context,
             builder: (context) {
               return Container(
-                height: w * 1.6,
+                height: w * 1.4,
                 width: w * 1,
                 child: Padding(
                   padding: EdgeInsets.all(w * 0.03),
@@ -79,38 +75,11 @@ class _CartPageState extends State<CartPage> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Text(
-                                  "Select Method",
+                                  "Default Address",
                                   style: TextStyle(
                                       color: theColors.eight,
                                       fontWeight: FontWeight.w600),
                                 ),
-                                Icon(Icons.navigate_next)
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Payment",
-                            style: TextStyle(
-                                color: theColors.tenth,
-                                fontWeight: FontWeight.w600),
-                          ),
-                          Container(
-                            height: w * 0.1,
-                            width: w * 0.24,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                SvgPicture.asset(theImages.payment),
-                                InkWell(
-                                    // onTap: () {
-                                    //   Navigator.push(context, MaterialPageRoute(builder: (context) =>SelectPayment() ,));
-                                    // },
-                                    child: Icon(Icons.navigate_next))
                               ],
                             ),
                           )
@@ -125,20 +94,25 @@ class _CartPageState extends State<CartPage> {
                                 color: theColors.tenth,
                                 fontWeight: FontWeight.w600),
                           ),
-                          Container(
-                            height: w * 0.1,
-                            width: w * 0.4,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Text(
-                                  "Pick discount",
-                                  style: TextStyle(
-                                      color: theColors.eight,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                                Icon(Icons.navigate_next)
-                              ],
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(context, CupertinoPageRoute(builder: (context) => promocard(),));
+                            },
+                            child: Container(
+                              height: w * 0.1,
+                              width: w * 0.4,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text(
+                                    "Pick discount",
+                                    style: TextStyle(
+                                        color: theColors.eight,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  Icon(Icons.navigate_next)
+                                ],
+                              ),
                             ),
                           )
                         ],
@@ -164,7 +138,6 @@ class _CartPageState extends State<CartPage> {
                                       color: theColors.eight,
                                       fontWeight: FontWeight.w600),
                                 ),
-                                Icon(Icons.navigate_next)
                               ],
                             ),
                           )
@@ -251,6 +224,7 @@ class _CartPageState extends State<CartPage> {
         ),
       ),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         centerTitle: true,
         title: Text(
           "My Cart",

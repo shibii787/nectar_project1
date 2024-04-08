@@ -66,11 +66,6 @@ class _ExplorePageState extends State<ExplorePage> {
       backgroundColor: theColors.primaryColor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        leading: InkWell(
-          onTap: () {
-            Navigator.pop(context);
-          },
-            child: Icon(CupertinoIcons.back)),
         backgroundColor: theColors.primaryColor,
         title: Text("Find Products",style: TextStyle(
           fontWeight: FontWeight.w900,),),

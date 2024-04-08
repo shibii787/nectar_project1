@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nectar_project1/colors.dart';
 
-import '../main.dart';
-
 class promocard extends StatefulWidget {
   const promocard({super.key});
 
@@ -25,7 +23,7 @@ class _promocardState extends State<promocard> {
           onTap: () {
             Navigator.pop(context);
           },
-            child: Icon(CupertinoIcons.back,color: theColors.secondary,size: w*0.09)),
+            child: Icon(CupertinoIcons.back,color: theColors.secondary)),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

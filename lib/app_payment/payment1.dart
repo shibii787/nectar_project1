@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nectar_project1/app_payment/Payment_card.dart';
 import 'package:nectar_project1/colors.dart';
@@ -17,6 +18,12 @@ class _SelectPaymentState extends State<SelectPayment> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+            child: Icon(CupertinoIcons.back)),
         centerTitle: true,
         title: Text("Select Payment",style: TextStyle(
           color: theColors.eight

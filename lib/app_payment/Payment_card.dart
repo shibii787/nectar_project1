@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_flip_card/controllers/flip_card_controllers.dart';
 import 'package:flutter_flip_card/flipcard/flip_card.dart';
@@ -29,9 +30,11 @@ class _CardPaymentState extends State<CardPayment> {
       backgroundColor:theColors.primaryColor,
       appBar: AppBar(
         elevation: 0,
-        leading: Padding(
-          padding:  EdgeInsets.all(w*0.03),
-        ),
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+            child: Icon(CupertinoIcons.back)),
         backgroundColor: theColors.primaryColor,
         title: Text("New Card",style: TextStyle(fontWeight: FontWeight.w700,
             color: theColors.secondary),),

@@ -31,7 +31,6 @@ class _bottomNavState extends State<bottomNav> {
     CartPage(),
     FavouritePage(),
     account()
-
   ];
 
   @override

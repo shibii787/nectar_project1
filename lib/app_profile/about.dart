@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nectar_project1/colors.dart';
 
-import '../main.dart';
 
 class about extends StatefulWidget {
   const about({super.key});
@@ -22,7 +21,7 @@ class _aboutState extends State<about> {
           onTap: () {
             Navigator.pop(context);
           },
-            child: Icon(CupertinoIcons.back,color: theColors.secondary,size: w*0.09)),
+            child: Icon(CupertinoIcons.back,color: theColors.secondary,)),
         title: Text("About",style: TextStyle(
             color: theColors.secondary
         )),

@@ -13,54 +13,73 @@ class paymentmethods extends StatefulWidget {
 }
 class _paymentmethodsState extends State<paymentmethods> {
 
-  List pay=[
-    "assets/images/googlepay.png",
-    "assets/images/images.png",
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: theColors.primaryColor,
+        automaticallyImplyLeading: false,
         leading: InkWell(
-          onTap: () {
-            Navigator.pop(context);
-          },
-            child: Icon(CupertinoIcons.back,color: theColors.secondary,size: w*0.09)),
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Icon(CupertinoIcons.back)),
+        centerTitle: true,
         title: Text("Payment Methods",style: TextStyle(
-          color: theColors.secondary
-        )),
+            color: theColors.eight
+        ),),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Expanded(
-            child: GridView.builder(
-              physics: BouncingScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: pay.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  mainAxisSpacing: 0.5,
-                    childAspectRatio: 1,
-                    crossAxisSpacing: 0.5,
-                    crossAxisCount: 2,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              InkWell(
+                onTap: () {
+
+                },
+                child: Container(
+                  height: w*0.25,
+                  width: w*0.25,
+                  decoration: BoxDecoration(
+                      color: theColors.primaryColor,
+                      borderRadius: BorderRadiusDirectional.circular(w*0.03),
+                      boxShadow: [
+                        BoxShadow(
+                            color: theColors.secondary.withOpacity(0.13),
+                            blurRadius:9,
+                            offset: Offset(0, 4),
+                            spreadRadius:6
+                        )
+                      ]
+                  ),
+                  child:Image.asset(theImages.gpay),
                 ),
-                itemBuilder: (context, index) {
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        height: w*0.4,
-                       width: w*0.4,
-                       decoration: BoxDecoration(
-                         borderRadius: BorderRadius.circular(w*0.03),
-                       ),
-                       child: Image(image: AssetImage(pay[index]),fit: BoxFit.fill),
-                        ),
-                    ],
-                  );
-                },),
-          ),
+              ),
+              InkWell(
+                onTap: () {
+
+                },
+                child: Container(
+                  height: w*0.25,
+                  width: w*0.25,
+                  decoration: BoxDecoration(
+                      color: theColors.primaryColor,
+                      borderRadius: BorderRadiusDirectional.circular(w*0.03),
+                      boxShadow: [
+                        BoxShadow(
+                            color: theColors.secondary.withOpacity(0.13),
+                            blurRadius:9,
+                            offset: Offset(0, 4),
+                            spreadRadius:6
+                        )
+                      ]
+                  ),
+                  child: Image.asset(theImages.cardlogo),
+                ),
+              ),
+            ],
+          )
         ],
       ),
     );
