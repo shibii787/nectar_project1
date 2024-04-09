@@ -16,6 +16,9 @@ class appleDetails extends StatefulWidget {
 class _appleDetailsState extends State<appleDetails> {
 
   bool more=false; //to show product details
+
+  int count=0;
+
   
   @override
   Widget build(BuildContext context) {
@@ -59,7 +62,7 @@ class _appleDetailsState extends State<appleDetails> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                height: h*0.5,
+                height: h*0.35,
                 width: w*1,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
@@ -103,7 +106,14 @@ class _appleDetailsState extends State<appleDetails> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Icon(Icons.remove),
+                        InkWell(
+                          onTap: () {
+                            count==0?0:count--;
+                            setState(() {
+
+                            });
+                          },
+                            child: Icon(Icons.remove)),
                         Container(
                           height: h*0.04,
                             width: w*0.1,
@@ -111,10 +121,19 @@ class _appleDetailsState extends State<appleDetails> {
                               borderRadius: BorderRadius.circular(w*0.03),
                               color: theColors.primaryColor
                             ),
-                            child: Text("",style: TextStyle(
-                              fontWeight: FontWeight.w500
-                            ),)),
-                       Icon(Icons.add),
+                            child: Center(
+                              child: Text(count.toString(),style: TextStyle(
+                                fontWeight: FontWeight.w500
+                              ),),
+                            )),
+                       InkWell(
+                         onTap: () {
+                           count++;
+                           setState(() {
+
+                           });
+                         },
+                           child: Icon(Icons.add)),
                       ],
                     ),
                   ),

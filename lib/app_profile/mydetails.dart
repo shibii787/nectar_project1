@@ -15,6 +15,7 @@ class _mydetailsState extends State<mydetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: theColors.primaryColor,
       appBar: AppBar(
         backgroundColor: theColors.primaryColor,
         centerTitle: true,

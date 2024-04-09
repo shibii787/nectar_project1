@@ -16,6 +16,7 @@ class _paymentmethodsState extends State<paymentmethods> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: theColors.primaryColor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         leading: InkWell(

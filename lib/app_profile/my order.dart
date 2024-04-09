@@ -15,6 +15,7 @@ class _myorderState extends State<myorder> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: theColors.primaryColor,
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: theColors.primaryColor,

@@ -13,6 +13,7 @@ class _promocardState extends State<promocard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: theColors.primaryColor,
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: theColors.primaryColor,

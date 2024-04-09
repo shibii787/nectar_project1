@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -20,7 +19,6 @@ import 'package:nectar_project1/app_profile/mydetails.dart';
 import 'package:nectar_project1/app_profile/notification.dart';
 import 'package:nectar_project1/app_profile/payment%20methods.dart';
 import 'package:nectar_project1/app_profile/promocard.dart';
-import 'package:nectar_project1/firebase_options.dart';
 import 'app_body/bottom_nav.dart';
 import 'app_payment/Payment_card.dart';
 import 'app_payment/payment1.dart';
@@ -28,11 +26,8 @@ import 'app_payment/payment1.dart';
 var h; //variable for height
 var w; //variable for width
 
-Future<void> main()async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform
-  );
+void main(){
+
   // to stop tilting the app
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp
