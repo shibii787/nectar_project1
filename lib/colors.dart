@@ -13,4 +13,5 @@ static const nine=Color(0xffB3B3B3);//icons
 static const tenth=Color(0xff7C7C7C);//sub texts
 static const eleventh=Color(0xff828282);
 static const twelfth=Color(0xffE2E2E2); //borders
+static const thirteen=Color(0xffFF0000); //borders
 }

@@ -93,14 +93,20 @@ class _signupPageState extends State<signupPage> {
                           child: CupertinoActionSheet(
                               actions: <Widget>[
                                 CupertinoActionSheetAction(
-                                  child: const Text('Photo Gallery'),
+                                  child: const Text('Photo Gallery',
+                                  style: TextStyle(
+                                    color: theColors.third
+                                  ),),
                                   onPressed: () {
                                     pickFile(ImageSource.gallery);
                                     Navigator.pop(context, 'One');
                                   },
                                 ),
                                 CupertinoActionSheetAction(
-                                  child: const Text('Camera'),
+                                  child: const Text('Camera',
+                                  style: TextStyle(
+                                    color: theColors.third
+                                  ),),
                                   onPressed: () {
                                     pickFile(ImageSource.camera);
                                     Navigator.pop(context, 'Two');
@@ -108,7 +114,10 @@ class _signupPageState extends State<signupPage> {
                                 )
                               ],
                               cancelButton: CupertinoActionSheetAction(
-                                child: Text('Cancel'),
+                                child: Text('Cancel',
+                                style: TextStyle(
+                                  color: theColors.thirteen
+                                ),),
                                 isDefaultAction: true,
                                 onPressed: () {
                                   Navigator.pop(context, 'Cancel');
