@@ -48,8 +48,15 @@ dependencies:
   cached_network_image: ^3.3.0
   flutter_flip_card: ^0.0.5
   animated_rating_stars: ^1.0.1
+  firebase_core: ^2.24.2
+  cloud_firestore: ^4.14.0
+  firebase_storage: ^11.6.0
+  firebase_auth:
+  google_sign_in: ^6.1.6
   location:
   geolocator:
+
+
 
 dev_dependencies:
   flutter_test:
