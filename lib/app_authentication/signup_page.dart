@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:nectar_project1/app_authentication/log_in.dart';
 import 'package:nectar_project1/app_authentication/select_location_page.dart';
-import 'package:nectar_project1/colors.dart';
-import 'package:nectar_project1/images.dart';
+import 'package:nectar_project1/core/common/colors.dart';
+import 'package:nectar_project1/core/common/images.dart';
+import 'package:nectar_project1/model/userModel.dart';
 
 import '../main.dart';
 
@@ -322,7 +323,17 @@ class _signupPageState extends State<signupPage> {
             ),
             InkWell(
               onTap: () {
-                Navigator.push(context, CupertinoPageRoute(builder: (context) => selectLocationPage(),));
+
+                FirebaseFirestore.instance.collection("accounts").add(UserModel(
+                    name: nameController.text,
+                    email: emailController.text,
+                    password: passwordController.text,
+                    location: "",
+                    phoneNumber: null
+                ).tomap()).then((value) => (value) {
+                  Navigator.push(context, CupertinoPageRoute(builder: (context) => selectLocationPage(),));
+                    });
+
               },
               child: Container(
                 height: w * 0.18,

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nectar_project1/colors.dart';
-import 'package:nectar_project1/icons.dart';
+import 'package:nectar_project1/core/common/colors.dart';
+import 'package:nectar_project1/core/common/icons.dart';
 
 import '../main.dart';
 

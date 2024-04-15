@@ -7,8 +7,8 @@ import 'package:nectar_project1/app_body/cookingOil.dart';
 import 'package:nectar_project1/app_body/dairyandeggs.dart';
 import 'package:nectar_project1/app_body/fruitsAndveg.dart';
 import 'package:nectar_project1/app_body/meatandfish.dart';
-import 'package:nectar_project1/colors.dart';
-import 'package:nectar_project1/images.dart';
+import 'package:nectar_project1/core/common/colors.dart';
+import 'package:nectar_project1/core/common/images.dart';
 
 import '../main.dart';
 

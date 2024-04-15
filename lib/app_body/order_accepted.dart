@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:nectar_project1/app_body/bottom_nav.dart';
 import 'package:nectar_project1/app_body/home_page.dart';
-import 'package:nectar_project1/colors.dart';
-import 'package:nectar_project1/images.dart';
+import 'package:nectar_project1/core/common/colors.dart';
+import 'package:nectar_project1/core/common/images.dart';
 
 import '../main.dart';
 

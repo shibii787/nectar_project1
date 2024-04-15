@@ -1,8 +1,8 @@
 import 'package:animated_rating_stars/animated_rating_stars.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:nectar_project1/colors.dart';
-import 'package:nectar_project1/images.dart';
+import 'package:nectar_project1/core/common/colors.dart';
+import 'package:nectar_project1/core/common/images.dart';
 
 import '../main.dart';
 

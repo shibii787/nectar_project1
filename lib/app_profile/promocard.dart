@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:nectar_project1/colors.dart';
+import 'package:nectar_project1/core/common/colors.dart';
 
 class promocard extends StatefulWidget {
   const promocard({super.key});

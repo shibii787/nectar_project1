@@ -5,8 +5,8 @@ import 'package:flutter_flip_card/flipcard/flip_card.dart';
 import 'package:flutter_flip_card/modal/flip_side.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nectar_project1/app_body/order_accepted.dart';
-import 'package:nectar_project1/colors.dart';
-import 'package:nectar_project1/images.dart';
+import 'package:nectar_project1/core/common/colors.dart';
+import 'package:nectar_project1/core/common/images.dart';
 
 import '../main.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nectar_project1/app_authentication/select_location_page.dart';
-import 'package:nectar_project1/colors.dart';
+import 'package:nectar_project1/core/common/colors.dart';
 import 'package:pinput/pinput.dart';
 import 'package:timer_count_down/timer_count_down.dart';
 
