@@ -235,7 +235,7 @@ class _signupPageState extends State<signupPage> {
               autovalidateMode: AutovalidateMode.onUserInteraction,
               validator: (value) {
                 if (!passwordValidation.hasMatch(value!)) {
-                  return "Enetr the password";
+                  return "Enter the password";
                 } else {
                   return null;
                 }
@@ -330,9 +330,8 @@ class _signupPageState extends State<signupPage> {
                     password: passwordController.text,
                     location: "",
                     phoneNumber: null
-                ).tomap()).then((value) => (value) {
-                  Navigator.push(context, CupertinoPageRoute(builder: (context) => selectLocationPage(),));
-                    });
+                ).tomap());
+                Navigator.push(context, CupertinoPageRoute(builder: (context) => selectLocationPage(),));
 
               },
               child: Container(
