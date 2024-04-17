@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -325,16 +326,18 @@ class _signupPageState extends State<signupPage> {
               ),
               InkWell(
                 onTap: () {
+                  FirebaseAuth.instance.createUserWithEmailAndPassword(
+                      email: emailController.text.trim(),
+                      password: passwordController.text.trim()).then((value) async {
 
-                  FirebaseFirestore.instance.collection("accounts").add(UserModel(
-                      name: nameController.text,
-                      email: emailController.text,
-                      password: passwordController.text,
-                      location: "",
-                      phoneNumber: null
-                  ).tomap());
+                        await FirebaseFirestore.instance.collection("accounts").add(UserModel(
+                            name: nameController.text,
+                            email: emailController.text,
+                            password: passwordController.text,
+                            location: "",
+                            phoneNumber: null).tomap());
+                  });
                   Navigator.push(context, CupertinoPageRoute(builder: (context) => selectLocationPage(),));
-
                 },
                 child: Container(
                   height: w * 0.18,
