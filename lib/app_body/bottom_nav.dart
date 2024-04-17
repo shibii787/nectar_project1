@@ -4,7 +4,7 @@ import 'package:nectar_project1/app_body/cart_page.dart';
 import 'package:nectar_project1/app_body/explore_page.dart';
 import 'package:nectar_project1/app_profile/account.dart';
 import 'package:nectar_project1/app_profile/profile_page.dart';
-import 'package:nectar_project1/colors.dart';
+import 'package:nectar_project1/core/common/colors.dart';
 
 
 

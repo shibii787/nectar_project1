@@ -12,8 +12,8 @@ import 'package:nectar_project1/app_profile/mydetails.dart';
 import 'package:nectar_project1/app_profile/notification.dart';
 import 'package:nectar_project1/app_profile/payment%20methods.dart';
 import 'package:nectar_project1/app_profile/promocard.dart';
-import 'package:nectar_project1/colors.dart';
-import 'package:nectar_project1/images.dart';
+import 'package:nectar_project1/core/common/colors.dart';
+import 'package:nectar_project1/core/common/images.dart';
 
 import '../main.dart';
 
@@ -107,7 +107,9 @@ class _accountState extends State<account> {
                                         )
                                       ],
                                       cancelButton: CupertinoActionSheetAction(
-                                        child: Text('Cancel'),
+                                        child: Text('Cancel',style: TextStyle(
+                                          color: theColors.thirteen
+                                        )),
                                         isDefaultAction: true,
                                         onPressed: () {
                                           Navigator.pop(context, 'Cancel');
@@ -138,7 +140,6 @@ class _accountState extends State<account> {
                                 fontWeight: FontWeight.w700,
                                 fontSize: w * 0.05),
                           ),
-                          SizedBox(width: w * 0.02),
                           Icon(CupertinoIcons.pencil),
                         ],
                       ),
@@ -168,7 +169,6 @@ class _accountState extends State<account> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            // SvgPicture.asset(theImages.bag),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
@@ -179,10 +179,6 @@ class _accountState extends State<account> {
                                   style: TextStyle(fontWeight: FontWeight.w600),
                                 ),
                               ],
-                            ),
-
-                            SizedBox(
-                              width: w * 0.2,
                             ),
                             Icon(Icons.arrow_forward_ios),
                           ],
@@ -204,7 +200,6 @@ class _accountState extends State<account> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            // SvgPicture.asset(theImages.tv),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -251,7 +246,6 @@ class _accountState extends State<account> {
                             Icon(Icons.arrow_forward_ios),
                           ],
                         ),
-                        // margin: EdgeInsets.all(w*0.03),
                       ),
                     ),
                     InkWell(
@@ -283,7 +277,6 @@ class _accountState extends State<account> {
                             Icon(Icons.arrow_forward_ios),
                           ],
                         ),
-                        // margin: EdgeInsets.all(w*0.03),
                       ),
                     ),
                     InkWell(
@@ -315,7 +308,6 @@ class _accountState extends State<account> {
                             Icon(Icons.arrow_forward_ios),
                           ],
                         ),
-                        // margin: EdgeInsets.all(w*0.03),
                       ),
                     ),
                     InkWell(
@@ -347,7 +339,6 @@ class _accountState extends State<account> {
                             Icon(Icons.arrow_forward_ios),
                           ],
                         ),
-                        // margin: EdgeInsets.all(w*0.03),
                       ),
                     ),
                     InkWell(
@@ -379,7 +370,6 @@ class _accountState extends State<account> {
                             Icon(Icons.arrow_forward_ios),
                           ],
                         ),
-                        // margin: EdgeInsets.all(w*0.03),
                       ),
                     ),
                     InkWell(
@@ -407,10 +397,6 @@ class _accountState extends State<account> {
                                   style: TextStyle(fontWeight: FontWeight.w600),
                                 ),
                               ],
-                            ),
-
-                            SizedBox(
-                              width: w * 0.2,
                             ),
                             Icon(Icons.arrow_forward_ios),
                           ],
@@ -448,7 +434,9 @@ class _accountState extends State<account> {
                               child: Container(
                                 height: h * 0.05,
                                 width: w * 0.2,
-                                child: Center(child: Text("Yes")),
+                                child: Center(child: Text("Yes",style: TextStyle(
+                                  color: theColors.primaryColor
+                                ),)),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(w * 0.03),
                                   color: theColors.third,
@@ -463,7 +451,9 @@ class _accountState extends State<account> {
                               child: Container(
                                 height: h * 0.05,
                                 width: w * 0.2,
-                                child: Center(child: Text("No")),
+                                child: Center(child: Text("No",style: TextStyle(
+                                  color: theColors.primaryColor
+                                ),)),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(w * 0.03),
                                   color: theColors.third,

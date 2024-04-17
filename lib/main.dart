@@ -28,11 +28,11 @@ import 'app_payment/payment1.dart';
 var h; //variable for height
 var w; //variable for width
 
-Future<void> main()async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform
-  );
+Future<void> main() async {
+ WidgetsFlutterBinding.ensureInitialized();
+ await Firebase.initializeApp(
+   options: DefaultFirebaseOptions.currentPlatform
+ );
   // to stop tilting the app
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp

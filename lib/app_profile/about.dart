@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:nectar_project1/colors.dart';
+import 'package:nectar_project1/core/common/colors.dart';
 
 
 class about extends StatefulWidget {
@@ -14,6 +14,7 @@ class _aboutState extends State<about> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: theColors.primaryColor,
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: theColors.primaryColor,
