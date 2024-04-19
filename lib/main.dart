@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nectar_project1/app_authentication/forgot_password.dart';
 import 'package:nectar_project1/app_authentication/log_in.dart';
 import 'package:nectar_project1/app_authentication/sign_page.dart';
 import 'package:nectar_project1/app_authentication/signup_page.dart';
