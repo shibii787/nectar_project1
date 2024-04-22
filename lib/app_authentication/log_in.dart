@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:nectar_project1/app_authentication/forgot_password.dart';
 import 'package:nectar_project1/app_authentication/select_location_page.dart';
 import 'package:nectar_project1/app_authentication/signup_page.dart';
 import 'package:nectar_project1/core/common/colors.dart';
@@ -268,9 +269,14 @@ class _logInState extends State<logIn> {
                 children: [
                   Row(),
                   Row(),
-                  Text(
-                    "Forgot Password?",
-                    style: TextStyle(color: theColors.third),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(context, CupertinoPageRoute(builder: (context) => forgotPassword(),));
+                    },
+                    child: Text(
+                      "Forgot Password?",
+                      style: TextStyle(color: theColors.third),
+                    ),
                   )
                 ],
               ),
