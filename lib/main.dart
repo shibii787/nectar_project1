@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
             textTheme: GoogleFonts.poppinsTextTheme()
         ),
         debugShowCheckedModeBanner: false,
-        home: splashscreen(),
+        home: logIn(),
       ),
     );
   }
