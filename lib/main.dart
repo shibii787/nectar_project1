@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nectar_project1/app_authentication/forgot_password.dart';
 import 'package:nectar_project1/app_authentication/log_in.dart';
@@ -39,7 +40,8 @@ Future<void> main() async {
     DeviceOrientation.portraitUp
   ]);
 
-  runApp(MyApp());
+  runApp(ProviderScope(
+      child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
