@@ -58,11 +58,7 @@ class _onboardingState extends State<onboarding> {
                 SizedBox(height: h * 0.03),
                 InkWell(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        CupertinoPageRoute(
-                          builder: (context) => signPage(),
-                        ));
+                    Navigator.pushAndRemoveUntil(context,  CupertinoPageRoute(builder: (context) =>signPage() ,), (route) => false);
                   },
                   child: Container(
                     height: w * 0.15,

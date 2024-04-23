@@ -326,6 +326,17 @@ class _signupPageState extends State<signupPage> {
               ),
               InkWell(
                 onTap: () {
+                  FirebaseAuth.instance.createUserWithEmailAndPassword(
+                      email: emailController.text.trim(),
+                      password: passwordController.text.trim()).then((value) async {
+
+                        await FirebaseFirestore.instance.collection("accounts").add(UserModel(
+                            name: nameController.text,
+                            email: emailController.text,
+                            password: passwordController.text,
+                            location: "",
+                            phoneNumber: null).tomap());
+                  });
                   Navigator.push(context, CupertinoPageRoute(builder: (context) => selectLocationPage(),));
                 },
                 child: Container(
