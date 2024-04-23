@@ -37,10 +37,10 @@ class _forgotPasswordState extends State<forgotPassword> {
           onPressed: () {
             Navigator.pop(context);
           },
-            icon: Icon(CupertinoIcons.back)),
+            icon: Icon(CupertinoIcons.back,)),
         title: Text("Create New Password",
             style: TextStyle(
-                fontSize: w*0.06,
+                //fontSize: w*0.06,
                 fontWeight: FontWeight.w500
             )
         ),
@@ -66,12 +66,11 @@ class _forgotPasswordState extends State<forgotPassword> {
                   SizedBox(height: w*0.06,),
                   Container(
                     decoration: BoxDecoration(
-                        color: theColors.third,
                         borderRadius: BorderRadius.circular(w*0.03)
                     ),
                     child: TextFormField(
                       style: TextStyle(
-                          color: theColors.primaryColor
+                          color: theColors.secondary
                       ),
                       controller: passwordController2,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -86,30 +85,42 @@ class _forgotPasswordState extends State<forgotPassword> {
                       },
                       obscureText: tap?true:false,
                       decoration: InputDecoration(
+                        filled: true,
+                        fillColor: theColors.third.withOpacity(0.08),
+                        labelText: "Password",
+                        labelStyle: TextStyle(
+                            color: theColors.secondary
+                        ),
                         hintText: "Enter the password",
                         hintStyle: TextStyle(
-                            color: theColors.thirteen
+                            color: theColors.secondary
                         ),
-                        prefixIcon: InkWell(
+                        suffixIcon: InkWell(
                             onTap: () {
                               tap=!tap;
                               setState(() {
                               });
                             },
                             child:tap==false? Icon(Icons.visibility,
-                              color: theColors.primaryColor,):Icon(Icons.visibility_off,
-                              color: theColors.primaryColor,)),
+                              color: theColors.secondary,):Icon(Icons.visibility_off,
+                              color: theColors.secondary,)),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(w*0.03),
+                          borderSide: BorderSide(
+                            color: theColors.third
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(w*0.03),
+                          borderSide: BorderSide(
+                              color: theColors.third
+                          ),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(w*0.03),
-                          borderSide: BorderSide.none,
-                        ),
-                        label: Padding(
-                          padding: EdgeInsets.all(w*0.025),
-                          child: Text("Password",
-                              style: TextStyle(
-                                  color: theColors.primaryColor,
-                                  fontSize: w*0.05
-                              )),
+                          borderSide: BorderSide(
+                              color: theColors.third
+                          ),
                         ),
                         // focusedBorder: OutlineInputBorder(
                         //   borderRadius: BorderRadius.circular(width*0.03),
@@ -123,12 +134,11 @@ class _forgotPasswordState extends State<forgotPassword> {
                   SizedBox(height: w*0.03,),
                   Container(
                     decoration: BoxDecoration(
-                        color: theColors.third,
                         borderRadius: BorderRadius.circular(w*0.03)
                     ),
                     child: TextFormField(
                       style: TextStyle(
-                          color: theColors.primaryColor
+                          color: theColors.secondary,
                       ),
                       controller: passwordController,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -143,30 +153,42 @@ class _forgotPasswordState extends State<forgotPassword> {
                       },
                       obscureText: tap2?true:false,
                       decoration: InputDecoration(
+                        filled: true,
+                        fillColor: theColors.third.withOpacity(0.08),
+                        labelText: "Password",
+                        labelStyle: TextStyle(
+                            color: theColors.secondary
+                        ),
                         hintText: "Enter the password",
                         hintStyle: TextStyle(
-                            color: theColors.thirteen
+                            color: theColors.secondary
                         ),
-                        prefixIcon: InkWell(
+                        suffixIcon: InkWell(
                             onTap: () {
                               tap2=!tap2;
                               setState(() {
                               });
                             },
                             child:tap2==false? Icon(Icons.visibility,
-                              color: theColors.primaryColor,):Icon(Icons.visibility_off,
-                              color: theColors.primaryColor,)),
+                              color: theColors.secondary,):Icon(Icons.visibility_off,
+                              color: theColors.secondary,)),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(w*0.03),
+                          borderSide: BorderSide(
+                              color: theColors.third
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(w*0.03),
+                          borderSide: BorderSide(
+                              color: theColors.third
+                          ),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(w*0.03),
-                          borderSide: BorderSide.none,
-                        ),
-                        label: Padding(
-                          padding: EdgeInsets.all(w*0.11),
-                          child: Text("New Password",
-                              style: TextStyle(
-                                  color: theColors.primaryColor,
-                                  fontSize: w*0.05
-                              )),
+                          borderSide: BorderSide(
+                              color: theColors.third
+                          ),
                         ),
                         // focusedBorder: OutlineInputBorder(
                         //   borderRadius: BorderRadius.circular(width*0.03),

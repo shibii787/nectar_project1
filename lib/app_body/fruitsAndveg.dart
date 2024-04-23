@@ -6,14 +6,15 @@ import 'package:nectar_project1/core/common/icons.dart';
 
 import '../main.dart';
 
-class Fruits extends StatefulWidget {
-  const Fruits({super.key});
+class categories extends StatefulWidget {
+  final String category;
+  const categories({super.key, required this.category});
 
   @override
-  State<Fruits> createState() => _FruitsState();
+  State<categories> createState() => _categoriesState();
 }
 
-class _FruitsState extends State<Fruits> {
+class _categoriesState extends State<categories> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +25,7 @@ class _FruitsState extends State<Fruits> {
             Navigator.pop(context);
           },
             child: Icon(CupertinoIcons.back,)),
-        title: Text("Fresh Fruits & Vegetable",style: TextStyle(
+        title: Text(widget.category,style: TextStyle(
           fontWeight: FontWeight.w900,),),
         centerTitle: true,
         actions: [
@@ -75,7 +76,7 @@ class _FruitsState extends State<Fruits> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Orange", style:TextStyle(fontSize: w*0.04,
+                              Text(widget.category, style:TextStyle(fontSize: w*0.04,
                                   fontWeight: FontWeight.w900)),
                               Text("1kg, price",style:
                               TextStyle(
