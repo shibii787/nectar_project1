@@ -13,7 +13,7 @@ import 'favourite_page.dart';
 import 'home_page.dart';
 
 class bottomNav extends StatefulWidget {
-  const bottomNav({super.key});
+  const bottomNav({super.key,});
 
   @override
   State<bottomNav> createState() => _bottomNavState();

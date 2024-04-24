@@ -3,14 +3,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nectar_project1/core/providers/firebase_providers.dart';
 
-final addAuthRepository=Provider((ref) => AddAuth(firebaseAuth: ref.watch(authProvider)));
+final authRepositoryProvider=Provider((ref) => AddAuth(auth: ref.watch(authProvider), firestore: ref.watch(collectionProvider)));
 
 class AddAuth{
-  final FirebaseAuth _firebaseAuth;
+  final FirebaseAuth _auth;
+  final FirebaseFirestore _firestore;
   AddAuth({
-    required FirebaseAuth firebaseAuth
-}) : _firebaseAuth=firebaseAuth;
+    required FirebaseAuth auth,required FirebaseFirestore firestore
+}) : _auth=auth, _firestore=firestore;
 
-  //CollectionReference get _auth  => _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
+  CollectionReference get _authUser => _firestore.collection("account");
 
 }

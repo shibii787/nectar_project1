@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:nectar_project1/app_authentication/log_in.dart';
 import 'package:nectar_project1/app_body/bottom_nav.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 import '../main.dart';
@@ -17,7 +20,36 @@ class selectLocationPage extends StatefulWidget {
 
 class _selectLocationPageState extends State<selectLocationPage> {
 
-  // Location newlocation =Location();
+  //for location
+  Position? _currentLocation;
+  late bool servicePermission = false;
+  late LocationPermission permission;
+
+  String _currentAddress = "";
+
+  Future<Position> getCurrentLocation()async{
+    servicePermission = await Geolocator.isLocationServiceEnabled();
+    if(!servicePermission){
+      print("Service Denied");
+    }
+    permission = await Geolocator.checkPermission();
+    if(permission == LocationPermission.denied){
+      permission = await Geolocator.requestPermission();
+    }
+    return await Geolocator.getCurrentPosition();
+  }
+
+  getAddressCoordinates()async{
+    try{
+      List<Placemark> placesmark = await placemarkFromCoordinates(_currentLocation!.latitude,_currentLocation!.longitude);
+      Placemark place = placesmark[0];
+      setState(() {
+        _currentAddress = "${place.locality},${place.country}";
+      });
+    }catch(e){
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +95,17 @@ class _selectLocationPageState extends State<selectLocationPage> {
               ),
             ),
             SizedBox(height: h*0.05),
-            Text("Select Your Zone"),
+            ElevatedButton(
+                onPressed: () async {
+                  _currentLocation = await getCurrentLocation();
+                  await getAddressCoordinates();
+                  print("$_currentLocation");
+                  print("$_currentAddress");
+
+                  SharedPreferences prefs = await SharedPreferences.getInstance();
+                  prefs.setString("loaction", _currentAddress);
+
+                }, child: Text("Submit Your Zone")),
             InkWell(
               onTap: () {
                 Navigator.push(context, CupertinoPageRoute(builder: (context) => bottomNav(),));

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:nectar_project1/app_body/appleDetails.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../main.dart';
@@ -88,6 +89,12 @@ class _homeScreenState extends State<homeScreen> {
     },
   ];
 
+  String locationDetail= "";
+  getData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    locationDetail=prefs.getString("location") ?? "Kerala";
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,7 +118,7 @@ class _homeScreenState extends State<homeScreen> {
                         Row(
                           children: [
                             Icon(Icons.location_on),
-                            Text("Kerala, Mannarkkad")
+                            Text("$locationDetail"),
                           ],
                         )
                       ],
