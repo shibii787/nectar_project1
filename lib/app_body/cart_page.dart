@@ -32,7 +32,7 @@ class _CartPageState extends State<CartPage> {
       body: Column(
         children: [
           Container(
-            height: w*1.5,
+            height: w*1.35,
             child: ListView.builder(
               itemCount: 5,
               scrollDirection: Axis.vertical,
