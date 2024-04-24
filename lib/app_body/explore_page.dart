@@ -236,37 +236,39 @@ class _ExplorePageState extends State<ExplorePage> {
                           case 0:
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => Fruits()),
+                              MaterialPageRoute(
+                                builder: (context) => categories(category: datas[index]["title"]),
+                              ),
                             );
                             break;
                           case 1:
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => CookingOil()),
+                              MaterialPageRoute(builder: (context) => categories(category: datas[index]["title"])),
                             );
                             break;
                           case 2:
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => MeatFish()),
+                              MaterialPageRoute(builder: (context) => categories(category: datas[index]["title"])),
                             );
                             break;
                           case 3:
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => Bakery()),
+                              MaterialPageRoute(builder: (context) => categories(category: datas[index]["title"])),
                             );
                             break;
                           case 4:
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => Dairy()),
+                              MaterialPageRoute(builder: (context) => categories(category: datas[index]["title"])),
                             );
                             break;
                           case 5:
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => Beverages()),
+                              MaterialPageRoute(builder: (context) => categories(category: datas[index]["title"])),
                             );
                             break;
                           default:
