@@ -13,6 +13,7 @@ class theImages{
   static const payment="assets/icons/card.svg";
   static const gpay="assets/images/gpay.png";
   static const cardlogo="assets/images/debitcard.png";
+  static const carticon="assets/icons/cart icon.svg";
 
   //carousel slider images
   static const slider1="assets/images/off 1.jpeg";
