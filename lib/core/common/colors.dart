@@ -14,4 +14,5 @@ static const tenth=Color(0xff7C7C7C);//sub texts
 static const eleventh=Color(0xff828282);
 static const twelfth=Color(0xffE2E2E2); //borders
 static const thirteen=Color(0xffFF0000); //borders
+static const fourteen=Color(0xff489E67); //total box
 }

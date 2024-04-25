@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:nectar_project1/app_authentication/log_in.dart';
 import 'package:nectar_project1/app_body/bottom_nav.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
@@ -97,13 +96,12 @@ class _selectLocationPageState extends State<selectLocationPage> {
             SizedBox(height: h*0.05),
             ElevatedButton(
                 onPressed: () async {
+
                   _currentLocation = await getCurrentLocation();
+                  _currentAddress = await getAddressCoordinates();
                   await getAddressCoordinates();
                   print("$_currentLocation");
                   print("$_currentAddress");
-
-                  SharedPreferences prefs = await SharedPreferences.getInstance();
-                  prefs.setString("loaction", _currentAddress);
 
                 }, child: Text("Submit Your Zone")),
             InkWell(

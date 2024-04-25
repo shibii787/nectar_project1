@@ -1,6 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:nectar_project1/app_body/appleDetails.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
@@ -89,10 +91,51 @@ class _homeScreenState extends State<homeScreen> {
     },
   ];
 
-  String locationDetail= "";
-  getData() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    locationDetail=prefs.getString("location") ?? "Kerala";
+  //for location
+  Position? _currentLocation;
+  late bool servicePermission = false;
+  late LocationPermission permission;
+
+  String _currentAddress = "";
+
+  Future<Position> getCurrentLocation()async{
+    servicePermission = await Geolocator.isLocationServiceEnabled();
+    if(!servicePermission){
+      print("Service Denied");
+    }
+    permission = await Geolocator.checkPermission();
+    if(permission == LocationPermission.denied){
+      permission = await Geolocator.requestPermission();
+    }
+    return await Geolocator.getCurrentPosition();
+  }
+
+  getAddressCoordinates()async{
+    try{
+      List<Placemark> placesmark = await placemarkFromCoordinates(_currentLocation!.latitude,_currentLocation!.longitude);
+      Placemark place = placesmark[0];
+      setState(() {
+        _currentAddress = "${place.locality},${place.country}";
+      });
+    }catch(e){
+      print(e);
+    }
+  }
+
+  newFunc() async {
+    _currentLocation = await getCurrentLocation();
+    _currentAddress = await getAddressCoordinates();
+    await getAddressCoordinates();
+    print("$_currentLocation");
+    print("$_currentAddress");
+
+  }
+
+  @override
+  void initState() {
+    newFunc();
+    // TODO: implement initState
+    super.initState();
   }
 
   @override
@@ -108,7 +151,7 @@ class _homeScreenState extends State<homeScreen> {
                   SizedBox(height: h * 0.02),
                   Container(
                     height: h * 0.14,
-                    width: w * 0.45,
+                    width: w * 0.5,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -118,7 +161,9 @@ class _homeScreenState extends State<homeScreen> {
                         Row(
                           children: [
                             Icon(Icons.location_on),
-                            Text("$locationDetail"),
+                            Text("$_currentAddress",style: TextStyle(
+                            color: theColors.secondary
+                            ),),
                           ],
                         )
                       ],
@@ -133,8 +178,22 @@ class _homeScreenState extends State<homeScreen> {
                           fillColor: theColors.sixth,
                           prefixIcon: const Icon(Icons.search),
                           label: const Text("Search Store"),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(w * 0.03)))),
+                        labelStyle: TextStyle(
+                          color: theColors.secondary
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(w*0.03),
+                          borderSide: BorderSide(
+                              color: theColors.third
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(w*0.03),
+                          borderSide: BorderSide(
+                              color: theColors.third
+                          ),
+                        ),
+                      )),
                   SizedBox(height: h * 0.03),
                   CarouselSlider.builder(
                     itemCount: carousel.length,
