@@ -57,6 +57,7 @@ dependencies:
   geolocator:
   shared_preferences: ^2.2.3
   flutter_riverpod: ^2.5.1
+  geocoding: ^3.0.0
 
 
 
