@@ -332,19 +332,40 @@ class _CartPageState extends State<CartPage> {
                     },
                   );
                 },
-              child: Container(
-                height: w*0.17,
-                width: w*1,
-                decoration: BoxDecoration(
-                  color: theColors.third,
-                  borderRadius: BorderRadius.circular(w*0.04),
-                ),
-                child: Center(child: Text("Go to CheckOut",
-                style: TextStyle(
-                  color: theColors.primaryColor,
-                  fontSize: w*0.05,
-                  fontWeight: FontWeight.w600
-                ),)),
+              child: Stack(
+                children: [
+                  Container(
+                    height: w*0.17,
+                    width: w*1,
+                    decoration: BoxDecoration(
+                      color: theColors.third,
+                      borderRadius: BorderRadius.circular(w*0.04),
+                    ),
+                    child: Center(child: Text("Go to CheckOut",
+                      style: TextStyle(
+                          color: theColors.primaryColor,
+                          fontSize: w*0.05,
+                          fontWeight: FontWeight.w600
+                      ),)),
+                  ),
+                  Positioned(
+                    top: w*0.06,
+                    right: w*0.08,
+                      child: Container(
+                    height: w*0.06,
+                    width: w*0.13,
+                    decoration: BoxDecoration(
+                      color:theColors.fourteen,
+                      borderRadius: BorderRadius.circular(w*0.01)
+                    ),
+                        child: Center(
+                          child: Text("\$12.96",style: TextStyle(
+                            color: theColors.primaryColor,
+                           fontWeight: FontWeight.w600
+                          ),),
+                        ),
+                  ))
+                ]
               ),
             ),
           )
