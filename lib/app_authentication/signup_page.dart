@@ -169,120 +169,185 @@ class _signupPageState extends State<signupPage> {
               SizedBox(
                 height: w * 0.05,
               ),
-              TextFormField(
-                controller: nameController,
-                style: TextStyle(color: theColors.secondary),
-                decoration: InputDecoration(
-                    fillColor: theColors.primaryColor,
-                    filled: true,
-                    hintText: "Full Name",
-                    hintStyle: TextStyle(color: theColors.secondary),
-                    suffixIcon:
-                        Icon(CupertinoIcons.person, color: theColors.secondary),
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(w * 0.03),
-                        borderSide: BorderSide.none),
-                    // label: Text("Full Name",
-                    //     style: TextStyle(
-                    //         color: color.thirdColor,
-                    //         fontSize: w*0.049
-                    //     )),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(w * 0.03),
-                      borderSide: BorderSide(color: theColors.nine),
-                    )),
-              ),
-              SizedBox(
-                height: w * 0.05,
-              ),
-              TextFormField(
-                style: TextStyle(color: theColors.secondary),
-                // textCapitalization: TextCapitalization.characters,
-                controller: emailController,
-                keyboardType: TextInputType.emailAddress,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) {
-                  if (!emailValidation.hasMatch(value!)) {
-                    return "Enter the email";
-                  } else {
-                    return null;
-                  }
-                },
-                decoration: InputDecoration(
-                    filled: true,
-                    fillColor: theColors.primaryColor,
-                    hintText: " Email",
-                    hintStyle: TextStyle(color: theColors.secondary),
-                    suffixIcon:
-                        Icon(Icons.email_outlined, color: theColors.secondary),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(w * 0.03),
-                        borderSide: BorderSide.none),
-                    // label: Text("Email",
-                    //     style: TextStyle(
-                    //         color: color.secondaryColor,
-                    //         fontSize: w*0.05
-                    //     )),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(w * 0.03),
-                        borderSide: BorderSide(color: theColors.nine))),
-              ),
-              SizedBox(
-                height: w * 0.05,
-              ),
-              TextFormField(
-                style: TextStyle(
-                  color: theColors.secondary,
+              Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(w*0.03)
                 ),
-                controller: passwordController,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) {
-                  if (!passwordValidation.hasMatch(value!)) {
-                    return "Enter the password";
-                  } else {
-                    return null;
-                  }
-                },
-                obscureText: tap ? true : false,
-                decoration: InputDecoration(
-                  fillColor: theColors.primaryColor,
-                  filled: true,
-                  hintText: "Enter the password",
-                  hintStyle: TextStyle(color: theColors.secondary),
-                  suffixIcon: InkWell(
-                      onTap: () {
-                        tap = !tap;
-                        setState(() {});
-                      },
-                      child: tap == false
-                          ? Icon(
-                              Icons.visibility,
-                              color: theColors.secondary,
-                            )
-                          : Icon(
-                              Icons.visibility_off,
-                              color: theColors.secondary,
-                            )),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(w * 0.03),
-                    borderSide: BorderSide.none,
+                child: TextFormField(
+                  style: TextStyle(
+                    color: theColors.secondary,
                   ),
-                  // suffixIcon: Icon(CupertinoIcons.lock,
-                  //   color: theColors.secondary,)
-                  // label: Padding(
-                  //   padding: EdgeInsets.all(w*0.025),
-                  //   child: Text("Password",
-                  //       style: TextStyle(
-                  //           color: color.thirdColor,
-                  //           fontSize: w*0.05
-                  //       )),
-                  // ),
-                  // focusedBorder: OutlineInputBorder(
-                  //   borderRadius: BorderRadius.circular(width*0.03),
-                  //     borderSide: BorderSide(
-                  //         color: Colors.blue
-                  //     )
-                  // )
+                  controller: emailController,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: theColors.third.withOpacity(0.08),
+                    labelText: "Full Name",
+                    labelStyle: TextStyle(
+                        color: theColors.secondary
+                    ),
+                    hintText: "Enter the Full Name",
+                    hintStyle: TextStyle(
+                        color: theColors.secondary
+                    ),
+                    suffixIcon: Icon(CupertinoIcons.person),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(w*0.03),
+                      borderSide: BorderSide(
+                          color: theColors.third
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(w*0.03),
+                      borderSide: BorderSide(
+                          color: theColors.third
+                      ),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(w*0.03),
+                      borderSide: BorderSide(
+                          color: theColors.third
+                      ),
+                    ),
+                    // focusedBorder: OutlineInputBorder(
+                    //   borderRadius: BorderRadius.circular(width*0.03),
+                    //     borderSide: BorderSide(
+                    //         color: Colors.blue
+                    //     )
+                    // )
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: w * 0.05,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(w*0.03)
+                ),
+                child: TextFormField(
+                  style: TextStyle(
+                    color: theColors.secondary,
+                  ),
+                  controller: emailController,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: (value) {
+                    if(!emailValidation.hasMatch(value!))
+                    {
+                      return "Email";
+                    }
+                    else{
+                      return null;
+                    }
+                  },
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: theColors.third.withOpacity(0.08),
+                    labelText: "Email",
+                    labelStyle: TextStyle(
+                        color: theColors.secondary
+                    ),
+                    hintText: "Enter the Email",
+                    hintStyle: TextStyle(
+                        color: theColors.secondary
+                    ),
+                    suffixIcon: Icon(CupertinoIcons.mail),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(w*0.03),
+                      borderSide: BorderSide(
+                          color: theColors.third
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(w*0.03),
+                      borderSide: BorderSide(
+                          color: theColors.third
+                      ),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(w*0.03),
+                      borderSide: BorderSide(
+                          color: theColors.third
+                      ),
+                    ),
+                    // focusedBorder: OutlineInputBorder(
+                    //   borderRadius: BorderRadius.circular(width*0.03),
+                    //     borderSide: BorderSide(
+                    //         color: Colors.blue
+                    //     )
+                    // )
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: w * 0.05,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(w*0.03)
+                ),
+                child: TextFormField(
+                  style: TextStyle(
+                    color: theColors.secondary,
+                  ),
+                  controller: passwordController,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: (value) {
+                    if(!passwordValidation.hasMatch(value!))
+                    {
+                      return "Password";
+                    }
+                    else{
+                      return null;
+                    }
+                  },
+                  obscureText: tap?true:false,
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: theColors.third.withOpacity(0.08),
+                    labelText: "Password",
+                    labelStyle: TextStyle(
+                        color: theColors.secondary
+                    ),
+                    hintText: "Enter the password",
+                    hintStyle: TextStyle(
+                        color: theColors.secondary
+                    ),
+                    suffixIcon: InkWell(
+                        onTap: () {
+                          tap=!tap;
+                          setState(() {
+                          });
+                        },
+                        child:tap==false? Icon(Icons.visibility,
+                          color: theColors.secondary,):Icon(Icons.visibility_off,
+                          color: theColors.secondary,)),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(w*0.03),
+                      borderSide: BorderSide(
+                          color: theColors.third
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(w*0.03),
+                      borderSide: BorderSide(
+                          color: theColors.third
+                      ),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(w*0.03),
+                      borderSide: BorderSide(
+                          color: theColors.third
+                      ),
+                    ),
+                    // focusedBorder: OutlineInputBorder(
+                    //   borderRadius: BorderRadius.circular(width*0.03),
+                    //     borderSide: BorderSide(
+                    //         color: Colors.blue
+                    //     )
+                    // )
+                  ),
                 ),
               ),
               SizedBox(
