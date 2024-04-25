@@ -7,8 +7,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:nectar_project1/app_authentication/log_in.dart';
 import 'package:nectar_project1/app_authentication/select_location_page.dart';
+import 'package:nectar_project1/app_authentication/sign_page.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
 import 'package:nectar_project1/feature/addingDetails/controller/collectionControl.dart';
@@ -472,7 +472,7 @@ class _signupPageState extends ConsumerState<signupPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => logIn(),
+                            builder: (context) => signPage(),
                           ));
                     },
                     child: Text(
