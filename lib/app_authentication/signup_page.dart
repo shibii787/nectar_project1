@@ -3,23 +3,27 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:nectar_project1/app_authentication/log_in.dart';
 import 'package:nectar_project1/app_authentication/select_location_page.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
+import 'package:nectar_project1/feature/addingDetails/controller/collectionControl.dart';
 import 'package:nectar_project1/model/userModel.dart';
 
 import '../main.dart';
 
-class signupPage extends StatefulWidget {
+class signupPage extends ConsumerStatefulWidget {
   const signupPage({super.key});
 
   @override
-  State<signupPage> createState() => _signupPageState();
+  ConsumerState<signupPage> createState() => _signupPageState();
 }
 
-class _signupPageState extends State<signupPage> {
+class _signupPageState extends ConsumerState<signupPage> {
   var file;
   String imageurl = "";
 
@@ -43,6 +47,48 @@ class _signupPageState extends State<signupPage> {
         file = File(pickedFile.path);
       });
     }
+  }
+
+  //for location
+  Position? _currentLocation;
+  late bool servicePermission = false;
+  late LocationPermission permission;
+
+  String _currentAddress = "";
+
+  Future<Position> getCurrentLocation()async{
+    servicePermission = await Geolocator.isLocationServiceEnabled();
+    if(!servicePermission){
+      print("Service Denied");
+    }
+    permission = await Geolocator.checkPermission();
+    if(permission == LocationPermission.denied){
+      permission = await Geolocator.requestPermission();
+    }
+    return await Geolocator.getCurrentPosition();
+  }
+
+  getAddressCoordinates()async{
+    try{
+      List<Placemark> placesmark = await placemarkFromCoordinates(_currentLocation!.latitude,_currentLocation!.longitude);
+      Placemark place = placesmark[0];
+      setState(() {
+        _currentAddress = "${place.locality},${place.country}";
+      });
+    }catch(e){
+      print(e);
+    }
+  }
+
+  addNewUserFunc(){
+    UserModel userModel = UserModel(
+        name: nameController.text,
+        email: emailController.text.trim(),
+        password: passwordController.text,
+        location: _currentAddress,
+        phoneNumber: null,
+        id: "");
+    ref.watch(addCollectionController).controlCollectionFunc(userModel: userModel);
   }
 
   @override
@@ -391,6 +437,7 @@ class _signupPageState extends State<signupPage> {
               ),
               InkWell(
                 onTap: () {
+                  addNewUserFunc();
                   Navigator.push(context, CupertinoPageRoute(builder: (context) => selectLocationPage(),));
                 },
                 child: Container(
