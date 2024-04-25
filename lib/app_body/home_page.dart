@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:nectar_project1/app_body/appleDetails.dart';
+import 'package:nectar_project1/app_body/bananapage.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -254,6 +255,7 @@ class _homeScreenState extends State<homeScreen> {
                         itemBuilder: (context, index) {
                           return InkWell(
                             onTap: () {
+                              index==0?Navigator.push(context, CupertinoPageRoute(builder: (context) => bananapage(),)):null;
                               index==1?Navigator.push(context, CupertinoPageRoute(builder: (context) => appleDetails(),)):null;
                             },
                             child: Container(
