@@ -42,248 +42,251 @@ class _signPageState extends State<signPage> {
         child: Padding(
           padding: EdgeInsets.only(
               left: w * 0.03, right: w * 0.03, bottom: w * 0.03),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Image.asset(theImages.signimage),
-              Text(
-                "Get your groceries \n with nectar",
-                style:
-                    TextStyle(fontSize: w * 0.06, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: w * 0.03),
-              Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(w*0.03)
+          child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Image.asset(theImages.signimage),
+                Text(
+                  "Get your groceries \n with nectar",
+                  style:
+                      TextStyle(fontSize: w * 0.06, fontWeight: FontWeight.bold),
                 ),
-                child: TextFormField(
-                  style: TextStyle(
-                    color: theColors.secondary,
-                  ),
-                  controller: emailController,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (value) {
-                    if(!emailValidation.hasMatch(value!))
-                    {
-                      return "Email";
-                    }
-                    else{
-                      return null;
-                    }
-                  },
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: theColors.third.withOpacity(0.08),
-                    labelText: "Email",
-                    labelStyle: TextStyle(
-                        color: theColors.secondary
-                    ),
-                    hintText: "Enter the Email",
-                    hintStyle: TextStyle(
-                        color: theColors.secondary
-                    ),
-                    suffixIcon: Icon(CupertinoIcons.mail),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(w*0.03),
-                      borderSide: BorderSide(
-                          color: theColors.third
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(w*0.03),
-                      borderSide: BorderSide(
-                          color: theColors.third
-                      ),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(w*0.03),
-                      borderSide: BorderSide(
-                          color: theColors.third
-                      ),
-                    ),
-                    // focusedBorder: OutlineInputBorder(
-                    //   borderRadius: BorderRadius.circular(width*0.03),
-                    //     borderSide: BorderSide(
-                    //         color: Colors.blue
-                    //     )
-                    // )
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: w * 0.03,
-              ),
-              Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(w*0.03)
-                ),
-                child: TextFormField(
-                  style: TextStyle(
-                    color: theColors.secondary,
-                  ),
-                  controller: passwordController,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (value) {
-                    if(!passwordValidation.hasMatch(value!))
-                    {
-                      return "Password";
-                    }
-                    else{
-                      return null;
-                    }
-                  },
-                  obscureText: tap?true:false,
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: theColors.third.withOpacity(0.08),
-                    labelText: "Password",
-                    labelStyle: TextStyle(
-                        color: theColors.secondary
-                    ),
-                    hintText: "Enter the password",
-                    hintStyle: TextStyle(
-                        color: theColors.secondary
-                    ),
-                    suffixIcon: InkWell(
-                        onTap: () {
-                          tap=!tap;
-                          setState(() {
-                          });
-                        },
-                        child:tap==false? Icon(Icons.visibility,
-                          color: theColors.secondary,):Icon(Icons.visibility_off,
-                          color: theColors.secondary,)),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(w*0.03),
-                      borderSide: BorderSide(
-                          color: theColors.third
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(w*0.03),
-                      borderSide: BorderSide(
-                          color: theColors.third
-                      ),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(w*0.03),
-                      borderSide: BorderSide(
-                          color: theColors.third
-                      ),
-                    ),
-                    // focusedBorder: OutlineInputBorder(
-                    //   borderRadius: BorderRadius.circular(width*0.03),
-                    //     borderSide: BorderSide(
-                    //         color: Colors.blue
-                    //     )
-                    // )
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: w * 0.03,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(),
-                  Row(),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(context, CupertinoPageRoute(builder: (context) => forgotPassword(),));
-                    },
-                    child: Text(
-                      "Forgot Password?",
-                      style: TextStyle(color: theColors.third),
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(height: w*0.03,),
-              InkWell(
-                onTap: () {
-                  Navigator.push(context, CupertinoPageRoute(builder: (context) => selectLocationPage(),));
-                },
-                child: Container(
-                  height: w * 0.15,
-                  width: w * 1,
+                SizedBox(height: w * 0.03),
+                Container(
                   decoration: BoxDecoration(
-                      color: theColors.third.withOpacity(0.8),
-                      borderRadius: BorderRadius.circular(w * 0.04)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Icon(Icons.login_outlined,color: theColors.primaryColor,),
-                      Text(
-                        "Log In",
-                        style: TextStyle(
-                            color: theColors.primaryColor, fontSize: w * 0.045),
-                      ),
-                      Row()
-                    ],
+                      borderRadius: BorderRadius.circular(w*0.03)
                   ),
-                ),
-              ),
-              SizedBox(
-                height: w * 0.02,
-              ),
-              Center(
-                child: Text(
-                  "Or connect with social media",
-                  style: TextStyle(
-                    color: theColors.eleventh,
-                  ),
-                ),
-              ),
-              SizedBox(height: w*0.02,),
-              Container(
-                height: w * 0.15,
-                width: w * 1,
-                decoration: BoxDecoration(
-                    color: theColors.fourth,
-                    borderRadius: BorderRadius.circular(w * 0.04)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                        child: Image.asset(
-                      theImages.googleimage,
-                      height: w * 0.075,
-                    )),
-                    Text(
-                      "Continue with Google",
-                      style: TextStyle(
-                          color: theColors.primaryColor, fontSize: w * 0.045),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(height: w*0.03,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Don’t have an account?",
+                  child: TextFormField(
                     style: TextStyle(
                       color: theColors.secondary,
                     ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => signupPage(),
-                          ));
+                    controller: emailController,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: (value) {
+                      if(!emailValidation.hasMatch(value!))
+                      {
+                        return "Email";
+                      }
+                      else{
+                        return null;
+                      }
                     },
-                    child: Text(
-                      " Signup",
-                      style: TextStyle(color: theColors.third),
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: theColors.third.withOpacity(0.08),
+                      labelText: "Email",
+                      labelStyle: TextStyle(
+                          color: theColors.secondary
+                      ),
+                      hintText: "Enter the Email",
+                      hintStyle: TextStyle(
+                          color: theColors.secondary
+                      ),
+                      suffixIcon: Icon(CupertinoIcons.mail),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(w*0.03),
+                        borderSide: BorderSide(
+                            color: theColors.third
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(w*0.03),
+                        borderSide: BorderSide(
+                            color: theColors.third
+                        ),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(w*0.03),
+                        borderSide: BorderSide(
+                            color: theColors.third
+                        ),
+                      ),
+                      // focusedBorder: OutlineInputBorder(
+                      //   borderRadius: BorderRadius.circular(width*0.03),
+                      //     borderSide: BorderSide(
+                      //         color: Colors.blue
+                      //     )
+                      // )
                     ),
-                  )
-                ],
-              )
-            ],
+                  ),
+                ),
+                SizedBox(
+                  height: w * 0.03,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(w*0.03)
+                  ),
+                  child: TextFormField(
+                    style: TextStyle(
+                      color: theColors.secondary,
+                    ),
+                    controller: passwordController,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: (value) {
+                      if(!passwordValidation.hasMatch(value!))
+                      {
+                        return "Password";
+                      }
+                      else{
+                        return null;
+                      }
+                    },
+                    obscureText: tap?true:false,
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: theColors.third.withOpacity(0.08),
+                      labelText: "Password",
+                      labelStyle: TextStyle(
+                          color: theColors.secondary
+                      ),
+                      hintText: "Enter the password",
+                      hintStyle: TextStyle(
+                          color: theColors.secondary
+                      ),
+                      suffixIcon: InkWell(
+                          onTap: () {
+                            tap=!tap;
+                            setState(() {
+                            });
+                          },
+                          child:tap==false? Icon(Icons.visibility,
+                            color: theColors.secondary,):Icon(Icons.visibility_off,
+                            color: theColors.secondary,)),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(w*0.03),
+                        borderSide: BorderSide(
+                            color: theColors.third
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(w*0.03),
+                        borderSide: BorderSide(
+                            color: theColors.third
+                        ),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(w*0.03),
+                        borderSide: BorderSide(
+                            color: theColors.third
+                        ),
+                      ),
+                      // focusedBorder: OutlineInputBorder(
+                      //   borderRadius: BorderRadius.circular(width*0.03),
+                      //     borderSide: BorderSide(
+                      //         color: Colors.blue
+                      //     )
+                      // )
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: w * 0.03,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(),
+                    Row(),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(context, CupertinoPageRoute(builder: (context) => forgotPassword(),));
+                      },
+                      child: Text(
+                        "Forgot Password?",
+                        style: TextStyle(color: theColors.third),
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(height: w*0.03,),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context, CupertinoPageRoute(builder: (context) => selectLocationPage(),));
+                  },
+                  child: Container(
+                    height: w * 0.15,
+                    width: w * 1,
+                    decoration: BoxDecoration(
+                        color: theColors.third.withOpacity(0.8),
+                        borderRadius: BorderRadius.circular(w * 0.04)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Icon(Icons.login_outlined,color: theColors.primaryColor,),
+                        Text(
+                          "Log In",
+                          style: TextStyle(
+                              color: theColors.primaryColor, fontSize: w * 0.045),
+                        ),
+                        Row()
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: w * 0.02,
+                ),
+                Center(
+                  child: Text(
+                    "Or connect with social media",
+                    style: TextStyle(
+                      color: theColors.eleventh,
+                    ),
+                  ),
+                ),
+                SizedBox(height: w*0.02,),
+                Container(
+                  height: w * 0.15,
+                  width: w * 1,
+                  decoration: BoxDecoration(
+                      color: theColors.fourth,
+                      borderRadius: BorderRadius.circular(w * 0.04)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                          child: Image.asset(
+                        theImages.googleimage,
+                        height: w * 0.075,
+                      )),
+                      Text(
+                        "Continue with Google",
+                        style: TextStyle(
+                            color: theColors.primaryColor, fontSize: w * 0.045),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(height: w*0.03,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Don’t have an account?",
+                      style: TextStyle(
+                        color: theColors.secondary,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => signupPage(),
+                            ));
+                      },
+                      child: Text(
+                        " Signup",
+                        style: TextStyle(color: theColors.third),
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),

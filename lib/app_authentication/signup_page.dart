@@ -223,7 +223,7 @@ class _signupPageState extends ConsumerState<signupPage> {
                   style: TextStyle(
                     color: theColors.secondary,
                   ),
-                  controller: emailController,
+                  controller: nameController,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
 
                   decoration: InputDecoration(
