@@ -1,10 +1,13 @@
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nectar_project1/app_authentication/forgot_password.dart';
 import 'package:nectar_project1/app_authentication/select_location_page.dart';
 import 'package:nectar_project1/app_authentication/signup_page.dart';
 import 'package:nectar_project1/app_authentication/verification_page.dart';
+import 'package:nectar_project1/app_body/home_page.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
 
@@ -33,7 +36,22 @@ class _signPageState extends State<signPage> {
   final phoneValidation = RegExp(r"[0-9]{10}$");
 
   final formKey = GlobalKey<FormState>();
+  Future<UserCredential> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -238,26 +256,34 @@ class _signPageState extends State<signPage> {
                   ),
                 ),
                 SizedBox(height: w*0.02,),
-                Container(
-                  height: w * 0.15,
-                  width: w * 1,
-                  decoration: BoxDecoration(
-                      color: theColors.fourth,
-                      borderRadius: BorderRadius.circular(w * 0.04)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                          child: Image.asset(
-                        theImages.googleimage,
-                        height: w * 0.075,
-                      )),
-                      Text(
-                        "Continue with Google",
-                        style: TextStyle(
-                            color: theColors.primaryColor, fontSize: w * 0.045),
-                      )
-                    ],
+                InkWell(
+                  onTap: () {
+                    signInWithGoogle().then((value) =>
+                        Navigator.pushAndRemoveUntil(
+                            context, MaterialPageRoute(builder:(context) =>homeScreen() , ), (route) => false));
+
+                  },
+                  child: Container(
+                    height: w * 0.15,
+                    width: w * 1,
+                    decoration: BoxDecoration(
+                        color: theColors.fourth,
+                        borderRadius: BorderRadius.circular(w * 0.04)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                            child: Image.asset(
+                          theImages.googleimage,
+                          height: w * 0.075,
+                        )),
+                        Text(
+                          "Continue with Google",
+                          style: TextStyle(
+                              color: theColors.primaryColor, fontSize: w * 0.045),
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(height: w*0.03,),
