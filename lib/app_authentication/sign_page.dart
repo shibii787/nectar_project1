@@ -20,7 +20,6 @@ class signPage extends StatefulWidget {
 }
 
 class _signPageState extends State<signPage> {
-
   bool tap = true;
 
   TextEditingController numberController = TextEditingController();
@@ -28,9 +27,9 @@ class _signPageState extends State<signPage> {
   TextEditingController passwordController = TextEditingController();
 
   final emailValidation =
-  RegExp(r"^[a-z0-9.a-z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-z0-9]+\.[a-z]+");
+      RegExp(r"^[a-z0-9.a-z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-z0-9]+\.[a-z]+");
   final passwordValidation =
-  RegExp(r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$");
+      RegExp(r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$");
 
   final phoneValidation = RegExp(r"[0-9]{10}$");
 
@@ -39,7 +38,8 @@ class _signPageState extends State<signPage> {
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
     // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
 
     // Create a new credential
     final credential = GoogleAuthProvider.credential(
@@ -69,14 +69,13 @@ class _signPageState extends State<signPage> {
                 Image.asset(theImages.signimage),
                 Text(
                   "Get your groceries \n with nectar",
-                  style:
-                      TextStyle(fontSize: w * 0.06, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: w * 0.06, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: w * 0.03),
                 Container(
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(w*0.03)
-                  ),
+                      borderRadius: BorderRadius.circular(w * 0.03)),
                   child: TextFormField(
                     style: TextStyle(
                       color: theColors.secondary,
@@ -84,11 +83,9 @@ class _signPageState extends State<signPage> {
                     controller: emailController,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) {
-                      if(!emailValidation.hasMatch(value!))
-                      {
+                      if (!emailValidation.hasMatch(value!)) {
                         return "Email";
-                      }
-                      else{
+                      } else {
                         return null;
                       }
                     },
@@ -96,31 +93,21 @@ class _signPageState extends State<signPage> {
                       filled: true,
                       fillColor: theColors.third.withOpacity(0.08),
                       labelText: "Email",
-                      labelStyle: TextStyle(
-                          color: theColors.secondary
-                      ),
+                      labelStyle: TextStyle(color: theColors.secondary),
                       hintText: "Enter the Email",
-                      hintStyle: TextStyle(
-                          color: theColors.secondary
-                      ),
+                      hintStyle: TextStyle(color: theColors.secondary),
                       suffixIcon: Icon(CupertinoIcons.mail),
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(w*0.03),
-                        borderSide: BorderSide(
-                            color: theColors.third
-                        ),
+                        borderRadius: BorderRadius.circular(w * 0.03),
+                        borderSide: BorderSide(color: theColors.third),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(w*0.03),
-                        borderSide: BorderSide(
-                            color: theColors.third
-                        ),
+                        borderRadius: BorderRadius.circular(w * 0.03),
+                        borderSide: BorderSide(color: theColors.third),
                       ),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(w*0.03),
-                        borderSide: BorderSide(
-                            color: theColors.third
-                        ),
+                        borderRadius: BorderRadius.circular(w * 0.03),
+                        borderSide: BorderSide(color: theColors.third),
                       ),
                       // focusedBorder: OutlineInputBorder(
                       //   borderRadius: BorderRadius.circular(width*0.03),
@@ -136,8 +123,7 @@ class _signPageState extends State<signPage> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(w*0.03)
-                  ),
+                      borderRadius: BorderRadius.circular(w * 0.03)),
                   child: TextFormField(
                     style: TextStyle(
                       color: theColors.secondary,
@@ -145,52 +131,45 @@ class _signPageState extends State<signPage> {
                     controller: passwordController,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) {
-                      if(!passwordValidation.hasMatch(value!))
-                      {
+                      if (!passwordValidation.hasMatch(value!)) {
                         return "Password";
-                      }
-                      else{
+                      } else {
                         return null;
                       }
                     },
-                    obscureText: tap?true:false,
+                    obscureText: tap ? true : false,
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: theColors.third.withOpacity(0.08),
                       labelText: "Password",
-                      labelStyle: TextStyle(
-                          color: theColors.secondary
-                      ),
+                      labelStyle: TextStyle(color: theColors.secondary),
                       hintText: "Enter the password",
-                      hintStyle: TextStyle(
-                          color: theColors.secondary
-                      ),
+                      hintStyle: TextStyle(color: theColors.secondary),
                       suffixIcon: InkWell(
                           onTap: () {
-                            tap=!tap;
-                            setState(() {
-                            });
+                            tap = !tap;
+                            setState(() {});
                           },
-                          child:tap==false? Icon(Icons.visibility,
-                            color: theColors.secondary,):Icon(Icons.visibility_off,
-                            color: theColors.secondary,)),
+                          child: tap == false
+                              ? Icon(
+                                  Icons.visibility,
+                                  color: theColors.secondary,
+                                )
+                              : Icon(
+                                  Icons.visibility_off,
+                                  color: theColors.secondary,
+                                )),
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(w*0.03),
-                        borderSide: BorderSide(
-                            color: theColors.third
-                        ),
+                        borderRadius: BorderRadius.circular(w * 0.03),
+                        borderSide: BorderSide(color: theColors.third),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(w*0.03),
-                        borderSide: BorderSide(
-                            color: theColors.third
-                        ),
+                        borderRadius: BorderRadius.circular(w * 0.03),
+                        borderSide: BorderSide(color: theColors.third),
                       ),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(w*0.03),
-                        borderSide: BorderSide(
-                            color: theColors.third
-                        ),
+                        borderRadius: BorderRadius.circular(w * 0.03),
+                        borderSide: BorderSide(color: theColors.third),
                       ),
                       // focusedBorder: OutlineInputBorder(
                       //   borderRadius: BorderRadius.circular(width*0.03),
@@ -211,7 +190,11 @@ class _signPageState extends State<signPage> {
                     Row(),
                     InkWell(
                       onTap: () {
-                        Navigator.push(context, CupertinoPageRoute(builder: (context) => forgotPassword(),));
+                        Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                              builder: (context) => forgotPassword(),
+                            ));
                       },
                       child: Text(
                         "Forgot Password?",
@@ -220,10 +203,16 @@ class _signPageState extends State<signPage> {
                     )
                   ],
                 ),
-                SizedBox(height: w*0.03,),
+                SizedBox(
+                  height: w * 0.03,
+                ),
                 InkWell(
                   onTap: () {
-                    Navigator.push(context, CupertinoPageRoute(builder: (context) => selectLocationPage(),));
+                    Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                          builder: (context) => selectLocationPage(),
+                        ));
                   },
                   child: Container(
                     height: w * 0.15,
@@ -234,11 +223,15 @@ class _signPageState extends State<signPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Icon(Icons.login_outlined,color: theColors.primaryColor,),
+                        Icon(
+                          Icons.login_outlined,
+                          color: theColors.primaryColor,
+                        ),
                         Text(
                           "Log In",
                           style: TextStyle(
-                              color: theColors.primaryColor, fontSize: w * 0.045),
+                              color: theColors.primaryColor,
+                              fontSize: w * 0.045),
                         ),
                         Row()
                       ],
@@ -256,10 +249,17 @@ class _signPageState extends State<signPage> {
                     ),
                   ),
                 ),
-                SizedBox(height: w*0.02,),
+                SizedBox(
+                  height: w * 0.02,
+                ),
                 InkWell(
                   onTap: () {
-                    signInWithGoogle().then((value) => Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => selectLocationPage(),)));
+                    signInWithGoogle()
+                        .then((value) => Navigator.pushReplacement(
+                            context,
+                            CupertinoPageRoute(
+                              builder: (context) => selectLocationPage(),
+                            )));
                   },
                   child: Container(
                     height: w * 0.15,
@@ -278,13 +278,16 @@ class _signPageState extends State<signPage> {
                         Text(
                           "Continue with Google",
                           style: TextStyle(
-                              color: theColors.primaryColor, fontSize: w * 0.045),
+                              color: theColors.primaryColor,
+                              fontSize: w * 0.045),
                         )
                       ],
                     ),
                   ),
                 ),
-                SizedBox(height: w*0.03,),
+                SizedBox(
+                  height: w * 0.03,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
