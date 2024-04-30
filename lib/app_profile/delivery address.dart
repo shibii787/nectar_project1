@@ -17,6 +17,7 @@ class _deliveryaddressState extends State<deliveryaddress> {
     return Scaffold(
       backgroundColor: theColors.primaryColor,
       appBar: AppBar(
+        elevation: 0,
         backgroundColor: theColors.primaryColor,
         centerTitle: true,
         title: Text("Delivery Address",style: TextStyle(

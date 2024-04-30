@@ -17,6 +17,7 @@ class _myorderState extends State<myorder> {
     return Scaffold(
       backgroundColor: theColors.primaryColor,
       appBar: AppBar(
+        elevation: 0,
         centerTitle: true,
         backgroundColor: theColors.primaryColor,
        title: Text("My Order",style: TextStyle(

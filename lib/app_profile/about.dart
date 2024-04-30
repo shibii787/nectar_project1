@@ -16,6 +16,7 @@ class _aboutState extends State<about> {
     return Scaffold(
       backgroundColor: theColors.primaryColor,
       appBar: AppBar(
+        elevation: 0,
         centerTitle: true,
         backgroundColor: theColors.primaryColor,
         leading: InkWell(

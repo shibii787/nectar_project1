@@ -17,6 +17,7 @@ class _mydetailsState extends State<mydetails> {
     return Scaffold(
       backgroundColor: theColors.primaryColor,
       appBar: AppBar(
+        elevation: 0,
         backgroundColor: theColors.primaryColor,
         centerTitle: true,
         title: Text("My Details",style: TextStyle(

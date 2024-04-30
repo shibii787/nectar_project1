@@ -17,6 +17,7 @@ class _helpState extends State<help> {
     return Scaffold(
       backgroundColor: theColors.primaryColor,
       appBar: AppBar(
+        elevation: 0,
         centerTitle: true,
         backgroundColor: theColors.primaryColor,
         leading: InkWell(

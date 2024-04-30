@@ -18,6 +18,7 @@ class _notificationState extends State<notification> {
     return Scaffold(
       backgroundColor: theColors.primaryColor,
       appBar: AppBar(
+        elevation: 0,
         centerTitle: true,
         backgroundColor: theColors.primaryColor,
         leading: InkWell(

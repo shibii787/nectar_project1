@@ -18,6 +18,7 @@ class _SelectPaymentState extends State<SelectPayment> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         automaticallyImplyLeading: false,
         leading: InkWell(
           onTap: () {

@@ -18,6 +18,7 @@ class _MeatFishState extends State<MeatFish> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
+        elevation: 0,
         backgroundColor: theColors.primaryColor,
         leading: InkWell(
             onTap: () {

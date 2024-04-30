@@ -18,6 +18,7 @@ class _BakeryState extends State<Bakery> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
+        elevation: 0,
         leading: InkWell(
             onTap: () {
               Navigator.pop(context);

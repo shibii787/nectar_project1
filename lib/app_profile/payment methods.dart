@@ -18,6 +18,7 @@ class _paymentmethodsState extends State<paymentmethods> {
     return Scaffold(
       backgroundColor: theColors.primaryColor,
       appBar: AppBar(
+        elevation: 0,
         automaticallyImplyLeading: false,
         leading: InkWell(
             onTap: () {

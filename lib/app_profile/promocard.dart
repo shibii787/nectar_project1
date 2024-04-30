@@ -15,6 +15,7 @@ class _promocardState extends State<promocard> {
     return Scaffold(
       backgroundColor: theColors.primaryColor,
       appBar: AppBar(
+        elevation: 0,
         centerTitle: true,
         backgroundColor: theColors.primaryColor,
         title: Text("Promo Card",style: TextStyle(

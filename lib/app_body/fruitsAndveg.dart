@@ -19,6 +19,7 @@ class _categoriesState extends State<categories> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
+        elevation: 0,
         backgroundColor: theColors.primaryColor,
         leading: InkWell(
           onTap: () {

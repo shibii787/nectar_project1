@@ -65,6 +65,7 @@ class _ExplorePageState extends State<ExplorePage> {
     return Scaffold(
       backgroundColor: theColors.primaryColor,
       appBar: AppBar(
+        elevation: 0,
         automaticallyImplyLeading: false,
         backgroundColor: theColors.primaryColor,
         title: Text("Find Products",style: TextStyle(
