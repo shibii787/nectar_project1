@@ -7,7 +7,6 @@ import 'package:nectar_project1/app_authentication/forgot_password.dart';
 import 'package:nectar_project1/app_authentication/select_location_page.dart';
 import 'package:nectar_project1/app_authentication/signup_page.dart';
 import 'package:nectar_project1/app_authentication/verification_page.dart';
-import 'package:nectar_project1/app_body/home_page.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
 
@@ -35,7 +34,6 @@ class _signPageState extends State<signPage> {
 
   final phoneValidation = RegExp(r"[0-9]{10}$");
 
-  final formKey = GlobalKey<FormState>();
   Future<UserCredential> signInWithGoogle() async {
     // Trigger the authentication flow
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
@@ -52,6 +50,9 @@ class _signPageState extends State<signPage> {
     // Once signed in, return the UserCredential
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
+
+  final formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -258,10 +259,7 @@ class _signPageState extends State<signPage> {
                 SizedBox(height: w*0.02,),
                 InkWell(
                   onTap: () {
-                    signInWithGoogle().then((value) =>
-                        Navigator.pushAndRemoveUntil(
-                            context, MaterialPageRoute(builder:(context) =>homeScreen() , ), (route) => false));
-
+                    signInWithGoogle().then((value) => CupertinoPageRoute(builder: (context) => selectLocationPage(),));
                   },
                   child: Container(
                     height: w * 0.15,
