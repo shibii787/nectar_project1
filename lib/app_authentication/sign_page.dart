@@ -259,7 +259,7 @@ class _signPageState extends State<signPage> {
                 SizedBox(height: w*0.02,),
                 InkWell(
                   onTap: () {
-                    signInWithGoogle().then((value) => CupertinoPageRoute(builder: (context) => selectLocationPage(),));
+                    signInWithGoogle().then((value) => Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => selectLocationPage(),)));
                   },
                   child: Container(
                     height: w * 0.15,
