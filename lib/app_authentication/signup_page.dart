@@ -89,6 +89,7 @@ class _signupPageState extends ConsumerState<signupPage> {
         location: _currentAddress,
         phoneNumber: null,
         id: "");
+
     ref.watch(addCollectionController).controlCollectionFunc(userModel: userModel);
   }
 
