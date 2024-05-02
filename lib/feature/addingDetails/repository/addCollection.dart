@@ -14,7 +14,11 @@ class AddCollection{
   CollectionReference get _account => _firestore.collection("account");
 
   collectionFunc({required UserModel userModel}){
-    _account.add(userModel.tomap());
+    _account.add(userModel.tomap()).then((value) {
+      value.update({
+        "id" : value.id
+      });
+    });
   }
 
 }
