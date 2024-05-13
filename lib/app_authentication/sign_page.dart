@@ -213,6 +213,7 @@ class _signPageState extends State<signPage> {
                         CupertinoPageRoute(
                           builder: (context) => selectLocationPage(),
                         ));
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login Successfully")));
                   },
                   child: Container(
                     height: w * 0.15,

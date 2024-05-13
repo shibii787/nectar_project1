@@ -441,6 +441,7 @@ class _signupPageState extends ConsumerState<signupPage> {
                 onTap: () {
                   addNewUserFunc();
                   Navigator.push(context, CupertinoPageRoute(builder: (context) => selectLocationPage(),));
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Signup Successfully")));
                 },
                 child: Container(
                   height: w * 0.18,

@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
@@ -6,7 +5,6 @@ import 'package:geolocator/geolocator.dart';
 import 'package:nectar_project1/app_body/bottom_nav.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 
 import '../main.dart';
@@ -108,6 +106,7 @@ class _selectLocationPageState extends State<selectLocationPage> {
             InkWell(
               onTap: () {
                 Navigator.push(context, CupertinoPageRoute(builder: (context) => bottomNav(),));
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Submitted Successfully")));
               },
               child: Container(
                 height: w * 0.15,
