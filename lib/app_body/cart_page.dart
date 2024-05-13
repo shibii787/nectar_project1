@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:nectar_project1/app_payment/payment1.dart';
 import 'package:nectar_project1/app_profile/promocard.dart';
 import 'package:nectar_project1/core/common/colors.dart';

@@ -1,14 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:nectar_project1/app_body/cart_page.dart';
-import 'package:nectar_project1/app_body/explore_page.dart';
+import 'package:nectar_project1/app_body/new_explore_page.dart';
 import 'package:nectar_project1/app_profile/account.dart';
-import 'package:nectar_project1/app_profile/profile_page.dart';
 import 'package:nectar_project1/core/common/colors.dart';
-
-
-
-import '../app_payment/payment1.dart';
 import 'favourite_page.dart';
 import 'home_page.dart';
 
@@ -27,7 +22,7 @@ class _bottomNavState extends State<bottomNav> {
   //to add all UI pages into the bottom navigation bar
   List pages =[
     homeScreen(),
-    ExplorePage(),
+    newExplorePage(),
     CartPage(),
     FavouritePage(),
     account()
