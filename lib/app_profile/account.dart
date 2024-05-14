@@ -300,7 +300,7 @@ class _accountState extends State<account> {
                                 Icon(Icons.airplane_ticket_outlined),
                                 SizedBox(width: w*0.05,),
                                 Text(
-                                  'Promo Cord',
+                                  'Promo Card',
                                   style: TextStyle(fontWeight: FontWeight.w600),
                                 ),
                               ],
