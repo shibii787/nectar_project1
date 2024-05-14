@@ -66,7 +66,7 @@ class _selectLocationPageState extends State<selectLocationPage> {
       body: Padding(
         padding: EdgeInsets.all(w * 0.03),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
               height: h*0.5,
@@ -92,17 +92,35 @@ class _selectLocationPageState extends State<selectLocationPage> {
                 ],
               ),
             ),
-            SizedBox(height: h*0.05),
-            ElevatedButton(
-                onPressed: () async {
+            Container(
+              height: h*0.15,
+              width: w*0.8,
+              padding: EdgeInsets.all(w*0.03),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(w*0.05),
+                border: Border.all(
+                  color: theColors.third.withOpacity(0.6)
+                )
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ElevatedButton(
+                      onPressed: () async {
 
-                  _currentLocation = await getCurrentLocation();
-                  _currentAddress = await getAddressCoordinates();
-                  await getAddressCoordinates();
-                  print("$_currentLocation");
-                  print("$_currentAddress");
+                        _currentLocation = await getCurrentLocation();
+                        _currentAddress = await getAddressCoordinates();
+                        await getAddressCoordinates();
+                        print("$_currentLocation");
+                        print("$_currentAddress");
 
-                }, child: Text("Submit Your Zone")),
+                      }, child: Text("Submit Your Zone")),
+                  Text("${_currentAddress}",style: TextStyle(
+                      fontWeight: FontWeight.w500
+                  ),),
+                ],
+              ),
+            ),
             InkWell(
               onTap: () {
                 Navigator.push(context, CupertinoPageRoute(builder: (context) => bottomNav(),));

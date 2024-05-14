@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nectar_project1/app_authentication/forgot_password.dart';
+import 'package:nectar_project1/app_authentication/select_location_page.dart';
 import 'package:nectar_project1/app_authentication/sign_page.dart';
 import 'package:nectar_project1/app_authentication/signup_page.dart';
 import 'package:nectar_project1/app_authentication/verification_page.dart';
@@ -62,7 +63,7 @@ class MyApp extends StatelessWidget {
             textTheme: GoogleFonts.poppinsTextTheme()
         ),
         debugShowCheckedModeBanner: false,
-        home: splashscreen(),
+        home: selectLocationPage(),
       ),
     );
   }
