@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:nectar_project1/app_authentication/select_location_page.dart';
 import 'package:nectar_project1/pages_showing_items/appleDetails.dart';
 import 'package:nectar_project1/pages_showing_items/bananapage.dart';
 import 'package:nectar_project1/core/common/colors.dart';
@@ -149,24 +150,91 @@ class _homeScreenState extends State<homeScreen> {
               child: Column(
                 children: [
                   SizedBox(height: h * 0.02),
-                  Container(
-                    height: h * 0.14,
-                    width: w * 0.5,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(theImages.orangeCarrot,
-                            height: w * 0.15, width: w * 0.15),
-                        SizedBox(height: h * 0.02),
-                        Row(
-                          children: [
-                            Icon(Icons.location_on),
-                            Text("$_currentAddress",style: TextStyle(
-                            color: theColors.secondary
-                            ),),
-                          ],
+                  InkWell(
+                    onTap: () {
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(w*0.05),
+                              ),
+                              title: Text("Are you sure you want to update your location details?", style: TextStyle(
+                                fontSize: w*0.035
+                              ),),
+                              content: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.pushAndRemoveUntil(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => selectLocationPage(),
+                                          ),
+                                              (route) => false);
+                                      setState(() {});
+                                    },
+                                    child: Container(
+                                      height: h * 0.05,
+                                      width: w * 0.2,
+                                      child: Center(child: Text("Yes",style: TextStyle(
+                                          color: theColors.primaryColor
+                                      ),)),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(w * 0.03),
+                                        color: theColors.third,
+                                      ),
+                                    ),
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.pop(context);
+                                      setState(() {});
+                                    },
+                                    child: Container(
+                                      height: h * 0.05,
+                                      width: w * 0.2,
+                                      child: Center(child: Text("No",style: TextStyle(
+                                          color: theColors.primaryColor
+                                      ),)),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(w * 0.03),
+                                        color: theColors.third,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            );
+                          },);
+                    },
+                    child: Container(
+                      height: h * 0.15,
+                      width: w * 0.55,
+                      padding: EdgeInsets.all(w*0.02),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(w*0.03),
+                        border: Border.all(
+                          color: theColors.third.withOpacity(0.5)
                         )
-                      ],
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(theImages.orangeCarrot,
+                              height: w * 0.15, width: w * 0.15),
+                          SizedBox(height: h * 0.02),
+                          Row(
+                            children: [
+                              Icon(Icons.location_on),
+                              Text("$_currentAddress",style: TextStyle(
+                              color: theColors.secondary
+                              ),),
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(height: h * 0.03),

@@ -124,7 +124,7 @@ class _selectLocationPageState extends State<selectLocationPage> {
             InkWell(
               onTap: () {
                 Navigator.push(context, CupertinoPageRoute(builder: (context) => bottomNav(),));
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Submitted Successfully")));
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Location Submitted Successfully")));
               },
               child: Container(
                 height: w * 0.15,

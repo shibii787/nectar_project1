@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 
 class promocard extends StatefulWidget {
@@ -30,8 +31,7 @@ class _promocardState extends State<promocard> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image(
-              image: NetworkImage("https://cdni.iconscout.com/illustration/premium/thumb/oops-page-not-found-3702353-3119142.png"))
+          Lottie.asset("assets/icons/Animation - 1715679709474.json")
         ],
       ),
     );
