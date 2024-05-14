@@ -24,6 +24,7 @@ import 'package:nectar_project1/app_profile/payment%20methods.dart';
 import 'package:nectar_project1/app_profile/promocard.dart';
 import 'package:nectar_project1/app_body/new_explore_page.dart';
 import 'package:nectar_project1/firebase_options.dart';
+import 'package:nectar_project1/pages_showing_items/bananapage.dart';
 import 'app_body/bottom_nav.dart';
 import 'app_payment/Payment_card.dart';
 import 'app_payment/payment1.dart';
@@ -63,7 +64,7 @@ class MyApp extends StatelessWidget {
             textTheme: GoogleFonts.poppinsTextTheme()
         ),
         debugShowCheckedModeBanner: false,
-        home: splashscreen(),
+        home: bananapage(),
       ),
     );
   }

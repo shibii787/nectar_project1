@@ -151,7 +151,7 @@ class _appleDetailsState extends State<appleDetails> {
                   });
                 },
                 child: more==true?Container(
-                  height: h*0.09,
+                  height: h*0.11,
                   width: w*1,
                   decoration: BoxDecoration(
                       border: Border(

@@ -34,21 +34,27 @@ class _bananapageState extends State<bananapage> {
           )),
         ),
       ),
-      appBar: AppBar(
-        actions: [
-          Icon(Icons.file_upload_outlined,color: theColors.secondary),
-        ],
-        backgroundColor: theColors.sixth,
-        elevation: 0,
-        leading:  InkWell(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Icon(CupertinoIcons.back,color: theColors.secondary,)),
-      ),
-      body: Padding(
-        padding:  EdgeInsets.all(w*0.03),
-        child: SingleChildScrollView(
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: theColors.sixth,
+          automaticallyImplyLeading: false,
+          leading: InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Icon(CupertinoIcons.back)),
+          actions: [
+            Icon(Icons.file_upload_outlined)
+          ],
+        ),
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Padding(
+          padding: EdgeInsets.only(
+            left: w*0.01,
+            right: w*0.01,
+            bottom: w*0.03,
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -95,6 +101,7 @@ class _bananapageState extends State<bananapage> {
                 color: theColors.sixth
             ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   InkWell(
                     onTap:() {
@@ -141,8 +148,8 @@ class _bananapageState extends State<bananapage> {
                    });
                  },
                child: more==true? Container(
-                  height: h*0.09,
-                  width: w*1,
+                 height: h*0.11,
+                 width: w*1,
                   decoration: BoxDecoration(
                     border: Border(
                       top: BorderSide(
