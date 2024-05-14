@@ -11,7 +11,7 @@ import 'package:nectar_project1/app_authentication/signup_page.dart';
 import 'package:nectar_project1/app_authentication/verification_page.dart';
 import 'package:nectar_project1/app_body/cart_page.dart';
 import 'package:nectar_project1/app_body/order_accepted.dart';
-import 'package:nectar_project1/app_body/appleDetails.dart';
+import 'package:nectar_project1/pages_showing_items/appleDetails.dart';
 import 'package:nectar_project1/app_into/splashscreen.dart';
 import 'package:nectar_project1/app_profile/about.dart';
 import 'package:nectar_project1/app_profile/account.dart';
@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
             textTheme: GoogleFonts.poppinsTextTheme()
         ),
         debugShowCheckedModeBanner: false,
-        home: selectLocationPage(),
+        home: splashscreen(),
       ),
     );
   }

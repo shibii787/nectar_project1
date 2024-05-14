@@ -17,7 +17,7 @@ class _appleDetailsState extends State<appleDetails> {
 
   bool more=false; //to show product details
 
-  int count=0;
+  int apple=1;
 
   
   @override
@@ -108,7 +108,7 @@ class _appleDetailsState extends State<appleDetails> {
                       children: [
                         InkWell(
                           onTap: () {
-                            count==0?0:count--;
+                            apple==1?1:apple--;
                             setState(() {
 
                             });
@@ -122,13 +122,13 @@ class _appleDetailsState extends State<appleDetails> {
                               color: theColors.primaryColor
                             ),
                             child: Center(
-                              child: Text(count.toString(),style: TextStyle(
+                              child: Text(apple.toString(),style: TextStyle(
                                 fontWeight: FontWeight.w500
                               ),),
                             )),
                        InkWell(
                          onTap: () {
-                           count++;
+                           apple++;
                            setState(() {
 
                            });
