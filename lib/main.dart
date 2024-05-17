@@ -8,7 +8,6 @@ import 'package:nectar_project1/app_authentication/forgot_password.dart';
 import 'package:nectar_project1/app_authentication/select_location_page.dart';
 import 'package:nectar_project1/app_authentication/sign_page.dart';
 import 'package:nectar_project1/app_authentication/signup_page.dart';
-import 'package:nectar_project1/app_authentication/verification_page.dart';
 import 'package:nectar_project1/app_body/cart_page.dart';
 import 'package:nectar_project1/app_body/order_accepted.dart';
 import 'package:nectar_project1/pages_showing_items/appleDetails.dart';
@@ -28,9 +27,17 @@ import 'package:nectar_project1/pages_showing_items/bananapage.dart';
 import 'app_body/bottom_nav.dart';
 import 'app_payment/Payment_card.dart';
 import 'app_payment/payment1.dart';
+import 'model/userModel.dart';
 
 var h; //variable for height
 var w; //variable for width
+
+UserModel? currentUserModel;
+
+var userName;
+var userEmail;
+var userImage;
+var userLocation;
 
 Future<void> main() async {
  WidgetsFlutterBinding.ensureInitialized();

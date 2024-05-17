@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nectar_project1/app_body/bottom_nav.dart';
 import 'package:nectar_project1/app_into/onboarding.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../main.dart';
 
@@ -14,15 +16,28 @@ class splashscreen extends StatefulWidget {
 }
 
 class _splashscreenState extends State<splashscreen> {
+
+  // A function created to check login and out
+  getLoggedin() async {
+    SharedPreferences logIn = await SharedPreferences.getInstance();
+    final String checkName = logIn.getString("name") ?? "";
+
+    Future.delayed(Duration(
+        seconds: 3)).then((value) {
+      if(checkName.isNotEmpty){
+        Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => bottomNav(),));
+      }else{
+        Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => onboarding(),));
+      }
+    }
+    );
+  }
+
   @override
   void initState() {
+    getLoggedin();
     // TODO: implement initState
     super.initState();
-    Future.delayed(Duration(seconds: 2)).then((value) => Navigator.push(
-        context,
-        CupertinoPageRoute(
-          builder: (context) => onboarding(),
-        )));
   }
 
   @override

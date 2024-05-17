@@ -23,6 +23,9 @@ class _homeScreenState extends State<homeScreen> {
   //for animated smooth indicator
   int currentIndex = 0;
 
+  bool exclusiveSelect = false;
+  bool bestSellingSelect = false;
+
   TextEditingController searchController = TextEditingController(); //controller for search container
 
   //for carousel slider
@@ -35,33 +38,45 @@ class _homeScreenState extends State<homeScreen> {
   //exclusive list
   List exclusive=[
     {
-      "image": theImages.banana,
-      "name": "Banana",
-      "qty": 1,
-      "price" : 4.99
+      "image" : theImages.banana,
+      "name" : "Banana",
+      "qty" : 1,
+      "price" : 35
     },
     {
-      "image": theImages.apple,
-      "name": "Apple",
-      "qty": 1,
-      "price" : 4.99
+      "image" : theImages.apple,
+      "name" : "Apple",
+      "qty" : 1,
+      "price" : 180
     },
+    {
+      "image" : theImages.dragonFruit,
+      "name" : "Dragon fruit",
+      "qty" : 1,
+      "price" : 110
+    }
   ];
 
   //best selling list
   List bestSelling=[
     {
-      "image": theImages.Redbell,
-      "name": "Bell Pepper",
-      "qty": 1,
-      "price" : 4.99
+      "image" : theImages.Redbell,
+      "name" : "Bell Pepper",
+      "qty" : 1,
+      "price" : 55
     },
     {
-      "image": theImages.ginger,
-      "name": "Ginger",
-      "qty": 1,
-      "price" : 4.99
+      "image" : theImages.ginger,
+      "name" : "Ginger",
+      "qty" : 1,
+      "price" : 120
     },
+    {
+      "image" : theImages.cucumber,
+      "name" : "Cucumber",
+      "qty" : 1,
+      "price" : 60
+    }
   ];
 
   //groceries
@@ -82,13 +97,13 @@ class _homeScreenState extends State<homeScreen> {
       "image": theImages.meat,
       "name": "Beef",
       "qty": 1,
-      "price" : 4.99
+      "price" : 220
     },
     {
       "image": theImages.chicken,
       "name": "Chicken",
       "qty": 1,
-      "price" : 4.99
+      "price" : 110
     },
   ];
 
@@ -123,7 +138,7 @@ class _homeScreenState extends State<homeScreen> {
     }
   }
 
-  newFunc() async {
+  locationFunc() async {
     _currentLocation = await getCurrentLocation();
     _currentAddress = await getAddressCoordinates();
     await getAddressCoordinates();
@@ -134,7 +149,7 @@ class _homeScreenState extends State<homeScreen> {
 
   @override
   void initState() {
-    newFunc();
+    locationFunc();
     // TODO: implement initState
     super.initState();
   }
@@ -226,6 +241,7 @@ class _homeScreenState extends State<homeScreen> {
                               height: w * 0.15, width: w * 0.15),
                           SizedBox(height: h * 0.02),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(Icons.location_on),
                               Text("$_currentAddress",style: TextStyle(
@@ -306,16 +322,21 @@ class _homeScreenState extends State<homeScreen> {
                       Text("Exclusive Offer",style: TextStyle(
                         fontWeight: FontWeight.w600,color: theColors.secondary
                       ),),
-                      Text("See All",style: TextStyle(
-                        fontWeight: FontWeight.w500,color: theColors.third
-                      ),)
+                      InkWell(
+                        onTap: () {
+                          exclusiveSelect=!exclusiveSelect;
+                        },
+                        child:Text(exclusiveSelect == true ? "See Less" : "See All",style: TextStyle(
+                          fontWeight: FontWeight.w500,color: theColors.third
+                        ),),
+                      )
                     ],
                   ),
                   Container(
                     height: h*0.35,
                     width: w*1,
                     child: ListView.builder(
-                      itemCount: exclusive.length,
+                      itemCount: exclusiveSelect== true ? exclusive.length : 2,
                       physics: BouncingScrollPhysics(),
                         scrollDirection: Axis.horizontal,
                         shrinkWrap: true,
@@ -349,7 +370,7 @@ class _homeScreenState extends State<homeScreen> {
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text(exclusive[index]["price"].toString(),style: TextStyle(
+                                      Text("${exclusive[index]["price"].toString()} ₹",style: TextStyle(
                                         fontWeight: FontWeight.w600
                                       ),),
                                       Container(
@@ -382,16 +403,21 @@ class _homeScreenState extends State<homeScreen> {
                       Text("Best Selling",style: TextStyle(
                           fontWeight: FontWeight.w600,color: theColors.secondary
                       ),),
-                      Text("See All",style: TextStyle(
-                          fontWeight: FontWeight.w500,color: theColors.third
-                      ),)
+                      InkWell(
+                        onTap: () {
+                          bestSellingSelect=!bestSellingSelect;
+                        },
+                        child: Text(bestSellingSelect == true ? "See Less" : "See All",style: TextStyle(
+                            fontWeight: FontWeight.w500,color: theColors.third
+                        ),),
+                      )
                     ],
                   ),
                   Container(
                     height: h*0.35,
                     width: w*1,
                     child: ListView.builder(
-                      itemCount: bestSelling.length,
+                      itemCount: bestSellingSelect == true ? bestSelling.length : 2,
                       physics: BouncingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
                       shrinkWrap: true,
@@ -420,7 +446,7 @@ class _homeScreenState extends State<homeScreen> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(bestSelling[index]["price"].toString(),style: TextStyle(
+                                  Text("${bestSelling[index]["price"]} ₹".toString(),style: TextStyle(
                                       fontWeight: FontWeight.w600
                                   ),),
                                   Container(
@@ -452,9 +478,15 @@ class _homeScreenState extends State<homeScreen> {
                       Text("Groceries",style: TextStyle(
                           fontWeight: FontWeight.w600,color: theColors.secondary
                       ),),
-                      Text("See All",style: TextStyle(
-                          fontWeight: FontWeight.w500,color: theColors.third
-                      ),)
+                      InkWell(
+                        onTap: () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text("No more items available now")));
+                        },
+                        child: Text("See All",style: TextStyle(
+                            fontWeight: FontWeight.w500,color: theColors.third
+                        ),),
+                      )
                     ],
                   ),
                   SizedBox(height: h * 0.02),
@@ -524,7 +556,7 @@ class _homeScreenState extends State<homeScreen> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(meat[index]["price"].toString(),style: TextStyle(
+                                  Text("${meat[index]["price"].toString()} ₹",style: TextStyle(
                                       fontWeight: FontWeight.w600
                                   ),),
                                   Container(

@@ -1,4 +1,4 @@
-import 'package:country_code_picker/country_code_picker.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,9 +6,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nectar_project1/app_authentication/forgot_password.dart';
 import 'package:nectar_project1/app_authentication/select_location_page.dart';
 import 'package:nectar_project1/app_authentication/signup_page.dart';
-import 'package:nectar_project1/app_authentication/verification_page.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
+
 
 import '../main.dart';
 
@@ -20,6 +20,7 @@ class signPage extends StatefulWidget {
 }
 
 class _signPageState extends State<signPage> {
+
   bool tap = true;
 
   TextEditingController numberController = TextEditingController();
@@ -208,12 +209,29 @@ class _signPageState extends State<signPage> {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        CupertinoPageRoute(
-                          builder: (context) => selectLocationPage(),
-                        ));
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login Successfully")));
+
+                    FirebaseAuth.instance.signInWithEmailAndPassword(
+                        email: emailController.text.trim(),
+                        password: passwordController.text
+                    ).then((value) async {
+
+                      var userDetails = await FirebaseFirestore.instance.collection("account").where(
+                        "email", isEqualTo: emailController.text.trim()
+                      ).get();
+
+                      userName = userDetails.docs[0]["name"];
+
+                      Navigator.pushReplacement(
+                          context,
+                          CupertinoPageRoute(
+                            builder: (context) => selectLocationPage(),
+                          ));
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login Successful")));
+
+                    }).catchError((error){
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error.toString())));
+                    });
+
                   },
                   child: Container(
                     height: w * 0.15,

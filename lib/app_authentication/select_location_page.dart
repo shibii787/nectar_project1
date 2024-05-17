@@ -10,7 +10,7 @@ import 'package:nectar_project1/core/common/images.dart';
 import '../main.dart';
 
 class selectLocationPage extends StatefulWidget {
-  const selectLocationPage({super.key});
+  const selectLocationPage({super.key,});
 
   @override
   State<selectLocationPage> createState() => _selectLocationPageState();
@@ -123,7 +123,9 @@ class _selectLocationPageState extends State<selectLocationPage> {
             ),
             InkWell(
               onTap: () {
+
                 Navigator.push(context, CupertinoPageRoute(builder: (context) => bottomNav(),));
+
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Location Submitted Successfully")));
               },
               child: Container(

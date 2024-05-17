@@ -23,9 +23,11 @@ class theImages{
   //list view fruits
   static const banana="assets/images/92f1ea7dcce3b5d06cd1b1418f9b9413 3.png";
   static const apple="assets/images/pngfuel 1.png";
+  static const dragonFruit="assets/images/DrAxeDragonFruitThumbnail.jpg";
 
   //list view vegetables
   static const ginger="assets/images/pngfuel 3.png";
+  static const cucumber="assets/images/unnamed.jpg";
 
   //list of groceries
   static const rice="assets/images/8-82858_download-sack-of-rice-png 1.png";

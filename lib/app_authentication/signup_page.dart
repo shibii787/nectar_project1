@@ -1,12 +1,12 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:nectar_project1/app_authentication/select_location_page.dart';
 import 'package:nectar_project1/app_authentication/sign_page.dart';
@@ -14,6 +14,7 @@ import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
 import 'package:nectar_project1/feature/addingDetails/controller/collectionControl.dart';
 import 'package:nectar_project1/model/userModel.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../main.dart';
 
@@ -25,6 +26,7 @@ class signupPage extends ConsumerStatefulWidget {
 }
 
 class _signupPageState extends ConsumerState<signupPage> {
+
   var file;
   String imageurl = "";
 
@@ -39,6 +41,7 @@ class _signupPageState extends ConsumerState<signupPage> {
   final passwordValidation =
       RegExp(r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$");
 
+  //for uploading image
   pickFile(ImageSource) async {
     final pickedFile =
         await ImagePicker.platform.pickImage(source: ImageSource);
@@ -46,6 +49,25 @@ class _signupPageState extends ConsumerState<signupPage> {
     if (mounted) {
       setState(() {
         file = File(pickedFile.path);
+      });
+      uploadFile(file);
+    }
+  }
+
+  uploadFile(File file) async {
+    if(file != null){
+      var image = await FirebaseStorage.instance
+          .ref("profile_image")
+          .child("${DateTime.now()}")
+          .putFile(file!,
+          SettableMetadata(
+              contentType: "image/jpg"
+          ));
+
+      imageurl = await image.ref.getDownloadURL();
+
+      setState(() {
+
       });
     }
   }
@@ -81,16 +103,57 @@ class _signupPageState extends ConsumerState<signupPage> {
     }
   }
 
-  addNewUserFunc(){
-    UserModel userModel = UserModel(
-        name: nameController.text,
-        email: emailController.text.trim(),
-        password: passwordController.text,
-        location: _currentAddress,
-        phoneNumber: null,
-        id: "");
+  // function to add newUserDetails to the app using shared preference
+  Future<void> newUserDetails()async {
+    try{
+      SharedPreferences newUser = await SharedPreferences.getInstance();
+      newUser.setString("name", userName.toString());
+      newUser.setString("email", userEmail.toString());
 
-    ref.watch(addCollectionController).controlCollectionFunc(userModel: userModel);
+    } catch (e) {
+      print("Error saving details : $e");
+    }
+  }
+
+  addNewUserFunc()async{
+
+    FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text).then((value) {
+
+      print("aaaaaaaaaaaaaaaaaaaaaa");
+      UserModel userModel = UserModel(
+          name: nameController.text,
+          email: emailController.text.trim(),
+          password: passwordController.text,
+          location: _currentAddress,
+          phoneNumber: null,
+          id: "");
+
+      ref.watch(addCollectionController).controlCollectionFunc(userModel: userModel);
+
+    }).then((value) async {
+
+      print('bbbbbbbbbbbbbbbbbbbbbb');
+      var userDetails = await FirebaseFirestore.instance.collection("account").where(
+          "email", isEqualTo: emailController.text.trim()
+      ).get();
+
+      // assigning details to global variables
+      userName = userDetails.docs[0]["name"];
+      userEmail = userDetails.docs[0]["email"];
+
+      newUserDetails(); //sharedpreference code
+
+      Navigator.push(context, CupertinoPageRoute(builder: (context) => selectLocationPage(),));
+
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Sign up Successful")));
+
+    }).catchError((error){
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error.toString())));
+    });
+
   }
 
   @override
@@ -439,9 +502,39 @@ class _signupPageState extends ConsumerState<signupPage> {
               ),
               InkWell(
                 onTap: () {
+
+                  // SharedPreferences newUserDetails = await SharedPreferences.getInstance();
+                  // newUserDetails.setString("name", nameController.text.toString());
+                  // newUserDetails.setString("email", emailController.text.toString());
+
+                  // newUserDetails();
+                  //
+                  // FirebaseAuth.instance.createUserWithEmailAndPassword(
+                  //     email: emailController.text.trim(),
+                  //     password: passwordController.text
+                  // ).then((value) async {
+                  //
+                  //   var details = await FirebaseFirestore.instance.collection("account").where(
+                  //       "email",isEqualTo: emailController.text.trim()
+                  //   ).get();
+                  //
+                  //   userName = details.docs[0]["name"];
+                  //   userEmail = details.docs[0]["email"];
+                  //
+                  //   addNewUserFunc();
+                  //
+                  //   Navigator.push(context, CupertinoPageRoute(builder: (context) => selectLocationPage(),));
+                  //
+                  //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Signup Successful")));
+                  //
+                  // }).catchError((
+                  // error) {
+                  // ScaffoldMessenger.of(context).showSnackBar(
+                  // SnackBar(content: Text(error.toString())));
+                  // });
+
                   addNewUserFunc();
-                  Navigator.push(context, CupertinoPageRoute(builder: (context) => selectLocationPage(),));
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Signup Successfully")));
+
                 },
                 child: Container(
                   height: w * 0.18,
