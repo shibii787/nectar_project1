@@ -208,28 +208,6 @@ class _appleDetailsState extends State<appleDetails> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Nutrition"),
-                    Container(
-                      color: theColors.sixth,
-                        child: Text("100 G")),
-                  ],
-                ),
-              ),
-              SizedBox(height: h*0.02),
-              Container(
-                height: h*0.05,
-                width: w*1,
-                decoration: BoxDecoration(
-                    border: Border(
-                        top: BorderSide(
-                            color: theColors.secondary,
-                            width: w*0.002
-                        )
-                    )
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
                     Text("Review"),
                     AnimatedRatingStars(
                       initialRating: 3.5,

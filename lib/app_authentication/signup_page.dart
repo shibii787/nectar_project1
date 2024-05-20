@@ -121,7 +121,6 @@ class _signupPageState extends ConsumerState<signupPage> {
         email: emailController.text.trim(),
         password: passwordController.text).then((value) {
 
-      print("aaaaaaaaaaaaaaaaaaaaaa");
       UserModel userModel = UserModel(
           name: nameController.text,
           email: emailController.text.trim(),
@@ -134,7 +133,6 @@ class _signupPageState extends ConsumerState<signupPage> {
 
     }).then((value) async {
 
-      print('bbbbbbbbbbbbbbbbbbbbbb');
       var userDetails = await FirebaseFirestore.instance.collection("account").where(
           "email", isEqualTo: emailController.text.trim()
       ).get();
@@ -142,8 +140,10 @@ class _signupPageState extends ConsumerState<signupPage> {
       // assigning details to global variables
       userName = userDetails.docs[0]["name"];
       userEmail = userDetails.docs[0]["email"];
+      print("FFFFFFFFFFFFFFFFFFFFFFFFFFFF : $userName");
 
       newUserDetails(); //sharedpreference code
+      print("VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV : $userName");
 
       Navigator.push(context, CupertinoPageRoute(builder: (context) => selectLocationPage(),));
 
@@ -534,6 +534,9 @@ class _signupPageState extends ConsumerState<signupPage> {
                   // });
 
                   addNewUserFunc();
+
+                  print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA : ${userName.toString()}");
+                  print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA : ${userEmail.toString()}");
 
                 },
                 child: Container(

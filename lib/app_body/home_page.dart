@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
@@ -41,21 +42,30 @@ class _homeScreenState extends State<homeScreen> {
       "image" : theImages.banana,
       "name" : "Banana",
       "qty" : 1,
-      "price" : 35
+      "price" : 35,
+      "description" : "Bananas are nutritious.They are good for health. It promotes weight gain and helps to improve heart health and digestion"
     },
     {
       "image" : theImages.apple,
       "name" : "Apple",
       "qty" : 1,
-      "price" : 180
+      "price" : 180,
+      "description" : "Apples are nutritious. They are good for health. It promotes weight loss and it is good for your heart.",
     },
     {
       "image" : theImages.dragonFruit,
       "name" : "Dragon fruit",
       "qty" : 1,
-      "price" : 110
+      "price" : 110,
+      "description" : "A Dragon Fruit reduces risk of diabetes, reduces risks of cancer, helps in boosting immunity",
     }
   ];
+
+  addExclusiveList() async {
+    for(int i =0; i<exclusive.length; i++){
+     await FirebaseFirestore.instance.collection("exclusive").add(exclusive[i]);
+    }
+  }
 
   //best selling list
   List bestSelling=[
@@ -63,21 +73,30 @@ class _homeScreenState extends State<homeScreen> {
       "image" : theImages.Redbell,
       "name" : "Bell Pepper",
       "qty" : 1,
-      "price" : 55
+      "price" : 55,
+      "description" : "A Bell Pepper eases inflammation, reduced disease risk, improves immune health and improves eye health",
     },
     {
       "image" : theImages.ginger,
       "name" : "Ginger",
       "qty" : 1,
-      "price" : 120
+      "price" : 120,
+      "description" : "A Ginger can cut down on fermentation, constipation and other causes of bloating and intestinal gas.",
     },
     {
       "image" : theImages.cucumber,
       "name" : "Cucumber",
       "qty" : 1,
-      "price" : 60
+      "price" : 60,
+      "description" : "A Cucumber is good for hydration & detoxification it regulates blood pressure, reduces blood sugar, helpful in weight loss, better skin,soothes our eyes, reduces the risk of cancer"
     }
   ];
+  
+  addBestSellingList() async {
+    for(int j = 0; j<bestSelling.length; j++){
+    await FirebaseFirestore.instance.collection("bestSelling").add(bestSelling[j]);
+    }
+  }
 
   //groceries
   List groceries=[
@@ -140,7 +159,7 @@ class _homeScreenState extends State<homeScreen> {
 
   locationFunc() async {
     _currentLocation = await getCurrentLocation();
-    _currentAddress = await getAddressCoordinates();
+    _currentAddress = await getAddressCoordinates() ?? null;
     await getAddressCoordinates();
     print("$_currentLocation");
     print("$_currentAddress");

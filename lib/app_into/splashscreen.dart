@@ -17,25 +17,25 @@ class splashscreen extends StatefulWidget {
 
 class _splashscreenState extends State<splashscreen> {
 
-  // A function created to check login and out
-  getLoggedin() async {
-    SharedPreferences logIn = await SharedPreferences.getInstance();
-    final String checkName = logIn.getString("name") ?? "";
+  Future<void> getLoggedIn()async{
+    SharedPreferences login = await SharedPreferences.getInstance();
+    userName=login.getString("name") ?? "";
+    userEmail=login.getString("email") ?? "";
 
-    Future.delayed(Duration(
-        seconds: 3)).then((value) {
-      if(checkName.isNotEmpty){
-        Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => bottomNav(),));
-      }else{
-        Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => onboarding(),));
-      }
+    print("TTTTTTTTTTTTTTTTTTTT : $userName");
+    print("TTTTTTTTTTTTTTTTTTTT : $userEmail");
+
+    await Future.delayed(Duration(seconds: 3));
+    if(userEmail == null || userEmail.isEmpty){
+      Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => onboarding(),));
+    }else{
+      Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => bottomNav(),));
     }
-    );
   }
 
   @override
   void initState() {
-    getLoggedin();
+    getLoggedIn();
     // TODO: implement initState
     super.initState();
   }

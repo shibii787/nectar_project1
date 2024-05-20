@@ -6,8 +6,10 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nectar_project1/app_authentication/forgot_password.dart';
 import 'package:nectar_project1/app_authentication/select_location_page.dart';
 import 'package:nectar_project1/app_authentication/signup_page.dart';
+import 'package:nectar_project1/app_body/bottom_nav.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 import '../main.dart';
@@ -220,11 +222,15 @@ class _signPageState extends State<signPage> {
                       ).get();
 
                       userName = userDetails.docs[0]["name"];
+                      userEmail= userDetails.docs[0]["email"];
+
+                      print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA : ${userName.toString()}");
+                      print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA : ${userEmail.toString()}");
 
                       Navigator.pushReplacement(
                           context,
                           CupertinoPageRoute(
-                            builder: (context) => selectLocationPage(),
+                            builder: (context) => bottomNav(),
                           ));
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login Successful")));
 

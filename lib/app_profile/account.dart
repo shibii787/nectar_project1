@@ -1,8 +1,10 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:nectar_project1/app_authentication/sign_page.dart';
 import 'package:nectar_project1/app_profile/about.dart';
@@ -32,6 +34,12 @@ class _accountState extends State<account> {
   String imageurl = "";
   String name = "";
   String email = "";
+
+  getLogInAndOut() async {
+    SharedPreferences logInAndOut = await SharedPreferences.getInstance();
+    logInAndOut.setString("name", userName);
+    logInAndOut.setString("email", userEmail);
+  }
 
   pickFile(ImageSource) async {
     final pickedFile =
@@ -67,6 +75,7 @@ class _accountState extends State<account> {
 
   @override
   void initState() {
+    getLogInAndOut();
     nameController.text = userName.toString();
     // TODO: implement initState
     super.initState();
@@ -457,16 +466,13 @@ class _accountState extends State<account> {
 
                                   //for logging a user out
                                   SharedPreferences logOut = await SharedPreferences.getInstance();
-                                  logOut.remove("name");
-                                  logOut.remove("email");
+                                  logOut.clear();
+                                  GoogleSignIn().signOut();
 
-                                  Navigator.pushAndRemoveUntil(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => signPage(),
-                                      ),
-                                      (route) => false);
-                                  setState(() {});
+                                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => signPage(),), (route) => false);
+                                  setState(() {
+
+                                  });
                                 },
                                 child: Container(
                                   height: h * 0.05,
