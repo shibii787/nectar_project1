@@ -17,14 +17,14 @@ class newExplorePage extends StatefulWidget {
 class _newExplorePageState extends State<newExplorePage> {
 
   //This list is to represent the pictures of the provided categories
-  List categoryImages = [
-    "https://t3.ftcdn.net/jpg/01/18/84/52/360_F_118845283_n9uWnb81tg8cG7Rf9y3McWT1DT1ZKTDx.jpg", //meat and fish
-    "https://img.freepik.com/free-photo/colorful-soda-drinks-macro-shot_53876-18225.jpg", // beverage
-    "https://t3.ftcdn.net/jpg/06/09/78/34/360_F_609783461_HfpzFpb908IhXOR1PSKXGChoZZhXzRBH.jpg", // fruits and vegetables
-    "https://www.foodnavigator.com/var/wrbm_gb_food_pharma/storage/images/9/1/5/7/907519-1-eng-GB/Spanish-research-aims-to-overcome-milk-egg-allergies.jpg", // milk and eggs
-    "https://qph.cf2.quoracdn.net/main-qimg-771d07b3c07f38b1679174c4ffedcf4f-lq", // cooking oil and ghee
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTd_f_-VlTcmkMH8bl5ZW2Rg7GwHf6lpw-eXlW-SWog6g&s", // bakery and snacks
-  ];
+  // List categoryImages = [
+  //   "https://t3.ftcdn.net/jpg/01/18/84/52/360_F_118845283_n9uWnb81tg8cG7Rf9y3McWT1DT1ZKTDx.jpg", //meat and fish
+  //   "https://img.freepik.com/free-photo/colorful-soda-drinks-macro-shot_53876-18225.jpg", // beverage
+  //   "https://t3.ftcdn.net/jpg/06/09/78/34/360_F_609783461_HfpzFpb908IhXOR1PSKXGChoZZhXzRBH.jpg", // fruits and vegetables
+  //   "https://www.foodnavigator.com/var/wrbm_gb_food_pharma/storage/images/9/1/5/7/907519-1-eng-GB/Spanish-research-aims-to-overcome-milk-egg-allergies.jpg", // milk and eggs
+  //   "https://qph.cf2.quoracdn.net/main-qimg-771d07b3c07f38b1679174c4ffedcf4f-lq", // cooking oil and ghee
+  //   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTd_f_-VlTcmkMH8bl5ZW2Rg7GwHf6lpw-eXlW-SWog6g&s", // bakery and snacks
+  // ];
   
   @override
   Widget build(BuildContext context) {
@@ -85,7 +85,7 @@ class _newExplorePageState extends State<newExplorePage> {
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      Image(image: NetworkImage(categoryImages[index])),
+                                      Image(image:NetworkImage(details[index]["image"])),
                                       Center(
                                         child: Text(details[index]["item"],style: TextStyle(
                                           fontWeight: FontWeight.w600

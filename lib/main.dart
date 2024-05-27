@@ -71,7 +71,7 @@ class MyApp extends StatelessWidget {
             textTheme: GoogleFonts.poppinsTextTheme()
         ),
         debugShowCheckedModeBanner: false,
-        home: selectLocationPage(),
+        home: splashscreen(),
       ),
     );
   }

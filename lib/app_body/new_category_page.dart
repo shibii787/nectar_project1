@@ -70,19 +70,27 @@ class _newCategoryPageState extends State<newCategoryPage> {
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+
+                      Container(
+                        height: w*0.3,
+                          width: w*0.5,
+
+                          child: Image.network(newDetails[index]["image"])),
                       Text(newDetails[index]["ItemName"],style: TextStyle(
-                        fontWeight: FontWeight.w600
+                          fontWeight: FontWeight.w600,
+
                       ),),
-                      Image.network(newDetails[index]["image"]),
                       Text("Quantity : ${newDetails[index]["qty"]}".toString(),style: TextStyle(
                           fontWeight: FontWeight.w600
                       ),),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("${newDetails[index]["price"]} ₹".toString(),style: TextStyle(
-                              fontWeight: FontWeight.w600
+                          Text("₹${newDetails[index]["price"]} ".toString(),style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                            fontSize: w*0.055
                           ),),
                           Container(
                             height: w*0.1,
