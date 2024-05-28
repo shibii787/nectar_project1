@@ -3,7 +3,9 @@ class UserModel{
   final String email;
   final String password;
   final String location;
-  final int? phoneNumber;
+  final int phoneNumber;
+  final String address;
+  final int? pincode;
   final String id;
 UserModel({
   required this.name,
@@ -11,6 +13,8 @@ UserModel({
   required this.password,
   required this.location,
   required this.phoneNumber,
+  required this.address,
+  required this.pincode,
   required this.id
 });
 Map<String,dynamic> tomap(){
@@ -20,6 +24,8 @@ Map<String,dynamic> tomap(){
     "password": this.password,
     "location": this.location,
     "phoneNumber":this.phoneNumber,
+    "address":this.address,
+    "pincode":this.pincode,
     "id":this.id
   };
 }
@@ -30,6 +36,8 @@ factory UserModel.fromMap(Map<String,dynamic>map){
       password: map["password"]??"",
       location: map["location"]??"",
       phoneNumber: map["phoneNumber"]??"",
+      address: map["address"]??"",
+      pincode: map["pincode"]??"",
       id: map["id"]??""
   );
 }
@@ -39,6 +47,8 @@ UserModel copyWith({
     String? password,
     String? location,
     int? phoneNumber,
+    String? address,
+    String? picode,
     String? id
 }){
   return UserModel(
@@ -47,6 +57,8 @@ UserModel copyWith({
       password: password ?? this.password,
       location: location ?? this.location,
       phoneNumber: phoneNumber ?? this.phoneNumber,
+      address: address ?? this.address,
+      pincode: pincode ?? this.pincode,
       id: id ?? this.id
   );
 }

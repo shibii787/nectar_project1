@@ -126,7 +126,9 @@ class _signupPageState extends ConsumerState<signupPage> {
           email: emailController.text.trim(),
           password: passwordController.text,
           location: _currentAddress,
-          phoneNumber: null,
+          phoneNumber: 0,
+          address: "",
+          pincode: 0,
           id: "");
 
       ref.watch(addCollectionController).controlCollectionFunc(userModel: userModel);
