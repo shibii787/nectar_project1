@@ -13,7 +13,9 @@ class theImages{
   static const payment="assets/icons/card.svg";
   static const gpay="assets/images/gpay.png";
   static const cardlogo="assets/images/debitcard.png";
+  static const daawatrice="assets/images/daawat rice.PNG";
   static const carticon="assets/icons/cart icon.svg";
+  static const pen="assets/icons/pencil-svgrepo-com.svg";
 
   //carousel slider images
   static const slider1="assets/images/off 1.jpeg";
