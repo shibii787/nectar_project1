@@ -45,4 +45,10 @@ class theImages{
   static const dairyAndEggs="assets/images/dairyandeggs.png";
   static const beverages="assets/images/beverages.png";
 
+
+//pulse images
+ static const greengrees="assets/images/green grees.webp";
+ static const blackgreens="assets/images/Black Gram.jpg";
+ static const limebeans="assets/images/limebeans.webp";
+ static const pulses="assets/images/pulses.jpg";
 }

@@ -31,53 +31,55 @@ class _mydetailsState extends State<mydetails> {
       ),
       body: Padding(
         padding:  EdgeInsets.all(w*0.03),
-        child: Column(
-          children: [
-            Container(
-              height: h*0.55,
-              width: w*1,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(userName,style: TextStyle(
-                      fontSize: w*0.05
-                  )),
-                  Text(userEmail,style: TextStyle(
-                  ),),
-                  Divider(
-                    indent: w*0.03,
-                    endIndent: w*0.03,
-                  ),
-                  Text("Location"),
-                  TextFormField(
-                    textInputAction: TextInputAction.next,
-                    keyboardType: TextInputType.emailAddress,
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: theColors.primaryColor,
-                      suffixIcon: Icon(CupertinoIcons.pencil),
-                      hintText: "Enter Your Address",
-                      labelText: "Address",
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(w*0.03)),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                height: h*0.55,
+                width: w*1,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(userName,style: TextStyle(
+                        fontSize: w*0.05
+                    )),
+                    Text(userEmail,style: TextStyle(
+                    ),),
+                    Divider(
+                      indent: w*0.03,
+                      endIndent: w*0.03,
                     ),
-                  ),
-                  TextFormField(
-                    textInputAction: TextInputAction.next,
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: InputDecoration(
-                        fillColor: theColors.primaryColor,
+                    Text("Location"),
+                    TextFormField(
+                      textInputAction: TextInputAction.next,
+                      keyboardType: TextInputType.emailAddress,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      decoration: InputDecoration(
                         filled: true,
-                        suffixIcon: Icon(CupertinoIcons.number_circle),
-                        hintText: "Enter Your Pincode",
-                        labelText: "Pincode",
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(w*0.03))
+                        fillColor: theColors.primaryColor,
+                        suffixIcon: Icon(CupertinoIcons.pencil),
+                        hintText: "Enter Your Address",
+                        labelText: "Address",
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(w*0.03)),
+                      ),
                     ),
-                  )
-                ],
+                    TextFormField(
+                      textInputAction: TextInputAction.next,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      decoration: InputDecoration(
+                          fillColor: theColors.primaryColor,
+                          filled: true,
+                          suffixIcon: Icon(CupertinoIcons.number_circle),
+                          hintText: "Enter Your Pincode",
+                          labelText: "Pincode",
+                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(w*0.03)),
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

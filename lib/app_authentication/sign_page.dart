@@ -9,7 +9,6 @@ import 'package:nectar_project1/app_authentication/signup_page.dart';
 import 'package:nectar_project1/app_body/bottom_nav.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 
 import '../main.dart';

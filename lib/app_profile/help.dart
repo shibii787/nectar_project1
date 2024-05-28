@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 
+import '../main.dart';
+
 
 
 class help extends StatefulWidget {
@@ -28,6 +30,41 @@ class _helpState extends State<help> {
         title: Text("Help",style: TextStyle(
             color: theColors.secondary
         )),
+      ),
+      body: Padding(
+        padding:  EdgeInsets.all(w*0.03),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Icon(Icons.help),
+                SizedBox(width: w*0.05,),
+                Column(
+                  children: [
+                    Text("HELP CENTRE",style: TextStyle(
+                      fontSize: w*0.05,
+                      fontWeight: FontWeight.w500
+                    ),),
+                    SizedBox(width: w*0.05),
+                    Text("Get help,us contact us")
+                  ],
+                ),
+              ],
+            ),
+            SizedBox(height: h*0.05,),
+            Row(
+              children: [
+                Icon(Icons.text_snippet_rounded),
+                SizedBox(width: w*0.05,),
+                Text("Terms and Privecy Policy",style: TextStyle(
+                  fontSize: w*0.05
+                ),)
+              ],
+            ),
+
+          ],
+        ),
       ),
     );
   }
