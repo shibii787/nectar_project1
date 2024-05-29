@@ -56,39 +56,63 @@ class _pulsesState extends State<pulses> {
       ),
       body: Column(
         children: [
-          Container(
-            height: w*0.5,
-            width: w*0.35,
-            decoration: BoxDecoration(
-                color: Colors.black,
-              borderRadius: BorderRadius.circular(w*0.04)
-            ),
-            child: ListView.builder(
-              physics: BouncingScrollPhysics(),
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return Container(
-                      height: h*0.15,
-                      width: w*0.4,
-                      padding: EdgeInsets.all(w*0.03),
-                  margin: EdgeInsets.all(w*0.03),
-                  decoration: BoxDecoration(
+             Expanded(
+               child: GridView.builder(
+                 shrinkWrap: true,
+                 physics: BouncingScrollPhysics(),
+                 itemCount: pulses.length,
+                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount:2,
+            crossAxisSpacing: w*0.03,
+            mainAxisSpacing: w*0.03,
+            childAspectRatio: 0.75,
+          ),
+           itemBuilder: (context, index) {
+            return  Container(
+                height: h*0.20,
+                width: w*0.4,
+                padding: EdgeInsets.all(w*0.03),
+                margin: EdgeInsets.all(w*0.03),
+                decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(w*0.03),
                   border: Border.all(
-                  color: theColors.eleventh
+                      color: theColors.eleventh
                   ),
-                  ),
-                    child: Column(
+                ),
+
+                child: Column(
+                  children: [
+                    Image.asset(pulses[index]["image"]),
+                    Text(pulses[index]["name"],style: TextStyle(
+                      fontWeight: FontWeight.w700
+                    )),
+                    Text(pulses[index]["qty"].toString(),style: TextStyle(
+                      fontWeight: FontWeight.w600
+                    ),),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Image.asset(pulses[index]["image"])
+                        Text("₹${pulses[index]["price"]}".toString(),style: TextStyle(
+                          fontWeight: FontWeight.w600
+                        ),),
+                        Container(
+                          height: w*0.09,
+                          width: w*0.09,
+                          decoration: BoxDecoration(
+                              color: theColors.fourteen,
+                            borderRadius: BorderRadius.circular(w*0.03)
+                          ),
+                          child: Icon(Icons.add,color: theColors.primaryColor),
+                        )
                       ],
                     ),
-                  );
-                  
-                },
-            ),
-          )
+
+                  ],
+                ),
+            );
+          },),
+             ),
+
         ],
       )
 
