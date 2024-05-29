@@ -169,8 +169,9 @@ class _homeScreenState extends State<homeScreen> {
   @override
   void initState() {
     locationFunc();
-    //addExclusiveList();
+    // addBestSellingList();
     // TODO: implement initState
+
     super.initState();
   }
 
