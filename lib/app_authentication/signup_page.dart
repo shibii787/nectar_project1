@@ -12,7 +12,7 @@ import 'package:nectar_project1/app_authentication/select_location_page.dart';
 import 'package:nectar_project1/app_authentication/sign_page.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
-import 'package:nectar_project1/feature/addingDetails/controller/collectionControl.dart';
+import 'package:nectar_project1/feature/addingDetails/controller/addController.dart';
 import 'package:nectar_project1/model/userModel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -131,7 +131,7 @@ class _signupPageState extends ConsumerState<signupPage> {
           pincode: 0,
           id: "");
 
-      ref.watch(addCollectionController).controlCollectionFunc(userModel: userModel);
+      ref.watch(addingController).controlCollectionFunc(userModel: userModel);
 
     }).then((value) async {
 

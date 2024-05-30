@@ -69,7 +69,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nectar_project1/core/common/colors.dart';
-import 'package:package_info_plus/package_info_plus.dart';
+//import 'package:package_info_plus/package_info_plus.dart';
 // import 'package:package_info_plus/package_info_plus.dart';
 
 import '../main.dart';
@@ -85,19 +85,19 @@ class _AboutState extends State<About> {
 
   String? _packageInfoText;
 
-  getInfoPressed() async {
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    String appName = packageInfo.appName;
-    String packageName = packageInfo.packageName;
-    String version = packageInfo.version;
-    String buildNumber = packageInfo.buildNumber;
-    setState(() {
-      _packageInfoText = "App name: $appName\n"
-          "Package name: $packageName\n"
-          "Version: $version\n"
-          "Build number: $buildNumber\n";
-    });
-  }
+  //   getInfoPressed() async {
+  //   PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  //   String appName = packageInfo.appName;
+  //   String packageName = packageInfo.packageName;
+  //   String version = packageInfo.version;
+  //   String buildNumber = packageInfo.buildNumber;
+  //   setState(() {
+  //     _packageInfoText = "App name: $appName\n"
+  //         "Package name: $packageName\n"
+  //         "Version: $version\n"
+  //         "Build number: $buildNumber\n";
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -121,12 +121,12 @@ class _AboutState extends State<About> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            ElevatedButton(
-              onPressed: () {
-                getInfoPressed();
-              },
-              child: Text("Get info"),
-            ),
+            // ElevatedButton(
+            //   onPressed: () {
+            //     getInfoPressed();
+            //   },
+            //   child: Text("Get info"),
+            // ),
             SizedBox(height: w * 0.04),
             _packageInfoText != null
                 ? Text(

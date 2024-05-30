@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nectar_project1/core/providers/firebase_providers.dart';
 import 'package:nectar_project1/model/userModel.dart';
 
-final addCollectionRepository=Provider((ref) => AddCollection(firestore: ref.watch(collectionProvider)));
+final addingRepository=Provider((ref) => AddCollection(firestore: ref.watch(collectionProvider)));
 
 class AddCollection{
   final FirebaseFirestore _firestore;
