@@ -1,12 +1,12 @@
 class PulsesModel{
-  final String itemName;
+  final String name;
   final double price;
   final int qty;
   final String description;
   final String image;
   final String id;
   PulsesModel({
-    required this.itemName,
+    required this.name,
     required this.price,
     required this.qty,
     required this.description,
@@ -15,7 +15,7 @@ class PulsesModel{
   });
   Map<String,dynamic> toMap(){
     return{
-      "itemName" : this.itemName,
+      "itemName" : this.name,
       "price" : this.price,
       "qty" : this.qty,
       "description":this.description,
@@ -26,7 +26,7 @@ class PulsesModel{
   }
   factory PulsesModel.fromMap(Map<String,dynamic>map){
     return PulsesModel(
-        itemName: map["itemName"] ?? "",
+        name: map["name"] ?? "",
         price: map["price"] ?? "",
         qty: map["qty"] ?? "",
         description: map["description"] ?? "",
@@ -43,7 +43,7 @@ class PulsesModel{
     String? id
   }){
     return PulsesModel(
-        itemName: itemName ?? this.itemName,
+        name: itemName ?? this.name,
         price: price ?? this.price,
         qty: qty ?? this.qty,
         description: description ?? this.description,
