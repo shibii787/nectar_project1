@@ -77,7 +77,7 @@ class _forgotPasswordState extends State<forgotPassword> {
                       validator: (value) {
                         if(!passwordValidation.hasMatch(value!))
                         {
-                          return "Enetr the password";
+                          return "Enter the password";
                         }
                         else{
                           return null;
@@ -145,7 +145,7 @@ class _forgotPasswordState extends State<forgotPassword> {
                       validator: (value) {
                         if(!passwordValidation.hasMatch(value!))
                         {
-                          return "Enetr the password";
+                          return "Enter the password";
                         }
                         else{
                           return null;

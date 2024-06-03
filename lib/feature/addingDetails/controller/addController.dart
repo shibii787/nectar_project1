@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nectar_project1/model/exclusive_model.dart';
 import 'package:nectar_project1/model/userModel.dart';
 
 import '../repository/addRepository.dart';
@@ -13,6 +14,10 @@ AddCollectionController({
 
 controlCollectionFunc({required UserModel userModel}){
   _addrepository.collectionFunc(userModel: userModel);
+}
+
+exclusiveStreamController({required ExclusiveModel exclusiveModel}){
+  _addrepository.exclusiveStream();
 }
 
 }
