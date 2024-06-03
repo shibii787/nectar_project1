@@ -357,7 +357,7 @@ class _homeScreenState extends ConsumerState<homeScreen> {
                           height: h*0.35,
                           width: w*1,
                           child: ListView.builder(
-                            itemCount: exclusiveSelect == true ? data.length : 2,
+                            itemCount: exclusiveSelect == true ? data.length : 3,
                             shrinkWrap: true,
                             physics: BouncingScrollPhysics(),
                             scrollDirection: Axis.horizontal,
