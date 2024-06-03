@@ -78,7 +78,7 @@ class _newCategoryPageState extends State<newCategoryPage> {
                           width: w*0.5,
 
                           child: Image.network(newDetails[index]["image"])),
-                      Text(newDetails[index]["ItemName"],style: TextStyle(
+                      Text(newDetails[index]["name"],style: TextStyle(
                           fontWeight: FontWeight.w600,
 
                       ),),

@@ -1,26 +1,25 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:nectar_project1/app_authentication/select_location_page.dart';
-import 'package:nectar_project1/pages_showing_items/appleDetails.dart';
-import 'package:nectar_project1/pages_showing_items/bananapage.dart';
+import 'package:nectar_project1/feature/addingDetails/controller/addController.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../main.dart';
 
-class homeScreen extends StatefulWidget {
+class homeScreen extends ConsumerStatefulWidget {
   const homeScreen({super.key});
 
   @override
-  State<homeScreen> createState() => _homeScreenState();
+  ConsumerState<homeScreen> createState() => _homeScreenState();
 }
 
-class _homeScreenState extends State<homeScreen> {
+class _homeScreenState extends ConsumerState<homeScreen> {
   //for animated smooth indicator
   int currentIndex = 0;
 
@@ -37,35 +36,35 @@ class _homeScreenState extends State<homeScreen> {
   ];
 
   //exclusive list
-  List exclusive=[
-    {
-      "image" : theImages.banana,
-      "name" : "Banana",
-      "qty" : 1,
-      "price" : 35,
-      "description" : "Bananas are nutritious.They are good for health. It promotes weight gain and helps to improve heart health and digestion"
-    },
-    {
-      "image" : theImages.apple,
-      "name" : "Apple",
-      "qty" : 1,
-      "price" : 180,
-      "description" : "Apples are nutritious. They are good for health. It promotes weight loss and it is good for your heart.",
-    },
-    {
-      "image" : theImages.dragonFruit,
-      "name" : "Dragon fruit",
-      "qty" : 1,
-      "price" : 110,
-      "description" : "A Dragon Fruit reduces risk of diabetes, reduces risks of cancer, helps in boosting immunity",
-    }
-  ];
-
-  addExclusiveList() async {
-    for(int i =0; i<exclusive.length; i++){
-     await FirebaseFirestore.instance.collection("exclusive").add(exclusive[i]);
-    }
-  }
+  // List exclusive=[
+  //   {
+  //     "image" : theImages.banana,
+  //     "name" : "Banana",
+  //     "qty" : 1,
+  //     "price" : 35,
+  //     "description" : "Bananas are nutritious.They are good for health. It promotes weight gain and helps to improve heart health and digestion"
+  //   },
+  //   {
+  //     "image" : theImages.apple,
+  //     "name" : "Apple",
+  //     "qty" : 1,
+  //     "price" : 180,
+  //     "description" : "Apples are nutritious. They are good for health. It promotes weight loss and it is good for your heart.",
+  //   },
+  //   {
+  //     "image" : theImages.dragonFruit,
+  //     "name" : "Dragon fruit",
+  //     "qty" : 1,
+  //     "price" : 110,
+  //     "description" : "A Dragon Fruit reduces risk of diabetes, reduces risks of cancer, helps in boosting immunity",
+  //   }
+  // ];
+  //
+  // addExclusiveList() async {
+  //   for(int i =0; i<exclusive.length; i++){
+  //    await FirebaseFirestore.instance.collection("exclusive").add(exclusive[i]);
+  //   }
+  // }
 
   //best selling list
   List bestSelling=[
@@ -169,8 +168,6 @@ class _homeScreenState extends State<homeScreen> {
   @override
   void initState() {
     locationFunc();
-    //addExclusiveList();
-    // addBestSellingList();
     // TODO: implement initState
 
     super.initState();
@@ -247,7 +244,7 @@ class _homeScreenState extends State<homeScreen> {
                           },);
                     },
                     child: Container(
-                      height: h * 0.15,
+                      height: h * 0.2,
                       width: w * 0.55,
                       padding: EdgeInsets.all(w*0.02),
                       decoration: BoxDecoration(
@@ -354,69 +351,74 @@ class _homeScreenState extends State<homeScreen> {
                       )
                     ],
                   ),
-                  Container(
-                    height: h*0.35,
-                    width: w*1,
-                    child: ListView.builder(
-                      itemCount: exclusiveSelect== true ? exclusive.length : 2,
-                      physics: BouncingScrollPhysics(),
-                        scrollDirection: Axis.horizontal,
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          return InkWell(
-                            onTap: () {
-                              index==0?Navigator.push(context, CupertinoPageRoute(builder: (context) => bananapage(),)):null;
-                              index==1?Navigator.push(context, CupertinoPageRoute(builder: (context) => appleDetails(),)):null;
-                            },
-                            child: Container(
-                              height: h*0.15,
-                              width: w*0.4,
-                              padding: EdgeInsets.all(w*0.03),
-                              margin: EdgeInsets.all(w*0.03),
+                  ref.watch(exclusiveStreamProvider).when(
+                      data: (data) {
+                        return Container(
+                          height: h*0.35,
+                          width: w*1,
+                          child: ListView.builder(
+                            itemCount: exclusiveSelect == true ? data.length : 2,
+                            shrinkWrap: true,
+                            physics: BouncingScrollPhysics(),
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              return Container(
+                                  height: h*0.15,
+                                  width: w*0.4,
+                                padding: EdgeInsets.all(w*0.03),
+                                margin: EdgeInsets.all(w*0.03),
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(w*0.03),
-                                border: Border.all(
-                                  color: theColors.eleventh
-                                )
-                              ),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Image.asset(exclusive[index]["image"]),
-                                  Text(exclusive[index]["name"],style: TextStyle(
-                                    fontWeight: FontWeight.w600
-                                  ),),
-                                  Text(exclusive[index]["qty"].toString(),style: TextStyle(
-                                    fontWeight: FontWeight.w600
-                                  ),),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text("${exclusive[index]["price"].toString()} ₹",style: TextStyle(
+                              borderRadius: BorderRadius.circular(w*0.03),
+                              border: Border.all(
+                              color: theColors.eleventh
+                              ),),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Image.network(data[index].image),
+                                    Text(data[index].name,style: TextStyle(
                                         fontWeight: FontWeight.w600
-                                      ),),
-                                      Container(
-                                        height: w*0.1,
-                                        width: w*0.1,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                            BorderRadius.circular(w * 0.04),
-                                            color: theColors.third,
-                                            border: Border.all(
-                                                color: theColors.seventh,
-                                                width: w * 0.003)),
-                                        child:  Icon(
-                                          Icons.add,
-                                          color: theColors.primaryColor,
-                                        ),
-                                      )
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ),
-                          );
-                        },),
+                                    ),),
+                                    Text(data[index].qty.toString(),style: TextStyle(
+                                        fontWeight: FontWeight.w600
+                                    ),),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text("${data[index].price.toString()} ₹",style: TextStyle(
+                                            fontWeight: FontWeight.w600
+                                        ),),
+                                        Container(
+                                          height: w*0.1,
+                                          width: w*0.1,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                              BorderRadius.circular(w * 0.04),
+                                              color: theColors.third,
+                                              border: Border.all(
+                                                  color: theColors.seventh,
+                                                  width: w * 0.003)),
+                                          child:  Icon(
+                                            Icons.add,
+                                            color: theColors.primaryColor,
+                                          ),
+                                        )
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              );
+                          },),
+                        );
+                      },
+                      error: (error, stackTrace) {
+                        return Text(error.toString());
+                      },
+                      loading: () {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      },
                   ),
                   SizedBox(height: h * 0.02),
                   Row(

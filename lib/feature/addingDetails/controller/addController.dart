@@ -6,6 +6,8 @@ import '../repository/addRepository.dart';
 
 final addingController = Provider((ref) => AddCollectionController(addRepository: ref.watch(addingRepository)));
 
+final exclusiveStreamProvider = StreamProvider((ref) => ref.watch(addingController).exclusiveStreamController());
+
 class AddCollectionController{
 final AddCollection _addrepository;
 AddCollectionController({
@@ -16,8 +18,8 @@ controlCollectionFunc({required UserModel userModel}){
   _addrepository.collectionFunc(userModel: userModel);
 }
 
-exclusiveStreamController({required ExclusiveModel exclusiveModel}){
-  _addrepository.exclusiveStream();
+Stream<List<ExclusiveModel>>exclusiveStreamController(){
+  return _addrepository.exclusiveStream();
 }
 
 }
