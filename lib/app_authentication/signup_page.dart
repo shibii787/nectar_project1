@@ -648,7 +648,7 @@ class _signupPageState extends ConsumerState<signupPage> {
                           ));
                     },
                     child: Text(
-                      " Signup fyfygjhjfyfygjh",
+                      " Signup",
                       style: TextStyle(color: theColors.third),
                     ),
                   )
