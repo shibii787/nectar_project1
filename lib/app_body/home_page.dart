@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geocoding/geocoding.dart';
@@ -8,6 +9,7 @@ import 'package:nectar_project1/app_authentication/select_location_page.dart';
 import 'package:nectar_project1/feature/addingDetails/controller/addController.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
+import 'package:nectar_project1/pages_showing_items/exclusive_view_page.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../main.dart';
@@ -362,50 +364,61 @@ class _homeScreenState extends ConsumerState<homeScreen> {
                             physics: BouncingScrollPhysics(),
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) {
-                              return Container(
-                                  height: h*0.15,
-                                  width: w*0.4,
-                                padding: EdgeInsets.all(w*0.03),
-                                margin: EdgeInsets.all(w*0.03),
-                              decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(w*0.03),
-                              border: Border.all(
-                              color: theColors.eleventh
-                              ),),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Image.network(data[index].image),
-                                    Text(data[index].name,style: TextStyle(
-                                        fontWeight: FontWeight.w600
-                                    ),),
-                                    Text(data[index].qty.toString(),style: TextStyle(
-                                        fontWeight: FontWeight.w600
-                                    ),),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text("${data[index].price.toString()} ₹",style: TextStyle(
-                                            fontWeight: FontWeight.w600
-                                        ),),
-                                        Container(
-                                          height: w*0.1,
-                                          width: w*0.1,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                              BorderRadius.circular(w * 0.04),
-                                              color: theColors.third,
-                                              border: Border.all(
-                                                  color: theColors.seventh,
-                                                  width: w * 0.003)),
-                                          child:  Icon(
-                                            Icons.add,
-                                            color: theColors.primaryColor,
-                                          ),
-                                        )
-                                      ],
-                                    )
-                                  ],
+                              return InkWell(
+                                onTap: () {
+                                  Navigator.push(context, CupertinoPageRoute(builder: (context) => exclusiveViewPage(
+                                    itemName: data[index].name,
+                                    itemprice: data[index].price,
+                                    itemqty: data[index].qty,
+                                    itemDescription: data[index].description,
+                                    itemImage: data[index].image,
+                                  ),));
+                                },
+                                child: Container(
+                                    height: h*0.15,
+                                    width: w*0.4,
+                                  padding: EdgeInsets.all(w*0.03),
+                                  margin: EdgeInsets.all(w*0.03),
+                                decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(w*0.03),
+                                border: Border.all(
+                                color: theColors.eleventh
+                                ),),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Image.network(data[index].image),
+                                      Text(data[index].name,style: TextStyle(
+                                          fontWeight: FontWeight.w600
+                                      ),),
+                                      Text(data[index].qty.toString(),style: TextStyle(
+                                          fontWeight: FontWeight.w600
+                                      ),),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text("${data[index].price.toString()} ₹",style: TextStyle(
+                                              fontWeight: FontWeight.w600
+                                          ),),
+                                          Container(
+                                            height: w*0.1,
+                                            width: w*0.1,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                BorderRadius.circular(w * 0.04),
+                                                color: theColors.third,
+                                                border: Border.all(
+                                                    color: theColors.seventh,
+                                                    width: w * 0.003)),
+                                            child:  Icon(
+                                              Icons.add,
+                                              color: theColors.primaryColor,
+                                            ),
+                                          )
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
                               );
                           },),
