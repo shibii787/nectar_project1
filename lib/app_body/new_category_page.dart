@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 
 import '../main.dart';
@@ -73,47 +72,10 @@ class _newCategoryPageState extends State<newCategoryPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-
                       Container(
                         height: w*0.3,
                           width: w*0.5,
-
-                          child: Image.network(newDetails[index]["image"],errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
-                            return Container(
-                              height: w*0.2,
-                              width: w*0.4,
-                              decoration: BoxDecoration(
-                                  color: theColors.primaryColor,
-                                  borderRadius: BorderRadius.circular(w*0.03)
-                              ),
-                              child: Center(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'Image not found',
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: theColors.secondary,
-                                        fontWeight: FontWeight.bold,
-
-                                      ),
-                                    ),
-                                    Text(
-                                      '!Checkout your internet connection',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontSize: 8,
-                                        color: theColors.thirteen,
-                                        fontWeight: FontWeight.bold,
-
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );},
-                          ),),
+                          child: Image.network(newDetails[index]["image"])),
                       Text(newDetails[index]["name"],style: TextStyle(
                           fontWeight: FontWeight.w600,
 

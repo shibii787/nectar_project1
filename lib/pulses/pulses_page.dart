@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
+import 'package:nectar_project1/pages_showing_items/green_gramdetails.dart';
+
 
 import '../main.dart';
 
@@ -34,12 +36,19 @@ class _pulsesState extends State<pulses> {
       "qty":1,
       "price":65,
       "description":"Lime beans are nutritious.They are good for health. It promotes weight gain and helps to improve heart health and digestion"
-    }
+    },
+
   ];
   addpulseslist() async {
     for(int i=0;i<pulses.length;i++){
       await FirebaseFirestore.instance.collection("pulses").add(pulses[i]);
     }
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+     addpulseslist();
+    super.initState();
   }
   @override
   Widget build(BuildContext context) {
@@ -68,47 +77,58 @@ class _pulsesState extends State<pulses> {
             childAspectRatio: 0.75,
           ),
            itemBuilder: (context, index) {
-            return  Container(
-                height: h*0.20,
-                width: w*0.4,
-                padding: EdgeInsets.all(w*0.03),
-                margin: EdgeInsets.all(w*0.03),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(w*0.03),
-                  border: Border.all(
-                      color: theColors.eleventh
-                  ),
-                ),
+            return  InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) =>greengrems(
+                  image: pulses[index]["image"],
+                  price:pulses[index]["price"].toString(),
+                  qty: pulses[index]["qty"].toString(),
+                  name: pulses[index]["name"], discription: '',
 
-                child: Column(
-                  children: [
-                    Image.asset(pulses[index]["image"]),
-                    Text(pulses[index]["name"],style: TextStyle(
-                      fontWeight: FontWeight.w700
-                    )),
-                    Text(pulses[index]["qty"].toString(),style: TextStyle(
-                      fontWeight: FontWeight.w600
-                    ),),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("₹${pulses[index]["price"]}".toString(),style: TextStyle(
-                          fontWeight: FontWeight.w600
-                        ),),
-                        Container(
-                          height: w*0.09,
-                          width: w*0.09,
-                          decoration: BoxDecoration(
-                              color: theColors.fourteen,
-                            borderRadius: BorderRadius.circular(w*0.03)
-                          ),
-                          child: Icon(Icons.add,color: theColors.primaryColor),
-                        )
-                      ],
+                ) ,));
+              },
+              child: Container(
+                  height: h*0.20,
+                  width: w*0.4,
+                  padding: EdgeInsets.all(w*0.03),
+                  margin: EdgeInsets.all(w*0.03),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(w*0.03),
+                    border: Border.all(
+                        color: theColors.eleventh
                     ),
+                  ),
 
-                  ],
-                ),
+                  child: Column(
+                    children: [
+                      Image.asset(pulses[index]["image"]),
+                      Text(pulses[index]["name"],style: TextStyle(
+                        fontWeight: FontWeight.w700
+                      )),
+                      Text(pulses[index]["qty"].toString(),style: TextStyle(
+                        fontWeight: FontWeight.w600
+                      ),),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("₹${pulses[index]["price"]}".toString(),style: TextStyle(
+                            fontWeight: FontWeight.w600
+                          ),),
+                          Container(
+                            height: w*0.09,
+                            width: w*0.09,
+                            decoration: BoxDecoration(
+                                color: theColors.fourteen,
+                              borderRadius: BorderRadius.circular(w*0.03)
+                            ),
+                            child: Icon(Icons.add,color: theColors.primaryColor),
+                          )
+                        ],
+                      ),
+
+                    ],
+                  ),
+              ),
             );
           },),
              ),

@@ -98,7 +98,7 @@ class _bananapageState extends State<bananapage> {
             width: w*0.5,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(w*0.03),
-                color: theColors.sixth
+                color: theColors.fourteen
             ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
