@@ -91,7 +91,7 @@ class _newCategoryPageState extends State<newCategoryPage> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      'Image n found',
+                                      'Image not found',
                                       style: TextStyle(
                                         fontSize: 14,
                                         color: theColors.secondary,
