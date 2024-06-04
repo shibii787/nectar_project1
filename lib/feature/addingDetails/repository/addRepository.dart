@@ -10,7 +10,7 @@ final addingRepository=Provider((ref) => AddingRepository(firestore: ref.watch(c
 class AddingRepository{
   final FirebaseFirestore _firestore;
   AddingRepository({
-    required FirebaseFirestore firestore
+    required FirebaseFirestore firestore,
 }) : _firestore=firestore;
 
   //To add account collection into the firebase
