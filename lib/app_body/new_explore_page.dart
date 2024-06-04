@@ -85,10 +85,46 @@ class _newExplorePageState extends State<newExplorePage> {
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      Image(image:NetworkImage(details[index]["image"])),
+                                      Image(image:NetworkImage(details[index]["image"]),
+                                      errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+                                        return Container(
+                                          height: w*0.2,
+                                        width: w*0.4,
+                                        decoration: BoxDecoration(
+                                          color: theColors.primaryColor,
+                                          borderRadius: BorderRadius.circular(w*0.03)
+                                        ),
+                                        child: Center(
+                                        child: Column(
+                                         mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                            'Image not found',
+                                            style: TextStyle(
+                                            fontSize: 14,
+                                            color: theColors.secondary,
+                                            fontWeight: FontWeight.bold,
+
+                                            ),
+                                            ),
+                                            Text(
+                                            '!Checkout your internet connection',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                            fontSize: 8,
+                                            color: theColors.thirteen,
+                                            fontWeight: FontWeight.bold,
+
+                                            ),
+                                            ),
+                                          ],
+                                        ),
+                                        ),
+                                        );},
+                                      ),
                                       Center(
                                         child: Text(details[index]["item"],style: TextStyle(
-                                          fontWeight: FontWeight.w600
+                                               fontWeight: FontWeight.w600
                                         ),),
                                       )
                                     ],
