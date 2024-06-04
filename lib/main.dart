@@ -38,6 +38,9 @@ UserModel? currentUserModel;
 var userName;
 var userEmail;
 var userImage;
+var userphoneNumber;
+var pincode;
+var address;
 var userLocation;
 
 Future<void> main() async {
