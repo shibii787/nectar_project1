@@ -99,7 +99,7 @@ class _newExplorePageState extends State<newExplorePage> {
                                          mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
                                             Text(
-                                            'Image not found',
+                                            'Image n found',
                                             style: TextStyle(
                                             fontSize: 14,
                                             color: theColors.secondary,
