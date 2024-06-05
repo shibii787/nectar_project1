@@ -60,7 +60,7 @@ dependencies:
   geocoding: ^3.0.0
   rich_text_controller: ^1.4.2
   package_info_plus:
-  http: ^1.2.1
+  http: ^1.1.0
 
 
 

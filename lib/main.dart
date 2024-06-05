@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nectar_project1/app_body/home_page.dart';
 // import 'package:nectar_project1/app_profile/delivery%20address.dart';
 import 'package:nectar_project1/app_profile/promocard.dart';
 import 'package:nectar_project1/firebase_options.dart';
@@ -58,7 +59,7 @@ class MyApp extends StatelessWidget {
             textTheme: GoogleFonts.poppinsTextTheme()
         ),
         debugShowCheckedModeBanner: false,
-        home:pulses(),
+        home:homeScreen(),
       ),
     );
   }

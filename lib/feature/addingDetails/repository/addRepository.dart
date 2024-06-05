@@ -4,6 +4,7 @@ import 'package:nectar_project1/core/providers/firebase_providers.dart';
 import 'package:nectar_project1/model/bestSelling_model.dart';
 import 'package:nectar_project1/model/category_model.dart';
 import 'package:nectar_project1/model/exclusive_model.dart';
+import 'package:nectar_project1/model/pulses_model.dart';
 import 'package:nectar_project1/model/userModel.dart';
 
 final addingRepository=Provider((ref) => AddingRepository(firestore: ref.watch(collectionProvider)));
@@ -25,6 +26,9 @@ class AddingRepository{
   
   //To make bestSelling list into stream provider
   CollectionReference get _bestSelling => _firestore.collection("bestSelling");
+  
+  //pulses
+  CollectionReference get _pulses => _firestore.collection("pulses");
 
   collectionFunc({required UserModel userModel}){
     _account.add(userModel.tomap()).then((value) {
@@ -48,5 +52,11 @@ Stream<List<BestSellingModel>> bestSellingStream(){
 Stream meatAndFishStream(){
     return _categoryItems.doc("53edLTtx3FBcTPh5c0iz").collection("subItems").snapshots();
 }
+
+  //To Stream pulses list
+Stream<List<PulsesModel>> pulsesstream(){
+    return _pulses.snapshots().map((event) => event.docs.map((e) => PulsesModel.fromMap(e.data() as Map<String,dynamic>)).toList());
+}
+
 
 }

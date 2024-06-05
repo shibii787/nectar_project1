@@ -158,7 +158,7 @@ class _greengremsState extends State<greengrems> {
                     });
                   },
                   child: more==true? Container(
-                    height: h*0.11,
+                    height: h*0.14,
                     width: w*1,
                     decoration: BoxDecoration(
                         border: Border(
@@ -178,7 +178,7 @@ class _greengremsState extends State<greengrems> {
                             Icon(CupertinoIcons.chevron_down)
                           ],
                         ),
-                        Text("Green grees are nutritious.They are good for health. It promotes weight loss and it is good for your heart.")
+                        Text("${widget.discription}")
                       ],
                     ),
                   ):Container(

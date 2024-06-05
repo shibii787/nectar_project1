@@ -1,20 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
+import 'package:nectar_project1/feature/addingDetails/controller/addController.dart';
 import 'package:nectar_project1/pages_showing_items/green_gramdetails.dart';
 
 
 import '../main.dart';
 
-class pulses extends StatefulWidget {
+class pulses extends ConsumerStatefulWidget {
   const pulses({super.key});
 
   @override
-  State<pulses> createState() => _pulsesState();
+  ConsumerState<pulses> createState() => _pulsesState();
 }
-class _pulsesState extends State<pulses> {
+class _pulsesState extends ConsumerState<pulses> {
   List pulses=[
     {
       "name":"green gram",
@@ -65,77 +67,84 @@ class _pulsesState extends State<pulses> {
       ),
       body: Column(
         children: [
-             Expanded(
-               child: GridView.builder(
-                 shrinkWrap: true,
-                 physics: BouncingScrollPhysics(),
-                 itemCount: pulses.length,
-                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount:2,
-            crossAxisSpacing: w*0.03,
-            mainAxisSpacing: w*0.03,
-            childAspectRatio: 0.75,
-          ),
-           itemBuilder: (context, index) {
-            return  InkWell(
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) =>greengrems(
-                  image: pulses[index]["image"],
-                  price:pulses[index]["price"].toString(),
-                  qty: pulses[index]["qty"].toString(),
-                  name: pulses[index]["name"], discription: '',
-
-                ) ,));
-              },
-              child: Container(
-                  height: h*0.20,
-                  width: w*0.4,
-                  padding: EdgeInsets.all(w*0.03),
-                  margin: EdgeInsets.all(w*0.03),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(w*0.03),
-                    border: Border.all(
-                        color: theColors.eleventh
-                    ),
+            ref.watch(pulsesStreamprovider).when(
+                data: (data) {
+                  return GridView.builder(
+                  shrinkWrap: true,
+                  physics: BouncingScrollPhysics(),
+                  itemCount: data.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount:2,
+                  crossAxisSpacing: w*0.03,
+                  mainAxisSpacing: w*0.03,
+                  childAspectRatio: 0.75,
                   ),
+                  itemBuilder: (context, index) {
+                  InkWell(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) =>greengrems(
+                      image: data[index].image,
+                      price:data[index].price.toString(),
+                      qty: data[index].qty.toString(),
+                      name: data[index].name,
+                      discription: data[index].description,
 
-                  child: Column(
-                    children: [
-                      Image.asset(pulses[index]["image"]),
-                      Text(pulses[index]["name"],style: TextStyle(
-                        fontWeight: FontWeight.w700
-                      )),
-                      Text(pulses[index]["qty"].toString(),style: TextStyle(
-                        fontWeight: FontWeight.w600
-                      ),),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    ) ,));
+                  },
+                  child: Container(
+                      height: h*0.20,
+                      width: w*0.4,
+                      padding: EdgeInsets.all(w*0.03),
+                      margin: EdgeInsets.all(w*0.03),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(w*0.03),
+                        border: Border.all(
+                            color: theColors.eleventh
+                        ),
+                      ),
+                      child: Column(
                         children: [
-                          Text("₹${pulses[index]["price"]}".toString(),style: TextStyle(
+                          Image.asset(data[index].image,height: w*0.3,),
+                          Text(data[index].name,style: TextStyle(
+                            fontWeight: FontWeight.w700
+                          )),
+                          Text(data[index].qty.toString(),style: TextStyle(
                             fontWeight: FontWeight.w600
                           ),),
-                          Container(
-                            height: w*0.09,
-                            width: w*0.09,
-                            decoration: BoxDecoration(
-                                color: theColors.fourteen,
-                              borderRadius: BorderRadius.circular(w*0.03)
-                            ),
-                            child: Icon(Icons.add,color: theColors.primaryColor),
-                          )
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("₹${pulses[index]["price"]}".toString(),style: TextStyle(
+                                fontWeight: FontWeight.w600
+                              ),),
+                              Container(
+                                height: w*0.09,
+                                width: w*0.09,
+                                decoration: BoxDecoration(
+                                    color: theColors.fourteen,
+                                  borderRadius: BorderRadius.circular(w*0.03)
+                                ),
+                                 child: Icon(Icons.add,color: theColors.primaryColor),
+                              )
+                            ],
+                          ),
+
                         ],
                       ),
-
-                    ],
                   ),
-              ),
-            );
-          },),
-             ),
-
-        ],
+                    );
+                  },);
+                },
+                error: (error, stackTrace) {
+                  return Text(error.toString());
+                },
+                loading: () {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                },
       )
-
+  ])
     );
   }
 }

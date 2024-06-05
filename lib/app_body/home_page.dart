@@ -10,6 +10,7 @@ import 'package:nectar_project1/feature/addingDetails/controller/addController.d
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
 import 'package:nectar_project1/pages_showing_items/exclusive_view_page.dart';
+import 'package:nectar_project1/pulses/pulses_page.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../main.dart';
@@ -539,22 +540,28 @@ class _homeScreenState extends ConsumerState<homeScreen> {
                         shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
-                          return Container(
-                            height: h*0.15,
-                            width: w*0.6,
-                            margin: EdgeInsets.all(w*0.03),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(w*0.03),
-                              color: theColors.nine
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Image.asset(groceries[index]["image"]),
-                                Text(groceries[index]["name"],style: TextStyle(
-                                  fontWeight: FontWeight.w600
-                                ),)
-                              ],
+                          return InkWell(
+                            onTap: () {
+                              // index==0?Navigator.push(context, MaterialPageRoute(builder: (context) => (),)):null;
+                              index==1?Navigator.push(context, MaterialPageRoute(builder: (context) => pulses(),)):null;
+                            },
+                            child: Container(
+                              height: h*0.15,
+                              width: w*0.6,
+                              margin: EdgeInsets.all(w*0.03),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(w*0.03),
+                                color: theColors.nine
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Image.asset(groceries[index]["image"]),
+                                  Text(groceries[index]["name"],style: TextStyle(
+                                    fontWeight: FontWeight.w600
+                                  ),)
+                                ],
+                              ),
                             ),
                           );
                         },),
