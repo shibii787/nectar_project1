@@ -1,10 +1,12 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
@@ -35,11 +37,13 @@ class _signupPageState extends ConsumerState<signupPage> {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController numberController = TextEditingController();
 
   final emailValidation =
       RegExp(r"^[a-z0-9.a-z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-z0-9]+\.[a-z]+");
   final passwordValidation =
       RegExp(r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$");
+  final phoneValidation = RegExp(r"[0-9]{10}$");
 
   //for uploading image
   pickFile(ImageSource) async {
@@ -126,10 +130,11 @@ class _signupPageState extends ConsumerState<signupPage> {
           email: emailController.text.trim(),
           password: passwordController.text,
           location: _currentAddress,
-          phoneNumber: 0,
+          phoneNumber: int.tryParse(numberController.text)!,
           address: "",
           pincode: 0,
-          id: "");
+          id: "",
+          image: imageurl);
 
       ref.watch(addingController).controlCollectionFunc(userModel: userModel);
 
@@ -142,6 +147,7 @@ class _signupPageState extends ConsumerState<signupPage> {
       // assigning details to global variables
       userName = userDetails.docs[0]["name"];
       userEmail = userDetails.docs[0]["email"];
+      userphoneNumber = userDetails.docs[0]["phoneNumber"];
       print("FFFFFFFFFFFFFFFFFFFFFFFFFFFF : $userName");
 
       newUserDetails(); //sharedpreference code
@@ -161,11 +167,8 @@ class _signupPageState extends ConsumerState<signupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: theColors.primaryColor,
       //resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        backgroundColor: theColors.primaryColor,
-        elevation: 0,
         leading: InkWell(
             onTap: () {
               Navigator.pop(context);
@@ -282,6 +285,74 @@ class _signupPageState extends ConsumerState<signupPage> {
               SizedBox(
                 height: w * 0.05,
               ),
+              Container(
+                decoration: BoxDecoration(
+                    color: theColors.third,
+                    borderRadius: BorderRadius.circular(w*0.03)
+                ),
+                child: TextFormField(
+                  style: TextStyle(
+                      color: theColors.secondary
+                  ),
+                  maxLength: 10,
+                  controller: numberController,
+                  keyboardType: TextInputType.number,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: (value) {
+                    if(!phoneValidation.hasMatch(value!))
+                    {
+                      return "Enter valid number";
+                    }
+                    else {
+                      return null;
+                    }
+                  },
+                  decoration: InputDecoration(
+                    counterText: "",
+                    hintText: "Enter the number",
+                    hintStyle: TextStyle(
+                        color: theColors.eight
+                    ),
+                    suffixIconConstraints: BoxConstraints(
+                        minWidth: w*0.2
+                    ),
+                    suffixIcon:Container(
+                      width: w*0.07,
+                      height: w*0.07,
+                      child: Center(
+                        child:Icon(Icons.phone,
+                        color: theColors.secondary,)
+                      ),
+                    ),
+                    prefixIcon: CountryCodePicker(
+                      flagDecoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(w*0.02)
+                      ),
+                      initialSelection: "IN",
+                      showDropDownButton: true,
+                      showFlagMain: true,
+                      showFlag: true,
+                      showCountryOnly: false,
+                      hideMainText: true,
+                    ),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(w*0.03),
+                        borderSide: BorderSide.none
+                    ),
+                    label: Text("Number",
+                        style: TextStyle(
+                            color: theColors.secondary
+                        )),
+                    // focusedBorder: OutlineInputBorder(
+                    //   borderRadius: BorderRadius.circular(width*0.03),
+                    //     borderSide: BorderSide(
+                    //         color: Colors.blue
+                    //     )
+                    // )
+                  ),
+                ),
+              ),
+              SizedBox(height: w*0.05,),
               Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(w*0.03)

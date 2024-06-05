@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nectar_project1/core/providers/firebase_providers.dart';
 import 'package:nectar_project1/model/bestSelling_model.dart';
+import 'package:nectar_project1/model/category_model.dart';
 import 'package:nectar_project1/model/exclusive_model.dart';
 import 'package:nectar_project1/model/userModel.dart';
 
@@ -15,6 +16,9 @@ class AddingRepository{
 
   //To add account collection into the firebase
   CollectionReference get _account => _firestore.collection("account");
+
+  //A function to add subItem collection
+  CollectionReference get _categoryItems => _firestore.collection("categories");
   
   //To make exclusive list into a stream provider
   CollectionReference get _exclusive => _firestore.collection("exclusive");
@@ -38,6 +42,11 @@ Stream<List<ExclusiveModel>> exclusiveStream(){
   //To Stream bestSelling list
 Stream<List<BestSellingModel>> bestSellingStream(){
     return _bestSelling.snapshots().map((event) => event.docs.map((e) => BestSellingModel.fromMap(e.data() as Map<String,dynamic>)).toList());
+}
+
+  //To stream meat and fish only in home screen
+Stream meatAndFishStream(){
+    return _categoryItems.doc("53edLTtx3FBcTPh5c0iz").collection("subItems").snapshots();
 }
 
 }

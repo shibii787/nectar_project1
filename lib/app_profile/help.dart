@@ -34,7 +34,6 @@ class _helpState extends State<help> {
       body: Padding(
         padding:  EdgeInsets.all(w*0.03),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
@@ -43,7 +42,7 @@ class _helpState extends State<help> {
                 Column(
                   children: [
                     Text("HELP CENTRE",style: TextStyle(
-                      fontSize: w*0.05,
+                      fontSize: w*0.045,
                       fontWeight: FontWeight.w500
                     ),),
                     SizedBox(width: w*0.05),
@@ -52,13 +51,13 @@ class _helpState extends State<help> {
                 ),
               ],
             ),
-            SizedBox(height: h*0.05,),
+            SizedBox(height: h*0.05),
             Row(
               children: [
                 Icon(Icons.text_snippet_rounded),
                 SizedBox(width: w*0.05,),
-                Text("Terms and Privecy Policy",style: TextStyle(
-                  fontSize: w*0.05
+                Text("Terms and Privacy Policy",style: TextStyle(
+                  fontSize: w*0.04
                 ),)
               ],
             ),

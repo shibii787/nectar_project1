@@ -5,7 +5,8 @@ class UserModel{
   final String location;
   final int phoneNumber;
   final String address;
-  final int? pincode;
+  final int pincode;
+  final String image;
   final String id;
 UserModel({
   required this.name,
@@ -15,6 +16,7 @@ UserModel({
   required this.phoneNumber,
   required this.address,
   required this.pincode,
+  required this.image,
   required this.id
 });
 Map<String,dynamic> tomap(){
@@ -26,6 +28,7 @@ Map<String,dynamic> tomap(){
     "phoneNumber":this.phoneNumber,
     "address":this.address,
     "pincode":this.pincode,
+    "image":this.image,
     "id":this.id
   };
 }
@@ -38,6 +41,7 @@ factory UserModel.fromMap(Map<String,dynamic>map){
       phoneNumber: map["phoneNumber"]??"",
       address: map["address"]??"",
       pincode: map["pincode"]??"",
+      image: map["image"]?? "",
       id: map["id"]??""
   );
 }
@@ -48,7 +52,8 @@ UserModel copyWith({
     String? location,
     int? phoneNumber,
     String? address,
-    String? picode,
+    int? pincode,
+    String? image,
     String? id
 }){
   return UserModel(
@@ -59,6 +64,7 @@ UserModel copyWith({
       phoneNumber: phoneNumber ?? this.phoneNumber,
       address: address ?? this.address,
       pincode: pincode ?? this.pincode,
+      image: image ?? this.image,
       id: id ?? this.id
   );
 }

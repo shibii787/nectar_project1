@@ -83,6 +83,14 @@ class _accountState extends State<account> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        elevation: 0,
+        centerTitle: true,
+        title: Text("Account",style: TextStyle(
+          fontWeight: FontWeight.w500
+        )),
+      ),
         body: SafeArea(
           child: SingleChildScrollView(
             physics: BouncingScrollPhysics(),
