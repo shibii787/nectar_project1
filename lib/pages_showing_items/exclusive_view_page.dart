@@ -28,21 +28,28 @@ class _exclusiveViewPageState extends State<exclusiveViewPage> {
   int count = 1;
   bool more = true;
 
+  addToCart(){}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: Container(
-        height: w * 0.15,
-        width: w * 0.9,
-        decoration: BoxDecoration(
-            color: theColors.third,
-            borderRadius: BorderRadius.circular(w * 0.04)),
-        child: Center(
-          child: Text("Add To Cart",
-              style: TextStyle(
-                  color: theColors.primaryColor,
-                  fontSize: w*0.045,
-                  fontWeight: FontWeight.w500)),
+      floatingActionButton: InkWell(
+        onTap: () {
+
+        },
+        child: Container(
+          height: w * 0.15,
+          width: w * 0.9,
+          decoration: BoxDecoration(
+              color: theColors.third,
+              borderRadius: BorderRadius.circular(w * 0.04)),
+          child: Center(
+            child: Text("Add To Cart",
+                style: TextStyle(
+                    color: theColors.primaryColor,
+                    fontSize: w*0.045,
+                    fontWeight: FontWeight.w500)),
+          ),
         ),
       ),
       appBar: AppBar(
@@ -248,6 +255,6 @@ class _exclusiveViewPageState extends State<exclusiveViewPage> {
           ),
         ),
       ),
-    );;
+    );
   }
 }

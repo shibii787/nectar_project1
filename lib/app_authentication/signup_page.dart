@@ -644,7 +644,7 @@ class _signupPageState extends ConsumerState<signupPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => loginPage(),
+                            builder: (context) => signPage(),
                           ));
                     },
                     child: Text(
