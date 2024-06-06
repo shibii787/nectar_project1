@@ -451,64 +451,72 @@ class _homeScreenState extends ConsumerState<homeScreen> {
                       )
                     ],
                   ),
-                  Container(
-                    height: h*0.35,
-                    width: w*1,
-                    child: ListView.builder(
-                      itemCount: bestSellingSelect == true ? bestSelling.length : 2,
-                      physics: BouncingScrollPhysics(),
-                      scrollDirection: Axis.horizontal,
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        return Container(
-                          height: h*0.15,
-                          width: w*0.4,
-                          padding: EdgeInsets.all(w*0.03),
-                          margin: EdgeInsets.all(w*0.03),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(w*0.03),
-                              border: Border.all(
-                                  color: theColors.eleventh
-                              )
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Image.asset(bestSelling[index]["image"]),
-                              Text(bestSelling[index]["name"],style: TextStyle(
-                                  fontWeight: FontWeight.w600
-                              ),),
-                              Text(bestSelling[index]["qty"].toString(),style: TextStyle(
-                                  fontWeight: FontWeight.w600
-                              ),),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text("${bestSelling[index]["price"]} ₹".toString(),style: TextStyle(
-                                      fontWeight: FontWeight.w600
-                                  ),),
-                                  Container(
-                                    height: w*0.1,
-                                    width: w*0.1,
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                        BorderRadius.circular(w * 0.04),
-                                        color: theColors.third,
-                                        border: Border.all(
-                                            color: theColors.seventh,
-                                            width: w * 0.003)),
-                                    child:  Icon(
-                                      Icons.add,
-                                      color: theColors.primaryColor,
-                                    ),
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
-                        );
-                      },),
-                  ),
+                  ref.watch(bestsellingStreamProvider).when(data: (data) {
+                    return  Container(
+                      height: h*0.35,
+                      width: w*1,
+                      child: ListView.builder(
+                        itemCount: bestSellingSelect == true ? data.length : 2,
+                        physics: BouncingScrollPhysics(),
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            height: h*0.15,
+                            width: w*0.4,
+                            padding: EdgeInsets.all(w*0.03),
+                            margin: EdgeInsets.all(w*0.03),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(w*0.03),
+                                border: Border.all(
+                                    color: theColors.eleventh
+                                )
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Image.network(data[index].image),
+                                Text(data[index].name,style: TextStyle(
+                                    fontWeight: FontWeight.w600
+                                ),),
+                                Text(data[index].qty.toString(),style: TextStyle(
+                                    fontWeight: FontWeight.w600
+                                ),),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text("${data[index].price} ₹".toString(),style: TextStyle(
+                                        fontWeight: FontWeight.w600
+                                    ),),
+                                    Container(
+                                      height: w*0.1,
+                                      width: w*0.1,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                          BorderRadius.circular(w * 0.04),
+                                          color: theColors.third,
+                                          border: Border.all(
+                                              color: theColors.seventh,
+                                              width: w * 0.003)),
+                                      child:  Icon(
+                                        Icons.add,
+                                        color: theColors.primaryColor,
+                                      ),
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                          );
+                        },),
+                    );
+                  }, error: (error, stackTrace) {
+                    return Text(error.toString());
+                  }, loading: () {
+                    return Center(
+                        child: CircularProgressIndicator());
+                  },),
+
                   SizedBox(height: h * 0.02),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

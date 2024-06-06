@@ -14,6 +14,8 @@ final meatAndFishProvider =StreamProvider((ref) => ref.watch(addingController).m
 
 final pulsesStreamprovider = StreamProvider((ref) => ref.watch(addingController).pulsesstreamcntroller());
 
+final bestsellingStreamProvider = StreamProvider((ref) => ref.watch(addingController).bestSellingStreamController());
+
 class AddingController{
 final AddingRepository _addrepository;
 AddingController({

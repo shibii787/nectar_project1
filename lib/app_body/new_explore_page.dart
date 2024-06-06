@@ -108,7 +108,7 @@ class _newExplorePageState extends State<newExplorePage> {
                                             ),
                                             ),
                                             Text(
-                                            '!Checkout your internet connection',
+                                            '!Check your internet connection',
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                             fontSize: 8,
