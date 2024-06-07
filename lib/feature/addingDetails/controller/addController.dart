@@ -40,7 +40,7 @@ Stream<List<BestSellingModel>>bestSellingStreamController(){
 Stream meatAndFishController(){
   return _addrepository.meatAndFishStream();
 }
-
+//stream function for showing pulses
 Stream<List<PulsesModel>>pulsesstreamcntroller(){
   return _addrepository.pulsesstream();
 }
