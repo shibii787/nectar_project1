@@ -9,6 +9,7 @@ import 'package:nectar_project1/app_authentication/select_location_page.dart';
 import 'package:nectar_project1/feature/addingDetails/controller/addController.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
+import 'package:nectar_project1/grocery/grocery_page.dart';
 import 'package:nectar_project1/pages_showing_items/exclusive_view_page.dart';
 import 'package:nectar_project1/pulses/pulses_page.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -521,7 +522,7 @@ class _homeScreenState extends ConsumerState<homeScreen> {
                         itemBuilder: (context, index) {
                           return InkWell(
                             onTap: () {
-                              // index==0?Navigator.push(context, MaterialPageRoute(builder: (context) => (),)):null;
+                              index==0?Navigator.push(context, MaterialPageRoute(builder: (context) => grocerypage(),)):null;
                               index==1?Navigator.push(context, MaterialPageRoute(builder: (context) => pulses(),)):null;
                             },
                             child: Container(

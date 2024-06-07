@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
@@ -39,6 +40,12 @@ class _grocerypageState extends State<grocerypage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+            child: Icon(CupertinoIcons.back)),
         backgroundColor: theColors.primaryColor,
         title: Text("Groceries",style: TextStyle(
           color: theColors.secondary,fontWeight: FontWeight.w600,
