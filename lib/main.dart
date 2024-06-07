@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nectar_project1/app_authentication/select_location_page.dart';
+import 'package:nectar_project1/app_body/bottom_nav.dart';
 import 'package:nectar_project1/app_body/home_page.dart';
 // import 'package:nectar_project1/app_profile/delivery%20address.dart';
 import 'package:nectar_project1/app_profile/promocard.dart';

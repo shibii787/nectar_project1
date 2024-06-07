@@ -17,7 +17,7 @@ class pulses extends ConsumerStatefulWidget {
   ConsumerState<pulses> createState() => _pulsesState();
 }
 class _pulsesState extends ConsumerState<pulses> {
-  List pulses=[
+  List pulses2=[
     {
       "name":"green gram",
       "image":theImages.greengrees,
@@ -41,15 +41,15 @@ class _pulsesState extends ConsumerState<pulses> {
     },
 
   ];
-  addpulseslist() async {
-    for(int i=0;i<pulses.length;i++){
-      await FirebaseFirestore.instance.collection("pulses").add(pulses[i]);
-    }
-  }
+  // addpulseslist() async {
+  //   for(int i=0;i<pulses.length;i++){
+  //     await FirebaseFirestore.instance.collection("pulses").add(pulses[i]);
+  //   }
+  // }
   @override
   void initState() {
+    // addpulseslist();
     // TODO: implement initState
-     addpulseslist();
     super.initState();
   }
   @override
@@ -62,89 +62,102 @@ class _pulsesState extends ConsumerState<pulses> {
           fontSize: w*0.07,
            color: theColors.secondary,
         )),
+        leading:InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+            child: Icon(CupertinoIcons.back,color: theColors.secondary)),
         centerTitle: true,
-        leading: Icon(CupertinoIcons.back),
       ),
-      body: Column(
-        children: [
-            ref.watch(pulsesStreamprovider).when(
-                data: (data) {
-                  return GridView.builder(
-                  shrinkWrap: true,
-                  physics: BouncingScrollPhysics(),
-                  itemCount: data.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount:2,
-                  crossAxisSpacing: w*0.03,
-                  mainAxisSpacing: w*0.03,
-                  childAspectRatio: 0.75,
-                  ),
-                  itemBuilder: (context, index) {
-                  InkWell(
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) =>greengrems(
-                      image: data[index].image,
-                      price:data[index].price.toString(),
-                      qty: data[index].qty.toString(),
-                      name: data[index].name,
-                      discription: data[index].description,
-
-                    ) ,));
-                  },
-                  child: Container(
-                      height: h*0.20,
-                      width: w*0.4,
-                      padding: EdgeInsets.all(w*0.03),
-                      margin: EdgeInsets.all(w*0.03),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(w*0.03),
-                        border: Border.all(
-                            color: theColors.eleventh
+      body: SingleChildScrollView(
+        child: Padding(
+          padding:  EdgeInsets.all(w*0.01),
+          child: Column(
+            children: [
+                ref.watch(pulsesStreamprovider).when(
+                    data: (data) {
+                      return Container(
+                        height: h,
+                        width: w,
+                        // color: Colors.red,
+                        child: GridView.builder(
+                        shrinkWrap: true,
+                        physics: BouncingScrollPhysics(),
+                        itemCount: data.length,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount:2,
+                        crossAxisSpacing: w*0.03,
+                        mainAxisSpacing: w*0.03,
+                        childAspectRatio: 0.75,
                         ),
-                      ),
-                      child: Column(
-                        children: [
-                          Image.asset(data[index].image,height: w*0.3,),
-                          Text(data[index].name,style: TextStyle(
-                            fontWeight: FontWeight.w700
-                          )),
-                          Text(data[index].qty.toString(),style: TextStyle(
-                            fontWeight: FontWeight.w600
-                          ),),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text("₹${pulses[index]["price"]}".toString(),style: TextStyle(
-                                fontWeight: FontWeight.w600
-                              ),),
-                              Container(
-                                height: w*0.09,
-                                width: w*0.09,
-                                decoration: BoxDecoration(
-                                    color: theColors.fourteen,
-                                  borderRadius: BorderRadius.circular(w*0.03)
+                        itemBuilder: (context, index) {
+                    return    InkWell(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) =>greengrems(
+                            image: data[index].image,
+                            price:data[index].price.toString(),
+                            qty: data[index].qty.toString(),
+                            name: data[index].name,
+                            discription: data[index].description,
+                          ) ,));
+                        },
+                        child: Container(
+                            height: h*0.20,
+                            width: w*0.4,
+                            padding: EdgeInsets.all(w*0.03),
+                            margin: EdgeInsets.all(w*0.03),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(w*0.03),
+                              border: Border.all(
+                                  color: theColors.eleventh
+                              ),
+                            ),
+                            child: Column(
+                              children: [
+                                Image.asset(data[index].image,height: w*0.3,),
+                                Text(data[index].name,style: TextStyle(
+                                  fontWeight: FontWeight.w700
+                                )),
+                                Text(data[index].qty.toString(),style: TextStyle(
+                                  fontWeight: FontWeight.w600
+                                ),),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text("₹${data[index].price}".toString(),style: TextStyle(
+                                      fontWeight: FontWeight.w600
+                                    ),),
+                                    Container(
+                                      height: w*0.09,
+                                      width: w*0.09,
+                                      decoration: BoxDecoration(
+                                          color: theColors.fourteen,
+                                        borderRadius: BorderRadius.circular(w*0.03)
+                                      ),
+                                       child: Icon(Icons.add,color: theColors.primaryColor),
+                                    )
+                                  ],
                                 ),
-                                 child: Icon(Icons.add,color: theColors.primaryColor),
-                              )
-                            ],
-                          ),
 
-                        ],
-                      ),
-                  ),
-                    );
-                  },);
-                },
-                error: (error, stackTrace) {
-                  return Text(error.toString());
-                },
-                loading: () {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                },
+                              ],
+                            ),
+                        ),
+                          );
+                        },),
+                      );
+                    },
+                    error: (error, stackTrace) {
+                      return Text(error.toString());
+                    },
+                    loading: () {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    },
+          )
+  ]),
+        ),
       )
-  ])
     );
   }
 }
