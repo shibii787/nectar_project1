@@ -38,37 +38,6 @@ class _homeScreenState extends ConsumerState<homeScreen> {
     theImages.slider3,
   ];
 
-  //exclusive list
-  // List exclusive=[
-  //   {
-  //     "image" : theImages.banana,
-  //     "name" : "Banana",
-  //     "qty" : 1,
-  //     "price" : 35,
-  //     "description" : "Bananas are nutritious.They are good for health. It promotes weight gain and helps to improve heart health and digestion"
-  //   },
-  //   {
-  //     "image" : theImages.apple,
-  //     "name" : "Apple",
-  //     "qty" : 1,
-  //     "price" : 180,
-  //     "description" : "Apples are nutritious. They are good for health. It promotes weight loss and it is good for your heart.",
-  //   },
-  //   {
-  //     "image" : theImages.dragonFruit,
-  //     "name" : "Dragon fruit",
-  //     "qty" : 1,
-  //     "price" : 110,
-  //     "description" : "A Dragon Fruit reduces risk of diabetes, reduces risks of cancer, helps in boosting immunity",
-  //   }
-  // ];
-  //
-  // addExclusiveList() async {
-  //   for(int i =0; i<exclusive.length; i++){
-  //    await FirebaseFirestore.instance.collection("exclusive").add(exclusive[i]);
-  //   }
-  // }
-
   //best selling list
   List bestSelling=[
     {
@@ -134,6 +103,7 @@ class _homeScreenState extends ConsumerState<homeScreen> {
   late LocationPermission permission;
 
   String _currentAddress = "";
+  String _postalCode = "";
 
   Future<Position> getCurrentLocation()async{
     servicePermission = await Geolocator.isLocationServiceEnabled();
@@ -153,6 +123,7 @@ class _homeScreenState extends ConsumerState<homeScreen> {
       Placemark place = placesmark[0];
       setState(() {
         _currentAddress = "${place.locality},${place.country}";
+        _postalCode = "${place.postalCode}";
       });
     }catch(e){
       print(e);
