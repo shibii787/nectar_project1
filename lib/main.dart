@@ -10,6 +10,7 @@ import 'package:nectar_project1/app_body/home_page.dart';
 // import 'package:nectar_project1/app_profile/delivery%20address.dart';
 import 'package:nectar_project1/app_profile/promocard.dart';
 import 'package:nectar_project1/firebase_options.dart';
+import 'package:nectar_project1/grocery/grocery_item.dart';
 import 'package:nectar_project1/pages_showing_items/bananapage.dart';
 import 'package:nectar_project1/pages_showing_items/green_gramdetails.dart';
 import 'package:nectar_project1/pulses/pulses_page.dart';
@@ -62,7 +63,7 @@ class MyApp extends StatelessWidget {
             textTheme: GoogleFonts.poppinsTextTheme()
         ),
         debugShowCheckedModeBanner: false,
-        home:splashscreen(),
+        home:groceryitemPage(),
       ),
     );
   }

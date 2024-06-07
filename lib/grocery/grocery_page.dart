@@ -51,75 +51,92 @@ class _grocerypageState extends State<grocerypage> {
           color: theColors.secondary,fontWeight: FontWeight.w600,
         ),),
       ),
-      body: Padding(
-        padding:  EdgeInsets.all(w*0.02),
+      body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
-              height: w*0.6,
-              width: w*0.4,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(w*0.03),
-                border: Border.all( color: theColors.nine)
-              ),
-              child: Padding(
-                padding:  EdgeInsets.all(w*0.02),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      height: w*0.31,
-                      width: w*0.4,
-                     child: Image.asset(theImages.daawatrice),
+              height: h,
+              width: w,
+              child: GridView.builder(
+                shrinkWrap: true,
+                itemCount: 3,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                  crossAxisSpacing: w*0.03,
+                  mainAxisSpacing: w*0.03,
+                  childAspectRatio: 0.75,
+
+                ),
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    height: w*0.6,
+                    width: w*0.4,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(w*0.03),
+                        border: Border.all( color: theColors.nine)
                     ),
-                    Container(
-                      height: w*0.14,
-                      width: w*0.4,
+                    child: Padding(
+                      padding:  EdgeInsets.all(w*0.02),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Daawat Rice",style: TextStyle(
-                            fontWeight: FontWeight.w600
-                          ),),
-                          Text("10kg Bag",style: TextStyle(
-                            color: theColors.eleventh,
-                            fontSize: w*0.03
-                          ),),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      height: w*0.1,
-                      width: w*0.4,
-                      child:Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("\$2.34",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600
-                          ),),
+                          Container(
+                            height: w*0.31,
+                            width: w*0.4,
+                            child: Image.asset(theImages.daawatrice),
+                          ),
+                          Container(
+                            height: w*0.14,
+                            width: w*0.4,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Daawat Rice",style: TextStyle(
+                                    fontWeight: FontWeight.w600
+                                ),),
+                                Text("10kg Bag",style: TextStyle(
+                                    color: theColors.eleventh,
+                                    fontSize: w*0.03
+                                ),),
+                              ],
+                            ),
+                          ),
                           Container(
                             height: w*0.1,
-                            width: w*0.1,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                BorderRadius.circular(w * 0.04),
-                                color: theColors.third,
-                                border: Border.all(
-                                    color: theColors.seventh,
-                                    width: w * 0.003)),
-                            child:  Icon(
-                              Icons.add,
-                              color: theColors.primaryColor,
+                            width: w*0.4,
+                            child:Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("\$2.34",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w600
+                                  ),),
+                                Container(
+                                  height: w*0.1,
+                                  width: w*0.1,
+                                  decoration: BoxDecoration(
+                                      borderRadius:
+                                      BorderRadius.circular(w * 0.04),
+                                      color: theColors.third,
+                                      border: Border.all(
+                                          color: theColors.seventh,
+                                          width: w * 0.003)),
+                                  child:  Icon(
+                                    Icons.add,
+                                    color: theColors.primaryColor,
+                                  ),
+                                )
+                              ],
                             ),
                           )
                         ],
                       ),
-                    )
-                  ],
-                ),
+                    ),
+                  );
+                },
               ),
             )
+        
           ],
         ),
       ),
