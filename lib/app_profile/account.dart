@@ -84,12 +84,19 @@ class _accountState extends State<account> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor:theColors.primaryColor ,
         automaticallyImplyLeading: false,
         elevation: 0,
         centerTitle: true,
-        title: Text("Account",style: TextStyle(
-          fontWeight: FontWeight.w500
+        title: Text("Profile",style: TextStyle(
+          fontWeight: FontWeight.w500,
+          color: theColors.secondary,
         )),
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+            child: Icon(CupertinoIcons.back,color: theColors.secondary)),
       ),
         body: SafeArea(
           child: SingleChildScrollView(

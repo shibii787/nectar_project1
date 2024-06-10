@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
 import 'package:nectar_project1/feature/addingDetails/controller/addController.dart';
-import 'package:nectar_project1/pages_showing_items/green_gramdetails.dart';
+import 'package:nectar_project1/pages_showing_items/pulses_view page.dart';
 
 
 import '../main.dart';

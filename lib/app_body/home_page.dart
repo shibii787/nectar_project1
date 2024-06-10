@@ -12,6 +12,7 @@ import 'package:nectar_project1/core/common/images.dart';
 import 'package:nectar_project1/grocery/grocery_page.dart';
 import 'package:nectar_project1/pages_showing_items/exclusive_view_page.dart';
 import 'package:nectar_project1/pulses/pulses_page.dart';
+import 'package:pinput/pinput.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../main.dart';
@@ -547,65 +548,68 @@ class _homeScreenState extends ConsumerState<homeScreen> {
                         },),
                   ),
                   SizedBox(height: h*0.02),
-                  Container(
-                    height: h*0.35,
-                    width: w*1,
-                    child: ListView.builder(
-                      itemCount: meat.length,
-                      physics: BouncingScrollPhysics(),
-                      scrollDirection: Axis.horizontal,
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        return Container(
-                          height: h*0.15,
-                          width: w*0.4,
-                          padding: EdgeInsets.all(w*0.03),
-                          margin: EdgeInsets.all(w*0.03),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(w*0.03),
-                              border: Border.all(
-                                  color: theColors.eleventh
-                              )
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Image.asset(meat[index]["image"]),
-                              Text(meat[index]["name"],style: TextStyle(
-                                  fontWeight: FontWeight.w600
-                              ),),
-                              Text(meat[index]["qty"].toString(),style: TextStyle(
-                                  fontWeight: FontWeight.w600
-                              ),),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text("${meat[index]["price"].toString()} ₹",style: TextStyle(
-                                      fontWeight: FontWeight.w600
-                                  ),),
-                                  Container(
-                                    height: w*0.1,
-                                    width: w*0.1,
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                        BorderRadius.circular(w * 0.04),
-                                        color: theColors.third,
-                                        border: Border.all(
-                                            color: theColors.seventh,
-                                            width: w * 0.003)),
-                                    child:  Icon(
-                                      Icons.add,
-                                      color: theColors.primaryColor,
-                                    ),
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
-                        );
-                      },),
-                  ),
+
+                  // Container(
+                  //   height: h*0.35,
+                  //   width: w*1,
+                  //   child: ListView.builder(
+                  //     itemCount: meat.length,
+                  //     physics: BouncingScrollPhysics(),
+                  //     scrollDirection: Axis.horizontal,
+                  //     shrinkWrap: true,
+                  //     itemBuilder: (context, index) {
+                  //       return Container(
+                  //         height: h*0.15,
+                  //         width: w*0.4,
+                  //         padding: EdgeInsets.all(w*0.03),
+                  //         margin: EdgeInsets.all(w*0.03),
+                  //         decoration: BoxDecoration(
+                  //             borderRadius: BorderRadius.circular(w*0.03),
+                  //             border: Border.all(
+                  //                 color: theColors.eleventh
+                  //             )
+                  //         ),
+                  //         child: Column(
+                  //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  //           children: [
+                  //             Image.asset(meat[index]["image"]),
+                  //             Text(meat[index]["name"],style: TextStyle(
+                  //                 fontWeight: FontWeight.w600
+                  //             ),),
+                  //             Text(meat[index]["qty"].toString(),style: TextStyle(
+                  //                 fontWeight: FontWeight.w600
+                  //             ),),
+                  //             Row(
+                  //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //               children: [
+                  //                 Text("${meat[index]["price"].toString()} ₹",style: TextStyle(
+                  //                     fontWeight: FontWeight.w600
+                  //                 ),),
+                  //                 Container(
+                  //                   height: w*0.1,
+                  //                   width: w*0.1,
+                  //                   decoration: BoxDecoration(
+                  //                       borderRadius:
+                  //                       BorderRadius.circular(w * 0.04),
+                  //                       color: theColors.third,
+                  //                       border: Border.all(
+                  //                           color: theColors.seventh,
+                  //                           width: w * 0.003)),
+                  //                   child:  Icon(
+                  //                     Icons.add,
+                  //                     color: theColors.primaryColor,
+                  //                   ),
+                  //                 )
+                  //               ],
+                  //             )
+                  //           ],
+                  //         ),
+                  //       );
+                  //     },),
+                  // ),
+
                 ],
+
               ),
             ),
           ),
