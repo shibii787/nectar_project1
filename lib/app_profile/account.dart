@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:math';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -92,11 +93,6 @@ class _accountState extends State<account> {
           fontWeight: FontWeight.w500,
           color: theColors.secondary,
         )),
-        leading: InkWell(
-          onTap: () {
-            Navigator.pop(context);
-          },
-            child: Icon(CupertinoIcons.back,color: theColors.secondary)),
       ),
         body: SafeArea(
           child: SingleChildScrollView(

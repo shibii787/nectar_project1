@@ -10,8 +10,6 @@ final addingController = Provider((ref) => AddingController(addRepository: ref.w
 
 final exclusiveStreamProvider = StreamProvider((ref) => ref.watch(addingController).exclusiveStreamController());
 
-final meatAndFishProvider =StreamProvider((ref) => ref.watch(addingController).meatAndFishController());
-
 final pulsesStreamprovider = StreamProvider((ref) => ref.watch(addingController).pulsesstreamcntroller());
 
 final bestsellingStreamProvider = StreamProvider((ref) => ref.watch(addingController).bestSellingStreamController());
@@ -36,10 +34,6 @@ Stream<List<BestSellingModel>>bestSellingStreamController(){
   return _addrepository.bestSellingStream();
 }
 
-//stream function for showing meat and fish items in home screen
-Stream meatAndFishController(){
-  return _addrepository.meatAndFishStream();
-}
 //stream function for showing pulses
 Stream<List<PulsesModel>>pulsesstreamcntroller(){
   return _addrepository.pulsesstream();

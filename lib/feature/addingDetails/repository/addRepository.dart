@@ -28,6 +28,9 @@ class AddingRepository{
   
   //pulses
   CollectionReference get _pulses => _firestore.collection("pulses");
+  
+  // To add categories to app
+  CollectionReference get _categories => _firestore.collection("categories");
 
   collectionFunc({required UserModel userModel}){
     _account.add(userModel.tomap()).then((value) {
@@ -37,6 +40,8 @@ class AddingRepository{
     });
   }
 
+ // To add category
+
   //To Stream exclusive list
 Stream<List<ExclusiveModel>> exclusiveStream(){
     return _exclusive.snapshots().map((event) => event.docs.map((e) => ExclusiveModel.fromMap(e.data() as Map<String,dynamic>)).toList());
@@ -45,11 +50,6 @@ Stream<List<ExclusiveModel>> exclusiveStream(){
   //To Stream bestSelling list
 Stream<List<BestSellingModel>> bestSellingStream(){
     return _bestSelling.snapshots().map((event) => event.docs.map((e) => BestSellingModel.fromMap(e.data() as Map<String,dynamic>)).toList());
-}
-
-  //To stream meat and fish only in home screen
-Stream meatAndFishStream(){
-    return _categoryItems.doc("53edLTtx3FBcTPh5c0iz").collection("subItems").snapshots();
 }
 
   //To Stream pulses list

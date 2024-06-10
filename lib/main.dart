@@ -7,12 +7,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:nectar_project1/app_authentication/select_location_page.dart';
 import 'package:nectar_project1/app_body/bottom_nav.dart';
 import 'package:nectar_project1/app_body/home_page.dart';
-// import 'package:nectar_project1/app_profile/delivery%20address.dart';
 import 'package:nectar_project1/app_profile/promocard.dart';
 import 'package:nectar_project1/firebase_options.dart';
 import 'package:nectar_project1/grocery/grocery_item.dart';
 import 'package:nectar_project1/pages_showing_items/bananapage.dart';
-import 'package:nectar_project1/pages_showing_items/pulses_view page.dart';
 import 'package:nectar_project1/pulses/pulses_page.dart';
 import 'app_into/splashscreen.dart';
 import 'app_payment/Payment_card.dart';
@@ -63,7 +61,7 @@ class MyApp extends StatelessWidget {
             textTheme: GoogleFonts.poppinsTextTheme()
         ),
         debugShowCheckedModeBanner: false,
-        home:splashscreen(),
+        home:bottomNav(),
       ),
     );
   }

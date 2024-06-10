@@ -221,7 +221,7 @@ class _homeScreenState extends ConsumerState<homeScreen> {
                     },
                     child: Container(
                       height: h * 0.2,
-                      width: w * 0.55,
+                      width: w * 0.6,
                       padding: EdgeInsets.all(w*0.02),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(w*0.03),
@@ -429,7 +429,7 @@ class _homeScreenState extends ConsumerState<homeScreen> {
                       height: h*0.35,
                       width: w*1,
                       child: ListView.builder(
-                        itemCount: bestSellingSelect == true ? data.length : 2,
+                        itemCount: bestSellingSelect == true ? data.length : 3,
                         physics: BouncingScrollPhysics(),
                         scrollDirection: Axis.horizontal,
                         shrinkWrap: true,
@@ -508,7 +508,6 @@ class _homeScreenState extends ConsumerState<homeScreen> {
                       )
                     ],
                   ),
-                  SizedBox(height: h * 0.02),
                   Container(
                     height: h*0.2,
                     width: w*1,
