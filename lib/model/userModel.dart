@@ -7,6 +7,8 @@ class UserModel{
   final String address;
   final int pincode;
   final String image;
+  final List cart;
+  final List favourites;
   final String id;
 UserModel({
   required this.name,
@@ -17,6 +19,8 @@ UserModel({
   required this.address,
   required this.pincode,
   required this.image,
+  required this.cart,
+  required this.favourites,
   required this.id
 });
 Map<String,dynamic> tomap(){
@@ -25,11 +29,13 @@ Map<String,dynamic> tomap(){
     "email": this.email,
     "password": this.password,
     "location": this.location,
-    "phoneNumber":this.phoneNumber,
-    "address":this.address,
-    "pincode":this.pincode,
-    "image":this.image,
-    "id":this.id
+    "phoneNumber": this.phoneNumber,
+    "address": this.address,
+    "pincode": this.pincode,
+    "image": this.image,
+    "cart": this.cart,
+    "favourites": this.favourites,
+    "id": this.id
   };
 }
 factory UserModel.fromMap(Map<String,dynamic>map){
@@ -42,6 +48,8 @@ factory UserModel.fromMap(Map<String,dynamic>map){
       address: map["address"]??"",
       pincode: map["pincode"]??"",
       image: map["image"]?? "",
+      cart: map["cart"]??[],
+      favourites: map["favourites"]??[],
       id: map["id"]??""
   );
 }
@@ -54,6 +62,8 @@ UserModel copyWith({
     String? address,
     int? pincode,
     String? image,
+    List? cart,
+    List? favourites,
     String? id
 }){
   return UserModel(
@@ -65,6 +75,8 @@ UserModel copyWith({
       address: address ?? this.address,
       pincode: pincode ?? this.pincode,
       image: image ?? this.image,
+      cart: cart ?? this.cart,
+      favourites: favourites ?? this.favourites,
       id: id ?? this.id
   );
 }

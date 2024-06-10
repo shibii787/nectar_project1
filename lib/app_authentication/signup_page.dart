@@ -133,6 +133,8 @@ class _signupPageState extends ConsumerState<signupPage> {
           phoneNumber: int.tryParse(numberController.text)!,
           address: "",
           pincode: 0,
+          cart: [],
+          favourites: [],
           id: "",
           image: imageurl);
 
