@@ -28,7 +28,6 @@ class _pulsesState extends ConsumerState<pulses> {
         elevation: 0,
         backgroundColor: theColors.primaryColor,
         title: Text("Pulses",style: TextStyle(
-          fontSize: w*0.07,
            color: theColors.secondary,
         )),
         leading:InkWell(
@@ -62,7 +61,7 @@ class _pulsesState extends ConsumerState<pulses> {
                         itemBuilder: (context, index) {
                     return    InkWell(
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) =>greengrems(
+                          Navigator.push(context, MaterialPageRoute(builder: (context) =>pulsesViewPage(
                             image: data[index].image,
                             price:data[index].price.toString(),
                             qty: data[index].qty.toString(),

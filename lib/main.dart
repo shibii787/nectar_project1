@@ -10,7 +10,6 @@ import 'package:nectar_project1/app_body/home_page.dart';
 import 'package:nectar_project1/app_profile/promocard.dart';
 import 'package:nectar_project1/firebase_options.dart';
 import 'package:nectar_project1/grocery/grocery_item.dart';
-import 'package:nectar_project1/pages_showing_items/bananapage.dart';
 import 'package:nectar_project1/pulses/pulses_page.dart';
 import 'app_into/splashscreen.dart';
 import 'app_payment/Payment_card.dart';
@@ -24,10 +23,11 @@ UserModel? currentUserModel;
 var userName;
 var userEmail;
 var userImage;
-var userphoneNumber;
-var pincode;
-var address;
+var userPhoneNumber;
+var userPincode;
+var userAddress;
 var userLocation;
+var userId;
 
 Future<void> main() async {
  WidgetsFlutterBinding.ensureInitialized();
@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
             textTheme: GoogleFonts.poppinsTextTheme()
         ),
         debugShowCheckedModeBanner: false,
-        home:groceryitemPage(),
+        home:splashscreen(),
       ),
     );
   }

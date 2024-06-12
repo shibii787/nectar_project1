@@ -26,7 +26,7 @@ class exclusiveViewPage extends StatefulWidget {
 class _exclusiveViewPageState extends State<exclusiveViewPage> {
 
   int count = 1;
-  bool more = true;
+  bool more = false;
 
   addToCart(){}
 

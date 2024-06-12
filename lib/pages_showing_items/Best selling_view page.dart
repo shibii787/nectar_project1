@@ -20,10 +20,12 @@ class bestselling extends StatefulWidget {
   @override
   State<bestselling> createState() => _bestsellingState();
 }
-int count=1;
-bool more =true;
 
 class _bestsellingState extends State<bestselling> {
+
+  int count=1;
+  bool more =false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,7 +78,7 @@ class _bestsellingState extends State<bestselling> {
                       ),
                       color: theColors.sixth
                   ),
-                  child: Image.asset(widget.image),
+                  child: Image.network(widget.image),
                 ),
                 SizedBox(height: w*0.03,),
                 Row(

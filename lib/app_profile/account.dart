@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -72,6 +71,24 @@ class _accountState extends State<account> {
   }
 
   TextEditingController nameController = TextEditingController();
+
+  updateName(){
+    if (currentUserModel != null) {
+      // Update the Firestore document with the new name
+           FirebaseFirestore.instance
+          .collection("account")
+          .doc(currentUserModel!.id)
+          .update(currentUserModel!.copyWith(name: nameController.text).tomap())
+          .then((_) {
+        print("Name updated successfully: ${nameController.text}");
+      })
+          .catchError((error) {
+        print("Failed to update name: $error");
+      });
+    } else {
+      print("Current user model is null");
+    }
+  }
 
   @override
   void initState() {
@@ -177,7 +194,26 @@ class _accountState extends State<account> {
                                 width: w*0.56,
                                 child: TextFormField(
                                   controller: nameController,
+                                  textInputAction: TextInputAction.done,
                                   onFieldSubmitted: (value) {
+
+                                    // FirebaseFirestore.instance.collection("account").doc(currentUserModel?.id).update(
+                                    //   currentUserModel?.copyWith(
+                                    //     name: nameController.text
+                                    //   ) as Map<String, dynamic>
+                                    // );
+                                    // print(nameController.text);
+
+                                    // final updateUserModel = currentUserModel?.copyWith(
+                                    //   name: nameController.text
+                                    // );
+                                    //
+                                    // FirebaseFirestore.instance.collection("account").doc(currentUserModel?.id).update(
+                                    //     updateUserModel!.tomap()
+                                    // );
+                                    // print(nameController.text);
+
+                                    updateName();
 
                                   },
                                   decoration: InputDecoration(
@@ -259,7 +295,6 @@ class _accountState extends State<account> {
                                 Icon(Icons.arrow_forward_ios),
                               ],
                             ),
-                            // margin: EdgeInsets.all(w*0.03),
                           ),
                         ),
                         InkWell(

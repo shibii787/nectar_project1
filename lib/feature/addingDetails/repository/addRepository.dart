@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nectar_project1/core/providers/firebase_providers.dart';
+import 'package:nectar_project1/model/addcategory_model.dart';
 import 'package:nectar_project1/model/bestSelling_model.dart';
 import 'package:nectar_project1/model/exclusive_model.dart';
 import 'package:nectar_project1/model/pulses_model.dart';
@@ -29,7 +30,7 @@ class AddingRepository{
   //pulses
   CollectionReference get _pulses => _firestore.collection("pulses");
   
-  // To add categories to app
+  // To stream categories to app
   CollectionReference get _categories => _firestore.collection("categories");
 
   collectionFunc({required UserModel userModel}){
@@ -40,7 +41,10 @@ class AddingRepository{
     });
   }
 
- // To add category
+  // To stream categories
+Stream<List<AddCategoryModel>> addCategoryStream(){
+    return _categories.snapshots().map((event) => event.docs.map((e) => AddCategoryModel.fromMap(e.data() as Map<String,dynamic>)).toList());
+}
 
   //To Stream exclusive list
 Stream<List<ExclusiveModel>> exclusiveStream(){

@@ -2,39 +2,54 @@ import 'package:animated_rating_stars/animated_rating_stars.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nectar_project1/core/common/colors.dart';
-import 'package:nectar_project1/core/common/images.dart';
 
 import '../main.dart';
 
-class appleDetails extends StatefulWidget {
-  const appleDetails({super.key});
+class subItemViewPage extends StatefulWidget {
+  final String itemName;
+  final double itemprice;
+  final int itemqty;
+  final String itemDescription;
+  final String itemImage;
+  const subItemViewPage({super.key,
+    required this.itemName,
+    required this.itemprice,
+    required this.itemqty,
+    required this.itemDescription,
+    required this.itemImage
+  });
 
   @override
-  State<appleDetails> createState() => _appleDetailsState();
+  State<subItemViewPage> createState() => _subItemViewPageState();
 }
 
-class _appleDetailsState extends State<appleDetails> {
+class _subItemViewPageState extends State<subItemViewPage> {
 
-  bool more=false; //to show product details
+  int count = 1;
+  bool more = false;
 
-  int apple=1;
+  addToCart(){}
 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: Container(
-        height: w * 0.15,
-        width: w * 0.9,
-        decoration: BoxDecoration(
-            color: theColors.third,
-            borderRadius: BorderRadius.circular(w * 0.04)),
-        child: Center(
-          child: Text("Add To Cart",
-              style: TextStyle(
-                  color: theColors.primaryColor,
-                  fontSize: w*0.045,
-                  fontWeight: FontWeight.w500)),
+      floatingActionButton: InkWell(
+        onTap: () {
+
+        },
+        child: Container(
+          height: w * 0.15,
+          width: w * 0.9,
+          decoration: BoxDecoration(
+              color: theColors.third,
+              borderRadius: BorderRadius.circular(w * 0.04)),
+          child: Center(
+            child: Text("Add To Cart",
+                style: TextStyle(
+                    color: theColors.primaryColor,
+                    fontSize: w*0.045,
+                    fontWeight: FontWeight.w500)),
+          ),
         ),
       ),
       appBar: AppBar(
@@ -42,9 +57,9 @@ class _appleDetailsState extends State<appleDetails> {
         backgroundColor: theColors.sixth,
         automaticallyImplyLeading: false,
         leading: InkWell(
-          onTap: () {
-            Navigator.pop(context);
-          },
+            onTap: () {
+              Navigator.pop(context);
+            },
             child: Icon(CupertinoIcons.back)),
         actions: [
           Icon(Icons.file_upload_outlined)
@@ -62,16 +77,16 @@ class _appleDetailsState extends State<appleDetails> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                height: h*0.35,
+                height: h*0.3,
                 width: w*1,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(w*0.03),
-                      bottomRight: Radius.circular(w*0.03),
-                    ),
-                    color: theColors.sixth
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(w*0.03),
+                    bottomRight: Radius.circular(w*0.03),
+                  ),
+                  image: DecorationImage(image: NetworkImage(widget.itemImage),fit: BoxFit.cover),
+                  color: theColors.sixth,
                 ),
-                child: Image.asset(theImages.apple),
               ),
               SizedBox(height: h*0.03),
               Row(
@@ -79,16 +94,16 @@ class _appleDetailsState extends State<appleDetails> {
                 children: [
                   Column(
                     children: [
-                      Text("Red Apple",style: TextStyle(
-                        fontWeight: FontWeight.w600,fontSize: w*0.035
+                      Text("${widget.itemName}",style: TextStyle(
+                          fontWeight: FontWeight.w600,fontSize: w*0.035
                       ),),
                       Text("1kg,Price")
                     ],
                   ),
                   InkWell(
-                    onTap: () {
+                      onTap: () {
 
-                    },
+                      },
                       child: Icon(Icons.favorite_border_outlined))
                 ],
               ),
@@ -100,45 +115,45 @@ class _appleDetailsState extends State<appleDetails> {
                     height: h*0.05,
                     width: w*0.5,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(w*0.03),
-                      color: theColors.sixth
+                        borderRadius: BorderRadius.circular(w*0.03),
+                        color: theColors.sixth
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         InkWell(
-                          onTap: () {
-                            apple==1?1:apple--;
-                            setState(() {
+                            onTap: () {
+                              count==1?1:count--;
+                              setState(() {
 
-                            });
-                          },
+                              });
+                            },
                             child: Icon(Icons.remove)),
                         Container(
-                          height: h*0.04,
+                            height: h*0.04,
                             width: w*0.1,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(w*0.03),
-                              color: theColors.primaryColor
+                                borderRadius: BorderRadius.circular(w*0.03),
+                                color: theColors.primaryColor
                             ),
                             child: Center(
-                              child: Text(apple.toString(),style: TextStyle(
-                                fontWeight: FontWeight.w500
+                              child: Text(count.toString(),style: TextStyle(
+                                  fontWeight: FontWeight.w500
                               ),),
                             )),
-                       InkWell(
-                         onTap: () {
-                           apple++;
-                           setState(() {
+                        InkWell(
+                            onTap: () {
+                              count++;
+                              setState(() {
 
-                           });
-                         },
-                           child: Icon(Icons.add)),
+                              });
+                            },
+                            child: Icon(Icons.add)),
                       ],
                     ),
                   ),
-                  Text("Price :",style: TextStyle(
-                    fontWeight: FontWeight.w500
+                  Text("Price : ${widget.itemprice}",style: TextStyle(
+                      fontWeight: FontWeight.w500
                   ),)
                 ],
               ),
@@ -151,7 +166,7 @@ class _appleDetailsState extends State<appleDetails> {
                   });
                 },
                 child: more==true?Container(
-                  height: h*0.11,
+                  height: h*0.22,
                   width: w*1,
                   decoration: BoxDecoration(
                       border: Border(
@@ -171,28 +186,28 @@ class _appleDetailsState extends State<appleDetails> {
                           Icon(CupertinoIcons.chevron_down),
                         ],
                       ),
-                      Text("Apples are nutritious. They are good for health. It promotes weight loss and it is good for your heart.")
+                      Text("${widget.itemDescription}")
                     ],
                   ),
                 ) :Container(
-                height: h*0.05,
-                width: w*1,
-                decoration: BoxDecoration(
-                  border: Border(
-                    top: BorderSide(
-                      color: theColors.secondary,
-                      width: w*0.002
-                    )
-                  )
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Product Details"),
-                    Icon(CupertinoIcons.chevron_down)
-                  ],
-                ),
-              ),),
+                  height: h*0.05,
+                  width: w*1,
+                  decoration: BoxDecoration(
+                      border: Border(
+                          top: BorderSide(
+                              color: theColors.secondary,
+                              width: w*0.002
+                          )
+                      )
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Product Details"),
+                      Icon(CupertinoIcons.chevron_down)
+                    ],
+                  ),
+                ),),
               SizedBox(height: h*0.02),
               Container(
                 height: h*0.05,

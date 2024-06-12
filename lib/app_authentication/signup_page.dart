@@ -6,7 +6,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
@@ -136,7 +135,8 @@ class _signupPageState extends ConsumerState<signupPage> {
           cart: [],
           favourites: [],
           id: "",
-          image: imageurl);
+          image: imageurl
+      );
 
       ref.watch(addingController).controlCollectionFunc(userModel: userModel);
 
@@ -146,10 +146,28 @@ class _signupPageState extends ConsumerState<signupPage> {
           "email", isEqualTo: emailController.text.trim()
       ).get();
 
+      // assigning to userModel
+      if(userDetails.docs.isNotEmpty){
+        currentUserModel = UserModel(
+            name: userDetails.docs[0]["name"],
+            email: userDetails.docs[0]["email"],
+            password: userDetails.docs[0]["password"],
+            location: userDetails.docs[0]["location"],
+            phoneNumber: userDetails.docs[0]["phoneNumber"],
+            address: userDetails.docs[0]["address"],
+            pincode: userDetails.docs[0]["pincode"],
+            image: userDetails.docs[0]["image"],
+            cart: userDetails.docs[0]["cart"],
+            favourites: userDetails.docs[0]["favourites"],
+            id: userDetails.docs[0]["id"]);
+      }
+
       // assigning details to global variables
       userName = userDetails.docs[0]["name"];
+      userImage = userDetails.docs[0]["image"];
       userEmail = userDetails.docs[0]["email"];
-      userphoneNumber = userDetails.docs[0]["phoneNumber"];
+      userId = userDetails.docs[0]["id"];
+      userPhoneNumber = userDetails.docs[0]["phoneNumber"];
       print("FFFFFFFFFFFFFFFFFFFFFFFFFFFF : $userName");
 
       newUserDetails(); //sharedpreference code

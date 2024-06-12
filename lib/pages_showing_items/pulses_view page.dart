@@ -5,13 +5,13 @@ import 'package:nectar_project1/core/common/colors.dart';
 
 import '../main.dart';
 
-class greengrems extends StatefulWidget {
+class pulsesViewPage extends StatefulWidget {
   final String image;
   final String price;
   final String qty;
   final String name;
   final String discription;
-  const greengrems({super.key,
+  const pulsesViewPage({super.key,
     required this.image,
     required this.price,
     required this.qty,
@@ -19,13 +19,15 @@ class greengrems extends StatefulWidget {
     required this.discription});
 
   @override
-  State<greengrems> createState() => _greengremsState();
+  State<pulsesViewPage> createState() => _pulsesViewPageState();
 }
 
-class _greengremsState extends State<greengrems> {
-  @override
+class _pulsesViewPageState extends State<pulsesViewPage> {
+
   bool more =false;
   int pulses=1;
+
+  @override
   Widget build(BuildContext context) {
     return  Scaffold(
         floatingActionButton: Container(
