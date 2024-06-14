@@ -103,7 +103,7 @@ class _grocerypageState extends ConsumerState<grocerypage> {
                                   Container(
                                     height: w * 0.31,
                                     width: w * 0.4,
-                                    child: Image.asset(theImages.daawatrice),
+                                    child: Image.network(data[index].image,fit: BoxFit.fill,),
                                   ),
                                   Container(
                                     height: w * 0.14,
