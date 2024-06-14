@@ -15,6 +15,9 @@ final exclusiveStreamProvider = StreamProvider((ref) => ref.watch(addingControll
 
 final pulsesStreamprovider = StreamProvider((ref) => ref.watch(addingController).pulsesstreamcntroller());
 
+
+final groceryStreamprovider = StreamProvider((ref) => ref.watch(addingController).grocerystreamcontroller());
+
 final bestsellingStreamProvider = StreamProvider((ref) => ref.watch(addingController).bestSellingStreamController());
 
 class AddingController{
@@ -45,6 +48,11 @@ Stream<List<BestSellingModel>>bestSellingStreamController(){
 //stream function for showing pulses
 Stream<List<PulsesModel>>pulsesstreamcntroller(){
   return _addrepository.pulsesstream();
+}
+
+
+Stream<List<PulsesModel>>grocerystreamcontroller(){
+  return _addrepository.grocerystream();
 }
 
 }

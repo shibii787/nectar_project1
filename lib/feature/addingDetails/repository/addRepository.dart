@@ -29,7 +29,10 @@ class AddingRepository{
   
   //pulses
   CollectionReference get _pulses => _firestore.collection("pulses");
-  
+
+  //grocery
+  CollectionReference get _grocery => _firestore.collection("grocery");
+
   // To stream categories to app
   CollectionReference get _categories => _firestore.collection("categories");
 
@@ -58,6 +61,10 @@ Stream<List<BestSellingModel>> bestSellingStream(){
 
   //To Stream pulses list
 Stream<List<PulsesModel>> pulsesstream(){
+    return _pulses.snapshots().map((event) => event.docs.map((e) => PulsesModel.fromMap(e.data() as Map<String,dynamic>)).toList());
+}
+
+Stream<List<PulsesModel>> grocerystream(){
     return _pulses.snapshots().map((event) => event.docs.map((e) => PulsesModel.fromMap(e.data() as Map<String,dynamic>)).toList());
 }
 

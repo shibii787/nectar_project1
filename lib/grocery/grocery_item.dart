@@ -7,16 +7,48 @@ import 'package:nectar_project1/core/common/images.dart';
 import '../main.dart';
 
 class groceryitemPage extends StatefulWidget {
-  const groceryitemPage({super.key});
+  final String name;
+  final double price;
+  final int qty;
+  final String description;
+  final String image;
+  const groceryitemPage({super.key,
+    required this.name,
+    required this.price,
+    required this.qty,
+    required this.description,
+    required this.image,
+
+
+  });
 
   @override
   State<groceryitemPage> createState() => _groceryitemPageState();
 }
 
 class _groceryitemPageState extends State<groceryitemPage> {
+   int count=1;
+   bool updwn=false;
+   bool fav=true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: Container(
+        height: w*0.15,
+        width: w*0.9,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(w*0.04),
+          color: theColors.third,
+        ),
+        child: Center(
+          child: Text("Add To Cart",style: TextStyle(
+              color: theColors.primaryColor,
+              fontSize: w*0.045,
+              fontWeight: FontWeight.w500
+          )),
+        ),
+      ),
 appBar: AppBar(
   centerTitle: true,
   title: Text("Grocery Item",style: TextStyle(fontWeight: FontWeight.w600,
@@ -24,12 +56,13 @@ appBar: AppBar(
   elevation: 0,
 ),
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Column(
           children: [
             Container(
               height: w*0.8,
               width: w*1,
-              child: Image.asset(theImages.daawatrice)
+              child: Image.network(widget.image)
             ),
             Container(
               height: w*0.4,
@@ -42,16 +75,19 @@ appBar: AppBar(
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Natural Red Apple"
+                        Text("${widget.name}"
                           ,style: TextStyle(fontWeight: FontWeight.w600,
                             fontSize: w*0.05),),
                         InkWell(
                           onTap: () {
-                            
+                            setState(() {
+                              fav=!fav;
+                            });
                           },
                           child: Padding(
                             padding:  EdgeInsets.only(right: w*0.03),
-                            child: Icon(Icons.favorite_border,
+                            child: Icon(fav==false?Icons.favorite_border:Icons.favorite,
+                              color: theColors.thirteen,
                             ),
                           ),
                         )
@@ -63,18 +99,30 @@ appBar: AppBar(
                       children: [
                         Container(
                           height: w * 0.2,
-                          width: w * 0.2,
+                          width: w * 0.5,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                              InkWell(
                                  onTap:() {
-                        
+                                   setState(() {
+                                     count==1?1:count--;
+                                   });
                                  },
-                                 child: Icon(Icons.remove,size: w*0.04)),
+                                 child: Container(
+                                     height: w*0.1,
+                                     width: w*0.15,
+                                     decoration: BoxDecoration(
+                                       color: theColors.nine,
+                                       borderRadius: BorderRadius.circular(w*0.03),
+                                       border: Border.all(
+                                         color: theColors.nine,
+                                       )
+                                     ),
+                                     child: Icon(Icons.remove,size: w*0.06,color: theColors.primaryColor,))),
                               Container(
-                                height: w*0.06,
-                                width: w*0.06,
+                                height: w*0.1,
+                                width: w*0.1,
                                 decoration: BoxDecoration(
                                   border: Border.all(
                                     color: theColors.nine,
@@ -83,22 +131,34 @@ appBar: AppBar(
                                 ),
                                 child: Center(
                                   child: Text(
-                                    "1",
-                                    style: TextStyle(fontWeight: FontWeight.w600),
+                                  count.toString(),
+                                    style: TextStyle(fontWeight: FontWeight.w700),
                                   ),
                                 ),
                               ),
                               InkWell(
                                   onTap: () {
-                        
+                                    setState(() {
+                                      count ++;
+                                    });
                                   },
-                                  child: Icon(Icons.add,size: w*0.04,))
+                                  child: Container(
+                                      height: w*0.1,
+                                      width: w*0.15,
+                                      decoration: BoxDecoration(
+                                        color: theColors.nine,
+                                        borderRadius: BorderRadius.circular(w*0.03),
+                                        border: Border.all(
+                                          color: theColors.nine,
+                                        )
+                                      ),
+                                      child: Icon(Icons.add,size: w*0.06,color: theColors.primaryColor,)))
                             ],
                           ),
                         ),
                         Padding(
                           padding:  EdgeInsets.only(right: w*0.03),
-                          child: Text("\$4.99",style: TextStyle(
+                          child: Text("${widget.price}",style: TextStyle(
                             fontSize: w*0.06,
                             fontWeight: FontWeight.w700
                           ),),
@@ -127,15 +187,18 @@ appBar: AppBar(
                       ),
                       InkWell(
                           onTap: () {
+                            setState(() {
+                              updwn=!updwn;
+                            });
 
                           },
-                          child: Icon(CupertinoIcons.chevron_down))
+                          child: Icon(updwn==false?CupertinoIcons.chevron_down:CupertinoIcons.chevron_up))
                     ],
                   ),
                   SizedBox(
                     height: w*0.03,
                   ),
-                  Text("Apples are nutritious.Apples may be good for weight loss. apples may be good for your heart. As part of a healtful and varied diet.",
+                  Text("${widget.description}",
                     textAlign: TextAlign.justify,),
                   Divider(
                     color: theColors.nine,
@@ -231,6 +294,9 @@ appBar: AppBar(
                     indent:w*0.05,
                     endIndent: w*0.05,
                   ),
+                  SizedBox(
+                    height: w*0.5,
+                  )
 
                 ],
               ),
