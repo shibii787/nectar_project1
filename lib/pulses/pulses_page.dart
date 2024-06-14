@@ -63,8 +63,8 @@ class _pulsesState extends ConsumerState<pulses> {
                         onTap: () {
                           Navigator.push(context, MaterialPageRoute(builder: (context) =>pulsesViewPage(
                             image: data[index].image,
-                            price:data[index].price.toString(),
-                            qty: data[index].qty.toString(),
+                            price:double.parse(data[index].price.toString()),
+                            qty: int.parse(data[index].qty.toString()),
                             name: data[index].name,
                             discription: data[index].description,
                           ) ,));
@@ -82,7 +82,7 @@ class _pulsesState extends ConsumerState<pulses> {
                             ),
                             child: Column(
                               children: [
-                                Image.asset(data[index].image,height: w*0.3,),
+                                Image.network(data[index].image,height: w*0.3,),
                                 Text(data[index].name,style: TextStyle(
                                   fontWeight: FontWeight.w700
                                 )),

@@ -16,7 +16,7 @@ class exclusiveViewPage extends StatefulWidget {
     required this.itemprice,
     required this.itemqty,
     required this.itemDescription,
-    required this.itemImage
+    required this.itemImage,
   });
 
   @override
@@ -28,7 +28,15 @@ class _exclusiveViewPageState extends State<exclusiveViewPage> {
   int count = 1;
   bool more = false;
 
-  addToCart(){}
+  double price = 0;
+  double total = 0;
+
+  @override
+  void initState() {
+    price = widget.itemprice;
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -124,6 +132,7 @@ class _exclusiveViewPageState extends State<exclusiveViewPage> {
                         InkWell(
                             onTap: () {
                               count==1?1:count--;
+                              //addPrice();
                               setState(() {
 
                               });
@@ -144,6 +153,7 @@ class _exclusiveViewPageState extends State<exclusiveViewPage> {
                         InkWell(
                             onTap: () {
                               count++;
+                              // addPrice();
                               setState(() {
 
                               });
@@ -152,7 +162,7 @@ class _exclusiveViewPageState extends State<exclusiveViewPage> {
                       ],
                     ),
                   ),
-                  Text("Price : ${widget.itemprice}",style: TextStyle(
+                  Text("Price : ${widget.itemprice*count}",style: TextStyle(
                       fontWeight: FontWeight.w500
                   ),)
                 ],

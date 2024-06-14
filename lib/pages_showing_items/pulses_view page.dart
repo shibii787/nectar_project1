@@ -7,8 +7,8 @@ import '../main.dart';
 
 class pulsesViewPage extends StatefulWidget {
   final String image;
-  final String price;
-  final String qty;
+  final double price;
+  final int qty;
   final String name;
   final String discription;
   const pulsesViewPage({super.key,
@@ -24,8 +24,18 @@ class pulsesViewPage extends StatefulWidget {
 
 class _pulsesViewPageState extends State<pulsesViewPage> {
 
-  bool more =false;
-  int pulses=1;
+  int count = 1;
+  bool more = false;
+
+  double price = 0;
+  double total = 0;
+
+  @override
+  void initState() {
+    price = widget.price;
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +89,7 @@ class _pulsesViewPageState extends State<pulsesViewPage> {
                       ),
                       color: theColors.sixth
                   ),
-                  child: Image.asset(widget.image),
+                  child: Image.network(widget.image),
                 ),
                 SizedBox(height: w*0.03,),
                 Row(
@@ -116,7 +126,7 @@ class _pulsesViewPageState extends State<pulsesViewPage> {
                         children: [
                           InkWell(
                               onTap:() {
-                                pulses==1?1:pulses--;
+                                count==1?1:count--;
                                 setState(() {
 
                                 });
@@ -130,13 +140,13 @@ class _pulsesViewPageState extends State<pulsesViewPage> {
                                   color: theColors.primaryColor
                               ),
                               child: Center(
-                                child: Text(pulses.toString(),style: TextStyle(
+                                child: Text(count.toString(),style: TextStyle(
                                     fontWeight: FontWeight.w500
                                 ),),
                               )),
                           InkWell(
                               onTap: () {
-                                pulses++;
+                                count++;
                                 setState(() {
 
                                 });
@@ -145,7 +155,7 @@ class _pulsesViewPageState extends State<pulsesViewPage> {
                         ],
                       ),
                     ),
-                    Text("Price : ${widget.price}",style: TextStyle(
+                    Text("Price : ${widget.price*count}",style: TextStyle(
                         fontWeight: FontWeight.w500
                     ),),
                   ],
