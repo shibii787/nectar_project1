@@ -1,6 +1,6 @@
 class theImages{
   static const orangeCarrot="assets/images/Group (1).png";
-  static const whiteCarrot="assets/images/Group.png";
+  static const whiteCarrot="assets/images/white carrot.svg";
   static const onboarding="assets/images/8140 1.png"; //onboarding background image
   static const Redbell="assets/images/Red Bell.png"; //
   static const googleimage="assets/images/Group 6795.png"; //

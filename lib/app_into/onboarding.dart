@@ -1,19 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:nectar_project1/app_authentication/sign_page.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
 
 import '../main.dart';
 
-class onboarding extends StatefulWidget {
-  const onboarding({super.key});
+class onboardingPage extends StatelessWidget {
+  const onboardingPage({super.key});
 
-  @override
-  State<onboarding> createState() => _onboardingState();
-}
-
-class _onboardingState extends State<onboarding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +29,7 @@ class _onboardingState extends State<onboarding> {
                 Container(
                   height: w * 0.15,
                   width: w * 0.2,
-                  child: Image.asset(theImages.whiteCarrot),
+                  child: SvgPicture.asset(theImages.whiteCarrot),
                 ),
                 SizedBox(height: h * 0.03),
                 Text(
@@ -83,3 +79,4 @@ class _onboardingState extends State<onboarding> {
     );
   }
 }
+

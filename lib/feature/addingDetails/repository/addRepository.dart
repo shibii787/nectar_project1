@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nectar_project1/core/providers/firebase_providers.dart';
+import 'package:nectar_project1/main.dart';
 import 'package:nectar_project1/model/addcategory_model.dart';
 import 'package:nectar_project1/model/bestSelling_model.dart';
 import 'package:nectar_project1/model/exclusive_model.dart';
@@ -33,11 +34,14 @@ class AddingRepository{
   // To stream categories to app
   CollectionReference get _categories => _firestore.collection("categories");
 
-  collectionFunc({required UserModel userModel}){
-    _account.add(userModel.tomap()).then((value) {
-      value.update({
-        "id" : value.id
+  collectionFunc({required UserModel userModel,}){
+    _account.add(userModel.tomap()).then((value) async {
+      print("-------------FIRST ID--------------");
+       value.update({
+        "id" : value.id,
       });
+       print("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ - ${value.id}");
+       userId = value.id;
     });
   }
 

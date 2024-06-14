@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nectar_project1/app_body/bottom_nav.dart';
 import 'package:nectar_project1/app_into/onboarding.dart';
 import 'package:nectar_project1/core/common/colors.dart';
@@ -24,29 +25,32 @@ class _splashscreenState extends State<splashscreen> {
     userName=login.getString("name") ?? "";
     userEmail=login.getString("email") ?? "";
 
-    print("TTTTTTTTTTTTTTTTTTTT : $userName");
-    print("TTTTTTTTTTTTTTTTTTTT : $userEmail");
+    print("USERNAME --------- $userName");
+    print("USER EMAIL --------- $userEmail");
 
     await Future.delayed(Duration(seconds: 3));
     if(userEmail == null || userEmail.isEmpty){
-      Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => onboarding(),));
+
+      getData();
+
+      Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => onboardingPage(),));
     }else{
+      getData();
       Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => bottomNav(),));
     }
   }
 
   getData()async{
     if(userEmail != null){
-      var data = await FirebaseFirestore.instance.collection("account").doc(userEmail).get();
-      currentUserModel = UserModel.fromMap(data.data()!);
+      var data = await FirebaseFirestore.instance.collection("account").where('email', isEqualTo: userEmail).get();
+      currentUserModel = UserModel.fromMap(data.docs[0].data()!);
     }
   }
 
   @override
   void initState() {
     getLoggedIn();
-    getData();
-    print("AAAAAAAAAAAAAAAAAAAAAAAAAAA ------- $currentUserModel");
+    print("USERMODEL ------- $currentUserModel");
     // TODO: implement initState
     super.initState();
   }
@@ -66,7 +70,7 @@ class _splashscreenState extends State<splashscreen> {
                 Container(
                     height: w * 0.2,
                     width: w * 0.2,
-                    child: Image(image: AssetImage(theImages.whiteCarrot))),
+                    child: SvgPicture.asset(theImages.whiteCarrot)),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

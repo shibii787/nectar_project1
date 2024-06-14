@@ -47,6 +47,7 @@ class _accountState extends State<account> {
     if (mounted) {
       setState(() {
         file = File(pickedFile.path);
+        //file = userImage;
       });
       uploadFile(file);
     }
@@ -63,7 +64,7 @@ class _accountState extends State<account> {
           ));
 
       imageurl = await image.ref.getDownloadURL();
-
+      //imageurl = userImage;
       setState(() {
 
       });
@@ -72,28 +73,20 @@ class _accountState extends State<account> {
 
   TextEditingController nameController = TextEditingController();
 
-  // updateName(){
-  //   if (currentUserModel != null) {
-  //     // Update the Firestore document with the new name
-  //          FirebaseFirestore.instance
-  //         .collection("account")
-  //         .doc(currentUserModel!.id)
-  //         .update(currentUserModel!.copyWith(name: nameController.text).tomap())
-  //         .then((_) {
-  //       print("Name updated successfully: ${nameController.text}");
-  //     })
-  //         .catchError((error) {
-  //       print("Failed to update name: $error");
-  //     });
-  //   } else {
-  //     print("Current user model is null");
-  //   }
-  // }
+  editNAme() async {
+    await FirebaseFirestore.instance.collection("account").doc(userId).update(
+        currentUserModel!.copyWith(
+            name: nameController.text
+        ).tomap()
+    );
+  }
 
   @override
   void initState() {
     getLogInAndOut();
     nameController.text = userName.toString();
+    userId = currentUserModel!.id;
+    print("User ID ------------ ${userId}");
     // TODO: implement initState
     super.initState();
   }
@@ -129,7 +122,8 @@ class _accountState extends State<account> {
                                       backgroundColor: theColors.primaryColor,
                                       radius: w * 0.15,
                                       backgroundImage: FileImage(file))
-                                  : CircleAvatar(
+                                  :
+                                  CircleAvatar(
                                       radius: w * 0.15,
                                       backgroundColor: theColors.secondary,
                                       backgroundImage:
@@ -196,25 +190,7 @@ class _accountState extends State<account> {
                                   controller: nameController,
                                   textInputAction: TextInputAction.done,
                                   onFieldSubmitted: (value) {
-
-                                    // FirebaseFirestore.instance.collection("account").doc(currentUserModel?.id).update(
-                                    //   currentUserModel?.copyWith(
-                                    //     name: nameController.text
-                                    //   ) as Map<String, dynamic>
-                                    // );
-                                    // print(nameController.text);
-
-                                    // final updateUserModel = currentUserModel?.copyWith(
-                                    //   name: nameController.text
-                                    // );
-                                    //
-                                    // FirebaseFirestore.instance.collection("account").doc(currentUserModel?.id).update(
-                                    //     updateUserModel!.tomap()
-                                    // );
-                                    // print(nameController.text);
-
-                                    //updateName();
-
+                                    editNAme();
                                   },
                                   decoration: InputDecoration(
                                     suffixIcon: Icon(CupertinoIcons.pencil),

@@ -6,9 +6,11 @@ import 'package:geolocator/geolocator.dart';
 import 'package:nectar_project1/app_body/bottom_nav.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
+import 'package:nectar_project1/feature/addingDetails/controller/addController.dart';
 
 
 import '../main.dart';
+import '../model/userModel.dart';
 
 class selectLocationPage extends StatefulWidget {
   const selectLocationPage({super.key,});
@@ -53,15 +55,23 @@ class _selectLocationPageState extends State<selectLocationPage> {
   TextEditingController pincodeController=TextEditingController();
   TextEditingController AddressController=TextEditingController();
 
-  getDetails()async{
-    var userDetails = await FirebaseFirestore.instance.collection("account").where(
-        "address", isEqualTo: AddressController.text
-    ).get();
+  editAddressAndPincode(){
+    FirebaseFirestore.instance.collection("account").doc(userId).update(
+    currentUserModel!.copyWith(
+    address: AddressController.text
+    ).tomap()
+    );
 
-    userAddress = userDetails.docs[0]["address"];
-    userAddress = userDetails.docs[0]["pincode"];
+    userAddress = AddressController.text;
 
-    print("AAAAAAAAAAAAAAAAAAAAAAAAAAA --- ${userAddress}");
+    print("Address -- ${userAddress}");}
+
+  @override
+  void initState() {
+    userId = currentUserModel!.id;
+    print("SELECT LOCATION PAGE  ---  ${userId}");
+    // TODO: implement initState
+    super.initState();
   }
 
   @override
@@ -146,7 +156,12 @@ class _selectLocationPageState extends State<selectLocationPage> {
                     ),
                     TextFormField(
                       controller:  AddressController,
+                      onEditingComplete: () {
+                        editAddressAndPincode();
+                      },
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
                       keyboardType: TextInputType.multiline,
+                      textInputAction: TextInputAction.done,
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: theColors.third.withOpacity(0.08),
@@ -170,8 +185,6 @@ class _selectLocationPageState extends State<selectLocationPage> {
               SizedBox(height: w*0.03),
               InkWell(
                 onTap: () {
-
-                  getDetails();
 
                   if(
                   pincodeController.text!=""&&

@@ -18,8 +18,10 @@ class _mydetailsState extends State<mydetails> {
 
   @override
   void initState() {
-    addressController.text = userAddress.toString();
+    userId = currentUserModel!.id;
+    print("ID ---------- ${userId}");
     pincodeController.text = userPincode.toString();
+    addressController.text = userAddress.toString();
     // TODO: implement initState
     super.initState();
   }

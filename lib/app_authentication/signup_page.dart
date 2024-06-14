@@ -112,6 +112,7 @@ class _signupPageState extends ConsumerState<signupPage> {
       SharedPreferences newUser = await SharedPreferences.getInstance();
       newUser.setString("name", userName.toString());
       newUser.setString("email", userEmail.toString());
+      newUser.setString("image", userImage);
 
     } catch (e) {
       print("Error saving details : $e");
@@ -122,7 +123,7 @@ class _signupPageState extends ConsumerState<signupPage> {
 
     FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailController.text.trim(),
-        password: passwordController.text).then((value) {
+        password: passwordController.text).then((value) async {
 
       UserModel userModel = UserModel(
           name: nameController.text,
@@ -160,7 +161,8 @@ class _signupPageState extends ConsumerState<signupPage> {
           id: userDetails.docs[0]["id"]
       );
 
-      print("AAAAAAAAAAAAAAAAA ---- ${currentUserModel!.name}");
+      print("CURRENT USER MODEL NAME ---- ${currentUserModel!.name}");
+      print("CURRENT USER MODEL ID ---- ${currentUserModel!.id}");
 
       // assigning details to global variables
       userName = userDetails.docs[0]["name"];
@@ -204,11 +206,6 @@ class _signupPageState extends ConsumerState<signupPage> {
             children: [
               Stack(
                 children: [
-                  // Container(
-                  //   height: w*0.4,
-                  //   width: w*0.5,
-                  //   color: colorTheme.fourthColor,
-                  // ),
                   Center(
                       child: file != null
                           ? CircleAvatar(
@@ -363,12 +360,6 @@ class _signupPageState extends ConsumerState<signupPage> {
                         style: TextStyle(
                             color: theColors.secondary
                         )),
-                    // focusedBorder: OutlineInputBorder(
-                    //   borderRadius: BorderRadius.circular(width*0.03),
-                    //     borderSide: BorderSide(
-                    //         color: Colors.blue
-                    //     )
-                    // )
                   ),
                 ),
               ),
@@ -414,12 +405,6 @@ class _signupPageState extends ConsumerState<signupPage> {
                           color: theColors.third
                       ),
                     ),
-                    // focusedBorder: OutlineInputBorder(
-                    //   borderRadius: BorderRadius.circular(width*0.03),
-                    //     borderSide: BorderSide(
-                    //         color: Colors.blue
-                    //     )
-                    // )
                   ),
                 ),
               ),
@@ -475,12 +460,6 @@ class _signupPageState extends ConsumerState<signupPage> {
                           color: theColors.third
                       ),
                     ),
-                    // focusedBorder: OutlineInputBorder(
-                    //   borderRadius: BorderRadius.circular(width*0.03),
-                    //     borderSide: BorderSide(
-                    //         color: Colors.blue
-                    //     )
-                    // )
                   ),
                 ),
               ),
@@ -545,12 +524,6 @@ class _signupPageState extends ConsumerState<signupPage> {
                           color: theColors.third
                       ),
                     ),
-                    // focusedBorder: OutlineInputBorder(
-                    //   borderRadius: BorderRadius.circular(width*0.03),
-                    //     borderSide: BorderSide(
-                    //         color: Colors.blue
-                    //     )
-                    // )
                   ),
                 ),
               ),
@@ -595,36 +568,6 @@ class _signupPageState extends ConsumerState<signupPage> {
               ),
               InkWell(
                 onTap: () {
-
-                  // SharedPreferences newUserDetails = await SharedPreferences.getInstance();
-                  // newUserDetails.setString("name", nameController.text.toString());
-                  // newUserDetails.setString("email", emailController.text.toString());
-
-                  // newUserDetails();
-                  //
-                  // FirebaseAuth.instance.createUserWithEmailAndPassword(
-                  //     email: emailController.text.trim(),
-                  //     password: passwordController.text
-                  // ).then((value) async {
-                  //
-                  //   var details = await FirebaseFirestore.instance.collection("account").where(
-                  //       "email",isEqualTo: emailController.text.trim()
-                  //   ).get();
-                  //
-                  //   userName = details.docs[0]["name"];
-                  //   userEmail = details.docs[0]["email"];
-                  //
-                  //   addNewUserFunc();
-                  //
-                  //   Navigator.push(context, CupertinoPageRoute(builder: (context) => selectLocationPage(),));
-                  //
-                  //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Signup Successful")));
-                  //
-                  // }).catchError((
-                  // error) {
-                  // ScaffoldMessenger.of(context).showSnackBar(
-                  // SnackBar(content: Text(error.toString())));
-                  // });
 
                   addNewUserFunc();
 

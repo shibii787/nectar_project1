@@ -23,8 +23,18 @@ class bestselling extends StatefulWidget {
 
 class _bestsellingState extends State<bestselling> {
 
-  int count=1;
-  bool more =false;
+  int count = 1;
+  bool more = false;
+
+  double price = 0;
+  double total = 0;
+
+  @override
+  void initState() {
+    price = widget.price;
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -136,6 +146,7 @@ class _bestsellingState extends State<bestselling> {
                           InkWell(
                               onTap: () {
                                 count++;
+
                                 setState(() {
 
                                 });
@@ -144,7 +155,7 @@ class _bestsellingState extends State<bestselling> {
                         ],
                       ),
                     ),
-                    Text("Price : ${widget.price}",style: TextStyle(
+                    Text("Price : ${widget.price*count}",style: TextStyle(
                         fontWeight: FontWeight.w500
                     ),),
                   ],
