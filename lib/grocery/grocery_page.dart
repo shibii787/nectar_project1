@@ -67,7 +67,7 @@ class _grocerypageState extends ConsumerState<grocerypage> {
                     width: w,
                     child: GridView.builder(
                       shrinkWrap: true,
-                      itemCount: 3,
+                      itemCount: data.length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         crossAxisSpacing: w * 0.03,
@@ -111,12 +111,13 @@ class _grocerypageState extends ConsumerState<grocerypage> {
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        Text("Daawat Rice", style: TextStyle(
-                                            fontWeight: FontWeight.w600
+                                        Text(data[index].name.toUpperCase(), style: TextStyle(
+                                            fontWeight: FontWeight.w700,
+                                          fontSize: w*0.04
                                         ),),
-                                        Text("10kg Bag", style: TextStyle(
+                                        Text(data[index].qty.toString(), style: TextStyle(
                                             color: theColors.eleventh,
-                                            fontSize: w * 0.03
+                                            fontSize: w * 0.05
                                         ),),
                                       ],
                                     ),
@@ -128,9 +129,10 @@ class _grocerypageState extends ConsumerState<grocerypage> {
                                       mainAxisAlignment: MainAxisAlignment
                                           .spaceBetween,
                                       children: [
-                                        Text("\$2.34",
+                                        Text(data[index].price.toString(),
                                           style: TextStyle(
-                                              fontWeight: FontWeight.w600
+                                              fontWeight: FontWeight.w600,
+                                            fontSize: w*0.06
                                           ),),
                                         Container(
                                           height: w * 0.1,
