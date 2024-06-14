@@ -9,6 +9,7 @@ import 'package:nectar_project1/app_authentication/signup_page.dart';
 import 'package:nectar_project1/app_body/bottom_nav.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
+import 'package:nectar_project1/model/userModel.dart';
 
 
 import '../main.dart';
@@ -35,6 +36,7 @@ class _signPageState extends State<signPage> {
 
   final phoneValidation = RegExp(r"[0-9]{10}$");
 
+  // Google Auth
   Future<UserCredential> signInWithGoogle() async {
     // Trigger the authentication flow
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
@@ -51,6 +53,12 @@ class _signPageState extends State<signPage> {
 
     // Once signed in, return the UserCredential
     return await FirebaseAuth.instance.signInWithCredential(credential);
+  }
+
+  //Model Auth
+  getData()async{
+    var data =await FirebaseFirestore.instance.collection("account").doc(emailController.text).get();
+    currentUserModel = UserModel.fromMap(data.data()!);
   }
 
   final formKey = GlobalKey<FormState>();
@@ -222,6 +230,7 @@ class _signPageState extends State<signPage> {
 
                       userName = userDetails.docs[0]["name"];
                       userEmail= userDetails.docs[0]["email"];
+                      currentUserModel = UserModel.fromMap(userDetails.docs as Map<String, dynamic>);
 
                       print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA : ${userName.toString()}");
                       print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA : ${userEmail.toString()}");

@@ -12,6 +12,18 @@ class mydetails extends StatefulWidget {
 }
 
 class _mydetailsState extends State<mydetails> {
+
+  TextEditingController pincodeController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
+
+  @override
+  void initState() {
+    addressController.text = userAddress.toString();
+    pincodeController.text = userPincode.toString();
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,6 +63,7 @@ class _mydetailsState extends State<mydetails> {
                     ),
                     Text("Location"),
                     TextFormField(
+                      controller: addressController,
                       textInputAction: TextInputAction.next,
                       keyboardType: TextInputType.emailAddress,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -64,6 +77,7 @@ class _mydetailsState extends State<mydetails> {
                       ),
                     ),
                     TextFormField(
+                      controller: pincodeController,
                       textInputAction: TextInputAction.next,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       decoration: InputDecoration(

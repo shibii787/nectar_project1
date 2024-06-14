@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
@@ -49,13 +50,18 @@ class _selectLocationPageState extends State<selectLocationPage> {
     }
   }
 
-  TextEditingController pincode=TextEditingController();
-  TextEditingController Address=TextEditingController();
+  TextEditingController pincodeController=TextEditingController();
+  TextEditingController AddressController=TextEditingController();
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
+  getDetails()async{
+    var userDetails = await FirebaseFirestore.instance.collection("account").where(
+        "address", isEqualTo: AddressController.text
+    ).get();
+
+    userAddress = userDetails.docs[0]["address"];
+    userAddress = userDetails.docs[0]["pincode"];
+
+    print("AAAAAAAAAAAAAAAAAAAAAAAAAAA --- ${userAddress}");
   }
 
   @override
@@ -118,7 +124,7 @@ class _selectLocationPageState extends State<selectLocationPage> {
                         fontWeight: FontWeight.w500
                     ),),
                     TextFormField(
-                      controller:  pincode,
+                      controller:  pincodeController,
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
                         filled: true,
@@ -139,7 +145,7 @@ class _selectLocationPageState extends State<selectLocationPage> {
                       maxLength: 6,
                     ),
                     TextFormField(
-                      controller:  Address,
+                      controller:  AddressController,
                       keyboardType: TextInputType.multiline,
                       decoration: InputDecoration(
                         filled: true,
@@ -164,19 +170,21 @@ class _selectLocationPageState extends State<selectLocationPage> {
               SizedBox(height: w*0.03),
               InkWell(
                 onTap: () {
+
+                  getDetails();
+
                   if(
-                  pincode.text!=""&&
-                  Address.text!=""
+                  pincodeController.text!=""&&
+                  AddressController.text!=""
                   ){
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Submitted Successfully")));
                     Navigator.push(context, CupertinoPageRoute(builder: (context) => bottomNav(),));
                   }else{
-                    pincode.text==""?ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("please enter your valid pincode"))):
-                    Address.text==""?ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("please enter your valid Address"))):
+                    pincodeController.text==""?ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("please enter your valid pincode"))):
+                    AddressController.text==""?ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("please enter your valid Address"))):
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("please enter your valid details")));
                   }
 
-                  // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Location Submitted Successfully")));
                 },
 
                 child: Container(

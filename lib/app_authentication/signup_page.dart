@@ -146,21 +146,21 @@ class _signupPageState extends ConsumerState<signupPage> {
           "email", isEqualTo: emailController.text.trim()
       ).get();
 
-      // assigning to userModel
-      if(userDetails.docs.isNotEmpty){
-        currentUserModel = UserModel(
-            name: userDetails.docs[0]["name"],
-            email: userDetails.docs[0]["email"],
-            password: userDetails.docs[0]["password"],
-            location: userDetails.docs[0]["location"],
-            phoneNumber: userDetails.docs[0]["phoneNumber"],
-            address: userDetails.docs[0]["address"],
-            pincode: userDetails.docs[0]["pincode"],
-            image: userDetails.docs[0]["image"],
-            cart: userDetails.docs[0]["cart"],
-            favourites: userDetails.docs[0]["favourites"],
-            id: userDetails.docs[0]["id"]);
-      }
+      currentUserModel = UserModel(
+          name: userDetails.docs[0]["name"],
+          email: userDetails.docs[0]["email"],
+          password: userDetails.docs[0]["password"],
+          location: userDetails.docs[0]["location"],
+          phoneNumber: userDetails.docs[0]["phoneNumber"],
+          address: userDetails.docs[0]["address"],
+          pincode: userDetails.docs[0]["pincode"],
+          image: userDetails.docs[0]["image"],
+          cart: userDetails.docs[0]["cart"],
+          favourites: userDetails.docs[0]["favourites"],
+          id: userDetails.docs[0]["id"]
+      );
+
+      print("AAAAAAAAAAAAAAAAA ---- ${currentUserModel!.name}");
 
       // assigning details to global variables
       userName = userDetails.docs[0]["name"];

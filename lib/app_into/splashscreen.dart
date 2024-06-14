@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nectar_project1/app_body/bottom_nav.dart';
 import 'package:nectar_project1/app_into/onboarding.dart';
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
+import 'package:nectar_project1/model/userModel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../main.dart';
@@ -33,9 +35,18 @@ class _splashscreenState extends State<splashscreen> {
     }
   }
 
+  getData()async{
+    if(userEmail != null){
+      var data = await FirebaseFirestore.instance.collection("account").doc(userEmail).get();
+      currentUserModel = UserModel.fromMap(data.data()!);
+    }
+  }
+
   @override
   void initState() {
     getLoggedIn();
+    getData();
+    print("AAAAAAAAAAAAAAAAAAAAAAAAAAA ------- $currentUserModel");
     // TODO: implement initState
     super.initState();
   }

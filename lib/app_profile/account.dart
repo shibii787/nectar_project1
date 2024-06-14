@@ -72,23 +72,23 @@ class _accountState extends State<account> {
 
   TextEditingController nameController = TextEditingController();
 
-  updateName(){
-    if (currentUserModel != null) {
-      // Update the Firestore document with the new name
-           FirebaseFirestore.instance
-          .collection("account")
-          .doc(currentUserModel!.id)
-          .update(currentUserModel!.copyWith(name: nameController.text).tomap())
-          .then((_) {
-        print("Name updated successfully: ${nameController.text}");
-      })
-          .catchError((error) {
-        print("Failed to update name: $error");
-      });
-    } else {
-      print("Current user model is null");
-    }
-  }
+  // updateName(){
+  //   if (currentUserModel != null) {
+  //     // Update the Firestore document with the new name
+  //          FirebaseFirestore.instance
+  //         .collection("account")
+  //         .doc(currentUserModel!.id)
+  //         .update(currentUserModel!.copyWith(name: nameController.text).tomap())
+  //         .then((_) {
+  //       print("Name updated successfully: ${nameController.text}");
+  //     })
+  //         .catchError((error) {
+  //       print("Failed to update name: $error");
+  //     });
+  //   } else {
+  //     print("Current user model is null");
+  //   }
+  // }
 
   @override
   void initState() {
@@ -213,7 +213,7 @@ class _accountState extends State<account> {
                                     // );
                                     // print(nameController.text);
 
-                                    updateName();
+                                    //updateName();
 
                                   },
                                   decoration: InputDecoration(

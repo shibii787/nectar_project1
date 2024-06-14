@@ -28,7 +28,38 @@ class _subItemViewPageState extends State<subItemViewPage> {
   int count = 1;
   bool more = false;
 
-  addToCart(){}
+  double price = 0;
+   double total = 0;
+  addPrice(){
+    total = price*count;
+    print(total);
+    setState(() {
+
+    });
+  }
+
+  countMinus(){
+    count==1?1:count--;
+    addPrice();
+    setState(() {
+
+    });
+  }
+
+  countAdd(){
+    count++;
+    addPrice();
+    setState(() {
+
+    });
+  }
+
+  @override
+  void initState() {
+    price = widget.itemprice;
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -123,7 +154,8 @@ class _subItemViewPageState extends State<subItemViewPage> {
                       children: [
                         InkWell(
                             onTap: () {
-                              count==1?1:count--;
+                              addPrice();
+                              countMinus();
                               setState(() {
 
                               });
@@ -143,7 +175,8 @@ class _subItemViewPageState extends State<subItemViewPage> {
                             )),
                         InkWell(
                             onTap: () {
-                              count++;
+                              addPrice();
+                              countAdd();
                               setState(() {
 
                               });
@@ -152,7 +185,7 @@ class _subItemViewPageState extends State<subItemViewPage> {
                       ],
                     ),
                   ),
-                  Text("Price : ${widget.itemprice}",style: TextStyle(
+                  Text("Price : ${total}",style: TextStyle(
                       fontWeight: FontWeight.w500
                   ),)
                 ],
