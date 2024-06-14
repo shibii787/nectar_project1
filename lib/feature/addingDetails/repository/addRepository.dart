@@ -4,6 +4,7 @@ import 'package:nectar_project1/core/providers/firebase_providers.dart';
 import 'package:nectar_project1/model/addcategory_model.dart';
 import 'package:nectar_project1/model/bestSelling_model.dart';
 import 'package:nectar_project1/model/exclusive_model.dart';
+import 'package:nectar_project1/model/grocery_model.dart';
 import 'package:nectar_project1/model/pulses_model.dart';
 import 'package:nectar_project1/model/userModel.dart';
 
@@ -36,6 +37,7 @@ class AddingRepository{
   // To stream categories to app
   CollectionReference get _categories => _firestore.collection("categories");
 
+
   collectionFunc({required UserModel userModel}){
     _account.add(userModel.tomap()).then((value) {
       value.update({
@@ -67,6 +69,4 @@ Stream<List<PulsesModel>> pulsesstream(){
 Stream<List<PulsesModel>> grocerystream(){
     return _pulses.snapshots().map((event) => event.docs.map((e) => PulsesModel.fromMap(e.data() as Map<String,dynamic>)).toList());
 }
-
-
 }

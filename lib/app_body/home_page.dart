@@ -13,7 +13,6 @@ import 'package:nectar_project1/grocery/grocery_page.dart';
 import 'package:nectar_project1/pages_showing_items/Best%20selling_view%20page.dart';
 import 'package:nectar_project1/pages_showing_items/exclusive_view_page.dart';
 import 'package:nectar_project1/pulses/pulses_page.dart';
-import 'package:pinput/pinput.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../main.dart';

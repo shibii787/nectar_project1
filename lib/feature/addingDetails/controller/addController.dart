@@ -54,5 +54,4 @@ Stream<List<PulsesModel>>pulsesstreamcntroller(){
 Stream<List<PulsesModel>>grocerystreamcontroller(){
   return _addrepository.grocerystream();
 }
-
 }
