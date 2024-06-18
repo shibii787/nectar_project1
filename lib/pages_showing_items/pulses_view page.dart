@@ -63,9 +63,9 @@ class _pulsesViewPageState extends State<pulsesViewPage> {
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Icon(CupertinoIcons.back)),
+              child: Icon(CupertinoIcons.back,color:theColors.secondary,)),
           actions: [
-            Icon(Icons.file_upload_outlined)
+            Icon(Icons.file_upload_outlined,color: theColors.secondary,)
           ],
         ),
         body: SingleChildScrollView(

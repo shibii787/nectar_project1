@@ -53,4 +53,8 @@ class theImages{
  static const blackgreens="assets/images/Black Gram.jpg";
  static const limebeans="assets/images/limebeans.webp";
  static const pulses="assets/images/pulses.jpg";
+
+
+ //profile image
+  static const profile="assets/images/Rectangle 82.png";
 }

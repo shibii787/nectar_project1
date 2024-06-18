@@ -18,13 +18,14 @@ class _paymentmethodsState extends State<paymentmethods> {
     return Scaffold(
       backgroundColor: theColors.primaryColor,
       appBar: AppBar(
+        backgroundColor: theColors.primaryColor,
         elevation: 0,
         automaticallyImplyLeading: false,
         leading: InkWell(
             onTap: () {
               Navigator.pop(context);
             },
-            child: Icon(CupertinoIcons.back)),
+            child: Icon(CupertinoIcons.back,color: theColors.secondary,)),
         centerTitle: true,
         title: Text("Payment Methods",style: TextStyle(
             color: theColors.eight
