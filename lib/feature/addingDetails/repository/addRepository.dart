@@ -5,6 +5,7 @@ import 'package:nectar_project1/main.dart';
 import 'package:nectar_project1/model/addcategory_model.dart';
 import 'package:nectar_project1/model/bestSelling_model.dart';
 import 'package:nectar_project1/model/exclusive_model.dart';
+import 'package:nectar_project1/model/grocery_model.dart';
 import 'package:nectar_project1/model/pulses_model.dart';
 import 'package:nectar_project1/model/userModel.dart';
 
@@ -65,5 +66,9 @@ Stream<List<PulsesModel>> pulsesstream(){
     return _pulses.snapshots().map((event) => event.docs.map((e) => PulsesModel.fromMap(e.data() as Map<String,dynamic>)).toList());
 }
 
+// To Stream groceries
+Stream<List<GroceryModel>> grocerystream(){
+  return _pulses.snapshots().map((event) => event.docs.map((e) => GroceryModel.fromMap(e.data() as Map<String,dynamic>)).toList());
+}
 
 }
