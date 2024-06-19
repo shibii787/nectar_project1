@@ -47,7 +47,7 @@ class _pulsesState extends ConsumerState<pulses> {
                       return Container(
                         height: h*1,
                         width: w*1,
-                        // color: Colors.red,
+                        color: theColors.primaryColor,
                         child: GridView.builder(
                         shrinkWrap: true,
                         physics: BouncingScrollPhysics(),
@@ -72,14 +72,13 @@ class _pulsesState extends ConsumerState<pulses> {
                         child: Container(
                             height: h*0.20,
                             width: w*0.4,
-                            padding: EdgeInsets.all(w*0.03),
-                            margin: EdgeInsets.all(w*0.03),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(w*0.03),
-                              border: Border.all(
-                                  color: theColors.eleventh
-                              ),
-                            ),
+                          padding: EdgeInsets.all(w*0.03),
+                          margin: EdgeInsets.all(w*0.03),
+                          decoration: BoxDecoration(
+                            color: theColors.third.withOpacity(0.2),
+                            borderRadius: BorderRadius.circular(w * 0.05),
+                            border: Border.all(width: w * 0.002, color: theColors.third),
+                          ),
                             child: Column(
                               children: [
                                 Image.network(data[index].image,height: w*0.3,),
