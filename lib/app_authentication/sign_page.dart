@@ -230,7 +230,7 @@ class _signPageState extends State<signPage> {
 
                       userName = userDetails.docs[0]["name"];
                       userEmail= userDetails.docs[0]["email"];
-                      currentUserModel = UserModel.fromMap(userDetails.docs as Map<String, dynamic>);
+                      currentUserModel = UserModel.fromMap(userDetails.docs[0].data()!);
 
                       print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA : ${userName.toString()}");
                       print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA : ${userEmail.toString()}");
