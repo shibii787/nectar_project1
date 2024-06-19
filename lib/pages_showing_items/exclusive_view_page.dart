@@ -1,22 +1,16 @@
 import 'package:animated_rating_stars/animated_rating_stars.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nectar_project1/core/common/colors.dart';
+import 'package:nectar_project1/model/exclusive_model.dart';
 
 import '../main.dart';
 
 class exclusiveViewPage extends StatefulWidget {
-  final String itemName;
-  final double itemprice;
-  final int itemqty;
-  final String itemDescription;
-  final String itemImage;
+  final ExclusiveModel exclusiveModel;
   const exclusiveViewPage({super.key,
-    required this.itemName,
-    required this.itemprice,
-    required this.itemqty,
-    required this.itemDescription,
-    required this.itemImage,
+    required this.exclusiveModel
   });
 
   @override
@@ -28,12 +22,26 @@ class _exclusiveViewPageState extends State<exclusiveViewPage> {
   int count = 1;
   bool more = false;
 
+  //for favourite
+  bool tap = false;
+  checkTap() async {
+    final document = await FirebaseFirestore.instance.collection("account").doc(userId).get();
+    if(document["favourites"] != null){
+      final favourites = document["favourites"] as List;
+      setState(() {
+        tap = favourites.any((element) => element["name"] == widget.exclusiveModel.name);
+      });
+    }
+  }
+
   double price = 0;
   double total = 0;
 
   @override
   void initState() {
-    price = widget.itemprice;
+    userId = currentUserModel!.id;
+    price = widget.exclusiveModel.price;
+    checkTap();
     // TODO: implement initState
     super.initState();
   }
@@ -92,7 +100,7 @@ class _exclusiveViewPageState extends State<exclusiveViewPage> {
                       bottomLeft: Radius.circular(w*0.03),
                       bottomRight: Radius.circular(w*0.03),
                     ),
-                    image: DecorationImage(image: NetworkImage(widget.itemImage),fit: BoxFit.cover),
+                    image: DecorationImage(image: NetworkImage(widget.exclusiveModel.image),fit: BoxFit.cover),
                     color: theColors.sixth,
                 ),
               ),
@@ -102,7 +110,7 @@ class _exclusiveViewPageState extends State<exclusiveViewPage> {
                 children: [
                   Column(
                     children: [
-                      Text("${widget.itemName}",style: TextStyle(
+                      Text("${widget.exclusiveModel.name}",style: TextStyle(
                           fontWeight: FontWeight.w600,fontSize: w*0.035
                       ),),
                       Text("1kg,Price")
@@ -110,9 +118,39 @@ class _exclusiveViewPageState extends State<exclusiveViewPage> {
                   ),
                   InkWell(
                       onTap: () {
+                        tap=!tap;
 
+                        if(tap == true){
+                          FirebaseFirestore.instance.collection("account").doc(userId).update({
+                            "favourites" : FieldValue.arrayUnion([
+                              {
+                                "name": widget.exclusiveModel.name,
+                                "price" : widget.exclusiveModel.price,
+                                "qty" : widget.exclusiveModel.qty,
+                                "image" : widget.exclusiveModel.image
+                              }
+                            ])
+                          });
+                        }else{
+                          FirebaseFirestore.instance.collection("account").doc(userId).update({
+                            "favourites" : FieldValue.arrayRemove([
+                              {
+                                "name": widget.exclusiveModel.name,
+                                "price" : widget.exclusiveModel.price,
+                                "qty" : widget.exclusiveModel.qty,
+                                "image" : widget.exclusiveModel.image
+                              }
+                            ])
+                          });
+                        }
+
+                        setState(() {
+
+                        });
                       },
-                      child: Icon(Icons.favorite_border_outlined))
+                      child: tap == true ?Icon(Icons.favorite,color: Colors.red)
+                          :
+                      Icon( Icons.favorite_border_outlined))
                 ],
               ),
               SizedBox(height: h*0.03),
@@ -132,7 +170,6 @@ class _exclusiveViewPageState extends State<exclusiveViewPage> {
                         InkWell(
                             onTap: () {
                               count==1?1:count--;
-                              //addPrice();
                               setState(() {
 
                               });
@@ -153,7 +190,6 @@ class _exclusiveViewPageState extends State<exclusiveViewPage> {
                         InkWell(
                             onTap: () {
                               count++;
-                              // addPrice();
                               setState(() {
 
                               });
@@ -162,7 +198,7 @@ class _exclusiveViewPageState extends State<exclusiveViewPage> {
                       ],
                     ),
                   ),
-                  Text("Price : ${widget.itemprice*count}",style: TextStyle(
+                  Text("Price : ${widget.exclusiveModel.price*count}",style: TextStyle(
                       fontWeight: FontWeight.w500
                   ),)
                 ],
@@ -196,7 +232,7 @@ class _exclusiveViewPageState extends State<exclusiveViewPage> {
                           Icon(CupertinoIcons.chevron_down),
                         ],
                       ),
-                      Text("${widget.itemDescription}")
+                      Text("${widget.exclusiveModel.description}")
                     ],
                   ),
                 ) :Container(

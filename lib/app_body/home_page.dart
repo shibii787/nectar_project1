@@ -341,11 +341,7 @@ class _homeScreenState extends ConsumerState<homeScreen> {
                               return InkWell(
                                 onTap: () {
                                   Navigator.push(context, CupertinoPageRoute(builder: (context) => exclusiveViewPage(
-                                    itemName: data[index].name,
-                                    itemprice: data[index].price,
-                                    itemqty: data[index].qty,
-                                    itemDescription: data[index].description,
-                                    itemImage: data[index].image,
+                                    exclusiveModel: data[index],
                                   ),));
                                 },
                                 child: Container(
