@@ -34,6 +34,37 @@ class _exclusiveViewPageState extends State<exclusiveViewPage> {
     }
   }
 
+  //add to favourite function
+  addToFavourite(){
+    tap=!tap;
+
+    if(tap == true){
+      FirebaseFirestore.instance.collection("account").doc(userId).update({
+        "favourites" : FieldValue.arrayUnion([
+          {
+            "name": widget.exclusiveModel.name,
+            "price" : widget.exclusiveModel.price,
+            "qty" : widget.exclusiveModel.qty,
+            "image" : widget.exclusiveModel.image
+          }
+        ])
+      });
+    }else{
+      FirebaseFirestore.instance.collection("account").doc(userId).update({
+        "favourites" : FieldValue.arrayRemove([
+          {
+            "name": widget.exclusiveModel.name,
+            "price" : widget.exclusiveModel.price,
+            "qty" : widget.exclusiveModel.qty,
+            "image" : widget.exclusiveModel.image
+          }
+        ])
+      });
+    }
+    setState(() {
+    });
+  }
+
   double price = 0;
   double total = 0;
 
@@ -77,9 +108,6 @@ class _exclusiveViewPageState extends State<exclusiveViewPage> {
               Navigator.pop(context);
             },
             child: Icon(CupertinoIcons.back)),
-        actions: [
-          Icon(Icons.file_upload_outlined)
-        ],
       ),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
@@ -104,106 +132,85 @@ class _exclusiveViewPageState extends State<exclusiveViewPage> {
                     color: theColors.sixth,
                 ),
               ),
-              SizedBox(height: h*0.03),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    children: [
-                      Text("${widget.exclusiveModel.name}",style: TextStyle(
-                          fontWeight: FontWeight.w600,fontSize: w*0.035
-                      ),),
-                      Text("1kg,Price")
-                    ],
-                  ),
-                  InkWell(
-                      onTap: () {
-                        tap=!tap;
-
-                        if(tap == true){
-                          FirebaseFirestore.instance.collection("account").doc(userId).update({
-                            "favourites" : FieldValue.arrayUnion([
-                              {
-                                "name": widget.exclusiveModel.name,
-                                "price" : widget.exclusiveModel.price,
-                                "qty" : widget.exclusiveModel.qty,
-                                "image" : widget.exclusiveModel.image
-                              }
-                            ])
-                          });
-                        }else{
-                          FirebaseFirestore.instance.collection("account").doc(userId).update({
-                            "favourites" : FieldValue.arrayRemove([
-                              {
-                                "name": widget.exclusiveModel.name,
-                                "price" : widget.exclusiveModel.price,
-                                "qty" : widget.exclusiveModel.qty,
-                                "image" : widget.exclusiveModel.image
-                              }
-                            ])
-                          });
-                        }
-
-                        setState(() {
-
-                        });
-                      },
-                      child: tap == true ?Icon(Icons.favorite,color: Colors.red)
-                          :
-                      Icon( Icons.favorite_border_outlined))
-                ],
-              ),
-              SizedBox(height: h*0.03),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    height: h*0.05,
-                    width: w*0.5,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(w*0.03),
-                        color: theColors.sixth
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+              SizedBox(height: h*0.01),
+              Container(
+                padding: EdgeInsets.all(w*0.02),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        Column(
+                          children: [
+                            Text("${widget.exclusiveModel.name}",style: TextStyle(
+                                fontWeight: FontWeight.w600,fontSize: w*0.035
+                            ),),
+                            Text("1kg,Price")
+                          ],
+                        ),
                         InkWell(
                             onTap: () {
-                              count==1?1:count--;
-                              setState(() {
-
-                              });
+                              addToFavourite();
                             },
-                            child: Icon(Icons.remove)),
-                        Container(
-                            height: h*0.04,
-                            width: w*0.1,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(w*0.03),
-                                color: theColors.primaryColor
-                            ),
-                            child: Center(
-                              child: Text(count.toString(),style: TextStyle(
-                                  fontWeight: FontWeight.w500
-                              ),),
-                            )),
-                        InkWell(
-                            onTap: () {
-                              count++;
-                              setState(() {
-
-                              });
-                            },
-                            child: Icon(Icons.add)),
+                            child: tap == true ?Icon(Icons.favorite,color: Colors.red)
+                                :
+                            Icon( Icons.favorite_border_outlined))
                       ],
                     ),
-                  ),
-                  Text("Price : ${widget.exclusiveModel.price*count}",style: TextStyle(
-                      fontWeight: FontWeight.w500
-                  ),)
-                ],
+                    SizedBox(height: h*0.02),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          height: h*0.05,
+                          width: w*0.5,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(w*0.03),
+                              color: theColors.sixth
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              InkWell(
+                                  onTap: () {
+                                    count==1?1:count--;
+                                    setState(() {
+
+                                    });
+                                  },
+                                  child: Icon(Icons.remove)),
+                              Container(
+                                  height: h*0.04,
+                                  width: w*0.1,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(w*0.03),
+                                      color: theColors.primaryColor
+                                  ),
+                                  child: Center(
+                                    child: Text(count.toString(),style: TextStyle(
+                                        fontWeight: FontWeight.w500
+                                    ),),
+                                  )),
+                              InkWell(
+                                  onTap: () {
+                                    count++;
+                                    setState(() {
+
+                                    });
+                                  },
+                                  child: Icon(Icons.add)),
+                            ],
+                          ),
+                        ),
+                        Text("Price : ${widget.exclusiveModel.price*count}",style: TextStyle(
+                            fontWeight: FontWeight.w600
+                        ),)
+                      ],
+                    ),
+                    SizedBox(height: h*0.01),
+                  ],
+                ),
               ),
-              SizedBox(height: h*0.03),
               InkWell(
                 onTap: () {
                   more=!more;

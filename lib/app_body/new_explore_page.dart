@@ -106,7 +106,8 @@ class _newExplorePageState extends ConsumerState<newExplorePage> {
                                           ],
                                         ),
                                       ),
-                                    );},
+                                    );
+                                    },
                                 ),
                                 Center(
                                   child: Text(data[index].name,style: TextStyle(
