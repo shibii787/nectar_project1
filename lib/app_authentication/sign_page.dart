@@ -55,12 +55,6 @@ class _signPageState extends State<signPage> {
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 
-  //Model Auth
-  getData()async{
-    var data =await FirebaseFirestore.instance.collection("account").doc(emailController.text).get();
-    currentUserModel = UserModel.fromMap(data.data()!);
-  }
-
   final formKey = GlobalKey<FormState>();
 
   @override
