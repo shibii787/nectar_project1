@@ -85,7 +85,7 @@ class _accountState extends State<account> {
   void initState() {
     getLogInAndOut();
     nameController.text = userName.toString();
-    userId = currentUserModel!.id;
+     // userId = currentUserModel!.id;
     print("User ID ------------ ${userId}");
     // TODO: implement initState
     super.initState();

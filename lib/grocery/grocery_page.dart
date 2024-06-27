@@ -50,15 +50,17 @@ class _grocerypageState extends ConsumerState<grocerypage> {
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Icon(CupertinoIcons.back)),
+              child: Icon(CupertinoIcons.back,color: Colors.black,)),
           backgroundColor: theColors.primaryColor,
           title: Text("Groceries", style: TextStyle(
             color: theColors.secondary, fontWeight: FontWeight.w600,
           ),),
+          centerTitle: true,
         ),
         body: SingleChildScrollView(
           child: Column(
             children: [
+              SizedBox(height: w*0.03,),
               ref.watch(groceryStreamprovider)
                   .when(
                 data: (data){
