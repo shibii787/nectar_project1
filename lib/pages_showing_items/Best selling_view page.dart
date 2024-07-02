@@ -2,7 +2,6 @@ import 'package:animated_rating_stars/animated_rating_stars.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nectar_project1/core/common/colors.dart';
-
 import '../main.dart';
 
 class bestselling extends StatefulWidget {

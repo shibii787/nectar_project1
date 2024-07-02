@@ -2,7 +2,6 @@ import 'package:animated_rating_stars/animated_rating_stars.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nectar_project1/core/common/colors.dart';
-import 'package:nectar_project1/core/common/images.dart';
 
 import '../main.dart';
 
@@ -150,140 +149,57 @@ appBar: AppBar(
                   ],
                 ),
               ),
-              Divider(
-                color: theColors.nine,
-                indent:w*0.05,
-                endIndent: w*0.05,
-              ),
-              Container(
-                height: h*0.17,
-                width: w*1,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Product Details",style: TextStyle(fontWeight: FontWeight.w700,
-                        fontSize: w*0.05),
-                        ),
-                        InkWell(
-                            onTap: () {
-                              setState(() {
-                                updwn=!updwn;
-                              });
+              InkWell(
+                onTap: () {
+                  updwn=!updwn;
+                  setState(() {
 
-                            },
-                            child: Icon(updwn==false?CupertinoIcons.chevron_down:CupertinoIcons.chevron_up))
-                      ],
+                  });
+                },
+                child: updwn==true? Container(
+                  height: h*0.14,
+                  width: w*1,
+                  decoration: BoxDecoration(
+                      border: Border(
+                          top: BorderSide(
+                              color: theColors.secondary,
+                              width: w*0.002
+                          )
+                      )
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("Product Details"),
+                          Icon(CupertinoIcons.chevron_down)
+                        ],
+                      ),
+                      Text("${widget.description}")
+                    ],
+                  ),
+                ):Container(
+                  height: h*0.05,
+                  width: w*1,
+                  decoration: BoxDecoration(
+                    border: Border(
+                      top: BorderSide(
+                          color: theColors.secondary,
+                          width: w*0.002
+                      ),
                     ),
-                    SizedBox(
-                      height: w*0.03,
-                    ),
-                    Text("${widget.description}",
-                      textAlign: TextAlign.justify,),
-                    Divider(
-                      color: theColors.nine,
-                      indent:w*0.05,
-                      endIndent: w*0.05,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Nutritions",
-                          style: TextStyle(fontWeight: FontWeight.w600,
-                              fontSize: w*0.05),),
-                        Container(
-                          height: w*0.1,
-                          width: w*0.2,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                height: w*0.06,
-                                width: w*0.13,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(w*0.02),
-                                  color: theColors.nine.withOpacity(0.4),
-                                ),
-                                child: Center(child: Text("100gr",style: TextStyle(
-                                  fontSize:w*0.03
-                                ),)),
-                              ),
-                              InkWell(
-                                onTap: () {
-
-                                },
-                                  child: Icon(CupertinoIcons.chevron_right))
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                    Divider(
-                      color: theColors.nine,
-                      indent:w*0.05,
-                      endIndent: w*0.05,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Review",style: TextStyle(fontWeight: FontWeight.w600,
-                            fontSize: w*0.05),),
-                        Container(
-                          height: w*0.1,
-                          width: w*0.55,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              AnimatedRatingStars(
-                                initialRating: 3.5,
-                                minRating: 0.0,
-                                maxRating: 5.0,
-                                filledColor: Colors.amber,
-                                emptyColor: Colors.grey,
-                                filledIcon: Icons.star,
-                                halfFilledIcon: Icons.star_half,
-                                emptyIcon: Icons.star_border,
-                                onChanged: (double rating) {
-                                  // Handle the rating change here
-                                  print('Rating: $rating');
-                                },
-                                displayRatingValue: true,
-                                interactiveTooltips: true,
-                                customFilledIcon: Icons.star,
-                                customHalfFilledIcon: Icons.star_half,
-                                customEmptyIcon: Icons.star_border,
-                                starSize: 30.0,
-                                animationDuration: Duration(milliseconds: 300),
-                                animationCurve: Curves.easeInOut,
-                                readOnly: false,
-                              ),
-                              InkWell(
-                                  onTap: () {
-
-                                  },
-                                  child: Icon(CupertinoIcons.chevron_right))
-                            ],
-                          ),
-
-                        ),
-
-                      ],
-                    ),
-                    Divider(
-                      color: theColors.nine,
-                      indent:w*0.05,
-                      endIndent: w*0.05,
-                    ),
-                    SizedBox(
-                      height: w*0.5,
-                    )
-
-                  ],
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Product Details"),
+                      Icon(CupertinoIcons.chevron_down)
+                    ],
+                  ),
                 ),
               ),
-
             ],
           ),
         ),

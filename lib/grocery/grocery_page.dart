@@ -1,9 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nectar_project1/core/common/colors.dart';
-import 'package:nectar_project1/core/common/images.dart';
 import 'package:nectar_project1/feature/addingDetails/controller/addController.dart';
 import 'package:nectar_project1/grocery/grocery_item.dart';
 
@@ -17,29 +15,7 @@ class grocerypage extends ConsumerStatefulWidget {
 }
 
 class _grocerypageState extends ConsumerState<grocerypage> {
-  List Grocery = [
-    {
-      "image": theImages.daawatrice,
-      "name": "Daawat Rice",
-      "qty": 1,
-      "price": 560,
-      "description": "good rice"
-    }
-  ];
-
-  addGroceryList() async {
-    for (int i = 0; i < Grocery.length; i++) {
-      await FirebaseFirestore.instance.collection("grocery").add(Grocery[i]);
-    }
-  }
-
   @override
-  void initState() {
-    //   addGroceryList();
-    //   // TODO: implement initState
-    super.initState();
-     }
-
 
     @override
     Widget build(BuildContext context) {
@@ -65,8 +41,8 @@ class _grocerypageState extends ConsumerState<grocerypage> {
                   .when(
                 data: (data){
                   return Container(
-                    height: h,
-                    width: w,
+                    height: h*1,
+                    width: w*1,
                     child: GridView.builder(
                       shrinkWrap: true,
                       itemCount: data.length,
@@ -90,12 +66,15 @@ class _grocerypageState extends ConsumerState<grocerypage> {
                                     image:data[index].image,),
                                 ));
                           },
-                          child: Container(
-                            height: w * 0.6,
-                            width: w * 0.4,
+                          child:Container(
+                            height: h*0.2,
+                            width: w*0.4,
+                            padding: EdgeInsets.all(w*0.03),
+                            margin: EdgeInsets.all(w*0.03),
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(w * 0.03),
-                                border: Border.all(color: theColors.nine)
+                              color: theColors.third.withOpacity(0.2),
+                              borderRadius: BorderRadius.circular(w * 0.05),
+                              border: Border.all(width: w * 0.002, color: theColors.third),
                             ),
                             child: Padding(
                               padding: EdgeInsets.all(w * 0.02),
@@ -103,8 +82,8 @@ class _grocerypageState extends ConsumerState<grocerypage> {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    height: w * 0.31,
-                                    width: w * 0.4,
+                                    height: w * 0.17,
+                                    width: w * 0.17,
                                     child: Image.network(data[index].image,fit: BoxFit.fill,),
                                   ),
                                   Container(
@@ -119,7 +98,6 @@ class _grocerypageState extends ConsumerState<grocerypage> {
                                         ),),
                                         Text(data[index].qty.toString(), style: TextStyle(
                                             color: theColors.eleventh,
-                                            fontSize: w * 0.05
                                         ),),
                                       ],
                                     ),
@@ -133,12 +111,11 @@ class _grocerypageState extends ConsumerState<grocerypage> {
                                       children: [
                                         Text(data[index].price.toString(),
                                           style: TextStyle(
-                                              fontWeight: FontWeight.w600,
                                             fontSize: w*0.06
                                           ),),
                                         Container(
-                                          height: w * 0.1,
-                                          width: w * 0.1,
+                                          height: w * 0.09,
+                                          width: w * 0.09,
                                           decoration: BoxDecoration(
                                               borderRadius:
                                               BorderRadius.circular(w * 0.04),
