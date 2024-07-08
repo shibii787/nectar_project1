@@ -41,6 +41,7 @@ class _splashscreenState extends State<splashscreen> {
   }
 
   getData()async{
+    print(userEmail);
     if(userEmail != null){
       var data = await FirebaseFirestore.instance.collection("account").where('email', isEqualTo: userEmail).get();
       currentUserModel = UserModel.fromMap(data.docs[0].data()!);
