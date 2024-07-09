@@ -70,7 +70,7 @@ class _exclusiveViewPageState extends State<exclusiveViewPage> {
 
   @override
   void initState() {
-    // userId = currentUserModel!.id;
+    userId = currentUserModel!.id;
     price = widget.exclusiveModel.price;
     checkTap();
     // TODO: implement initState

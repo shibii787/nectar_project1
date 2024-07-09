@@ -1,36 +1,74 @@
 import 'package:animated_rating_stars/animated_rating_stars.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nectar_project1/core/common/colors.dart';
+import 'package:nectar_project1/model/bestSelling_model.dart';
 import '../main.dart';
 
 class bestselling extends StatefulWidget {
-  final String image;
-  final double price;
-  final String name;
-  final int qty;
-  final String discription;
+  final BestSellingModel bestSellingModel;
   const bestselling({super.key,
-    required this.image,
-    required this.price,
-    required this.name,
-    required this.qty,
-    required this.discription});
+    required this.bestSellingModel
+  });
   @override
   State<bestselling> createState() => _bestsellingState();
 }
 
 class _bestsellingState extends State<bestselling> {
-
   int count = 1;
   bool more = false;
+
+  //for favourite
+  bool tap = false;
+  checkTap() async {
+    final document = await FirebaseFirestore.instance.collection("account").doc(userId).get();
+    if(document["favourites"] != null){
+      final favourites = document["favourites"] as List;
+      setState(() {
+        tap = favourites.any((element) => element["name"] == widget.bestSellingModel.name);
+      });
+    }
+  }
+
+  //add to favourite function
+  addToFavourite(){
+    tap=!tap;
+
+    if(tap == true){
+      FirebaseFirestore.instance.collection("account").doc(userId).update({
+        "favourites" : FieldValue.arrayUnion([
+          {
+            "name": widget.bestSellingModel.name,
+            "price" : widget.bestSellingModel.price,
+            "qty" : widget.bestSellingModel.qty,
+            "image" : widget.bestSellingModel.image
+          }
+        ])
+      });
+    }else{
+      FirebaseFirestore.instance.collection("account").doc(userId).update({
+        "favourites" : FieldValue.arrayRemove([
+          {
+            "name": widget.bestSellingModel.name,
+            "price" : widget.bestSellingModel.price,
+            "qty" : widget.bestSellingModel.qty,
+            "image" : widget.bestSellingModel.image
+          }
+        ])
+      });
+    }
+    setState(() {
+    });
+  }
 
   double price = 0;
   double total = 0;
 
   @override
   void initState() {
-    price = widget.price;
+    userId = currentUserModel!.id;
+    price = widget.bestSellingModel.price;
     // TODO: implement initState
     super.initState();
   }
@@ -87,7 +125,7 @@ class _bestsellingState extends State<bestselling> {
                       ),
                       color: theColors.sixth
                   ),
-                  child: Image.network(widget.image),
+                  child: Image.network(widget.bestSellingModel.image),
                 ),
                 SizedBox(height: w*0.03,),
                 Row(
@@ -95,7 +133,7 @@ class _bestsellingState extends State<bestselling> {
                   children: [
                     Column(
                       children: [
-                        Text("${widget.name}",style: TextStyle(
+                        Text("${widget.bestSellingModel.name}",style: TextStyle(
                             fontWeight: FontWeight.w600,fontSize: w*0.035
                         ),),
                         Text("1kg,Price")
@@ -103,9 +141,11 @@ class _bestsellingState extends State<bestselling> {
                     ),
                     InkWell(
                         onTap: () {
-
+                          addToFavourite();
                         },
-                        child: Icon(Icons.favorite_border_outlined))
+                        child: tap == true ?Icon(Icons.favorite,color: Colors.red)
+                            :
+                        Icon( Icons.favorite_border_outlined))
                   ],
                 ),
                 SizedBox(height: h*0.03),
@@ -145,7 +185,6 @@ class _bestsellingState extends State<bestselling> {
                           InkWell(
                               onTap: () {
                                 count++;
-
                                 setState(() {
 
                                 });
@@ -154,7 +193,7 @@ class _bestsellingState extends State<bestselling> {
                         ],
                       ),
                     ),
-                    Text("Price : ${widget.price*count}",style: TextStyle(
+                    Text("Price : ${widget.bestSellingModel.price*count}",style: TextStyle(
                         fontWeight: FontWeight.w500
                     ),),
                   ],
@@ -188,7 +227,7 @@ class _bestsellingState extends State<bestselling> {
                             Icon(CupertinoIcons.chevron_down)
                           ],
                         ),
-                        Text("${widget.discription}")
+                        Text("${widget.bestSellingModel.description}")
                       ],
                     ),
                   ):Container(

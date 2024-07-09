@@ -10,6 +10,7 @@ import 'package:nectar_project1/feature/addingDetails/controller/addController.d
 import 'package:nectar_project1/core/common/colors.dart';
 import 'package:nectar_project1/core/common/images.dart';
 import 'package:nectar_project1/grocery/grocery_page.dart';
+import 'package:nectar_project1/model/bestSelling_model.dart';
 import 'package:nectar_project1/pages_showing_items/Best%20selling_view%20page.dart';
 import 'package:nectar_project1/pages_showing_items/exclusive_view_page.dart';
 import 'package:nectar_project1/pulses/pulses_page.dart';
@@ -40,37 +41,6 @@ class _homeScreenState extends ConsumerState<homeScreen> {
     theImages.slider3,
   ];
 
-  //best selling list
-  List bestSelling=[
-    {
-      "image" : theImages.Redbell,
-      "name" : "Bell Pepper",
-      "qty" : 1,
-      "price" : 55,
-      "description" : "A Bell Pepper eases inflammation, reduced disease risk, improves immune health and improves eye health",
-    },
-    {
-      "image" : theImages.ginger,
-      "name" : "Ginger",
-      "qty" : 1,
-      "price" : 120,
-      "description" : "A Ginger can cut down on fermentation, constipation and other causes of bloating and intestinal gas.",
-    },
-    {
-      "image" : theImages.cucumber,
-      "name" : "Cucumber",
-      "qty" : 1,
-      "price" : 60,
-      "description" : "A Cucumber is good for hydration & detoxification it regulates blood pressure, reduces blood sugar, helpful in weight loss, better skin,soothes our eyes, reduces the risk of cancer"
-    }
-  ];
-  
-  addBestSellingList() async {
-    for(int j = 0; j<bestSelling.length; j++){
-    await FirebaseFirestore.instance.collection("bestSelling").add(bestSelling[j]);
-    }
-  }
-
   //groceries
   List groceries=[
     {
@@ -81,22 +51,6 @@ class _homeScreenState extends ConsumerState<homeScreen> {
       "image":theImages.pulse,
       "name":"Pulses"
     }
-  ];
-  
-  //meat 
-  List meat=[
-    {
-      "image": theImages.meat,
-      "name": "Beef",
-      "qty": 1,
-      "price" : 220
-    },
-    {
-      "image": theImages.chicken,
-      "name": "Chicken",
-      "qty": 1,
-      "price" : 110
-    },
   ];
 
   //for location
@@ -145,7 +99,6 @@ class _homeScreenState extends ConsumerState<homeScreen> {
   void initState() {
     locationFunc();
     // TODO: implement initState
-
     super.initState();
   }
 
@@ -470,11 +423,7 @@ class _homeScreenState extends ConsumerState<homeScreen> {
                           return InkWell(
                             onTap: () {
                               Navigator.push(context, MaterialPageRoute(builder: (context) => bestselling(
-                                  image: data[index].image,
-                                  price: data[index].price,
-                                  name: data[index].name,
-                                  qty: data[index].qty,
-                                  discription: data[index].description,
+                                  bestSellingModel: data[index],
                               ),));
                             },
                             child: Container(
@@ -696,3 +645,4 @@ class _homeScreenState extends ConsumerState<homeScreen> {
         ));
   }
 }
+
