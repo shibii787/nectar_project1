@@ -35,6 +35,9 @@ class AddingRepository{
   // To stream categories to app
   CollectionReference get _categories => _firestore.collection("categories");
 
+  // To stream groceries to app
+  CollectionReference get _groceries => _firestore.collection("groceries");
+
   collectionFunc({required UserModel userModel,}){
     _account.add(userModel.tomap()).then((value) async {
       print("-------------FIRST ID--------------");
@@ -68,7 +71,7 @@ Stream<List<PulsesModel>> pulsesstream(){
 
 // To Stream groceries
 Stream<List<GroceryModel>> grocerystream(){
-  return _pulses.snapshots().map((event) => event.docs.map((e) => GroceryModel.fromMap(e.data() as Map<String,dynamic>)).toList());
+  return _groceries.snapshots().map((event) => event.docs.map((e) => GroceryModel.fromMap(e.data() as Map<String,dynamic>)).toList());
 }
 
 }

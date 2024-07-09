@@ -17,11 +17,11 @@ class About extends StatefulWidget {
 class _AboutState extends State<About> {
 
   String? _packageInfoText;
-
-    getInfoPressed() async {
+  getInfoPressed() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     String appName = packageInfo.appName;
-    String packageName = packageInfo.packageName;
+    String packageName =
+   packageInfo.packageName;
     String version = packageInfo.version;
     String buildNumber = packageInfo.buildNumber;
     setState(() {

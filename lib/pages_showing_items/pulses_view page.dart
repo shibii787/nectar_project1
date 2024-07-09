@@ -57,6 +57,8 @@ class _pulsesViewPageState extends State<pulsesViewPage> {
         ),
         appBar: AppBar(
           elevation: 0,
+          title: Text("pulses item",style: TextStyle(color: theColors.secondary)),
+          centerTitle: true,
           backgroundColor: theColors.sixth,
           automaticallyImplyLeading: false,
           leading: InkWell(
