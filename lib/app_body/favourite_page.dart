@@ -14,8 +14,18 @@ class FavouritePage extends StatefulWidget {
 
 class _FavouritePageState extends State<FavouritePage> {
 
-  // To remove favourite
   bool tap = false;
+  checkFav() async {
+    final doc = await FirebaseFirestore.instance.collection("account").doc(userId).get();
+    if(doc["favourites"] != null){
+      final newDoc = doc["favourites"] as List;
+      setState(() {
+        tap = newDoc.any((field) => field["id"] == userId);
+      });
+    }
+  }
+
+  // To remove favourite
   removeFav(){
     tap=!tap;
     setState(() {
@@ -26,6 +36,7 @@ class _FavouritePageState extends State<FavouritePage> {
   @override
   void initState() {
     userId = currentUserModel!.id;
+    //checkFav();
     // TODO: implement initState
     super.initState();
   }
@@ -66,9 +77,9 @@ class _FavouritePageState extends State<FavouritePage> {
                     if(!snapshot.hasData){
                       return Center(child: CircularProgressIndicator());
                     }
-                     DocumentSnapshot<Map<String, dynamic>> data = snapshot.data!;
+                     DocumentSnapshot<Map<String, dynamic>> doc = snapshot.data!;
                     //List<dynamic> fav = snapshot.data!.data()!['favourites'] ?? [];
-                     List<dynamic> fav = data.data()!["favourites"] ?? [];
+                     List<dynamic> fav = doc.data()!["favourites"] ?? [];
                       return GridView.builder(
                         itemCount: fav.length,
                         shrinkWrap: true,
@@ -138,15 +149,14 @@ class _FavouritePageState extends State<FavouritePage> {
                                           fontWeight: FontWeight.w600
                                       ),
                                     ),
-                                    InkWell(
-                                      onTap: () {
-                                        removeFav();
-                                      },
-                                      child: tap == true
-                                          ? Icon(Icons.favorite, color: Colors.red)
-                                          : Icon(Icons.favorite_border_outlined),
-                                    )
-
+                                    // InkWell(
+                                    //   onTap: () {
+                                    //     removeFav();
+                                    //   },
+                                    //   child: tap == true
+                                    //       ? Icon(Icons.favorite, color: Colors.red)
+                                    //       : Icon(Icons.favorite_border_outlined),
+                                    // )
                                   ],
                                 ),
                               ])

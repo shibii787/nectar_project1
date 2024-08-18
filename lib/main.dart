@@ -1,12 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nectar_project1/firebase_options.dart';
-import 'package:nectar_project1/pages_showing_items/pulses_view%20page.dart';
-import 'package:nectar_project1/pulses/pulses_page.dart';
 import 'app_into/splashscreen.dart';
 import 'model/userModel.dart';
 

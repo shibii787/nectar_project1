@@ -36,7 +36,6 @@ class _newExplorePageState extends ConsumerState<newExplorePage> {
           physics: BouncingScrollPhysics(),
           child: Column(
             children: [
-
               ref.watch(addCategoryProvider).when(
                   data: (data) {
                     return GridView.builder(

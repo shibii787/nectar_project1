@@ -26,7 +26,7 @@ class _bestsellingState extends State<bestselling> {
     if(document["favourites"] != null){
       final favourites = document["favourites"] as List;
       setState(() {
-        tap = favourites.any((element) => element["name"] == widget.bestSellingModel.name);
+        tap = favourites.any((field) => field["name"] == widget.bestSellingModel.name);
       });
     }
   }

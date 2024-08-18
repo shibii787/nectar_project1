@@ -29,7 +29,7 @@ class _exclusiveViewPageState extends State<exclusiveViewPage> {
     if(document["favourites"] != null){
       final favourites = document["favourites"] as List;
       setState(() {
-        tap = favourites.any((element) => element["name"] == widget.exclusiveModel.name);
+        tap = favourites.any((field) => field["name"] == widget.exclusiveModel.name);
       });
     }
   }
